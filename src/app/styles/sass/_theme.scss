@@ -1,0 +1,22 @@
+@use "variables" as *;
+
+:root {
+  --color-text: #171717;
+  --color-background: #ffffff;
+  --color-primary: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #ededed;
+    --color-background: #0a0a0a;
+    font-weight: $font-weight-dark;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-text: #000;
+    --color-background: #fff;
+  }
+}

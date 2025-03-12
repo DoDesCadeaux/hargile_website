@@ -1,0 +1,11 @@
+@use "./sass/_variables" as *;
+@use "./sass/mixins/fluid-typography" as fluid-type;
+@use "./sass/_font-family";
+@use "./sass/_base";
+@use "./sass/_typography";
+@use "./sass/_theme";
+@use "./sass/_print";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

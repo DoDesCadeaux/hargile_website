@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import "@/styles/globals.css"; // Assure-toi d'avoir un fichier global
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
     useEffect(() => {
         const lenis = new Lenis({
             smooth: true,
-            lerp: 0.1, // Ajuste la vitesse du scroll
+            lerp: 0.1,
         });
 
         function raf(time) {
@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
 
         requestAnimationFrame(raf);
 
-        return () => lenis.destroy(); // Nettoyage sur démontage
+        return () => lenis.destroy();
     }, []);
 
     return <Component {...pageProps} />;
