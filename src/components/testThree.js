@@ -4,13 +4,13 @@ import * as THREE from "three";
 import {useEffect} from "react";
 import {canvas} from "framer-motion/m";
 
-// Fonction utilitaire pour créer un cube
-function createCube(scene, geometry, color, positionX) {
-    const material = new THREE.MeshPhongMaterial({ color });
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.x = positionX;
-    scene.add(cube);
-    return cube;
+// Fonction utilitaire pour créer un objet (Cube, Sphere, Cones, Cylindres, etc...)
+function createObject(scene, geometry, color, positionX) {
+    const material = new THREE.MeshPhongMaterial({ color, wireframe: true });
+    const object = new THREE.Mesh(geometry, material);
+    object.position.x = positionX;
+    scene.add(object);
+    return object;
 }
 
 // Fonction utilitaire pour configurer la lumière
@@ -53,11 +53,11 @@ export default function TestThree() {
         createLight(scene);
 
         //Créer les cubes
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const cubes = [
-            createCube(scene, geometry, 0x448822, -2),
-            createCube(scene, geometry, 0x882233, 0),
-            createCube(scene, geometry, 0x99aadd, 2),
+        const geometry = new THREE.SphereGeometry(1, 30, 30);
+        const objects = [
+            createObject(scene, geometry, 0x448822, -2),
+            createObject(scene, geometry, 0x882233, 0),
+            createObject(scene, geometry, 0x99aadd, 2.1),
         ]
 
         camera.position.z = 5;
@@ -73,9 +73,9 @@ export default function TestThree() {
                 camera.updateProjectionMatrix();
             }
 
-            cubes.forEach((cube, ndx) => {
-                cube.rotation.x += 0.008 + ndx * 0.001;
-                cube.rotation.y += 0.008 + ndx * 0.001;
+            objects.forEach((object, ndx) => {
+                object.rotation.x += 0.008 + ndx * 0.001;
+                object.rotation.y += 0.008 + ndx * 0.001;
             })
             renderer.render(scene, camera);
         }
