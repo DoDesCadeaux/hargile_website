@@ -12,7 +12,7 @@ export default function Home({}) {
             <Navbar></Navbar>
 
             <header>
-                <h1 className={'text-red-500'}>Traduction: {t('test')}</h1>
+                <h1 className={'text-center text-red-400'}>Traduction: {t('test')}</h1>
                 <h1>Test de typographie fluide</h1>
                 <nav>
                     <button>Thème sombre</button>
