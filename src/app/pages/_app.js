@@ -1,10 +1,14 @@
 "use client"
 
-import { useEffect } from "react";
+import {useEffect} from "react";
 import Lenis from "lenis";
 import "@/styles/globals.css";
+import {NextIntlClientProvider} from "next-intl";
+import {router} from "next/client";
 
-export default function App({ Component, pageProps }) {
+
+
+export default function App({Component, pageProps}) {
     useEffect(() => {
         const lenis = new Lenis({
             smooth: true,
@@ -21,5 +25,13 @@ export default function App({ Component, pageProps }) {
         return () => lenis.destroy();
     }, []);
 
-    return <Component {...pageProps} />;
+    return (
+        <NextIntlClientProvider
+            locale={router.locale}
+            timeZone="Europe/Bruxelles"
+            messages={pageProps.messages}
+        >
+            <Component {...pageProps} />
+        </NextIntlClientProvider>
+    );
 }
