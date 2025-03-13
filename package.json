@@ -20,10 +20,8 @@
     "lodash": "^4.17.21",
     "next": "15.2.1",
     "next-intl": "^4.0.1",
-    "plaiceholder": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sharp": "^0.33.5",
     "styled-components": "^6.1.15",
     "three": "^0.174.0"
   },
