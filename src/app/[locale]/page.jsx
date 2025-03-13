@@ -2,15 +2,12 @@
 
 
 import {useTranslations} from "next-intl";
-import {Navbar} from "@/components/navbar";
 
 export default function Home({}) {
-    const t = useTranslations();
+    const t = useTranslations()
 
     return (
         <div>
-            <Navbar></Navbar>
-
             <header>
                 <h1>Traduction: {t('test')}</h1>
                 <h1>Test de typographie fluide</h1>
