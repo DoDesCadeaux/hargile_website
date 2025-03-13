@@ -1,17 +1,18 @@
 "use client"
 
 
-export default function Home() {
-    function toggleTheme() {
-        document.body.classList.toggle('dark-theme')
-    }
+import {useTranslations} from "next-intl";
+
+export default function Home({}) {
+    const t = useTranslations()
 
     return (
         <div>
             <header>
+                <h1>Traduction: {t('test')}</h1>
                 <h1>Test de typographie fluide</h1>
                 <nav>
-                    <button onClick={toggleTheme}>Thème sombre</button>
+                    <button>Thème sombre</button>
                 </nav>
             </header>
 
@@ -89,7 +90,7 @@ export default function Home() {
                     <section>
                         <h3>Éléments divers</h3>
                         <figure>
-                            <img src="placeholder.jpg" alt="Image exemple"/>
+                            <img src="" alt="Image exemple"/>
                             <figcaption>Légende d'image</figcaption>
                         </figure>
                         <address>Adresse de contact</address>
