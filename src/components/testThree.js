@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import {canvas} from "framer-motion/m";
 
 // Fonction utilitaire pour créer un objet (Cube, Sphere, Cones, Cylindres, etc...)
-function createObject(scene, geometry, color, positionX) {
+export function createObject(scene, geometry, color, positionX) {
     const material = new THREE.MeshPhongMaterial({ color, wireframe: true });
     const object = new THREE.Mesh(geometry, material);
     object.position.x = positionX;
@@ -14,7 +14,7 @@ function createObject(scene, geometry, color, positionX) {
 }
 
 // Fonction utilitaire pour configurer la lumière
-function createLight(scene) {
+export function createLight(scene) {
     const light_color = 0xFFFFFF;
     const intensity = 3;
     const light = new THREE.DirectionalLight(light_color, intensity);
@@ -22,6 +22,7 @@ function createLight(scene) {
     scene.add(light);
 }
 
+//Fonction utilitaire pour resize le canva dynamiquement
 function resizeRendereToDisplaySize(actualWidth, actualHeight, renderer) {
     const newWidth = window.innerWidth;
     const newHeight = window.innerHeight;
@@ -36,33 +37,36 @@ function resizeRendereToDisplaySize(actualWidth, actualHeight, renderer) {
 
 export default function TestThree() {
     useEffect(() => {
-        console.log('WINDOW: ' + window.innerWidth)
-
         const scene = new THREE.Scene();
         let userWidth = window.innerWidth;
         let userHeight = window.innerHeight;
         const camera = new THREE.PerspectiveCamera(75, userWidth /
             userHeight, 0.1, 1000);
         const canvas = document.querySelector('#planet');
-
         const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
         //Initialiser la lumière
         createLight(scene);
 
-        //Créer les cubes
-        const geometry = new THREE.SphereGeometry(1, 30, 30);
+        //Créer les objets
+        const geometry = new THREE.SphereGeometry(1, 50, 50);
         const objects = [
-            createObject(scene, geometry, 0x448822, -2),
             createObject(scene, geometry, 0x882233, 0),
-            createObject(scene, geometry, 0x99aadd, 2.1),
         ]
 
-        camera.position.z = 5;
+        //Ajouter un groupe pour notre objet Terre
+        const earthGroup = new THREE.Group();
+        earthGroup.add(objects[0]);
+        scene.add(earthGroup);
 
-        //Animation du cube
+        //Incliner l'axe du groupe
+        earthGroup.rotation.z = THREE.MathUtils.degToRad(23.5);
+        camera.position.z = 4;
+
+        //Animation des objets
         function animate() {
             requestAnimationFrame(animate);
 
@@ -74,8 +78,7 @@ export default function TestThree() {
             }
 
             objects.forEach((object, ndx) => {
-                object.rotation.x += 0.008 + ndx * 0.001;
-                object.rotation.y += 0.008 + ndx * 0.001;
+                object.rotation.y += 0.005;
             })
             renderer.render(scene, camera);
         }
