@@ -3,9 +3,10 @@
 
 import Image from "next/image";
 
-export const OptimizedImage = ({src, alt, width = 1200, height = 800}) => {
+export const OptimizedImage = ({style, src, alt, width = 1200, height = 800}) => {
     return (
         <Image
+            style={style}
             src={src}
             alt={alt}
             width={width}

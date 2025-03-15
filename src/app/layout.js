@@ -1,6 +1,7 @@
 import {Geist, Geist_Mono} from "next/font/google";
 import "./styles/globals.scss";
 import {routing} from "@/i18n/routing";
+import {SiteNavigationProvider} from "@/components/providers/site-navigation-provider";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -20,7 +21,10 @@ export const metadata = {
 export default async function RootLayout({children}) {
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
-        <body>{children}
+        <body>
+        <SiteNavigationProvider>
+            {children}
+        </SiteNavigationProvider>
         </body>
         </html>
     )
