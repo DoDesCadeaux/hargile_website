@@ -1,10 +1,13 @@
+"use client";
+
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import { useEffect, useState, useRef } from "react";
+import Lenis from 'lenis';
 import Loading from "@/components/Loading";
 
-export default function Earth() {
+export default function Earth({ children }) {
     const [loading, setLoading] = useState(true);
     const [texturesLoaded, setTexturesLoaded] = useState(false);
     const canvasRef = useRef(null);
@@ -14,6 +17,13 @@ export default function Earth() {
     const controlsRef = useRef(null);
     const animationRef = useRef(null);
     const statsRef = useRef(null);
+    const earthGroupRef = useRef(null);
+    const cloudsMeshRef = useRef(null);
+    const earthMeshRef = useRef(null);
+
+    // Référence pour la position de scroll actuelle
+    const scrollProgressRef = useRef(0);
+    const lenisRef = useRef(null);
 
     const loadingManager = new THREE.LoadingManager();
 
@@ -39,6 +49,44 @@ export default function Earth() {
             return "high";
         }
     };
+
+    // Configuration de Lenis pour le smooth scrolling
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        lenisRef.current = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        // Mise à jour de la position de scroll
+        lenisRef.current.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+            scrollProgressRef.current = progress;
+        });
+
+        function raf(time) {
+            if (lenisRef.current) {
+                lenisRef.current.raf(time);
+                requestAnimationFrame(raf);
+            }
+        }
+
+        requestAnimationFrame(raf);
+
+        return () => {
+            if (lenisRef.current) {
+                lenisRef.current.destroy();
+                lenisRef.current = null;
+            }
+        };
+    }, []);
 
     useEffect(() => {
         // Déterminer la qualité de l'appareil
@@ -79,29 +127,28 @@ export default function Earth() {
         rendererRef.current = new THREE.WebGLRenderer({
             antialias: deviceQuality !== "low",
             powerPreference: "high-performance",
-            precision: deviceQuality === "low" ? "lowp" : "mediump"
+            precision: deviceQuality === "low" ? "lowp" : "mediump",
+            alpha: true, // Pour avoir un fond transparent
         });
 
         rendererRef.current.setSize(window.innerWidth, window.innerHeight);
         rendererRef.current.setPixelRatio(quality.pixelRatio);
+        rendererRef.current.setClearColor(0x000000, 0); // Fond transparent
 
         // Optimisations du renderer
         rendererRef.current.sortObjects = false;
 
-        // Initialisation des contrôles de caméra pour la rotation et le zoom
+        // Initialiser les contrôles mais les désactiver initialement
+        // puisque la caméra sera animée par le scroll
         controlsRef.current = new OrbitControls(cameraRef.current, rendererRef.current.domElement);
-        controlsRef.current.enableDamping = true; // Pour un mouvement plus fluide
+        controlsRef.current.enableDamping = true;
         controlsRef.current.dampingFactor = 0.05;
-        controlsRef.current.rotateSpeed = 0.5; // Vitesse de rotation
-        controlsRef.current.zoomSpeed = 0.7; // Vitesse de zoom
-
-        // Limites de zoom
-        controlsRef.current.minDistance = 1.5; // Zoom max (plus proche)
-        controlsRef.current.maxDistance = 10; // Zoom min (plus loin)
-
-        // Désactiver la translation et inverser les contrôles si nécessaire
-        controlsRef.current.enablePan = false; // Désactiver la translation (déplacement latéral)
-        controlsRef.current.autoRotate = false; // Désactiver la rotation automatique
+        controlsRef.current.rotateSpeed = 0.5;
+        controlsRef.current.zoomSpeed = 0.7;
+        controlsRef.current.minDistance = 1.5;
+        controlsRef.current.maxDistance = 10;
+        controlsRef.current.enablePan = false;
+        controlsRef.current.enabled = false; // Désactiver les contrôles manuels
 
         // Initialisation du moniteur de performance (FPS)
         statsRef.current = new Stats();
@@ -115,6 +162,10 @@ export default function Earth() {
         const light = new THREE.DirectionalLight(0xFFFFFF, 1);
         light.position.set(-5, 2, 2);
         sceneRef.current.add(light);
+
+        // Ambiance légère pour éclairer uniformément
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        sceneRef.current.add(ambientLight);
 
         // Loading Manager
         loadingManager.onLoad = () => {
@@ -135,7 +186,6 @@ export default function Earth() {
         nightTexture.generateMipmaps = false;
 
         // Matériau de la Terre
-        // Revenir à une approche plus simple du matériau pour éviter les clignotements
         const earthMaterial = new THREE.ShaderMaterial({
             uniforms: {
                 dayTexture: { value: dayTexture },
@@ -182,7 +232,7 @@ export default function Earth() {
         // Planète avec géométrie adaptée à la qualité
         const earthGeometry = new THREE.SphereGeometry(1, quality.segments, quality.segments);
         const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
-        sceneRef.current.add(earthMesh);
+        earthMeshRef.current = earthMesh;
 
         // Matériau des Nuages
         const cloudsMaterial = new THREE.ShaderMaterial({
@@ -222,14 +272,20 @@ export default function Earth() {
         // Mesh des nuages avec géométrie adaptée à la qualité
         const cloudsGeometry = new THREE.SphereGeometry(1.01, quality.segments, quality.segments);
         const cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
-        sceneRef.current.add(cloudsMesh);
+        cloudsMeshRef.current = cloudsMesh;
 
         // Inclinaison de la Terre
         const earthGroup = new THREE.Group();
+        earthGroupRef.current = earthGroup;
         earthGroup.add(earthMesh);
         earthGroup.add(cloudsMesh);
         sceneRef.current.add(earthGroup);
         earthGroup.rotation.z = THREE.MathUtils.degToRad(23.5);
+
+        // Configurer les animations basées sur le scroll
+        // Positions initiale et finale de la caméra
+        const initialCameraPosition = new THREE.Vector3(0, 0, 3);
+        const finalCameraPosition = new THREE.Vector3(2, -0.5, 1.7);
 
         // Animation avec vitesse de rotation ralentie et rendu stable
         let lastTime = 0;
@@ -245,22 +301,43 @@ export default function Earth() {
             const delta = lastTime ? (time - lastTime) / 1000 : 0;
             lastTime = time;
 
-            // Utilisation d'un delta fixe pour éviter les fluctuations qui pourraient causer des clignotements
+            // Utilisation d'un delta fixe pour éviter les fluctuations
             const fixedDelta = Math.min(delta, 0.016); // Max 60fps équivalent
 
-            // Rotation des objets (uniquement si les contrôles ne sont pas actifs)
-            if (!controlsRef.current.enabled) {
-                earthMesh.rotation.y += 0.0001 * fixedDelta * 60;
-                cloudsMesh.rotation.y += 0.00015 * fixedDelta * 60;
-            } else {
-                // Si nous utilisons les contrôles, nous maintenons les nuages en rotation
-                cloudsMesh.rotation.y += 0.00005 * fixedDelta * 60;
+            // Rotation des objets
+            if (earthMeshRef.current) earthMeshRef.current.rotation.y += 0.0001 * fixedDelta * 60;
+            if (cloudsMeshRef.current) cloudsMeshRef.current.rotation.y += 0.00015 * fixedDelta * 60;
+
+            // Animation basée sur le scroll
+            if (cameraRef.current) {
+                // Interpolation entre position initiale et finale en fonction du scroll
+                const scrollProgress = scrollProgressRef.current;
+
+                // Position de la caméra basée sur le scroll
+                cameraRef.current.position.lerpVectors(
+                    initialCameraPosition,
+                    finalCameraPosition,
+                    scrollProgress
+                );
+
+                // Rotation du groupe Earth basée sur le scroll
+                if (earthGroupRef.current) {
+                    earthGroupRef.current.rotation.y = scrollProgress * Math.PI * 0.5; // Rotation de 90 degrés
+                }
+
+                // Toujours regarder le centre de la Terre
+                cameraRef.current.lookAt(0, 0, 0);
             }
 
-            // Mettre à jour les contrôles de caméra
-            controlsRef.current.update();
+            // Mettre à jour les contrôles si nécessaire
+            if (controlsRef.current && controlsRef.current.enabled) {
+                controlsRef.current.update();
+            }
 
-            rendererRef.current.render(sceneRef.current, cameraRef.current);
+            // Rendu
+            if (rendererRef.current && sceneRef.current && cameraRef.current) {
+                rendererRef.current.render(sceneRef.current, cameraRef.current);
+            }
 
             // Finaliser la mesure de performance
             if (statsRef.current) {
@@ -316,6 +393,15 @@ export default function Earth() {
     // Une fois le chargement terminé, attacher le renderer au vrai DOM
     useEffect(() => {
         if (!loading && canvasRef.current && rendererRef.current) {
+            // Style du conteneur Canvas pour qu'il soit en arrière-plan
+            canvasRef.current.style.position = 'fixed';
+            canvasRef.current.style.top = '0';
+            canvasRef.current.style.left = '0';
+            canvasRef.current.style.width = '100%';
+            canvasRef.current.style.height = '100%';
+            canvasRef.current.style.zIndex = '-1';
+            canvasRef.current.style.pointerEvents = 'none'; // Permet de cliquer à travers le canvas
+
             // Ajouter le canvas de rendu Three.js
             canvasRef.current.appendChild(rendererRef.current.domElement);
 
@@ -324,18 +410,8 @@ export default function Earth() {
                 document.body.appendChild(statsRef.current.dom);
             }
 
-            // Ajouter un écouteur d'événements pour activer/désactiver la rotation automatique
-            const canvas = rendererRef.current.domElement;
-            canvas.addEventListener('mousedown', () => {
-                if (controlsRef.current) controlsRef.current.enabled = true;
-            });
-
             // Nettoyer les écouteurs lors du démontage
             return () => {
-                canvas.removeEventListener('mousedown', () => {
-                    if (controlsRef.current) controlsRef.current.enabled = true;
-                });
-
                 // Nettoyer l'indicateur de FPS
                 if (statsRef.current && statsRef.current.dom && statsRef.current.dom.parentNode) {
                     statsRef.current.dom.parentNode.removeChild(statsRef.current.dom);
@@ -345,8 +421,17 @@ export default function Earth() {
     }, [loading]);
 
     return (
-        <div>
-            {loading ? <Loading loadingManager={loadingManager} /> : <div ref={canvasRef} id="planet" />}
-        </div>
+        <>
+            {loading ? (
+                <Loading loadingManager={loadingManager} />
+            ) : (
+                <>
+                    <div ref={canvasRef} id="planet" />
+                    <div className="content-container">
+                        {children}
+                    </div>
+                </>
+            )}
+        </>
     );
 }
