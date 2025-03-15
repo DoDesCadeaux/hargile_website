@@ -28,7 +28,7 @@ export default function HomePage() {
                 <div className="min-h-screen flex flex-col justify-center">
                     <div className="container mx-auto px-4">
                         <div className="flex justify-start">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 bg-black/30 backdrop-blur-sm rounded-lg">
+                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 rounded-lg">
                                 <h2 className="text-4xl font-bold mb-6 text-white">À propos de moi</h2>
                                 <p className="text-xl mb-6 text-gray-200">
                                     Je suis un développeur passionné par les technologies web modernes et la création
@@ -47,15 +47,15 @@ export default function HomePage() {
                 <div className="min-h-screen flex flex-col justify-center">
                     <div className="container mx-auto px-4">
                         <div className="flex justify-end">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 bg-black/30 backdrop-blur-sm rounded-lg">
+                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 rounded-lg">
                                 <h2 className="text-4xl font-bold mb-6 text-white">Mes projets</h2>
                                 <div className="space-y-6">
-                                    <div className="bg-white/10 p-6 rounded-lg backdrop-blur-md">
+                                    <div className="bg-white/10 p-6 rounded-lg">
                                         <h3 className="text-2xl font-bold mb-3 text-white">Projet 1</h3>
                                         <p className="text-gray-200">Une application web interactive utilisant Three.js
                                             et WebGL.</p>
                                     </div>
-                                    <div className="bg-white/10 p-6 rounded-lg backdrop-blur-md">
+                                    <div className="bg-white/10 p-6 rounded-lg">
                                         <h3 className="text-2xl font-bold mb-3 text-white">Projet 2</h3>
                                         <p className="text-gray-200">Un dashboard de visualisation de données en temps
                                             réel.</p>
@@ -70,7 +70,7 @@ export default function HomePage() {
                 <div className="min-h-screen flex flex-col justify-center">
                     <div className="container mx-auto px-4">
                         <div className="flex justify-start">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 bg-black/30 backdrop-blur-sm rounded-lg">
+                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 bg-black/30 rounded-lg">
                                 <h2 className="text-4xl font-bold mb-6 text-white">Contactez-moi</h2>
                                 <p className="text-xl mb-8 text-gray-200">
                                     Vous avez un projet intéressant? N'hésitez pas à me contacter!

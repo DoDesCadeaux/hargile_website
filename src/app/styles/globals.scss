@@ -8,22 +8,22 @@
 
 @use 'tailwindcss';
 
-//:root {
-//  --foreground-rgb: 255, 255, 255;
-//  --background-start-rgb: 0, 0, 0;
-//  --background-end-rgb: 0, 0, 0;
-//}
-//
-//body {
-//  color: rgb(var(--foreground-rgb));
-//  background: linear-gradient(
-//                  to bottom,
-//                  transparent,
-//                  rgb(var(--background-end-rgb))
-//  )
-//  rgb(var(--background-start-rgb));
-//  overflow-x: hidden;
-//}
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+                  to bottom,
+                  transparent,
+                  rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+  overflow-x: hidden;
+}
 
 /* Styles pour le conteneur de contenu */
 .content-container {
@@ -53,11 +53,6 @@
 /* Désactiver l'interaction utilisateur sur le canvas de rendu */
 #planet canvas {
   pointer-events: none;
-}
-
-/* Alternance des sections pour le visuel */
-.min-h-screen:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Animation des cartes au survol */

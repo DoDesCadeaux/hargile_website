@@ -100,12 +100,12 @@ export default function Earth({ children }) {
                 pixelRatio: 1
             },
             medium: {
-                segments: 48,
+                segments: 64,
                 textureScale: 0.5,
                 pixelRatio: 1
             },
             high: {
-                segments: 64,
+                segments: 80,
                 textureScale: 1,
                 pixelRatio: window.devicePixelRatio || 1
             }
@@ -270,7 +270,7 @@ export default function Earth({ children }) {
         });
 
         // Mesh des nuages avec géométrie adaptée à la qualité
-        const cloudsGeometry = new THREE.SphereGeometry(1.01, quality.segments, quality.segments);
+        const cloudsGeometry = new THREE.SphereGeometry(1.005, quality.segments, quality.segments);
         const cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
         cloudsMeshRef.current = cloudsMesh;
 
