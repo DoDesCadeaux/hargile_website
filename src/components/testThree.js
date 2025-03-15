@@ -131,8 +131,7 @@ export default function TestThree() {
                 dayTexture: { value: dayTexture },
                 nightTexture: { value: nightTexture },
                 lightDirection: { value: light.position.clone().normalize() },
-                nightIntensity: { value: 1.5 }, // Valeur plus conservative
-                transitionThreshold: { value: 0.1 }, // Valeur non utilisée dans le nouveau shader
+                nightIntensity: { value: 1.2 }, // Valeur plus conservative
             },
             vertexShader: `
                 varying vec3 vNormal;
@@ -150,7 +149,6 @@ export default function TestThree() {
                 uniform sampler2D nightTexture;
                 uniform vec3 lightDirection;
                 uniform float nightIntensity;
-                uniform float transitionThreshold;
                 varying vec3 vNormal;
                 varying vec3 vPosition;
                 varying vec2 vUv;
