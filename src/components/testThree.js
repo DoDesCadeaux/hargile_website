@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useEffect, useState, useRef } from "react";
 import Loading from "@/components/Loading";
 
@@ -9,6 +10,7 @@ export default function TestThree() {
     const rendererRef = useRef(null);
     const sceneRef = useRef(null);
     const cameraRef = useRef(null);
+    const controlsRef = useRef(null);
     const animationRef = useRef(null);
 
     const loadingManager = new THREE.LoadingManager();
@@ -22,8 +24,8 @@ export default function TestThree() {
 
         // Vérifier les capacités GPU via le nombre de pixels max
         const pixelRatio = window.devicePixelRatio || 1;
-        const screenWidth = window.screen.width * pixelRatio;
-        const screenHeight = window.screen.height * pixelRatio;
+        const screenWidth = window.innerWidth * pixelRatio;
+        const screenHeight = window.innerHeight * pixelRatio;
         const totalPixels = screenWidth * screenHeight;
 
         // Déterminer la qualité
@@ -84,6 +86,21 @@ export default function TestThree() {
         // Optimisations du renderer
         rendererRef.current.sortObjects = false;
 
+        // Initialisation des contrôles de caméra pour la rotation et le zoom
+        controlsRef.current = new OrbitControls(cameraRef.current, rendererRef.current.domElement);
+        controlsRef.current.enableDamping = true; // Pour un mouvement plus fluide
+        controlsRef.current.dampingFactor = 0.05;
+        controlsRef.current.rotateSpeed = 0.5; // Vitesse de rotation
+        controlsRef.current.zoomSpeed = 0.7; // Vitesse de zoom
+
+        // Limites de zoom
+        controlsRef.current.minDistance = 1.5; // Zoom max (plus proche)
+        controlsRef.current.maxDistance = 10; // Zoom min (plus loin)
+
+        // Désactiver la translation et inverser les contrôles si nécessaire
+        controlsRef.current.enablePan = false; // Désactiver la translation (déplacement latéral)
+        controlsRef.current.autoRotate = false; // Désactiver la rotation automatique
+
         // Lumière
         const light = new THREE.DirectionalLight(0xFFFFFF, 1);
         light.position.set(-4, 2, 4);
@@ -94,29 +111,28 @@ export default function TestThree() {
             setTexturesLoaded(true);
         };
 
-        // Charger les textures avec redimensionnement selon la qualité
+        // Revenir aux paramètres originaux pour les textures
         const textureLoader = new THREE.TextureLoader(loadingManager);
-        const loadTexture = (url) => {
-            const texture = textureLoader.load(url);
-            if (quality.textureScale < 1) {
-                texture.minFilter = THREE.LinearFilter;
-                texture.generateMipmaps = false;
-            }
-            return texture;
-        };
 
-        const dayTexture = loadTexture("/textures/earth/textures/2_no_clouds_16k.jpeg");
-        const nightTexture = loadTexture("/textures/earth/textures/NIGHT.jpg");
-        const cloudsTexture = loadTexture("/textures/earth/textures/fair_clouds_8k.jpeg");
+        // Chargement simple sans modifications des paramètres par défaut de Three.js
+        const dayTexture = textureLoader.load("/textures/earth/textures/2_no_clouds_16k.jpeg");
+        const nightTexture = textureLoader.load("/textures/earth/textures/NIGHT.jpg");
+        const cloudsTexture = textureLoader.load("/textures/earth/textures/fair_clouds_8k.jpeg");
+
+        // Définir les paramètres après le chargement pour stabiliser les textures
+        nightTexture.minFilter = THREE.LinearFilter;
+        nightTexture.magFilter = THREE.LinearFilter;
+        nightTexture.generateMipmaps = false;
 
         // Matériau de la Terre
+        // Revenir à une approche plus simple du matériau pour éviter les clignotements
         const earthMaterial = new THREE.ShaderMaterial({
             uniforms: {
                 dayTexture: { value: dayTexture },
                 nightTexture: { value: nightTexture },
                 lightDirection: { value: light.position.clone().normalize() },
-                nightIntensity: { value: 3 },
-                transitionThreshold: { value: 0.3 },
+                nightIntensity: { value: 1.5 }, // Valeur plus conservative
+                transitionThreshold: { value: 0.1 }, // Valeur non utilisée dans le nouveau shader
             },
             vertexShader: `
                 varying vec3 vNormal;
@@ -139,10 +155,17 @@ export default function TestThree() {
                 varying vec3 vPosition;
                 varying vec2 vUv;
                 void main() {
+                    // Calcul de l'intensité lumineuse basée sur l'angle avec la source de lumière
                     float intensity = dot(vNormal, lightDirection);
-                    float transition = smoothstep(transitionThreshold, transitionThreshold + 0.1, intensity);
+                    
+                    // Transition avec des valeurs fixes comme dans la version originale
+                    float transition = smoothstep(0.0, 0.4, intensity);
+                    
+                    // Échantillonnage des textures
                     vec4 dayColor = texture2D(dayTexture, vUv);
                     vec4 nightColor = texture2D(nightTexture, vUv) * nightIntensity;
+                    
+                    // Mélange des textures jour/nuit
                     gl_FragColor = mix(nightColor, dayColor, transition);
                 }
             `,
@@ -158,7 +181,7 @@ export default function TestThree() {
             uniforms: {
                 cloudTexture: { value: cloudsTexture },
                 lightDirection: { value: light.position.clone().normalize() },
-                transitionThreshold: { value: 0.3 },
+                transitionThreshold: { value: 0.06 },
                 fixedOpacity: { value: 0.5 },
             },
             vertexShader: `
@@ -200,11 +223,30 @@ export default function TestThree() {
         sceneRef.current.add(earthGroup);
         earthGroup.rotation.z = THREE.MathUtils.degToRad(23.5);
 
-        // Animation avec requestAnimationFrame optimisé
-        function animate() {
+        // Animation avec vitesse de rotation ralentie et rendu stable
+        let lastTime = 0;
+        function animate(time) {
             animationRef.current = requestAnimationFrame(animate);
-            earthMesh.rotation.y += 0.0003;
-            cloudsMesh.rotation.y += 0.0004;
+
+            // Calcul du delta pour une animation indépendante du taux de rafraîchissement
+            const delta = lastTime ? (time - lastTime) / 1000 : 0;
+            lastTime = time;
+
+            // Utilisation d'un delta fixe pour éviter les fluctuations qui pourraient causer des clignotements
+            const fixedDelta = Math.min(delta, 0.016); // Max 60fps équivalent
+
+            // Rotation des objets (uniquement si les contrôles ne sont pas actifs)
+            if (!controlsRef.current.enabled) {
+                earthMesh.rotation.y += 0.0001 * fixedDelta * 60;
+                cloudsMesh.rotation.y += 0.00015 * fixedDelta * 60;
+            } else {
+                // Si nous utilisons les contrôles, nous maintenons les nuages en rotation
+                cloudsMesh.rotation.y += 0.00005 * fixedDelta * 60;
+            }
+
+            // Mettre à jour les contrôles de caméra
+            controlsRef.current.update();
+
             rendererRef.current.render(sceneRef.current, cameraRef.current);
         }
 
@@ -232,6 +274,11 @@ export default function TestThree() {
                 cancelAnimationFrame(animationRef.current);
             }
 
+            // Disposer les contrôles
+            if (controlsRef.current) {
+                controlsRef.current.dispose();
+            }
+
             if (rendererRef.current && rendererRef.current.domElement && rendererRef.current.domElement.parentNode) {
                 rendererRef.current.domElement.parentNode.removeChild(rendererRef.current.domElement);
             }
@@ -252,6 +299,19 @@ export default function TestThree() {
     useEffect(() => {
         if (!loading && canvasRef.current && rendererRef.current) {
             canvasRef.current.appendChild(rendererRef.current.domElement);
+
+            // Ajouter un écouteur d'événements pour activer/désactiver la rotation automatique
+            const canvas = rendererRef.current.domElement;
+            canvas.addEventListener('mousedown', () => {
+                if (controlsRef.current) controlsRef.current.enabled = true;
+            });
+
+            // Nettoyer l'écouteur lors du démontage
+            return () => {
+                canvas.removeEventListener('mousedown', () => {
+                    if (controlsRef.current) controlsRef.current.enabled = true;
+                });
+            };
         }
     }, [loading]);
 
