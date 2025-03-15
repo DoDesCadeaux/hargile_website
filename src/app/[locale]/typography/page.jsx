@@ -1,112 +1,114 @@
-"use client";
+"use client"
 
-import Earth from '@/components/Earth';
 
-export default function HomePage() {
+import {useTranslations} from "next-intl";
+import {Navbar} from "@/components/navbar";
+
+export default function Home({}) {
+    const t = useTranslations();
+
     return (
-        <Earth>
-            <div className={"container"}>
-                {/* Section d'accueil - Texte à droite */}
-                <div className="min-h-screen flex flex-col justify-center">
-                    <div className="container mx-auto px-4">
-                        <div className="flex justify-end">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8  rounded-lg">
-                                <h1 className="text-5xl font-bold mb-6 text-white">Bienvenue sur mon site</h1>
-                                <p className="text-xl mb-8 text-gray-200">
-                                    Explorez mes projets et découvrez mon approche créative
-                                </p>
-                                <button
-                                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
-                                    En savoir plus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div>
+            <Navbar></Navbar>
 
-                {/* Section À propos - Texte à gauche */}
-                <div className="min-h-screen flex flex-col justify-center">
-                    <div className="container mx-auto px-4">
-                        <div className="flex justify-start">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 rounded-lg">
-                                <h2 className="text-4xl font-bold mb-6 text-white">À propos de moi</h2>
-                                <p className="text-xl mb-6 text-gray-200">
-                                    Je suis un développeur passionné par les technologies web modernes et la création
-                                    d'expériences utilisateur immersives.
-                                </p>
-                                <p className="text-xl mb-6 text-gray-200">
-                                    Spécialisé dans React, Three.js et Next.js, je crée des sites web qui combinent
-                                    esthétique et performance.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <header>
+                <h1>Traduction: {t('test')}</h1>
+                <h1>Test de typographie fluide</h1>
+                <nav>
+                    <button>Thème sombre</button>
+                </nav>
+            </header>
 
-                {/* Section Projets - Texte à droite */}
-                <div className="min-h-screen flex flex-col justify-center">
-                    <div className="container mx-auto px-4">
-                        <div className="flex justify-end">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 rounded-lg">
-                                <h2 className="text-4xl font-bold mb-6 text-white">Mes projets</h2>
-                                <div className="space-y-6">
-                                    <div className="bg-white/10 p-6 rounded-lg">
-                                        <h3 className="text-2xl font-bold mb-3 text-white">Projet 1</h3>
-                                        <p className="text-gray-200">Une application web interactive utilisant Three.js
-                                            et WebGL.</p>
-                                    </div>
-                                    <div className="bg-white/10 p-6 rounded-lg">
-                                        <h3 className="text-2xl font-bold mb-3 text-white">Projet 2</h3>
-                                        <p className="text-gray-200">Un dashboard de visualisation de données en temps
-                                            réel.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <main>
+                <article>
+                    <h2>Article démonstratif</h2>
 
-                {/* Section Contact - Texte à gauche */}
-                <div className="min-h-screen flex flex-col justify-center">
-                    <div className="container mx-auto px-4">
-                        <div className="flex justify-start">
-                            <div className="w-full md:w-1/2 lg:w-2/5 p-8 bg-black/30 rounded-lg">
-                                <h2 className="text-4xl font-bold mb-6 text-white">Contactez-moi</h2>
-                                <p className="text-xl mb-8 text-gray-200">
-                                    Vous avez un projet intéressant? N'hésitez pas à me contacter!
-                                </p>
-                                <form>
-                                    <div className="mb-4">
-                                        <input
-                                            type="text"
-                                            placeholder="Votre nom"
-                                            className="w-full p-3 rounded-lg bg-white/10 text-white border border-gray-600 focus:border-blue-500 focus:outline-none"
-                                        />
-                                    </div>
-                                    <div className="mb-4">
-                                        <input
-                                            type="email"
-                                            placeholder="Votre email"
-                                            className="w-full p-3 rounded-lg bg-white/10 text-white border border-gray-600 focus:border-blue-500 focus:outline-none"
-                                        />
-                                    </div>
-                                    <div className="mb-6">
-                  <textarea
-                      placeholder="Votre message"
-                      rows="4"
-                      className="w-full p-3 rounded-lg bg-white/10 text-white border border-gray-600 focus:border-blue-500 focus:outline-none"
-                  ></textarea>
-                                    </div>
-                                    <button type="submit"
-                                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg">
-                                        Envoyer
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Earth>
+                    <section>
+                        <h1>Sous-titre h1</h1>
+                        <h2>Sous-titre h2</h2>
+                        <h3>Sous-titre h3</h3>
+                        <h4>Sous-titre h4</h4>
+                        <h5>Sous-titre h5</h5>
+                        <h6>Sous-titre h6</h6>
+                    </section>
+
+                    <section>
+                        <h3>Éléments textuels</h3>
+                        <p>Paragraphe standard avec <strong>texte important</strong> et <em>texte emphatisé</em>.
+                        </p>
+                        <blockquote>
+                            Citation avec texte mis en avant
+                            <cite>- Auteur</cite>
+                        </blockquote>
+                    </section>
+
+                    <section>
+                        <h3>Listes</h3>
+                        <ul>
+                            <li>Élément de liste 1</li>
+                            <li>Élément de liste 2</li>
+                        </ul>
+                        <ol>
+                            <li>Élément ordonné 1</li>
+                            <li>Élément ordonné 2</li>
+                        </ol>
+                        <dl>
+                            <dt>Terme</dt>
+                            <dd>Définition</dd>
+                        </dl>
+                    </section>
+
+                    <section>
+                        <h3>Formulaires</h3>
+                        <form>
+                            <label htmlFor="name">Nom :</label>
+                            <input type="text" id="name"/>
+
+                            <label htmlFor="email">Email :</label>
+                            <input type="email" id="email"/>
+
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </section>
+
+                    <section>
+                        <h3>Tableau</h3>
+                        <table>
+                            <caption>Données démonstratives</caption>
+                            <thead>
+                            <tr>
+                                <th>En-tête 1</th>
+                                <th>En-tête 2</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Donnée 1</td>
+                                <td>Donnée 2</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>Éléments divers</h3>
+                        <figure>
+                            <img src="" alt="Image exemple"/>
+                            <figcaption>Légende d'image</figcaption>
+                        </figure>
+                        <address>Adresse de contact</address>
+                        <time dateTime="2023-01-01">1er Janvier 2023</time>
+                        <p>Texte avec <abbr
+                            title="Abbréviation">abbr.</abbr>, <mark>surlignage</mark>, <sup>exposant</sup> et <sub>indice</sub>.
+                        </p>
+                    </section>
+                </article>
+            </main>
+
+            <footer>
+                <small>© 2023 Test Typographie</small>
+            </footer>
+
+        </div>
     );
 }
