@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Stats from "three/examples/jsm/libs/stats.module";
 import { useEffect, useState, useRef } from "react";
 import Loading from "@/components/Loading";
 
@@ -12,6 +13,7 @@ export default function TestThree() {
     const cameraRef = useRef(null);
     const controlsRef = useRef(null);
     const animationRef = useRef(null);
+    const statsRef = useRef(null);
 
     const loadingManager = new THREE.LoadingManager();
 
@@ -101,9 +103,17 @@ export default function TestThree() {
         controlsRef.current.enablePan = false; // Désactiver la translation (déplacement latéral)
         controlsRef.current.autoRotate = false; // Désactiver la rotation automatique
 
+        // Initialisation du moniteur de performance (FPS)
+        statsRef.current = new Stats();
+        statsRef.current.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+        statsRef.current.dom.style.position = 'absolute';
+        statsRef.current.dom.style.top = '0px';
+        statsRef.current.dom.style.left = '0px';
+        statsRef.current.dom.style.zIndex = '100';
+
         // Lumière
         const light = new THREE.DirectionalLight(0xFFFFFF, 1);
-        light.position.set(-4, 2, 4);
+        light.position.set(-5, 2, 2);
         sceneRef.current.add(light);
 
         // Loading Manager
@@ -179,7 +189,7 @@ export default function TestThree() {
             uniforms: {
                 cloudTexture: { value: cloudsTexture },
                 lightDirection: { value: light.position.clone().normalize() },
-                transitionThreshold: { value: 0.06 },
+                transitionThreshold: { value: 0.03 },
                 fixedOpacity: { value: 0.5 },
             },
             vertexShader: `
@@ -226,6 +236,11 @@ export default function TestThree() {
         function animate(time) {
             animationRef.current = requestAnimationFrame(animate);
 
+            // Mise à jour des statistiques FPS
+            if (statsRef.current) {
+                statsRef.current.begin();
+            }
+
             // Calcul du delta pour une animation indépendante du taux de rafraîchissement
             const delta = lastTime ? (time - lastTime) / 1000 : 0;
             lastTime = time;
@@ -246,6 +261,11 @@ export default function TestThree() {
             controlsRef.current.update();
 
             rendererRef.current.render(sceneRef.current, cameraRef.current);
+
+            // Finaliser la mesure de performance
+            if (statsRef.current) {
+                statsRef.current.end();
+            }
         }
 
         // Gestion du redimensionnement de la fenêtre
@@ -296,7 +316,13 @@ export default function TestThree() {
     // Une fois le chargement terminé, attacher le renderer au vrai DOM
     useEffect(() => {
         if (!loading && canvasRef.current && rendererRef.current) {
+            // Ajouter le canvas de rendu Three.js
             canvasRef.current.appendChild(rendererRef.current.domElement);
+
+            // Ajouter l'indicateur de FPS
+            if (statsRef.current) {
+                document.body.appendChild(statsRef.current.dom);
+            }
 
             // Ajouter un écouteur d'événements pour activer/désactiver la rotation automatique
             const canvas = rendererRef.current.domElement;
@@ -304,11 +330,16 @@ export default function TestThree() {
                 if (controlsRef.current) controlsRef.current.enabled = true;
             });
 
-            // Nettoyer l'écouteur lors du démontage
+            // Nettoyer les écouteurs lors du démontage
             return () => {
                 canvas.removeEventListener('mousedown', () => {
                     if (controlsRef.current) controlsRef.current.enabled = true;
                 });
+
+                // Nettoyer l'indicateur de FPS
+                if (statsRef.current && statsRef.current.dom && statsRef.current.dom.parentNode) {
+                    statsRef.current.dom.parentNode.removeChild(statsRef.current.dom);
+                }
             };
         }
     }, [loading]);
