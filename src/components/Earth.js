@@ -4,7 +4,7 @@ import Stats from "three/examples/jsm/libs/stats.module";
 import { useEffect, useState, useRef } from "react";
 import Loading from "@/components/Loading";
 
-export default function TestThree() {
+export default function Earth() {
     const [loading, setLoading] = useState(true);
     const [texturesLoaded, setTexturesLoaded] = useState(false);
     const canvasRef = useRef(null);
