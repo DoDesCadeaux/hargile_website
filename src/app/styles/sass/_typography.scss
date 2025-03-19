@@ -1,5 +1,6 @@
 @use 'mixins/fluid-typography' as fluid;
 @use 'variables' as v;
+@use "sass:list";
 
 html {
   @include fluid.fluid-type(-1, 1); // 14px - 18px
@@ -132,12 +133,26 @@ a {
   text-decoration: underline;
 }
 
-.text-lead {
-  @include fluid.fluid-type(1, 2); // 18px - 24px
-  line-height: 1.4;
-}
+$fluid-type-config: (
+        1: (-1, 0, 1.6),
+        2: (0, 1, 1.6),
+        3: (1, 2, 1.5),
+        4: (2, 3, 1.4),
+        5: (3, 4, 1.3),
+        6: (4, 5, 1.2),
+        7: (5, 6, 1.15),
+        8: (6, 7, 1.1),
+        9: (7, 8, 1.05)
+);
 
-.text-muted {
-  @include fluid.fluid-type(-1, 0); // 14px - 16px
-  color: v.$color-text-light;
+// Génération des classes par boucle
+@each $size, $config in $fluid-type-config {
+  $min-step: list.nth($config, 1);
+  $max-step: list.nth($config, 2);
+  $line-height: list.nth($config, 3);
+
+  .fluid-type-#{$size} {
+    @include fluid.fluid-type($min-step, $max-step);
+    line-height: $line-height;
+  }
 }

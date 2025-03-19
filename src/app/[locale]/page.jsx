@@ -6,7 +6,6 @@ import {Navbar} from "@/components/navigation/navbar";
 export default function HomePage() {
     return (
         <>
-            <Navbar/>
             <Earth>
                 <div className={"container"}>
                     {/* Section d'accueil - Texte à droite */}

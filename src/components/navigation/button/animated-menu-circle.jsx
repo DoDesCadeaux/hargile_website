@@ -9,13 +9,13 @@ const SvgCircle = styled.svg`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) ${({$isOpen}) => $isOpen ? 'scale(1)' : 'scale(1)'};
+    transform: translateZ(0) translate(-50%, -50%) ${({$isOpen}) => $isOpen ? 'scale(1)' : 'scale(1)'};
     overflow: visible;
     z-index: 99;
     pointer-events: none;
 
     &.closed {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateZ(0) translate(-50%, -50%) scale(1);
         transition: transform 300ms ease-in;
     }
 `;
