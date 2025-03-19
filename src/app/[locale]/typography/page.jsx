@@ -2,14 +2,38 @@
 
 
 import {useTranslations} from "next-intl";
-import {Navbar} from "@/components/navbar";
+import {Navbar} from "@/components/navigation/navbar";
 
 export default function Home({}) {
     const t = useTranslations();
 
     return (
         <div>
-            <Navbar></Navbar>
+            <Navbar/>
+
+            <section>
+                <p className={'fluid-type-d2'}>Lorem ipsum dolor d2</p>
+                <p className={'fluid-type-d1'}>Lorem ipsum dolor d1</p>
+                <p className={'fluid-type-6'}>Lorem ipsum dolor 6</p>
+                <p className={'fluid-type-5'}>Lorem ipsum dolor 5</p>
+                <p className={'fluid-type-4'}>Lorem ipsum dolor 4</p>
+                <p className={'fluid-type-3'}>Lorem ipsum dolor 3</p>
+                <p className={'fluid-type-2'}>Lorem ipsum dolor 2</p>
+                <p className={'fluid-type-1'}>Lorem ipsum dolor 1</p>
+                <p style={{color: 'grey'}}>Lorem ipsum dolor no fluid</p>
+                <p className={'fluid-type-0'} style={{color: 'orange'}}>Lorem ipsum dolor 0</p>
+                <p className={'fluid-type--1'}>Lorem ipsum dolor -1</p>
+                <p className={'fluid-type--2'}>Lorem ipsum dolor -2</p>
+            </section>
+
+            <section>
+                <h1>Sous-titre h1</h1>
+                <h2>Sous-titre h2</h2>
+                <h3>Sous-titre h3</h3>
+                <h4>Sous-titre h4</h4>
+                <h5>Sous-titre h5</h5>
+                <h6>Sous-titre h6</h6>
+            </section>
 
             <header>
                 <h1>Traduction: {t('test')}</h1>
@@ -23,14 +47,6 @@ export default function Home({}) {
                 <article>
                     <h2>Article démonstratif</h2>
 
-                    <section>
-                        <h1>Sous-titre h1</h1>
-                        <h2>Sous-titre h2</h2>
-                        <h3>Sous-titre h3</h3>
-                        <h4>Sous-titre h4</h4>
-                        <h5>Sous-titre h5</h5>
-                        <h6>Sous-titre h6</h6>
-                    </section>
 
                     <section>
                         <h3>Éléments textuels</h3>
@@ -104,11 +120,6 @@ export default function Home({}) {
                     </section>
                 </article>
             </main>
-
-            <footer>
-                <small>© 2023 Test Typographie</small>
-            </footer>
-
         </div>
     );
 }
