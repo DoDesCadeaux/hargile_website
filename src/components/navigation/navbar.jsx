@@ -170,9 +170,9 @@ export const Navbar = () => {
                 <div className="navbar__brand">
                     <Link href="/">
                         <OptimizedImage
-                            width="1994" height="974" src="/images/brand/brand_large.png"
+                            width="1754" height="815" src="/images/brand/brand_large.png"
                             alt="Brand Logo"
-                            style={{width: "calc(120px + 5vw)"}}
+                            style={{width: "calc(250px + 5.4vw)"}}
                         />
                     </Link>
                 </div>
