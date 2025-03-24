@@ -24,6 +24,9 @@
               "description": ""
             }
           }
+        },
+        "trusted-brands": {
+          "title": "They trust us"
         }
       }
     }
