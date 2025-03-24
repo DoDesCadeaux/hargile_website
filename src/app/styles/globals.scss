@@ -13,3 +13,12 @@
 @use "./sass/sections/_earth";
 
 
+@layer utilities {
+    .w-192 {
+        width: 48rem;
+    }
+
+    .h-192 {
+        height: 48rem;
+    }
+}
