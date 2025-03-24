@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterLink = styled.a.attrs({
-    className: 'fluid-type--1'
+    className: 'text-base-sm'
 })`
     color: #fff;
     margin-bottom: 0.5rem;

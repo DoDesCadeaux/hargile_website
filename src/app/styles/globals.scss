@@ -1,5 +1,5 @@
-@use "./sass/_variables" as *;
-@use "./sass/mixins/fluid-typography" as fluid-type;
+@use "./sass/fluid-typography/_config" as config;
+@use "./sass/fluid-typography/mixins/fluid-typography";
 @use "./sass/_font-family";
 @use "./sass/_base";
 @use "./sass/_typography";
@@ -7,5 +7,7 @@
 @use "./sass/_print";
 
 @use 'tailwindcss';
+
+@use "./sass/fluid-typography/_typography-helpers";
 
 @use "./sass/sections/_earth";

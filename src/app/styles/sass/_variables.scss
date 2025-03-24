@@ -1,43 +1,7 @@
-$color-background: #ebeff0;
-$color-text: #25303b;
-$color-text-light: #9eb2c2;
-$color-primary: #5192ba;
-$color-accent: #01baf2;
-
-// Breakpoints
-$breakpoints: (
-        mobile-xs: 320px,
-        mobile-s: 360px,
-        mobile-l: 414px,
-        mobile-xl: 480px,
-        mobile-500: 500px,
-        mobile-600: 600px,
-        tablet: 768px,
-        laptop: 1366px,
-        desktop: 1920px,
-        2k: 2560px,
-        4k: 3840px,
-        8k: 7680px
-);
-
-// Typography
-$base-font-size: 16px;
-$type-scale-ratio: 1.6;
-$line-height-base: 1.6;
-
-// Themes
 $font-weight-light: 400;
 $font-weight-dark: 350;
 
 :root {
-  --color-background: #{$color-background};
-  --color-text: #{$color-text};
-  --color-text-light: #{$color-text-light};
-  --color-primary: #{$color-primary};
-  --color-accent: #{$color-accent};
-  --font-weight-light: #{$font-weight-light};
-  --font-weight-dark: #{$font-weight-dark};
-  --base-font-size: #{$base-font-size};
-  --type-scale: #{$type-scale-ratio};
-  --line-height-base: #{$line-height-base};
+  --font-weight-light: $font-weight-light;
+  --font-weight-dark: $font-weight-dark;
 }
