@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use "variables" as v;
 
 :root {
   --color-text: #171717;
@@ -10,7 +10,7 @@
   :root {
     --color-text: #ededed;
     --color-background: #0a0a0a;
-    font-weight: $font-weight-dark;
+    font-weight: v.$font-weight-dark;
   }
 }
 
