@@ -98,7 +98,7 @@ li {
 // Form elements
 button, input, select, textarea {
   @include fluid.element-typography('button, input, select, textarea');
-  padding: 0.5em 1em;
+  padding: 0.5em 0em;
 }
 
 label {
