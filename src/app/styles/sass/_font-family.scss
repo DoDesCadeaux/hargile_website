@@ -1,11 +1,89 @@
-//@font-face {
-//  font-family: 'Raleway';
-//  src: url('../fonts/raleway-variable.woff2') format('woff2-variations');
-//  font-weight: 100 900;
-//  font-style: normal;
-//  font-display: swap;
-//}
-//
-//:root {
-//  --font-primary: 'Raleway', system-ui, sans-serif;
-//}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/montserrat/Montserrat-Italic-VF.woff2") format("woff2");
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'wght' 900;
+  font-variation-settings: 'opsz' 27.07, 'wght' 500;
+  font-feature-settings: 'case' 0, 'dlig' 0;
+}
+
+/** Montserrat Thin-Italic **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/montserrat/Montserrat-Italic-VF.woff2") format("woff2");
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'wght' 900;
+  font-variation-settings: 'opsz' 27.07, 'wght' 500;
+  font-feature-settings: 'case' 0, 'dlig' 0;
+}
+
+// Inter Variable Font
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/InterVariable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'wght' 900;
+  font-variation-settings: 'opsz' 27.07, 'wght' 500;
+  font-feature-settings: 'case' 0, 'dlig' 0;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter/InterVariable-Italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+// Font stacks with generics
+:root {
+  // Primary sans-serif font stack with generics
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+  Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';
+
+  // Headings font stack with generics
+  --font-headings: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+  Arial, sans-serif;
+
+  // Monospace font stack
+  --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco,
+  Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  // Generic serif font stack (when needed)
+  --font-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  // Kerning settings
+  --kerning-body: -0.01em;
+  --kerning-headings: -0.02em;
+  --kerning-mono: 0;
+  --kerning-display: -0.03em;
+}
+
+// Initialize kerning for basic elements
+body {
+  font-family: var(--font-primary);
+  letter-spacing: var(--kerning-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  letter-spacing: var(--kerning-headings);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  letter-spacing: var(--kerning-mono);
+}

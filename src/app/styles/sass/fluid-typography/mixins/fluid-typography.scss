@@ -1,0 +1,128 @@
+// src/app/styles/sass/fluid-typography/mixins/fluid-typography.scss
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+@use "../_config" as config;
+
+// Function to strip units from a value
+@function strip-unit($value) {
+  @if meta.type-of($value) == 'number' and not math.is-unitless($value) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+  @return $value;
+}
+
+// Generate type scale value directly using the ratio
+@function get-type-scale-value($step) {
+  @return config.generate-type-scale-value($step);
+}
+
+// Enhanced fluid typography mixin with logarithmic scaling for wide viewport ranges
+@mixin fluid-type(
+  $min-step,
+  $max-step,
+  $min-bp: strip-unit(config.$min-viewport),
+  $max-bp: strip-unit(config.$max-viewport),
+  $element: null
+) {
+  $base-size: strip-unit(config.$base-font-size);
+  $mid-bp: strip-unit(config.$mid-viewport);
+
+  // Get the scale factors using dynamic calculation with the ratio
+  $min-factor: get-type-scale-value($min-step);
+  $max-factor: get-type-scale-value($max-step);
+
+  // Calculate min and max sizes with scaling factors applied
+  $min-size: $base-size * $min-factor * config.$scale-factor-small;
+  $max-size: $base-size * $max-factor * config.$scale-factor-large;
+
+  // Calculate the size at the mid viewport for a more controlled curve
+  $mid-factor: ($min-factor + $max-factor) / 2;
+  $mid-size: $base-size * $mid-factor;
+
+  // First segment: min viewport to mid viewport
+  $slope1: math.div($mid-size - $min-size, $mid-bp - $min-bp);
+  $intercept1: $min-size - ($slope1 * $min-bp);
+
+  // Second segment: mid viewport to max viewport - with much slower growth
+  $slope2: math.div($max-size - $mid-size, $max-bp - $mid-bp);
+  $intercept2: $mid-size - ($slope2 * $mid-bp);
+
+  // Use CSS clamp() with the moderated calculation
+  // For most modern browsers that support clamp()
+  font-size: clamp(
+          #{$min-size}px,
+          #{$intercept1}px + #{$slope1 * 100}vw,
+          #{$max-size}px
+  );
+
+  // Add media query for more controlled scaling beyond the mid viewport
+  @media (min-width: #{$mid-bp}px) {
+    // Apply a more conservative growth rate for larger screens
+    font-size: clamp(
+            #{$mid-size}px,
+            #{$intercept2}px + #{$slope2 * 100}vw,
+            #{$max-size}px
+    );
+  }
+}
+
+// Helper mixin to apply fluid typography to an element using config mappings
+@mixin element-typography($element) {
+  $size-key: map.get(config.$element-type-map, $element);
+
+  @if $size-key {
+    $config: map.get(config.$fluid-type-config, $size-key);
+
+    @if $config {
+      $min-step: list.nth($config, 1);
+      $max-step: list.nth($config, 2);
+      $line-height: list.nth($config, 3);
+
+      // Apply fluid typography without size restrictions
+      @include fluid-type($min-step, $max-step);
+      line-height: $line-height;
+    } @else {
+      @error "No fluid typography configuration found for key '#{$size-key}'";
+    }
+  } @else {
+    @error "No element mapping found for '#{$element}'";
+  }
+}
+
+// Create responsive test classes for debugging
+@mixin generate-test-classes() {
+  .typography-test {
+    &__container {
+      padding: 2rem;
+      border: 1px solid #ccc;
+      margin-bottom: 2rem;
+    }
+
+    &__info {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 0.5rem;
+      font-size: 12px;
+      z-index: 9999;
+    }
+
+    &__viewport {
+      &::after {
+        content: 'Viewport: ' attr(data-width) 'px';
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 0.5rem;
+        font-size: 12px;
+        z-index: 9999;
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+// src/app/styles/sass/fluid-typography/_typography-helpers.scss
+@use 'sass:map';
+@use 'sass:list';
+@use '_config' as config;
+@use 'mixins/fluid-typography' as fluid;
+
+// Generate utility classes for each fluid typography step
+@each $size-key, $size-config in config.$fluid-type-config {
+  $min-step: list.nth($size-config, 1);
+  $max-step: list.nth($size-config, 2);
+  $line-height: list.nth($size-config, 3);
+
+  .fluid-type-#{$size-key} {
+    @include fluid.fluid-type($min-step, $max-step);
+    line-height: $line-height;
+  }
+}
+
+// Semantic named utility classes for easier use
+.text-tiny {
+  @extend .fluid-type--4;
+}
+
+.text-xs {
+  @extend .fluid-type--3;
+}
+
+.text-sm {
+  @extend .fluid-type--2;
+}
+
+.text-caption {
+  @extend .fluid-type--1;
+}
+
+.text-base-sm {
+  @extend .fluid-type--0-5;
+}
+
+.text-base {
+  @extend .fluid-type-0;
+}
+
+.text-base-lg {
+  @extend .fluid-type-0-5;
+}
+
+.text-lg {
+  @extend .fluid-type-1;
+}
+
+.text-xl {
+  @extend .fluid-type-1-5;
+}
+
+.text-2xl {
+  @extend .fluid-type-2;
+}
+
+.text-3xl {
+  @extend .fluid-type-2-5;
+}
+
+.text-4xl {
+  @extend .fluid-type-3;
+}
+
+.text-5xl {
+  @extend .fluid-type-4;
+}
+
+.text-6xl {
+  @extend .fluid-type-5;
+}
+
+.text-7xl {
+  @extend .fluid-type-6;
+}
+
+.text-8xl {
+  @extend .fluid-type-7;
+}
+
+.text-9xl {
+  @extend .fluid-type-8;
+}
+
+.display-sm {
+  @extend .fluid-type-9;
+}
+
+.display-md {
+  @extend .fluid-type-10;
+}
+
+.display-lg {
+  @extend .fluid-type-11;
+}
+
+// Responsive testing utility
+.typography-test {
+  position: relative;
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px solid #ccc;
+
+  &__viewport-indicator {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 9999;
+  }
+
+  &__sample {
+    margin-bottom: 1rem;
+
+    &-label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+// Generate responsive viewport indicator using JavaScript
+@include fluid.generate-test-classes();
