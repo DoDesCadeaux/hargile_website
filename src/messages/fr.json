@@ -1,3 +1,31 @@
 {
-  "test": "lorem fr"
+  "test": "lorem fr",
+  "pages": {
+    "homepage": {
+      "sections": {
+        "our-solutions": {
+          "title": "Nos Solutions",
+          "learn-more": "En savoir plus",
+          "coming-soon": "Bientôt disponible",
+          "solutions": {
+            "agves": {
+              "title": "AGVES",
+              "subtitle": "CRM de gestion scolaire",
+              "description": "En simplifiant l'organisation et la gestion scolaire, le CRM AGVES assure que les élèves disposent des fonds dont ils ont besoin tout au long de l'année scolaire. Il assure une communication fluide entre l'école et les parents, protégeant les élèves grâce à des porte-monnaie électroniques et des clés d'accès numériques."
+            },
+            "i-go": {
+              "title": "I GO",
+              "subtitle": "Localisateur de recharge pour mobilité",
+              "description": "Né du constat qu'il est difficile pour les EDPM (Engins de Déplacement Personnel Motorisés) et les VAE (Vélos à Assistance Électrique) de trouver des points de recharge. I GO vise à répertorier les points de recharge et à les rendre facilement accessibles via un moteur de recherche dédié."
+            },
+            "multipass": {
+              "title": "Multipass",
+              "subtitle": "Bientôt disponible",
+              "description": ""
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterLink = styled.a.attrs({
+export const FooterLinkStyled = styled.a.attrs({
     className: 'text-base-sm'
 })`
     color: #fff;

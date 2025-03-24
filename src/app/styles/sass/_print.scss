@@ -1,3 +1,5 @@
+@use 'theme' as theme;
+
 @media print {
   :root {
     font-size: 12pt;

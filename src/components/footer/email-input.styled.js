@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EmailInput = styled.input`
+export const EmailInputStyled = styled.input`
     background-color: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 4px;
