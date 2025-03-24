@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Column = styled.div`
+export const ColumnStyled = styled.div`
     display: flex;
     flex-direction: column;
+    width: max-content;
 `;
