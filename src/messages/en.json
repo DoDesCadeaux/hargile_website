@@ -27,6 +27,24 @@
         },
         "trusted-brands": {
           "title": "They trust us"
+        },
+        "recent-works": {
+          "title": "Our recent works",
+          "view-all": "All our works",
+          "works": {
+            "agves": {
+              "title": "AGVES",
+              "description": "Platform for schools"
+            },
+            "i-go": {
+              "title": "I GO",
+              "description": "Mobile development, AI"
+            },
+            "leafy": {
+              "title": "Leafy",
+              "description": "E-commerce for plants, Full-stack"
+            }
+          }
         }
       }
     }
