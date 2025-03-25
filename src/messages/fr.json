@@ -1,3 +1,54 @@
 {
-  "test": "lorem fr"
+  "Hero": {
+    "companyName": "HARGILE",
+    "headline": {
+      "line1": "Transforme",
+      "line2": "vos idées en",
+      "line3": "réalité numérique"
+    },
+    "description": "Nous sommes une agence digitale spécialisée dans le développement web, les solutions d'IA et les stratégies marketing pour élever votre entreprise",
+    "ctaButton": "Auditer votre site web",
+    "arrowAlt": "Flèche"
+  },
+  "Services": {
+    "title": "Nos services",
+    "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+    "dev": {
+      "title": "Développement et conception de solutions",
+      "items": {
+        "web": "Conception, développement Web",
+        "mobile": "Développement d'applications mobiles",
+        "cms": "Développement CMS",
+        "ecommerce": "E-Commerce"
+      }
+    },
+    "maintenance": {
+      "title": "Maintenace et modernisation",
+      "items": {
+        "support": "Maintenance suppot",
+        "migration": "Migration, modernisation d'applications",
+        "seo": "Optimisation performances SEO"
+      }
+    },
+    "ai": {
+      "title": "Intelligence Artificielle et Solutions Cloud",
+      "items": {
+        "agents": "Développement d'agents intelligents",
+        "cloud": "Solutions Cloud",
+        "automation": "Automatisation des processus métier",
+        "ml": "Pipelines de prédition avec Machine Learning",
+        "consulting": "Conseil stratégique en IA",
+        "custom": "Personnalisation des solutions IA"
+      }
+    },
+    "analysis": {
+      "title": "Analyse et qualité",
+      "items": {
+        "reporting": "Analyse – reporting",
+        "qa": "Tests et assurance qualité (QA)",
+        "api": "Développement d'APIs"
+      }
+    }
+  }
 }
+

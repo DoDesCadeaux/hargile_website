@@ -1,6 +1,6 @@
 // OurServices.jsx
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 const ServiceSection = ({ icon, title, items, position }) => {
   const dotColor = {
@@ -45,7 +45,7 @@ const ServiceSection = ({ icon, title, items, position }) => {
               }}
             ></div>
             <span
-              className="text-white text-lg md:text-lg"
+              className="text-white text-base md:text-lg"
               style={{ margin: 0 }}
             >
               {item}
@@ -58,6 +58,7 @@ const ServiceSection = ({ icon, title, items, position }) => {
 };
 
 const OurServices = () => {
+  const t = useTranslations("Services");
   const [isMobile, setIsMobile] = useState(false);
 
   // Handle responsive behavior
@@ -78,31 +79,36 @@ const OurServices = () => {
     };
   }, []);
 
+  // Converting object items to arrays for rendering
+  const devItems = Object.keys(t.raw("dev.items")).map((key) =>
+    t(`dev.items.${key}`)
+  );
+  const maintenanceItems = Object.keys(t.raw("maintenance.items")).map((key) =>
+    t(`maintenance.items.${key}`)
+  );
+  const aiItems = Object.keys(t.raw("ai.items")).map((key) =>
+    t(`ai.items.${key}`)
+  );
+  const analysisItems = Object.keys(t.raw("analysis.items")).map((key) =>
+    t(`analysis.items.${key}`)
+  );
+
   const services = {
     topLeft: {
       icon: (
-        <svg
-          width={isMobile ? "32" : "48"}
-          height={isMobile ? "32" : "48"}
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="24" cy="24" r="22" stroke="#3B82F6" strokeWidth="2" />
-          <path
-            d="M24 2C32 13 32 35 24 46M24 2C16 13 16 35 24 46M2 24H46"
-            stroke="#3B82F6"
-            strokeWidth="2"
-          />
-        </svg>
+        <img
+          src="/icons/services/globe.svg"
+          alt={t("dev.title")}
+          width={isMobile ? 32 : 48}
+          height={isMobile ? 32 : 48}
+          style={{
+            filter:
+              "invert(43%) sepia(98%) saturate(1677%) hue-rotate(202deg) brightness(102%) contrast(96%)",
+          }}
+        />
       ),
-      title: "Développement et conception de solutions",
-      items: [
-        "Conception, développement Web",
-        "Développement d'applications mobiles",
-        "Développement CMS",
-        "E-Commerce",
-      ],
+      title: t("dev.title"),
+      items: devItems,
     },
     bottomLeft: {
       icon: (
@@ -120,12 +126,8 @@ const OurServices = () => {
           />
         </svg>
       ),
-      title: "Maintenace et modernisation",
-      items: [
-        "Maintenance suppot",
-        "Migration, modernisation d'applications",
-        "Optimisation performances SEO",
-      ],
+      title: t("maintenance.title"),
+      items: maintenanceItems,
     },
     topRight: {
       icon: (
@@ -144,15 +146,8 @@ const OurServices = () => {
           />
         </svg>
       ),
-      title: "Intelligence Artificielle et Solutions Cloud",
-      items: [
-        "Développement d'agents intelligents",
-        "Solutions Cloud",
-        "Automatisation des processus métier",
-        "Pipelines de prédition avec Machine Learning",
-        "Conseil stratégique en IA",
-        "Personnalisation des solutions IA",
-      ],
+      title: t("ai.title"),
+      items: aiItems,
     },
     bottomRight: {
       icon: (
@@ -170,15 +165,12 @@ const OurServices = () => {
           <path d="M38 10V34" stroke="#A855F7" strokeWidth="2" />
         </svg>
       ),
-      title: "Analyse et qualité",
-      items: [
-        "Analyse – reporting",
-        "Tests et assurance qualité (QA)",
-        "Développement d'APIs",
-      ],
+      title: t("analysis.title"),
+      items: analysisItems,
     },
   };
 
+  // Continue with the rest of your component for responsive rendering...
   // Mobile layout renders all services in a single column
   if (isMobile) {
     return (
@@ -192,10 +184,10 @@ const OurServices = () => {
             className="text-3xl font-bold text-white mb-4"
             style={{ margin: "0 0 1rem 0" }}
           >
-            Our services
+            {t("title")}
           </h2>
           <p className="text-white text-base" style={{ margin: 0 }}>
-            We have all the tools to elevate your business
+            {t("subtitle")}
           </p>
         </div>
 
@@ -224,7 +216,7 @@ const OurServices = () => {
             </div>
 
             {/* Top Right */}
-            <div style={{ margin: "1rem 0" }}>
+            <div style={{ margin: "1rem 0", paddingLeft: "0.5rem" }}>
               <ServiceSection
                 icon={services.topRight.icon}
                 title={services.topRight.title}
@@ -234,7 +226,7 @@ const OurServices = () => {
             </div>
 
             {/* Bottom Left */}
-            <div style={{ margin: "1rem 0" }}>
+            <div style={{ margin: "1rem 0", paddingLeft: "0.5rem" }}>
               <ServiceSection
                 icon={services.bottomLeft.icon}
                 title={services.bottomLeft.title}
@@ -244,7 +236,7 @@ const OurServices = () => {
             </div>
 
             {/* Bottom Right */}
-            <div style={{ margin: "1rem 0" }}>
+            <div style={{ margin: "1rem 0", paddingLeft: "0.5rem" }}>
               <ServiceSection
                 icon={services.bottomRight.icon}
                 title={services.bottomRight.title}
@@ -272,10 +264,10 @@ const OurServices = () => {
           className="text-4xl md:text-5xl font-bold text-white mb-4"
           style={{ margin: "0 0 1rem 0" }}
         >
-          Our services
+          {t("title")}
         </h2>
         <p className="text-white text-lg" style={{ margin: 0 }}>
-          We have all the tools to elevate your business
+          {t("subtitle")}
         </p>
       </div>
 
