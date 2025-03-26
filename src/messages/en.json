@@ -58,6 +58,11 @@
               "description": "E-commerce for plants, Full-stack"
             }
           }
+        },
+        "latest-insights": {
+          "title": "Latest insights",
+          "subtitle": "Our thoughts and perspectives on the digital world",
+          "view-all": "View all insights"
         }
       }
     }

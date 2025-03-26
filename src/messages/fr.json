@@ -58,6 +58,11 @@
               "description": "E-commerce pour plantes, Full-stack"
             }
           }
+        },
+        "latest-insights": {
+          "title": "Dernières actualités",
+          "subtitle": "Nos réflexions et perspectives sur le monde numérique",
+          "view-all": "Voir toutes les actualités"
         }
       }
     }
