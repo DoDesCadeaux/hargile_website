@@ -3,6 +3,19 @@
   "pages": {
     "homepage": {
       "sections": {
+        "about-us": {
+          "title": "À Propos",
+          "subtitle": "Découvrez notre agence et notre parcours",
+          "who_title": "Qui nous sommes",
+          "who_description": "Hargile est une agence numérique dynamique spécialisée dans le développement web innovant, les solutions d'IA et les stratégies marketing personnalisées. Avec des années d'expérience, nous transformons les idées en réalité numérique. Notre H signifie Humain, nous nous efforçons de développer avec cela à l'esprit.",
+          "approach_title": "Notre Approche",
+          "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
+          "stats": {
+            "years": "Années d'expérience",
+            "projects": "Projets livrés",
+            "satisfaction": "Satisfaction client"
+          }
+        },
         "our-solutions": {
           "title": "Nos Solutions",
           "learn-more": "En savoir plus",

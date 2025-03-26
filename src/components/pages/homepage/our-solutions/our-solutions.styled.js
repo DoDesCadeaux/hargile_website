@@ -20,7 +20,6 @@ export const ContentWrapper = styled.div`
 export const SectionTitle = styled.h2.attrs({
     className: 'fluid-type-4'
 })`
-    margin-top: 8vh;
 `;
 
 export const CardsContainer = styled.div`
@@ -62,7 +61,7 @@ export const CardsContainer = styled.div`
         position: absolute;
         top: 8vh;
         right: 2vw;
-        margin-top: 0;
+        margin-top: 5vh;
         gap: 5vh;
         flex-direction: column;
 
