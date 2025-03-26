@@ -18,7 +18,7 @@ export const SectionTitle = styled.h2.attrs({
     className: 'fluid-type-4'
 })`
     position: relative;
-    margin-bottom: 8vh;
+    margin-bottom: 14vh;
     color: var(--color-text-light);
     text-align: left;
     z-index: 10;
@@ -26,20 +26,31 @@ export const SectionTitle = styled.h2.attrs({
 
 export const WorksGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2rem;
+    grid-template-columns: repeat(1, minmax(280px, max-content));
+    grid-gap: 4vw;
     margin-bottom: 4rem;
     position: relative; /* Enable positioning for parallax children */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
 
     .work-card-wrapper {
         position: relative;
         will-change: transform;
-        height: 65vh;
+        height: auto;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 650px) {
         grid-template-columns: repeat(3, 1fr);
-        min-height: 500px; /* Ensure enough height for parallax */
+        grid-gap: 4vw;
+        min-height: 60vh; /* Ensure enough height for parallax */
+        width: 100%;
+        margin: auto;
+
+        .work-card-container {
+            height: 65vh;
+        }
     }
 `;
 
