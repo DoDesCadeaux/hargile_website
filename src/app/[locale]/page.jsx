@@ -5,6 +5,8 @@ import Earth from '@/components/Earth';
 import OurSolutions from "@/components/pages/homepage/our-solutions/our-solutions";
 import TrustedBrandsContainer from "@/components/pages/homepage/trusted-brands/trusted-brands";
 import RecentWorks from "@/components/pages/homepage/recent-works/recent-works";
+import AboutUs from "@/components/pages/homepage/about-us/about-us";
+import LatestInsights from "@/components/pages/homepage/latest-insights/latest-insights";
 
 export default function HomePage() {
     return (
@@ -13,6 +15,8 @@ export default function HomePage() {
                 <OurSolutions/>
                 <TrustedBrandsContainer/>
                 <RecentWorks/>
+                <AboutUs/>
+                <LatestInsights/>
             </Earth>
         </>
     );

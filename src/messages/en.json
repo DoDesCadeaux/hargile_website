@@ -3,6 +3,19 @@
   "pages": {
     "homepage": {
       "sections": {
+        "about-us": {
+          "title": "About Us",
+          "subtitle": "Get to know our agency and our journey",
+          "who_title": "Who we are",
+          "who_description": "Hargile is a dynamic digital agency specializing in innovative web developement, AI solutions, and tailored marketing strategies. With years of experience, we trasnfrom ideas into digital reality. Our H stands for Human, we strive to develop with that in mind.",
+          "approach_title": "Our Approach",
+          "approach_description": "We believe in collaborative partnerships and innovative thinking. By understanding your business goals and challenges, we deliver solutions that drive real results.",
+          "stats": {
+            "years": "Years experience",
+            "projects": "Projects delivered",
+            "satisfaction": "Client satisfaction"
+          }
+        },
         "our-solutions": {
           "title": "Our Solutions",
           "learn-more": "Learn More",
@@ -45,6 +58,11 @@
               "description": "E-commerce for plants, Full-stack"
             }
           }
+        },
+        "latest-insights": {
+          "title": "Latest insights",
+          "subtitle": "Our thoughts and perspectives on the digital world",
+          "view-all": "View all insights"
         }
       }
     }
