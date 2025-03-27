@@ -9,10 +9,9 @@ const HeroSection = () => {
     <div className="min-h-screen flex flex-col justify-center">
       <div className="container mx-auto px-4">
         <div className="flex">
-          {/* Left-aligned text container with extra left padding */}
           <div
-            className="w-full md:w-1/2 lg:w-3/5 p-8 pl-20"
-            style={{ paddingLeft: 4 + "rem" }}
+            className="w-full md:w-1/2 lg:w-3/5"
+            style={{ paddingLeft: 2 + "rem" }}
           >
             <h2 className="text-lg ">{t("companyName")}</h2>
             <h1 className="text-6xl">
