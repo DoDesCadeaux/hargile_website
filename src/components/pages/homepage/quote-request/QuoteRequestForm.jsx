@@ -81,7 +81,7 @@ export default function QuoteRequestForm() {
           {/* Left Column - Contact Information */}
           <div
             style={{ padding: 2 + "rem" }}
-            className="lg:col-span-2 bg-[#151035]/70 border border-purple-900/20 rounded-lg px-2.5 p-10 shadow-xl"
+            className="lg:col-span-2 bg-[#1b133d]/40 border border-purple-900/20 rounded-lg px-2.5 p-10 shadow-xl"
           >
             <h3 className="text-xl font-semibold text-white mb-6">
               Informations de contact
@@ -98,7 +98,7 @@ export default function QuoteRequestForm() {
               <input
                 id="name"
                 type="text"
-                className={`w-full bg-[#190f3a] text-white rounded-md p-4 outline-none  ${
+                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
                   errors.name
                     ? "border border-red-500"
                     : "border border-purple-800/10"
@@ -118,7 +118,7 @@ export default function QuoteRequestForm() {
               <input
                 id="email"
                 type="email"
-                className={`w-full bg-[#190f3a] text-white rounded-md p-4 outline-none  ${
+                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
                   errors.email
                     ? "border border-red-500"
                     : "border border-purple-800/10"
@@ -141,7 +141,7 @@ export default function QuoteRequestForm() {
               <input
                 id="phone"
                 type="tel"
-                className="w-full bg-[#190f3a] text-white rounded-md p-4 outline-none  border border-purple-800/10"
+                className="w-full bg-[#19103b] text-white rounded-md p-4 outline-none  border border-purple-800/10"
                 {...register("phone")}
               />
             </div>
@@ -157,7 +157,7 @@ export default function QuoteRequestForm() {
               <textarea
                 id="description"
                 rows={5}
-                className={`w-full bg-[#190f3a] text-white rounded-md p-4 outline-none  ${
+                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
                   errors.description
                     ? "border border-red-500"
                     : "border border-purple-800/10"
@@ -178,7 +178,7 @@ export default function QuoteRequestForm() {
                 <div className="relative">
                   <button
                     type="button"
-                    className={`relative appearance-none w-full bg-[#190f3a] text-white rounded-md p-4 pr-10 outline-none border border-purple-800/10 flex items-center justify-between ${
+                    className={`relative appearance-none w-full bg-[#19103b] text-white rounded-md p-4 pr-10 outline-none border border-purple-800/10 flex items-center justify-between ${
                       errors.budget ? "border-red-500" : ""
                     }`}
                     onClick={toggleBudgetDropdown}
@@ -206,7 +206,7 @@ export default function QuoteRequestForm() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute z-10 mt-1 w-full rounded-md shadow-lg bg-[#190f3a] ring-1 ring-purple-900/20 focus:outline-none">
+                    <div className="absolute z-10 mt-1 w-full rounded-md shadow-lg bg-[#19103b] ring-1 ring-purple-900/20 focus:outline-none">
                       <div className="py-1">
                         <button
                           type="button"
