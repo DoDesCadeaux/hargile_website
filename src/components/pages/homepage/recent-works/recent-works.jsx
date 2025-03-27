@@ -1,10 +1,9 @@
-// src/components/pages/homepage/recent-works/recent-works.jsx
 "use client";
 
 import {useEffect, useRef, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion, useAnimation, useInView} from "framer-motion";
-import {SectionContainer, SectionLink, SectionTitle, WorksGrid} from "./recent-works.styled";
+import {OurWorksLink, SectionContainer, SectionLink, SectionTitle, WorksGrid} from "./recent-works.styled";
 import WorkCard from "./work-card";
 
 const RecentWorks = () => {
@@ -14,6 +13,7 @@ const RecentWorks = () => {
     const controls = useAnimation();
     const [scrollY, setScrollY] = useState(0);
     const [windowHeight, setWindowHeight] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(0);
     const [documentHeight, setDocumentHeight] = useState(0);
 
     // Track scroll position for diagonal parallax effect
@@ -24,6 +24,7 @@ const RecentWorks = () => {
 
         const handleResize = () => {
             setWindowHeight(window.innerHeight);
+            setWindowWidth(window.innerWidth);
             setDocumentHeight(document.body.scrollHeight);
         };
 
@@ -38,13 +39,13 @@ const RecentWorks = () => {
     }, []);
 
     // Initial offset values to create the \ diagonal (start positions)
+    // These values are relative to the viewport height for better responsiveness
     const initialOffsets = {
-        "agves": (windowHeight / 100) * -17,  // Top card starts higher (-100px)
-        "i-go": (windowHeight / 100) * 40,      // Middle card at neutral position
-        "leafy": (windowHeight / 100) * 90    // Bottom card starts lower (+100px)
+        "agves": ((windowHeight / 100) * -34.8),  // Top card starts higher
+        "i-go": (windowHeight / 100 * -18.9),    // Middle card at neutral position
+        "leafy": ((windowHeight / 100) * 32)    // Bottom card starts lower
     };
 
-    // Define how much each card should move to achieve the / diagonal at the end
     const works = [
         {
             id: "agves",
@@ -52,7 +53,7 @@ const RecentWorks = () => {
             description: t("works.agves.description") || "Platform for schools",
             image: "/images/crayons.jpg",
             link: "/works/agves",
-            parallaxFactor: 0.008   // AGVES moves down a lot
+            parallaxFactor: 0.055   // AGVES moves down a lot
         },
         {
             id: "i-go",
@@ -60,7 +61,7 @@ const RecentWorks = () => {
             description: t("works.i-go.description") || "Mobile development, AI",
             image: "/images/crayons.jpg",
             link: "/works/i-go",
-            parallaxFactor: -0.026 // I GO moves down slightly
+            parallaxFactor: 0.0255 // I GO moves down slightly
         },
         {
             id: "leafy",
@@ -68,7 +69,7 @@ const RecentWorks = () => {
             description: t("works.leafy.description") || "E-commerce for plants, Full-stack",
             image: "/images/crayons.jpg",
             link: "/works/leafy",
-            parallaxFactor: -0.058  // Leafy moves up
+            parallaxFactor: -0.055 // Leafy moves up
         }
     ];
 
@@ -100,11 +101,12 @@ const RecentWorks = () => {
         const scrollProgress = Math.min(1, scrollY / scrollableHeight);
 
         // Calculate parallax offset based on scroll progress
-        const totalRange = windowHeight * 2;
+        const totalRange = windowHeight * 1.5;
         const parallaxOffset = (scrollProgress * totalRange) * parallaxFactor * 10;
 
         // Combine initial offset with scroll-based parallax
-        const initialOffset = initialOffsets[workId] || 0;
+        let initialOffset = initialOffsets[workId] || 0;
+
         const finalOffset = initialOffset + parallaxOffset;
 
         return {
@@ -118,6 +120,7 @@ const RecentWorks = () => {
                 initial="hidden"
                 animate={controls}
                 variants={sectionVariants}
+                className="flex flex-col items-center"
             >
                 <SectionTitle>
                     {t("title") || "Our recent works"}
@@ -129,7 +132,8 @@ const RecentWorks = () => {
                             key={work.id}
                             style={{
                                 ...getCardStyle(work.id, work.parallaxFactor),
-                                transition: "transform 0.5s ease-out"
+                                transition: "transform 0.5s ease-out",
+                                top: index === 2 && windowWidth && windowWidth < 670 ? '8vh' : 'auto'
                             }}
                             className="work-card-wrapper"
                         >
@@ -142,9 +146,11 @@ const RecentWorks = () => {
                     ))}
                 </WorksGrid>
 
-                <SectionLink href="/works">
-                    {t("view-all") || "All our works"} →
-                </SectionLink>
+                <OurWorksLink>
+                    <SectionLink href="/works">
+                        {t("view-all") || "All our works"} →
+                    </SectionLink>
+                </OurWorksLink>
             </motion.div>
         </SectionContainer>
     );

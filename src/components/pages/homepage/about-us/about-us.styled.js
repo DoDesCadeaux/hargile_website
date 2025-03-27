@@ -9,8 +9,6 @@ export const SectionContainer = styled.section`
     flex-direction: column;
     padding: 15vh 0;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
     overflow: hidden;
 `;
 

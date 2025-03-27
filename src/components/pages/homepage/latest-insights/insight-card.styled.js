@@ -65,23 +65,3 @@ export const CardTitle = styled.h3.attrs({
     color: var(--color-text-light);
     margin-bottom: 1rem;
 `;
-
-export const ReadMore = styled.span`
-    display: inline-flex;
-    align-items: center;
-    color: var(--color-primary);
-    margin-top: auto;
-    font-weight: 500;
-    gap: 0.5rem;
-    transition: transform 0.3s ease;
-
-    svg {
-        transition: transform 0.3s ease;
-    }
-
-    ${CardContainer}:hover & {
-        svg {
-            transform: translateX(5px);
-        }
-    }
-`;

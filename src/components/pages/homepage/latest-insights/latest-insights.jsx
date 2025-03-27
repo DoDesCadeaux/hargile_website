@@ -1,3 +1,4 @@
+// src/components/pages/homepage/latest-insights/latest-insights.jsx
 "use client";
 
 import {useEffect, useRef, useState} from "react";
@@ -9,6 +10,7 @@ import {
     InsightsGrid,
     SectionContainer,
     SectionHeader,
+    SectionSubHeader,
     SectionSubtitle,
     SectionTitle,
     ViewAllLink
@@ -21,16 +23,28 @@ const LatestInsights = () => {
     const isInView = useInView(sectionRef, {once: false, amount: 0.2});
     const controls = useAnimation();
     const [scrollY, setScrollY] = useState(0);
+    const [windowHeight, setWindowHeight] = useState(0);
 
+    // Track scroll position and window dimensions for parallax effect
     useEffect(() => {
+        const handleResize = () => {
+            setWindowHeight(window.innerHeight);
+        };
+
         const handleScroll = () => {
             setScrollY(window.scrollY);
         };
 
+        // Set initial values
+        handleResize();
+        handleScroll();
+
         window.addEventListener("scroll", handleScroll, {passive: true});
+        window.addEventListener("resize", handleResize, {passive: true});
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -62,10 +76,33 @@ const LatestInsights = () => {
         }
     };
 
-    const getParallaxStyle = () => {
-        const yOffset = scrollY * 0.1;
+    // Generate unique parallax styles for each card
+    const getCardParallaxStyle = (index) => {
+        if (!sectionRef.current || scrollY === 0) return {};
+
+        // Calculate section's position relative to viewport
+        const rect = sectionRef.current.getBoundingClientRect();
+        const sectionTop = rect.top + scrollY;
+        const sectionHeight = rect.height;
+
+        // Calculate how far the user has scrolled within the section
+        const scrollProgress = (scrollY - sectionTop + windowHeight) / (sectionHeight + windowHeight);
+
+        // Apply different parallax factors based on card index
+        // This creates a staggered effect where each card moves at a different speed
+        const parallaxFactors = [0.16, 0.2]; // Different speeds for each card
+        const parallaxFactor = parallaxFactors[index % parallaxFactors.length];
+
+        // Calculate parallax offset with a different direction based on index
+        // Even cards move up, odd cards move down
+        const direction = index % 2 === 0 ? -1 : 1;
+        const parallaxOffset = scrollProgress * windowHeight * parallaxFactor * direction;
+
+        // Add a slight rotation for more visual interest
+
         return {
-            transform: `translateY(-${yOffset}px)`
+            transform: `translateY(${parallaxOffset}px)`,
+            transition: "transform 0.1s ease-out" // Smooth transition for any changes
         };
     };
 
@@ -84,17 +121,10 @@ const LatestInsights = () => {
             image: "/images/crayons.jpg",
             link: "/insights/ai-customer-experience"
         },
-        {
-            id: "sustainability",
-            category: "SUSTAINABILITY",
-            title: "Digital Solutions for a Sustainable Future",
-            image: "/images/crayons.jpg",
-            link: "/insights/digital-sustainability"
-        }
     ];
 
     return (
-        <SectionContainer ref={sectionRef} style={getParallaxStyle()}>
+        <SectionContainer ref={sectionRef}>
             <ContentWrapper
                 as={motion.div}
                 initial="hidden"
@@ -102,19 +132,26 @@ const LatestInsights = () => {
                 variants={sectionVariants}
             >
                 <SectionHeader as={motion.div} variants={headerVariants}>
-                    <SectionTitle>{t("title") || "Latest insights"}</SectionTitle>
-                    <SectionSubtitle>
-                        {t("subtitle") || "Our thoughts and perspectives on the digital world"}
-                    </SectionSubtitle>
+                    <SectionSubHeader>
+                        <SectionTitle>{t("title") || "Latest insights"}</SectionTitle>
+                        <SectionSubtitle>
+                            {t("subtitle") || "Our thoughts and perspectives on the digital world"}
+                        </SectionSubtitle>
+                    </SectionSubHeader>
                 </SectionHeader>
 
                 <InsightsGrid>
                     {insights.map((insight, index) => (
-                        <InsightCard
+                        <div
                             key={insight.id}
-                            insight={insight}
-                            index={index}
-                        />
+                            style={getCardParallaxStyle(index === 1 ? (index * 0.3) : 1)}
+                            className="parallax-card-container"
+                        >
+                            <InsightCard
+                                insight={insight}
+                                index={index}
+                            />
+                        </div>
                     ))}
                 </InsightsGrid>
 
@@ -126,4 +163,4 @@ const LatestInsights = () => {
     );
 };
 
-export default LatestInsights
+export default LatestInsights;

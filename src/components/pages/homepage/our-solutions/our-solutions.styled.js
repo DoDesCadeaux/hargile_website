@@ -5,11 +5,6 @@ export const SectionContainer = styled.section`
     position: relative;
     width: 100%;
     min-height: 90vh;
-    padding: 0 2vw 0;
-
-    @media (min-width: 1024px) {
-        padding: 0 10vw 0;
-    }
 `;
 
 export const ContentWrapper = styled.div`

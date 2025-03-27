@@ -1,16 +1,8 @@
 // src/components/pages/homepage/latest-insights/insight-card.jsx
 import {useEffect, useRef} from "react";
 import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
-import {ArrowRight} from "lucide-react";
-import {
-    CardContainer,
-    CardContent,
-    CardImage,
-    CardTitle,
-    Category,
-    ImageContainer,
-    ReadMore
-} from "./insight-card.styled";
+import {CardContainer, CardContent, CardImage, CardTitle, Category, ImageContainer} from "./insight-card.styled";
+
 
 const InsightCard = ({insight, index}) => {
     const cardRef = useRef(null);
@@ -57,7 +49,7 @@ const InsightCard = ({insight, index}) => {
         >
             <ImageContainer>
                 <CardImage
-                    style={{maxWidth: '100%', height: 'auto', objectFit: 'cover'}}
+                    style={{maxWidth: '100%', width: '100%', height: 'auto', objectFit: 'cover'}}
                     ref={imageRef}
                     src={insight.image}
                     alt={insight.title}
@@ -68,9 +60,6 @@ const InsightCard = ({insight, index}) => {
             <CardContent>
                 <Category>{insight.category}</Category>
                 <CardTitle>{insight.title}</CardTitle>
-                <ReadMore>
-                    Read more <ArrowRight size={16}/>
-                </ReadMore>
             </CardContent>
         </CardContainer>
     );
