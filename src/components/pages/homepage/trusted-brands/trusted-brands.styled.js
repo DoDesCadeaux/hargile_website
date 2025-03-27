@@ -4,12 +4,7 @@ export const TrustedBrandsContainer = styled.section`
     position: relative;
     width: 100%;
     min-height: 30vh;
-    padding: 8vh 2vw;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    @media (min-width: 1024px) {
-        padding: 8vh 10vw;
-    }
+    padding: 8vh 0;
 `;
 
 export const SectionTitle = styled.h2.attrs({
@@ -27,14 +22,15 @@ export const LogoContainer = styled.div`
     align-items: center;
     flex-wrap: wrap;
     gap: 2vh 4vw;
-    max-width: 1200px;
+    max-width: 60vw;
     margin: 0 auto;
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
         gap: 3vh 6vw;
     }
 `;
 
 export const LogoWrapper = styled.div`
+    --size: clamp(60px, calc(40px + 8vw), 12vw);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,8 +38,8 @@ export const LogoWrapper = styled.div`
     animation: fadeIn 0.6s ease-out forwards;
     animation-delay: ${props => props.index * 0.2}s;
     position: relative;
-    width: clamp(60px, calc(40px + 8vw), 7vw);
-    height: clamp(60px, calc(40px + 8vw), 7vw);
+    width: var(--size);
+    height: var(--size);
     border-radius: 50%;
     box-shadow: 0 -4px 2px rgba(50, 50, 100, 0.45),
     inset 0 5px 4px rgba(50, 50, 100, 0.6),
@@ -55,7 +51,7 @@ export const LogoWrapper = styled.div`
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background: linear-gradient(to bottom, rgba(200, 200, 200, 0.1), rgba(255, 255, 255, 0.001) 60%);
+        background: linear-gradient(to bottom, rgba(200, 200, 200, 0.1), rgba(255, 255, 255, 0.001) 90%);
         opacity: 0.5;
         z-index: 1;
     }

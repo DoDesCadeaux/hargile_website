@@ -73,7 +73,7 @@ const WorkCard = ({work, index, inView}) => {
             <CardContainer href={work.link}>
                 <ImageContainer>
                     <CardImage
-                        style={{width: '100%', maxWidth: '100%', maxHeight: '70vh', objectPosition: 'left'}}
+                        style={{width: '100%', maxWidth: '100%', maxHeight: '60vh', objectPosition: 'left'}}
                         ref={imageRef}
                         src={work.image}
                         alt={work.title}
