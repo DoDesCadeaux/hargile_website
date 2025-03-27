@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 const HeroSection = () => {
-  const t = useTranslations("Hero");
+  const t = useTranslations("pages.homepage.sections.hero");
 
   return (
     <div className="min-h-screen flex flex-col justify-center">

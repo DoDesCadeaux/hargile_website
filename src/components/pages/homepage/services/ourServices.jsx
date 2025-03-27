@@ -11,7 +11,7 @@ import { POSITIONS } from "./constants";
  * Main component to display all services
  */
 const OurServices = () => {
-  const t = useTranslations("Services");
+  const t = useTranslations("pages.homepage.sections.services");
   const { isMobile, isTablet } = useResponsive();
 
   // Helper function to get translated items

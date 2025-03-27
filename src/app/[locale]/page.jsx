@@ -7,6 +7,8 @@ import TrustedBrandsContainer from "@/components/pages/homepage/trusted-brands/t
 import RecentWorks from "@/components/pages/homepage/recent-works/recent-works";
 import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import LatestInsights from "@/components/pages/homepage/latest-insights/latest-insights";
+import HeroSection from "@/components/pages/homepage/hero/heroSection";
+import OurServices from "@/components/pages/homepage/services/ourServices";
 
 export default function HomePage() {
     return (
