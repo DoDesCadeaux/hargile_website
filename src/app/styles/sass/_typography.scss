@@ -67,7 +67,6 @@ blockquote {
   @include fluid.element-typography('blockquote');
   margin: 2em 0;
   padding-left: 1.5em;
-  border-left: 3px solid var(--color-primary);
 }
 
 pre {
@@ -141,6 +140,5 @@ time {
 
 a {
   @include fluid.element-typography('a');
-  color: var(--color-primary);
   text-decoration: underline;
 }

@@ -1,54 +1,121 @@
 {
-  "Hero": {
-    "companyName": "HARGILE",
-    "headline": {
-      "line1": "Transforme",
-      "line2": "vos idées en",
-      "line3": "réalité numérique"
-    },
-    "description": "Nous sommes une agence digitale spécialisée dans le développement web, les solutions d'IA et les stratégies marketing pour élever votre entreprise",
-    "ctaButton": "Auditer votre site web",
-    "arrowAlt": "Flèche"
-  },
-  "Services": {
-    "title": "Nos services",
-    "subtitle": "Nous avons tous les outils pour élever votre entreprise",
-    "dev": {
-      "title": "Développement et conception de solutions",
-      "items": {
-        "web": "Conception, développement Web",
-        "mobile": "Développement d'applications mobiles",
-        "cms": "Développement CMS",
-        "ecommerce": "E-Commerce"
-      }
-    },
-    "maintenance": {
-      "title": "Maintenace et modernisation",
-      "items": {
-        "support": "Maintenance suppot",
-        "migration": "Migration, modernisation d'applications",
-        "seo": "Optimisation performances SEO"
-      }
-    },
-    "ai": {
-      "title": "Intelligence Artificielle et Solutions Cloud",
-      "items": {
-        "agents": "Développement d'agents intelligents",
-        "cloud": "Solutions Cloud",
-        "automation": "Automatisation des processus métier",
-        "ml": "Pipelines de prédition avec Machine Learning",
-        "consulting": "Conseil stratégique en IA",
-        "custom": "Personnalisation des solutions IA"
-      }
-    },
-    "analysis": {
-      "title": "Analyse et qualité",
-      "items": {
-        "reporting": "Analyse – reporting",
-        "qa": "Tests et assurance qualité (QA)",
-        "api": "Développement d'APIs"
+  "test": "lorem fr",
+  "pages": {
+    "homepage": {
+      "sections": {
+        "about-us": {
+          "title": "À Propos",
+          "subtitle": "Découvrez notre agence et notre parcours",
+          "who_title": "Qui nous sommes",
+          "who_description": "Hargile est une agence numérique dynamique spécialisée dans le développement web innovant, les solutions d'IA et les stratégies marketing personnalisées. Avec des années d'expérience, nous transformons les idées en réalité numérique. Notre H signifie Humain, nous nous efforçons de développer avec cela à l'esprit.",
+          "approach_title": "Notre Approche",
+          "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
+          "stats": {
+            "years": "Années d'expérience",
+            "projects": "Projets livrés",
+            "satisfaction": "Satisfaction client"
+          }
+        },
+        "our-solutions": {
+          "title": "Nos Solutions",
+          "learn-more": "En savoir plus",
+          "coming-soon": "Bientôt disponible",
+          "solutions": {
+            "agves": {
+              "title": "AGVES",
+              "subtitle": "CRM de gestion scolaire",
+              "description": "En simplifiant l'organisation et la gestion scolaire, le CRM AGVES assure que les élèves disposent des fonds dont ils ont besoin tout au long de l'année scolaire. Il assure une communication fluide entre l'école et les parents, protégeant les élèves grâce à des porte-monnaie électroniques et des clés d'accès numériques."
+            },
+            "i-go": {
+              "title": "I GO",
+              "subtitle": "Localisateur de recharge pour mobilité",
+              "description": "Né du constat qu'il est difficile pour les EDPM (Engins de Déplacement Personnel Motorisés) et les VAE (Vélos à Assistance Électrique) de trouver des points de recharge. I GO vise à répertorier les points de recharge et à les rendre facilement accessibles via un moteur de recherche dédié."
+            },
+            "multipass": {
+              "title": "Multipass",
+              "subtitle": "Bientôt disponible",
+              "description": ""
+            }
+          }
+        },
+        "trusted-brands": {
+          "title": "Ils nous font confiance"
+        },
+        "recent-works": {
+          "title": "Nos réalisations récentes",
+          "view-all": "Toutes nos réalisations",
+          "works": {
+            "agves": {
+              "title": "AGVES",
+              "description": "Plateforme pour établissements scolaires"
+            },
+            "i-go": {
+              "title": "I GO",
+              "description": "Développement mobile, IA"
+            },
+            "leafy": {
+              "title": "Leafy",
+              "description": "E-commerce pour plantes, Full-stack"
+            }
+          }
+        },
+        "latest-insights": {
+          "title": "Dernières actualités",
+          "subtitle": "Nos réflexions et perspectives sur le monde numérique",
+          "view-all": "Voir toutes les actualités"
+        },
+        "Hero": {
+          "companyName": "HARGILE",
+          "headline": {
+            "line1": "Transforme",
+            "line2": "vos idées en",
+            "line3": "réalité numérique"
+          },
+          "description": "Nous sommes une agence digitale spécialisée dans le développement web, les solutions d'IA et les stratégies marketing pour élever votre entreprise",
+          "ctaButton": "Auditer votre site web",
+          "arrowAlt": "Flèche"
+        },
+        "Services": {
+          "title": "Nos services",
+          "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+          "dev": {
+            "title": "Développement et conception de solutions",
+            "items": {
+              "web": "Conception, développement Web",
+              "mobile": "Développement d'applications mobiles",
+              "cms": "Développement CMS",
+              "ecommerce": "E-Commerce"
+            }
+          },
+          "maintenance": {
+            "title": "Maintenace et modernisation",
+            "items": {
+              "support": "Maintenance suppot",
+              "migration": "Migration, modernisation d'applications",
+              "seo": "Optimisation performances SEO"
+            }
+          },
+          "ai": {
+            "title": "Intelligence Artificielle et Solutions Cloud",
+            "items": {
+              "agents": "Développement d'agents intelligents",
+              "cloud": "Solutions Cloud",
+              "automation": "Automatisation des processus métier",
+              "ml": "Pipelines de prédition avec Machine Learning",
+              "consulting": "Conseil stratégique en IA",
+              "custom": "Personnalisation des solutions IA"
+            }
+          },
+          "analysis": {
+            "title": "Analyse et qualité",
+            "items": {
+              "reporting": "Analyse – reporting",
+              "qa": "Tests et assurance qualité (QA)",
+              "api": "Développement d'APIs"
+            }
+          }
+        }
       }
     }
   }
 }
-

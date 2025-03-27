@@ -20,6 +20,7 @@
     "lenis": "^1.2.3",
     "lodash": "^4.17.21",
     "next": "^15.2.4",
+    "lucide-react": "^0.484.0",
     "next-intl": "^4.0.1",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",

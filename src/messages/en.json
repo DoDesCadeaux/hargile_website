@@ -1,52 +1,120 @@
 {
-  "Hero": {
-    "companyName": "HARGILE",
-    "headline": {
-      "line1": "Transforms",
-      "line2": "Ideas into",
-      "line3": "Digital Reality"
-    },
-    "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
-    "ctaButton": "Audit your website",
-    "arrowAlt": "Arrow"
-  },
-  "Services": {
-    "title": "Our services",
-    "subtitle": "We have all the tools to elevate your business",
-    "dev": {
-      "title": "Development and Solution Design",
-      "items": {
-        "web": "Web Design and Development",
-        "mobile": "Mobile Application Development",
-        "cms": "CMS Development",
-        "ecommerce": "E-Commerce"
-      }
-    },
-    "maintenance": {
-      "title": "Maintenance and Modernization",
-      "items": {
-        "support": "Maintenance Support",
-        "migration": "Application Migration and Modernization",
-        "seo": "SEO Performance Optimization"
-      }
-    },
-    "ai": {
-      "title": "Artificial Intelligence and Cloud Solutions",
-      "items": {
-        "agents": "Intelligent Agent Development",
-        "cloud": "Cloud Solutions",
-        "automation": "Business Process Automation",
-        "ml": "Machine Learning Prediction Pipelines",
-        "consulting": "Strategic AI Consulting",
-        "custom": "Customized AI Solutions"
-      }
-    },
-    "analysis": {
-      "title": "Analysis and Quality",
-      "items": {
-        "reporting": "Analysis and Reporting",
-        "qa": "Quality Assurance Testing (QA)",
-        "api": "API Development"
+  "test": "lorem en",
+  "pages": {
+    "homepage": {
+      "sections": {
+        "about-us": {
+          "title": "About Us",
+          "subtitle": "Get to know our agency and our journey",
+          "who_title": "Who we are",
+          "who_description": "Hargile is a dynamic digital agency specializing in innovative web developement, AI solutions, and tailored marketing strategies. With years of experience, we trasnfrom ideas into digital reality. Our H stands for Human, we strive to develop with that in mind.",
+          "approach_title": "Our Approach",
+          "approach_description": "We believe in collaborative partnerships and innovative thinking. By understanding your business goals and challenges, we deliver solutions that drive real results.",
+          "stats": {
+            "years": "Years experience",
+            "projects": "Projects delivered",
+            "satisfaction": "Client satisfaction"
+          }
+        },
+        "our-solutions": {
+          "title": "Our Solutions",
+          "learn-more": "Learn More",
+          "coming-soon": "Coming soon",
+          "solutions": {
+            "agves": {
+              "title": "AGVES",
+              "subtitle": "School Management CRM",
+              "description": "By simplifying school organization and management, the AGVES CRM ensures that pupils have the funds they need throughout the school year. It ensures smooth communication between the school and the parents, protecting the students with electronic purses and digital access keys."
+            },
+            "i-go": {
+              "title": "I GO",
+              "subtitle": "Mobility Recharging Locator",
+              "description": "Born of the observation that it is difficult for EDPMs (Electric Personal Mobility Devices) and VAEs (Electric Assisted Bikes) to find recharging points. I GO aims to list recharging points and make them easily accessible through a dedicated search engine."
+            },
+            "multipass": {
+              "title": "Multipass",
+              "subtitle": "Coming soon",
+              "description": ""
+            }
+          }
+        },
+        "trusted-brands": {
+          "title": "They trust us"
+        },
+        "recent-works": {
+          "title": "Our recent works",
+          "view-all": "All our works",
+          "works": {
+            "agves": {
+              "title": "AGVES",
+              "description": "Platform for schools"
+            },
+            "i-go": {
+              "title": "I GO",
+              "description": "Mobile development, AI"
+            },
+            "leafy": {
+              "title": "Leafy",
+              "description": "E-commerce for plants, Full-stack"
+            }
+          }
+        },
+        "latest-insights": {
+          "title": "Latest insights",
+          "subtitle": "Our thoughts and perspectives on the digital world",
+          "view-all": "View all insights"
+        },
+        "Hero": {
+          "companyName": "HARGILE",
+          "headline": {
+            "line1": "Transforms",
+            "line2": "Ideas into",
+            "line3": "Digital Reality"
+          },
+          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
+          "ctaButton": "Audit your website",
+          "arrowAlt": "Arrow"
+        },
+        "Services": {
+          "title": "Our services",
+          "subtitle": "We have all the tools to elevate your business",
+          "dev": {
+            "title": "Development and Solution Design",
+            "items": {
+              "web": "Web Design and Development",
+              "mobile": "Mobile Application Development",
+              "cms": "CMS Development",
+              "ecommerce": "E-Commerce"
+            }
+          },
+          "maintenance": {
+            "title": "Maintenance and Modernization",
+            "items": {
+              "support": "Maintenance Support",
+              "migration": "Application Migration and Modernization",
+              "seo": "SEO Performance Optimization"
+            }
+          },
+          "ai": {
+            "title": "Artificial Intelligence and Cloud Solutions",
+            "items": {
+              "agents": "Intelligent Agent Development",
+              "cloud": "Cloud Solutions",
+              "automation": "Business Process Automation",
+              "ml": "Machine Learning Prediction Pipelines",
+              "consulting": "Strategic AI Consulting",
+              "custom": "Customized AI Solutions"
+            }
+          },
+          "analysis": {
+            "title": "Analysis and Quality",
+            "items": {
+              "reporting": "Analysis and Reporting",
+              "qa": "Quality Assurance Testing (QA)",
+              "api": "API Development"
+            }
+          }
+        }
       }
     }
   }
