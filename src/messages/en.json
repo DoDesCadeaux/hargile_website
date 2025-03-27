@@ -64,7 +64,7 @@
           "subtitle": "Our thoughts and perspectives on the digital world",
           "view-all": "View all insights"
         },
-        "Hero": {
+        "hero": {
           "companyName": "HARGILE",
           "headline": {
             "line1": "Transforms",
@@ -75,7 +75,7 @@
           "ctaButton": "Audit your website",
           "arrowAlt": "Arrow"
         },
-        "Services": {
+        "services": {
           "title": "Our services",
           "subtitle": "We have all the tools to elevate your business",
           "dev": {

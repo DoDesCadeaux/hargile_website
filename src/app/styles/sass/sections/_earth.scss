@@ -19,6 +19,13 @@ body {
 .content-container {
   position: relative;
   width: 100%;
+  padding: 0 12px;
+}
+
+@media screen and (min-width: 1024px) {
+  .content-container {
+    padding: 0 clamp(12px, 8vw, 6vw);
+  }
 }
 
 /* Pour s'assurer que le contenu est visible sur la planète */
