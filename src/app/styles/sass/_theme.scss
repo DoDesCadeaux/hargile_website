@@ -13,7 +13,7 @@ $text-secondary-light: rgba(237, 237, 237, 0.7);
 $text-secondary-dark: rgba(23, 23, 23, 0.7);
 
 $background-light: #ffffff;
-$background-dark: #0a0a0a;
+$background-dark: #06030F;
 $background-card-dark: rgba(255, 255, 255, 0.05);
 $background-card-light: rgba(15, 23, 42, 0.7);
 
@@ -47,6 +47,7 @@ $accent-multipass: #8B5CF6;
 
 @media (prefers-color-scheme: dark) {
   :root {
+    font-weight: v.$font-weight-dark;
     --color-text: #{$text-light};
     --color-text-light: #{$text-light};
     --color-text-secondary: #{$text-secondary-light};

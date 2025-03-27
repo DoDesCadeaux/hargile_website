@@ -63,6 +63,57 @@
           "title": "Latest insights",
           "subtitle": "Our thoughts and perspectives on the digital world",
           "view-all": "View all insights"
+        },
+        "Hero": {
+          "companyName": "HARGILE",
+          "headline": {
+            "line1": "Transforms",
+            "line2": "Ideas into",
+            "line3": "Digital Reality"
+          },
+          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
+          "ctaButton": "Audit your website",
+          "arrowAlt": "Arrow"
+        },
+        "Services": {
+          "title": "Our services",
+          "subtitle": "We have all the tools to elevate your business",
+          "dev": {
+            "title": "Development and Solution Design",
+            "items": {
+              "web": "Web Design and Development",
+              "mobile": "Mobile Application Development",
+              "cms": "CMS Development",
+              "ecommerce": "E-Commerce"
+            }
+          },
+          "maintenance": {
+            "title": "Maintenance and Modernization",
+            "items": {
+              "support": "Maintenance Support",
+              "migration": "Application Migration and Modernization",
+              "seo": "SEO Performance Optimization"
+            }
+          },
+          "ai": {
+            "title": "Artificial Intelligence and Cloud Solutions",
+            "items": {
+              "agents": "Intelligent Agent Development",
+              "cloud": "Cloud Solutions",
+              "automation": "Business Process Automation",
+              "ml": "Machine Learning Prediction Pipelines",
+              "consulting": "Strategic AI Consulting",
+              "custom": "Customized AI Solutions"
+            }
+          },
+          "analysis": {
+            "title": "Analysis and Quality",
+            "items": {
+              "reporting": "Analysis and Reporting",
+              "qa": "Quality Assurance Testing (QA)",
+              "api": "API Development"
+            }
+          }
         }
       }
     }

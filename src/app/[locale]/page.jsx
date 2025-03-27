@@ -12,9 +12,11 @@ export default function HomePage() {
     return (
         <>
             <Earth>
+                <HeroSection />
                 <OurSolutions/>
                 <TrustedBrandsContainer/>
                 <RecentWorks/>
+                <OurServices/>
                 <AboutUs/>
                 <LatestInsights/>
             </Earth>
