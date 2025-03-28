@@ -66,12 +66,13 @@ export default function QuoteRequestForm() {
     // Here you would normally send this data to your API
   };
 
-  const toggleService = (service) => {
-    setServiceTypes((prev) => ({
-      ...prev,
-      [service]: !prev[service],
-    }));
-  };
+const toggleService = (service) => {
+  setServiceTypes((prev) => ({
+    ...prev,
+    [service]: !prev[service],
+  }));
+};
+
 
   const toggleBudgetDropdown = () => {
     setIsBudgetOpen(!isBudgetOpen);
@@ -330,12 +331,19 @@ export default function QuoteRequestForm() {
             </ServiceDescription>
 
             <div className="service-options">
-              <CheckboxContainer>
+              <CheckboxContainer
+                color="blue"
+                isActive={serviceTypes.webDevelopment}
+                onClick={() => toggleService("webDevelopment")}
+              >
                 <Checkbox
                   type="button"
                   checked={serviceTypes.webDevelopment}
                   color="blue"
-                  onClick={() => toggleService("webDevelopment")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleService("webDevelopment");
+                  }}
                 >
                   {serviceTypes.webDevelopment && (
                     <CheckMark
@@ -351,17 +359,22 @@ export default function QuoteRequestForm() {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel onClick={() => toggleService("webDevelopment")}>
-                  Développement Web
-                </CheckboxLabel>
+                <CheckboxLabel>Développement Web</CheckboxLabel>
               </CheckboxContainer>
 
-              <CheckboxContainer>
+              <CheckboxContainer
+                color="purple"
+                isActive={serviceTypes.mobileApps}
+                onClick={() => toggleService("mobileApps")}
+              >
                 <Checkbox
                   type="button"
                   checked={serviceTypes.mobileApps}
                   color="purple"
-                  onClick={() => toggleService("mobileApps")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleService("mobileApps");
+                  }}
                 >
                   {serviceTypes.mobileApps && (
                     <CheckMark
@@ -377,17 +390,22 @@ export default function QuoteRequestForm() {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel onClick={() => toggleService("mobileApps")}>
-                  Applications Mobiles
-                </CheckboxLabel>
+                <CheckboxLabel>Applications Mobiles</CheckboxLabel>
               </CheckboxContainer>
 
-              <CheckboxContainer>
+              <CheckboxContainer
+                color="pink"
+                isActive={serviceTypes.ai}
+                onClick={() => toggleService("ai")}
+              >
                 <Checkbox
                   type="button"
                   checked={serviceTypes.ai}
                   color="pink"
-                  onClick={() => toggleService("ai")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleService("ai");
+                  }}
                 >
                   {serviceTypes.ai && (
                     <CheckMark
@@ -403,17 +421,22 @@ export default function QuoteRequestForm() {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel onClick={() => toggleService("ai")}>
-                  Intelligence Artificielle
-                </CheckboxLabel>
+                <CheckboxLabel>Intelligence Artificielle</CheckboxLabel>
               </CheckboxContainer>
 
-              <CheckboxContainer>
+              <CheckboxContainer
+                color="teal"
+                isActive={serviceTypes.cloud}
+                onClick={() => toggleService("cloud")}
+              >
                 <Checkbox
                   type="button"
                   checked={serviceTypes.cloud}
                   color="teal"
-                  onClick={() => toggleService("cloud")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleService("cloud");
+                  }}
                 >
                   {serviceTypes.cloud && (
                     <CheckMark
@@ -429,9 +452,7 @@ export default function QuoteRequestForm() {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel onClick={() => toggleService("cloud")}>
-                  Solutions Cloud
-                </CheckboxLabel>
+                <CheckboxLabel>Solutions Cloud</CheckboxLabel>
               </CheckboxContainer>
             </div>
 

@@ -3,19 +3,18 @@ import styled, { css } from "styled-components";
 export const PageWrapper = styled.div`
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
   contain-content: true;
 `;
 
 export const BackgroundBlur = styled.div`
   position: absolute;
-  top: 29vh;
-  left: calc(50% - 280px);
+  top: 25vh;
+  left: calc(50% - 30rem);
   width: 64px;
   height: 64px;
   border-radius: 50%;
   background-color: #a855f7;
-  opacity: 0.2;
+  opacity: 0.4;
   filter: blur(40px);
   transform: scale(6);
   z-index: 0;
@@ -207,24 +206,26 @@ export const SelectButton = styled.button.attrs({
     ${(props) => (props.hasError ? "#EF4444" : "rgba(107, 33, 168, 0.1)")};
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: center; 
+  text-align: center; 
 
-  span {
+  span.text-content {
+    /* Added a specific class for the text content */
     display: block;
-    width: 100%;
-    text-align: center;
+    width: calc(100% - 2rem); /* Adjust width to make space for the icon */
+    text-align: center; /* Changed from center to left */
   }
 
   .icon {
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    right: 0; /* Keep icon at the right */
     display: flex;
     align-items: center;
     padding-right: 0.75rem;
     color: white;
+    pointer-events: none; /* Make sure clicks pass through to the button */
 
     .icon-up,
     .icon-down {
@@ -275,16 +276,62 @@ export const ServiceDescription = styled.p.attrs({
   margin-bottom: 1rem;
 `;
 
-export const CheckboxContainer = styled.div`
+export const CheckboxContainer = styled.div.attrs((props) => {
+  // Filter out custom props that shouldn't be passed to the DOM
+  const { isActive, color, ...domProps } = props;
+  return domProps;
+})`
   display: flex;
   align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+
+  /* Dynamic background color based on checkbox color and state */
+  ${(props) => {
+    // Base colors (same as in the Checkbox component)
+    const colors = {
+      blue: "rgba(59, 130, 246, 0.1)", // #3B82F6 with opacity
+      purple: "rgba(139, 92, 246, 0.1)", // #8B5CF6 with opacity
+      pink: "rgba(236, 72, 153, 0.1)", // #EC4899 with opacity
+      teal: "rgba(20, 184, 166, 0.1)", // #14B8A6 with opacity
+    };
+
+    // Use the color prop to determine background, default to transparent
+    const bgColor = props.isActive
+      ? colors[props.color] || "transparent"
+      : "transparent";
+
+    return `background-color: ${bgColor};`;
+  }}
+
+  &:hover {
+    ${(props) => {
+      const colors = {
+        blue: "rgba(59, 130, 246, 0.15)", // #3B82F6 with slightly higher opacity
+        purple: "rgba(139, 92, 246, 0.15)", // #8B5CF6 with slightly higher opacity
+        pink: "rgba(236, 72, 153, 0.15)", // #EC4899 with slightly higher opacity
+        teal: "rgba(20, 184, 166, 0.15)", // #14B8A6 with slightly higher opacity
+      };
+
+      // Slightly more opaque on hover
+      const hoverColor = colors[props.color] || "rgba(75, 85, 99, 0.1)";
+
+      return `background-color: ${hoverColor};`;
+    }}
+  }
 `;
 
-export const Checkbox = styled.button.attrs((props) => ({
+export const Checkbox = styled.button.attrs((props) => {
   // Transform props to valid HTML attributes - removing custom props
   // that would otherwise cause React warnings
-  type: props.type || "button",
-}))`
+  const { checked, color, ...domProps } = props;
+  return {
+    ...domProps,
+    type: props.type || "button",
+  };
+})`
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 0.25rem;
@@ -302,9 +349,9 @@ export const Checkbox = styled.button.attrs((props) => ({
     };
 
     const color = colors[props.color] || colors.blue;
-    const isChecked = props.checked; // use "checked" instead of "isChecked"
+    const isChecked = props.checked;
 
-    return css`
+    return `
       background-color: ${isChecked ? color : "#190f3a"};
       border: 1px solid ${isChecked ? color : color};
     `;
