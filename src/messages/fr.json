@@ -138,6 +138,26 @@
               "role": "Développeur Principal"
             }
           }
+        },
+        "our-mission": {
+          "title": "Notre Mission",
+          "highlighted": "Transformer les expériences numériques",
+          "subheading": "par l'innovation centrée sur l'humain et la technologie.",
+          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement répondent aux objectifs commerciaux, mais qui améliorent également la connexion humaine, rendant la technologie plus accessible, intuitive et significative.",
+          "values": {
+            "human": {
+              "title": "Centré sur l'Humain",
+              "description": "Prioriser les personnes dans chaque solution numérique que nous créons."
+            },
+            "innovation": {
+              "title": "Innovation",
+              "description": "Adopter de nouvelles idées et technologies pour résoudre des défis complexes."
+            },
+            "integrity": {
+              "title": "Intégrité",
+              "description": "Tenir nos promesses avec transparence et pratiques éthiques."
+            }
+          }
         }
       }
     }

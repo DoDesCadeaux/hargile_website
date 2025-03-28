@@ -138,6 +138,26 @@
               "role": "Lead Developer"
             }
           }
+        },
+        "our-mission": {
+          "title": "Our Mission",
+          "highlighted": "To transform digital experiences",
+          "subheading": "through human-centered innovation and technology.",
+          "description": "We strive to create digital solutions that not only meet business objectives but also enhance human connection, making technology more accessible, intuitive, and meaningful.",
+          "values": {
+            "human": {
+              "title": "Human-Centered",
+              "description": "Prioritizing people in every digital solution we create."
+            },
+            "innovation": {
+              "title": "Innovation",
+              "description": "Embracing new ideas and technologies to solve complex challenges."
+            },
+            "integrity": {
+              "title": "Integrity",
+              "description": "Delivering on our promises with transparency and ethical practices"
+            }
+          }
         }
       }
     }
