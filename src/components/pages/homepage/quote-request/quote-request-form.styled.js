@@ -68,7 +68,14 @@ export const Description = styled.p.attrs({
   color: white;
   line-height: 1.6;
   margin-bottom: 1rem;
+  width: 100%; /* Default width for mobile */
+
+  /* Media query for desktop/larger screens */
+  @media (min-width: 768px) {
+    width: 40%;
+  }
 `;
+
 
 export const FormGrid = styled.form`
   display: grid;
