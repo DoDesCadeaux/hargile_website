@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { Transition } from "@headlessui/react";
+import { useTranslations, useLocale } from "next-intl";
 import {
   FormContainer,
   PageWrapper,
@@ -33,6 +34,7 @@ import {
   PrivacyLink,
   RequiredNote,
   BackgroundBlur,
+  LanguageSwitcher,
 } from "./quote-request-form.styled";
 
 export default function QuoteRequestForm() {
@@ -43,6 +45,10 @@ export default function QuoteRequestForm() {
     setValue,
     watch,
   } = useForm();
+
+  // Get current locale and translations
+  const locale = useLocale();
+  const t = useTranslations("pages.homepage.sections.quote-request");
 
   const [serviceTypes, setServiceTypes] = useState({
     webDevelopment: false,
@@ -66,13 +72,12 @@ export default function QuoteRequestForm() {
     // Here you would normally send this data to your API
   };
 
-const toggleService = (service) => {
-  setServiceTypes((prev) => ({
-    ...prev,
-    [service]: !prev[service],
-  }));
-};
-
+  const toggleService = (service) => {
+    setServiceTypes((prev) => ({
+      ...prev,
+      [service]: !prev[service],
+    }));
+  };
 
   const toggleBudgetDropdown = () => {
     setIsBudgetOpen(!isBudgetOpen);
@@ -89,32 +94,26 @@ const toggleService = (service) => {
       <FormContainer>
         {/* Header */}
         <HeaderSection>
-          <PageTitle>Demande de Devis</PageTitle>
+          <PageTitle>{t("title")}</PageTitle>
           <TitleUnderline />
 
           <SubTitle>
-            <span>Obtenez une estimation</span>
-            <br /> gratuite pour votre projet
+            <span>{t("subtitle.part1")}</span>
+            <br /> {t("subtitle.part2")}
           </SubTitle>
 
-          <Description>
-            Complétez le formulaire ci-dessous pour recevoir une estimation
-            personnalisée.
-            <br />
-            Notre équipe d'experts analysera vos besoins et vous contactera dans
-            les 48 heures.
-          </Description>
+          <Description>{t("description")}</Description>
         </HeaderSection>
 
         {/* Form */}
         <FormGrid onSubmit={handleSubmit(onSubmit)}>
           {/* Left Column - Contact Information */}
           <ContactInfoColumn>
-            <SectionTitle>Informations de contact</SectionTitle>
+            <SectionTitle>{t("contact.title")}</SectionTitle>
 
             <FormGroup>
               <InputLabel htmlFor="name">
-                Nom et prénom <RequiredMark>*</RequiredMark>
+                {t("contact.name")} <RequiredMark>*</RequiredMark>
               </InputLabel>
               <Input
                 id="name"
@@ -126,7 +125,7 @@ const toggleService = (service) => {
 
             <FormGroup>
               <InputLabel htmlFor="email">
-                Email <RequiredMark>*</RequiredMark>
+                {t("contact.email")} <RequiredMark>*</RequiredMark>
               </InputLabel>
               <Input
                 id="email"
@@ -140,13 +139,13 @@ const toggleService = (service) => {
             </FormGroup>
 
             <FormGroup>
-              <InputLabel htmlFor="phone">Téléphone</InputLabel>
+              <InputLabel htmlFor="phone">{t("contact.phone")}</InputLabel>
               <Input id="phone" type="tel" {...register("phone")} />
             </FormGroup>
 
             <FormGroup>
               <InputLabel htmlFor="description">
-                Description du projet <RequiredMark>*</RequiredMark>
+                {t("contact.projectDescription")} <RequiredMark>*</RequiredMark>
               </InputLabel>
               <TextArea
                 id="description"
@@ -158,14 +157,20 @@ const toggleService = (service) => {
 
             <FormGroup className="grid-cols-2">
               <div>
-                <InputLabel htmlFor="budget">Budget estimé</InputLabel>
+                <InputLabel htmlFor="budget">
+                  {t("contact.budget.label")}
+                </InputLabel>
                 <div className="relative">
                   <SelectButton
                     type="button"
                     hasError={errors.budget}
                     onClick={toggleBudgetDropdown}
                   >
-                    <span>{watch("budget") || "Sélectionner"}</span>
+                    <span className="text-content">
+                      {watch("budget")
+                        ? getBudgetLabel(watch("budget"), t)
+                        : t("contact.budget.select")}
+                    </span>
 
                     <span className="icon">
                       {isBudgetOpen ? (
@@ -193,7 +198,7 @@ const toggleService = (service) => {
                           toggleBudgetDropdown();
                         }}
                       >
-                        Moins de 5 000 €
+                        {t("contact.budget.less5k")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -202,7 +207,7 @@ const toggleService = (service) => {
                           toggleBudgetDropdown();
                         }}
                       >
-                        5 000 € - 10 000 €
+                        {t("contact.budget.5kTo10k")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -211,7 +216,7 @@ const toggleService = (service) => {
                           toggleBudgetDropdown();
                         }}
                       >
-                        10 000 € - 25 000 €
+                        {t("contact.budget.10kTo25k")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -220,7 +225,7 @@ const toggleService = (service) => {
                           toggleBudgetDropdown();
                         }}
                       >
-                        25 000 € - 50 000 €
+                        {t("contact.budget.25kTo50k")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -229,7 +234,7 @@ const toggleService = (service) => {
                           toggleBudgetDropdown();
                         }}
                       >
-                        Plus de 50 000 €
+                        {t("contact.budget.more50k")}
                       </DropdownItem>
                     </DropdownContainer>
                   </Transition>
@@ -244,14 +249,20 @@ const toggleService = (service) => {
               </div>
 
               <div>
-                <InputLabel htmlFor="timeline">Échéance souhaitée</InputLabel>
+                <InputLabel htmlFor="timeline">
+                  {t("contact.timeline.label")}
+                </InputLabel>
                 <div className="relative">
                   <SelectButton
                     type="button"
                     hasError={errors.timeline}
                     onClick={toggleTimelineDropdown}
                   >
-                    <span>{watch("timeline") || "Sélectionner"}</span>
+                    <span className="text-content">
+                      {watch("timeline")
+                        ? getTimelineLabel(watch("timeline"), t)
+                        : t("contact.timeline.select")}
+                    </span>
                     <span className="icon">
                       {isTimelineOpen ? (
                         <ChevronUp className="icon-up" />
@@ -278,7 +289,7 @@ const toggleService = (service) => {
                           toggleTimelineDropdown();
                         }}
                       >
-                        Moins d'un mois
+                        {t("contact.timeline.less1month")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -287,7 +298,7 @@ const toggleService = (service) => {
                           toggleTimelineDropdown();
                         }}
                       >
-                        1 - 3 mois
+                        {t("contact.timeline.1To3months")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -296,7 +307,7 @@ const toggleService = (service) => {
                           toggleTimelineDropdown();
                         }}
                       >
-                        3 - 6 mois
+                        {t("contact.timeline.3To6months")}
                       </DropdownItem>
                       <DropdownItem
                         type="button"
@@ -305,7 +316,7 @@ const toggleService = (service) => {
                           toggleTimelineDropdown();
                         }}
                       >
-                        Plus de 6 mois
+                        {t("contact.timeline.more6months")}
                       </DropdownItem>
                     </DropdownContainer>
                   </Transition>
@@ -325,15 +336,17 @@ const toggleService = (service) => {
 
           {/* Right Column - Service Types */}
           <ServiceTypesColumn>
-            <SectionTitle>Type de service</SectionTitle>
-            <ServiceDescription>
-              Sélectionnez une ou plusieurs options
-            </ServiceDescription>
+            <SectionTitle>{t("services.title")}</SectionTitle>
+            <ServiceDescription>{t("services.description")}</ServiceDescription>
 
             <div className="service-options">
               <CheckboxContainer
-                color="blue"
-                isActive={serviceTypes.webDevelopment}
+                style={{
+                  "--bg-color": serviceTypes.webDevelopment
+                    ? "rgba(59, 130, 246, 0.1)"
+                    : "transparent",
+                  "--bg-hover-color": "rgba(59, 130, 246, 0.15)",
+                }}
                 onClick={() => toggleService("webDevelopment")}
               >
                 <Checkbox
@@ -359,12 +372,16 @@ const toggleService = (service) => {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel>Développement Web</CheckboxLabel>
+                <CheckboxLabel>{t("services.webDevelopment")}</CheckboxLabel>
               </CheckboxContainer>
 
               <CheckboxContainer
-                color="purple"
-                isActive={serviceTypes.mobileApps}
+                style={{
+                  "--bg-color": serviceTypes.mobileApps
+                    ? "rgba(139, 92, 246, 0.1)"
+                    : "transparent",
+                  "--bg-hover-color": "rgba(139, 92, 246, 0.15)",
+                }}
                 onClick={() => toggleService("mobileApps")}
               >
                 <Checkbox
@@ -390,12 +407,16 @@ const toggleService = (service) => {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel>Applications Mobiles</CheckboxLabel>
+                <CheckboxLabel>{t("services.mobileApps")}</CheckboxLabel>
               </CheckboxContainer>
 
               <CheckboxContainer
-                color="pink"
-                isActive={serviceTypes.ai}
+                style={{
+                  "--bg-color": serviceTypes.ai
+                    ? "rgba(236, 72, 153, 0.1)"
+                    : "transparent",
+                  "--bg-hover-color": "rgba(236, 72, 153, 0.15)",
+                }}
                 onClick={() => toggleService("ai")}
               >
                 <Checkbox
@@ -421,12 +442,16 @@ const toggleService = (service) => {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel>Intelligence Artificielle</CheckboxLabel>
+                <CheckboxLabel>{t("services.ai")}</CheckboxLabel>
               </CheckboxContainer>
 
               <CheckboxContainer
-                color="teal"
-                isActive={serviceTypes.cloud}
+                style={{
+                  "--bg-color": serviceTypes.cloud
+                    ? "rgba(20, 184, 166, 0.1)"
+                    : "transparent",
+                  "--bg-hover-color": "rgba(20, 184, 166, 0.15)",
+                }}
                 onClick={() => toggleService("cloud")}
               >
                 <Checkbox
@@ -452,25 +477,47 @@ const toggleService = (service) => {
                     </CheckMark>
                   )}
                 </Checkbox>
-                <CheckboxLabel>Solutions Cloud</CheckboxLabel>
+                <CheckboxLabel>{t("services.cloud")}</CheckboxLabel>
               </CheckboxContainer>
             </div>
 
-            <SubmitButton type="submit">Soumettre</SubmitButton>
+            <SubmitButton type="submit">{t("submit")}</SubmitButton>
           </ServiceTypesColumn>
         </FormGrid>
 
         {/* Privacy Policy Note */}
         <PrivacyNote>
           <p>
-            En soumettant ce formulaire, vous acceptez notre{" "}
-            <PrivacyLink href="#">politique de confidentialité</PrivacyLink>.
+            {t("privacy.text")}{" "}
+            <PrivacyLink href="#">{t("privacy.link")}</PrivacyLink>.
           </p>
           <RequiredNote>
-            <RequiredMark>*</RequiredMark> Champs obligatoires
+            <RequiredMark>*</RequiredMark> {t("privacy.requiredFields")}
           </RequiredNote>
         </PrivacyNote>
       </FormContainer>
     </PageWrapper>
   );
+}
+
+// Helper functions for dropdown labels
+function getBudgetLabel(value, t) {
+  const budgetMap = {
+    "< 5000": t("contact.budget.less5k"),
+    "5000-10000": t("contact.budget.5kTo10k"),
+    "10000-25000": t("contact.budget.10kTo25k"),
+    "25000-50000": t("contact.budget.25kTo50k"),
+    "> 50000": t("contact.budget.more50k"),
+  };
+  return budgetMap[value] || t("contact.budget.select");
+}
+
+function getTimelineLabel(value, t) {
+  const timelineMap = {
+    "< 1month": t("contact.timeline.less1month"),
+    "1-3months": t("contact.timeline.1To3months"),
+    "3-6months": t("contact.timeline.3To6months"),
+    "> 6months": t("contact.timeline.more6months"),
+  };
+  return timelineMap[value] || t("contact.timeline.select");
 }

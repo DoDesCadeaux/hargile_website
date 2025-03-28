@@ -114,6 +114,52 @@
               "api": "Développement d'APIs"
             }
           }
+        },
+        "quote-request": {
+          "title": "Demande de Devis",
+          "subtitle": {
+            "part1": "Obtenez une estimation",
+            "part2": "gratuite pour votre projet"
+          },
+          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+          "contact": {
+            "title": "Informations de contact",
+            "name": "Nom et prénom",
+            "email": "Email",
+            "phone": "Téléphone",
+            "projectDescription": "Description du projet",
+            "budget": {
+              "label": "Budget estimé",
+              "select": "Sélectionner",
+              "less5k": "Moins de 5 000 €",
+              "5kTo10k": "5 000 € - 10 000 €",
+              "10kTo25k": "10 000 € - 25 000 €",
+              "25kTo50k": "25 000 € - 50 000 €",
+              "more50k": "Plus de 50 000 €"
+            },
+            "timeline": {
+              "label": "Échéance souhaitée",
+              "select": "Sélectionner",
+              "less1month": "Moins d'un mois",
+              "1To3months": "1 - 3 mois",
+              "3To6months": "3 - 6 mois",
+              "more6months": "Plus de 6 mois"
+            }
+          },
+          "services": {
+            "title": "Type de service",
+            "description": "Sélectionnez une ou plusieurs options",
+            "webDevelopment": "Développement Web",
+            "mobileApps": "Applications Mobiles",
+            "ai": "Intelligence Artificielle",
+            "cloud": "Solutions Cloud"
+          },
+          "submit": "Soumettre",
+          "privacy": {
+            "text": "En soumettant ce formulaire, vous acceptez notre",
+            "link": "politique de confidentialité",
+            "requiredFields": "Champs obligatoires"
+          }
         }
       }
     }

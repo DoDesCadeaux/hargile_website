@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import React from "react";
 
 export const PageWrapper = styled.div`
   min-height: 100vh;
@@ -81,7 +82,7 @@ export const FormGrid = styled.form`
 `;
 
 export const ContactInfoColumn = styled.div`
-  background-color: rgba(27, 19, 61, 0.8);
+  background-color: rgba(17, 12, 41, 0.6);
   border: 1px solid rgba(147, 51, 234, 0.2);
   border-radius: 0.5rem;
   padding: 2.5rem;
@@ -89,7 +90,7 @@ export const ContactInfoColumn = styled.div`
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
   @media (min-width: 768px) {
-    background-color: rgba(27, 19, 61, 0.6);
+    background-color: rgba(17, 12, 41, 0.6);
   }
 
   .grid-cols-2 {
@@ -206,8 +207,8 @@ export const SelectButton = styled.button.attrs({
     ${(props) => (props.hasError ? "#EF4444" : "rgba(107, 33, 168, 0.1)")};
   display: flex;
   align-items: center;
-  justify-content: center; 
-  text-align: center; 
+  justify-content: center;
+  text-align: center;
 
   span.text-content {
     /* Added a specific class for the text content */
@@ -276,56 +277,24 @@ export const ServiceDescription = styled.p.attrs({
   margin-bottom: 1rem;
 `;
 
-export const CheckboxContainer = styled.div.attrs((props) => {
-  // Filter out custom props that shouldn't be passed to the DOM
-  const { isActive, color, ...domProps } = props;
-  return domProps;
-})`
+
+// Create a React component to handle prop filtering
+export const CheckboxContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   transition: background-color 0.2s ease;
   cursor: pointer;
-
-  /* Dynamic background color based on checkbox color and state */
-  ${(props) => {
-    // Base colors (same as in the Checkbox component)
-    const colors = {
-      blue: "rgba(59, 130, 246, 0.1)", // #3B82F6 with opacity
-      purple: "rgba(139, 92, 246, 0.1)", // #8B5CF6 with opacity
-      pink: "rgba(236, 72, 153, 0.1)", // #EC4899 with opacity
-      teal: "rgba(20, 184, 166, 0.1)", // #14B8A6 with opacity
-    };
-
-    // Use the color prop to determine background, default to transparent
-    const bgColor = props.isActive
-      ? colors[props.color] || "transparent"
-      : "transparent";
-
-    return `background-color: ${bgColor};`;
-  }}
+  background-color: var(--bg-color, transparent);
 
   &:hover {
-    ${(props) => {
-      const colors = {
-        blue: "rgba(59, 130, 246, 0.15)", // #3B82F6 with slightly higher opacity
-        purple: "rgba(139, 92, 246, 0.15)", // #8B5CF6 with slightly higher opacity
-        pink: "rgba(236, 72, 153, 0.15)", // #EC4899 with slightly higher opacity
-        teal: "rgba(20, 184, 166, 0.15)", // #14B8A6 with slightly higher opacity
-      };
-
-      // Slightly more opaque on hover
-      const hoverColor = colors[props.color] || "rgba(75, 85, 99, 0.1)";
-
-      return `background-color: ${hoverColor};`;
-    }}
+    background-color: var(--bg-hover-color, rgba(75, 85, 99, 0.1));
   }
 `;
 
 export const Checkbox = styled.button.attrs((props) => {
-  // Transform props to valid HTML attributes - removing custom props
-  // that would otherwise cause React warnings
+  // Filter out custom props that shouldn't be passed to the DOM
   const { checked, color, ...domProps } = props;
   return {
     ...domProps,
@@ -400,9 +369,6 @@ export const PrivacyNote = styled.div.attrs({
 export const PrivacyLink = styled.a`
   color: #60a5fa;
 
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 export const RequiredNote = styled.p`
