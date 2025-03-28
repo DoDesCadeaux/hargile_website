@@ -1,8 +1,39 @@
-// QuoteRequestForm.jsx
+"use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ChevronDown, ChevronUp } from "lucide-react"; // Import both ChevronDown and ChevronUp
-import { Transition } from "@headlessui/react"; // Import Transition for animation
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { Transition } from "@headlessui/react";
+import {
+  FormContainer,
+  PageWrapper,
+  HeaderSection,
+  PageTitle,
+  TitleUnderline,
+  SubTitle,
+  Description,
+  FormGrid,
+  ContactInfoColumn,
+  SectionTitle,
+  FormGroup,
+  InputLabel,
+  RequiredMark,
+  Input,
+  TextArea,
+  SelectButton,
+  DropdownContainer,
+  DropdownItem,
+  ServiceTypesColumn,
+  ServiceDescription,
+  CheckboxContainer,
+  Checkbox,
+  CheckMark,
+  CheckboxLabel,
+  SubmitButton,
+  PrivacyNote,
+  PrivacyLink,
+  RequiredNote,
+  BackgroundBlur,
+} from "./quote-request-form.styled";
 
 export default function QuoteRequestForm() {
   const {
@@ -10,8 +41,9 @@ export default function QuoteRequestForm() {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch, // Import the watch function
+    watch,
   } = useForm();
+
   const [serviceTypes, setServiceTypes] = useState({
     webDevelopment: false,
     mobileApps: false,
@@ -19,12 +51,10 @@ export default function QuoteRequestForm() {
     cloud: false,
   });
 
-  // State to track dropdown open/close state
   const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
 
   const onSubmit = (data) => {
-    // Combine form data with service types
     const formData = {
       ...data,
       serviceTypes: Object.keys(serviceTypes).filter(
@@ -43,7 +73,6 @@ export default function QuoteRequestForm() {
     }));
   };
 
-  // Function to toggle dropdown visibility
   const toggleBudgetDropdown = () => {
     setIsBudgetOpen(!isBudgetOpen);
   };
@@ -53,149 +82,98 @@ export default function QuoteRequestForm() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden contain-content">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <PageWrapper>
+      <BackgroundBlur />
+
+      <FormContainer>
         {/* Header */}
-        <div className="mb-12 px-4">
-          <h1 className="text-4xl font-bold text-white mb-2">
-            Demande de Devis
-          </h1>
-          <h2 className="text-2xl font-semibold text-purple-400 mb-4">
-            Obtenez une estimation gratuite pour votre projet
-          </h2>
-          <p className="text-white">
+        <HeaderSection>
+          <PageTitle>Demande de Devis</PageTitle>
+          <TitleUnderline />
+
+          <SubTitle>
+            <span>Obtenez une estimation</span>
+            <br /> gratuite pour votre projet
+          </SubTitle>
+
+          <Description>
             Complétez le formulaire ci-dessous pour recevoir une estimation
             personnalisée.
             <br />
             Notre équipe d'experts analysera vos besoins et vous contactera dans
             les 48 heures.
-          </p>
-        </div>
+          </Description>
+        </HeaderSection>
 
-        {/* Form Container */}
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4"
-          style={{ padding: 2 + "px" }}
-        >
+        {/* Form */}
+        <FormGrid onSubmit={handleSubmit(onSubmit)}>
           {/* Left Column - Contact Information */}
-          <div
-            style={{ padding: 2 + "rem" }}
-            className="lg:col-span-2 bg-[#1b133d]/40 border border-purple-900/20 rounded-lg px-2.5 p-10 shadow-xl"
-          >
-            <h3 className="text-xl font-semibold text-white mb-6">
-              Informations de contact
-            </h3>
+          <ContactInfoColumn>
+            <SectionTitle>Informations de contact</SectionTitle>
 
-            <div className="mb-6">
-              <label
-                style={{ paddingTop: 1 + "rem" }}
-                htmlFor="name"
-                className="block text-white mb-2"
-              >
-                Nom et prénom <span className="text-red-400">*</span>
-              </label>
-              <input
+            <FormGroup>
+              <InputLabel htmlFor="name">
+                Nom et prénom <RequiredMark>*</RequiredMark>
+              </InputLabel>
+              <Input
                 id="name"
                 type="text"
-                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
-                  errors.name
-                    ? "border border-red-500"
-                    : "border border-purple-800/10"
-                }`}
+                hasError={errors.name}
                 {...register("name", { required: true })}
               />
-            </div>
+            </FormGroup>
 
-            <div className="mb-6">
-              <label
-                style={{ paddingTop: 1 + "rem" }}
-                htmlFor="email"
-                className="block text-white mb-2"
-              >
-                Email <span className="text-red-400">*</span>
-              </label>
-              <input
+            <FormGroup>
+              <InputLabel htmlFor="email">
+                Email <RequiredMark>*</RequiredMark>
+              </InputLabel>
+              <Input
                 id="email"
                 type="email"
-                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
-                  errors.email
-                    ? "border border-red-500"
-                    : "border border-purple-800/10"
-                }`}
+                hasError={errors.email}
                 {...register("email", {
                   required: true,
                   pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 })}
               />
-            </div>
+            </FormGroup>
 
-            <div className="mb-6">
-              <label
-                style={{ paddingTop: 1 + "rem" }}
-                htmlFor="phone"
-                className="block text-white mb-2"
-              >
-                Téléphone
-              </label>
-              <input
-                id="phone"
-                type="tel"
-                className="w-full bg-[#19103b] text-white rounded-md p-4 outline-none  border border-purple-800/10"
-                {...register("phone")}
-              />
-            </div>
+            <FormGroup>
+              <InputLabel htmlFor="phone">Téléphone</InputLabel>
+              <Input id="phone" type="tel" {...register("phone")} />
+            </FormGroup>
 
-            <div className="mb-6">
-              <label
-                style={{ paddingTop: 1 + "rem" }}
-                htmlFor="description"
-                className="block text-white mb-2"
-              >
-                Description du projet <span className="text-red-400">*</span>
-              </label>
-              <textarea
+            <FormGroup>
+              <InputLabel htmlFor="description">
+                Description du projet <RequiredMark>*</RequiredMark>
+              </InputLabel>
+              <TextArea
                 id="description"
                 rows={5}
-                className={`w-full bg-[#19103b] text-white rounded-md p-4 outline-none  ${
-                  errors.description
-                    ? "border border-red-500"
-                    : "border border-purple-800/10"
-                }`}
+                hasError={errors.description}
                 {...register("description", { required: true })}
               />
-            </div>
+            </FormGroup>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FormGroup className="grid-cols-2">
               <div>
-                <label
-                  style={{ paddingTop: 1 + "rem" }}
-                  htmlFor="budget"
-                  className="block text-white mb-2"
-                >
-                  Budget estimé
-                </label>
+                <InputLabel htmlFor="budget">Budget estimé</InputLabel>
                 <div className="relative">
-                  <button
+                  <SelectButton
                     type="button"
-                    className={`relative appearance-none w-full bg-[#19103b] text-white rounded-md p-4 pr-10 outline-none border border-purple-800/10 flex items-center justify-between ${
-                      errors.budget ? "border-red-500" : ""
-                    }`}
+                    hasError={errors.budget}
                     onClick={toggleBudgetDropdown}
                   >
-                    {/* Selected value display */}
-                    <span className="text-center w-full">
-                      {watch("budget") || "Sélectionner"}
-                    </span>
+                    <span>{watch("budget") || "Sélectionner"}</span>
 
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white transition transform">
+                    <span className="icon">
                       {isBudgetOpen ? (
-                        <ChevronUp className="h-5 w-5 transition-transform duration-200" />
+                        <ChevronUp className="icon-up" />
                       ) : (
-                        <ChevronDown className="h-5 w-5 transition-transform duration-200" />
+                        <ChevronDown className="icon-down" />
                       )}
                     </span>
-                  </button>
+                  </SelectButton>
 
                   <Transition
                     show={isBudgetOpen}
@@ -206,65 +184,53 @@ export default function QuoteRequestForm() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute z-10 mt-1 w-full rounded-md shadow-lg bg-[#19103b] ring-1 ring-purple-900/20 focus:outline-none">
-                      <div className="py-1">
-                        <button
-                          type="button"
-                          value="< 5000"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("budget", "< 5000");
-                            toggleBudgetDropdown();
-                          }}
-                        >
-                          Moins de 5 000 €
-                        </button>
-                        <button
-                          type="button"
-                          value="5000-10000"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("budget", "5000-10000");
-                            toggleBudgetDropdown();
-                          }}
-                        >
-                          5 000 € - 10 000 €
-                        </button>
-                        <button
-                          type="button"
-                          value="10000-25000"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("budget", "10000-25000");
-                            toggleBudgetDropdown();
-                          }}
-                        >
-                          10 000 € - 25 000 €
-                        </button>
-                        <button
-                          type="button"
-                          value="25000-50000"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("budget", "25000-50000");
-                            toggleBudgetDropdown();
-                          }}
-                        >
-                          25 000 € - 50 000 €
-                        </button>
-                        <button
-                          type="button"
-                          value="> 50000"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("budget", "> 50000");
-                            toggleBudgetDropdown();
-                          }}
-                        >
-                          Plus de 50 000 €
-                        </button>
-                      </div>
-                    </div>
+                    <DropdownContainer>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("budget", "< 5000");
+                          toggleBudgetDropdown();
+                        }}
+                      >
+                        Moins de 5 000 €
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("budget", "5000-10000");
+                          toggleBudgetDropdown();
+                        }}
+                      >
+                        5 000 € - 10 000 €
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("budget", "10000-25000");
+                          toggleBudgetDropdown();
+                        }}
+                      >
+                        10 000 € - 25 000 €
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("budget", "25000-50000");
+                          toggleBudgetDropdown();
+                        }}
+                      >
+                        25 000 € - 50 000 €
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("budget", "> 50000");
+                          toggleBudgetDropdown();
+                        }}
+                      >
+                        Plus de 50 000 €
+                      </DropdownItem>
+                    </DropdownContainer>
                   </Transition>
                   <input
                     type="hidden"
@@ -272,39 +238,27 @@ export default function QuoteRequestForm() {
                   />
                 </div>
                 {errors.budget && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.budget.message}
-                  </p>
+                  <p className="error-message">{errors.budget.message}</p>
                 )}
               </div>
 
               <div>
-                <label
-                  style={{ paddingTop: 1 + "rem" }}
-                  htmlFor="timeline"
-                  className="block text-white mb-2 mx-auto"
-                >
-                  Échéance souhaitée
-                </label>
+                <InputLabel htmlFor="timeline">Échéance souhaitée</InputLabel>
                 <div className="relative">
-                  <button
+                  <SelectButton
                     type="button"
-                    className={`relative appearance-none w-full bg-[#190f3a] text-white rounded-md p-4 pr-10 outline-none border border-purple-800/10 flex items-center justify-between ${
-                      errors.timeline ? "border-red-500" : ""
-                    }`}
+                    hasError={errors.timeline}
                     onClick={toggleTimelineDropdown}
                   >
-                    <span className="text-center w-full">
-                      {watch("timeline") || "Sélectionner"}
-                    </span>
-                    <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-white transition transform">
+                    <span>{watch("timeline") || "Sélectionner"}</span>
+                    <span className="icon">
                       {isTimelineOpen ? (
-                        <ChevronUp className="h-5 w-5 transition-transform duration-200" />
+                        <ChevronUp className="icon-up" />
                       ) : (
-                        <ChevronDown className="h-5 w-5 transition-transform duration-200" />
+                        <ChevronDown className="icon-down" />
                       )}
                     </span>
-                  </button>
+                  </SelectButton>
 
                   <Transition
                     show={isTimelineOpen}
@@ -315,54 +269,44 @@ export default function QuoteRequestForm() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <div className="absolute z-10 mt-1 w-full rounded-md shadow-lg bg-[#190f3a] ring-1 ring-purple-900/20 focus:outline-none">
-                      <div className="py-1">
-                        <button
-                          type="button"
-                          value="< 1month"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("timeline", "< 1month");
-                            toggleTimelineDropdown();
-                          }}
-                        >
-                          Moins d'un mois
-                        </button>
-                        <button
-                          type="button"
-                          value="1-3months"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("timeline", "1-3months");
-                            toggleTimelineDropdown();
-                          }}
-                        >
-                          1 - 3 mois
-                        </button>
-                        <button
-                          type="button"
-                          value="3-6months"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("timeline", "3-6months");
-                            toggleTimelineDropdown();
-                          }}
-                        >
-                          3 - 6 mois
-                        </button>
-                        <button
-                          type="button"
-                          value="> 6months"
-                          className="block py-2 px-4 text-sm text-white hover:bg-purple-700 hover:text-white cursor-pointer w-full text-center"
-                          onClick={() => {
-                            setValue("timeline", "> 6months");
-                            toggleTimelineDropdown();
-                          }}
-                        >
-                          Plus de 6 mois
-                        </button>
-                      </div>
-                    </div>
+                    <DropdownContainer>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("timeline", "< 1month");
+                          toggleTimelineDropdown();
+                        }}
+                      >
+                        Moins d'un mois
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("timeline", "1-3months");
+                          toggleTimelineDropdown();
+                        }}
+                      >
+                        1 - 3 mois
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("timeline", "3-6months");
+                          toggleTimelineDropdown();
+                        }}
+                      >
+                        3 - 6 mois
+                      </DropdownItem>
+                      <DropdownItem
+                        type="button"
+                        onClick={() => {
+                          setValue("timeline", "> 6months");
+                          toggleTimelineDropdown();
+                        }}
+                      >
+                        Plus de 6 mois
+                      </DropdownItem>
+                    </DropdownContainer>
                   </Transition>
                   <input
                     type="hidden"
@@ -372,41 +316,30 @@ export default function QuoteRequestForm() {
                   />
                 </div>
                 {errors.timeline && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.timeline.message}
-                  </p>
+                  <p className="error-message">{errors.timeline.message}</p>
                 )}
               </div>
-            </div>
-          </div>
+            </FormGroup>
+          </ContactInfoColumn>
 
           {/* Right Column - Service Types */}
-          <div
-            style={{ padding: 2 + "rem" }}
-            className="bg-[#151035]/65 border border-purple-900/10 rounded-lg p-10 shadow-xl flex flex-col"
-          >
-            <h3 className="text-xl font-semibold text-white mb-6">
-              Type de service
-            </h3>
-            <p className="text-white mb-4">
+          <ServiceTypesColumn>
+            <SectionTitle>Type de service</SectionTitle>
+            <ServiceDescription>
               Sélectionnez une ou plusieurs options
-            </p>
+            </ServiceDescription>
 
-            <div className="space-y-5 flex-grow">
-              <div className="flex items-center">
-                <button
+            <div className="service-options">
+              <CheckboxContainer>
+                <Checkbox
                   type="button"
-                  className={`w-6 h-6 rounded flex items-center justify-center mr-3 ${
-                    serviceTypes.webDevelopment
-                      ? "bg-blue-500"
-                      : "bg-[#190f3a] border border-blue-500"
-                  }`}
+                  checked={serviceTypes.webDevelopment}
+                  color="blue"
                   onClick={() => toggleService("webDevelopment")}
                 >
                   {serviceTypes.webDevelopment && (
-                    <svg
+                    <CheckMark
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -415,32 +348,24 @@ export default function QuoteRequestForm() {
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </CheckMark>
                   )}
-                </button>
-                <label
-                  style={{ paddingLeft: 1 + "rem" }}
-                  className="text-white cursor-pointer"
-                  onClick={() => toggleService("webDevelopment")}
-                >
+                </Checkbox>
+                <CheckboxLabel onClick={() => toggleService("webDevelopment")}>
                   Développement Web
-                </label>
-              </div>
+                </CheckboxLabel>
+              </CheckboxContainer>
 
-              <div className="flex items-center">
-                <button
+              <CheckboxContainer>
+                <Checkbox
                   type="button"
-                  className={`w-6 h-6 rounded flex items-center justify-center mr-3 ${
-                    serviceTypes.mobileApps
-                      ? "bg-purple-500"
-                      : "bg-[#190f3a] border border-purple-500"
-                  }`}
+                  checked={serviceTypes.mobileApps}
+                  color="purple"
                   onClick={() => toggleService("mobileApps")}
                 >
                   {serviceTypes.mobileApps && (
-                    <svg
+                    <CheckMark
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -449,32 +374,24 @@ export default function QuoteRequestForm() {
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </CheckMark>
                   )}
-                </button>
-                <label
-                  className="text-white cursor-pointer"
-                  style={{ paddingLeft: 1 + "rem" }}
-                  onClick={() => toggleService("mobileApps")}
-                >
+                </Checkbox>
+                <CheckboxLabel onClick={() => toggleService("mobileApps")}>
                   Applications Mobiles
-                </label>
-              </div>
+                </CheckboxLabel>
+              </CheckboxContainer>
 
-              <div className="flex items-center">
-                <button
+              <CheckboxContainer>
+                <Checkbox
                   type="button"
-                  className={`w-6 h-6 rounded flex items-center justify-center mr-3 ${
-                    serviceTypes.ai
-                      ? "bg-pink-500"
-                      : "bg-[#190f3a] border border-pink-500"
-                  }`}
+                  checked={serviceTypes.ai}
+                  color="pink"
                   onClick={() => toggleService("ai")}
                 >
                   {serviceTypes.ai && (
-                    <svg
+                    <CheckMark
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -483,32 +400,24 @@ export default function QuoteRequestForm() {
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </CheckMark>
                   )}
-                </button>
-                <label
-                  className="text-white cursor-pointer"
-                  style={{ paddingLeft: 1 + "rem" }}
-                  onClick={() => toggleService("ai")}
-                >
+                </Checkbox>
+                <CheckboxLabel onClick={() => toggleService("ai")}>
                   Intelligence Artificielle
-                </label>
-              </div>
+                </CheckboxLabel>
+              </CheckboxContainer>
 
-              <div className="flex items-center">
-                <button
+              <CheckboxContainer>
+                <Checkbox
                   type="button"
-                  className={`w-6 h-6 rounded flex items-center justify-center mr-3 ${
-                    serviceTypes.cloud
-                      ? "bg-teal-500"
-                      : "bg-[#190f3a] border border-teal-500"
-                  }`}
+                  checked={serviceTypes.cloud}
+                  color="teal"
                   onClick={() => toggleService("cloud")}
                 >
                   {serviceTypes.cloud && (
-                    <svg
+                    <CheckMark
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-white"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -517,42 +426,30 @@ export default function QuoteRequestForm() {
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
-                    </svg>
+                    </CheckMark>
                   )}
-                </button>
-                <label
-                  style={{ paddingLeft: 1 + "rem" }}
-                  className="text-white cursor-pointer"
-                  onClick={() => toggleService("cloud")}
-                >
+                </Checkbox>
+                <CheckboxLabel onClick={() => toggleService("cloud")}>
                   Solutions Cloud
-                </label>
-              </div>
+                </CheckboxLabel>
+              </CheckboxContainer>
             </div>
 
-            <button
-              type="submit"
-              className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition duration-150 ease-in-out w-full"
-            >
-              Soumettre
-            </button>
-          </div>
-        </form>
+            <SubmitButton type="submit">Soumettre</SubmitButton>
+          </ServiceTypesColumn>
+        </FormGrid>
 
         {/* Privacy Policy Note */}
-        <div className="mt-6 text-white text-sm px-4">
+        <PrivacyNote>
           <p>
             En soumettant ce formulaire, vous acceptez notre{" "}
-            <a href="#" className="text-blue-400 hover:underline">
-              politique de confidentialité
-            </a>
-            .
+            <PrivacyLink href="#">politique de confidentialité</PrivacyLink>.
           </p>
-          <p className="mt-3">
-            <span className="text-red-400">*</span> Champs obligatoires
-          </p>
-        </div>
-      </div>
-    </div>
+          <RequiredNote>
+            <RequiredMark>*</RequiredMark> Champs obligatoires
+          </RequiredNote>
+        </PrivacyNote>
+      </FormContainer>
+    </PageWrapper>
   );
 }
