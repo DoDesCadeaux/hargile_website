@@ -116,6 +116,16 @@
           }
         }
       }
+    },
+    "about-us": {
+      "sections": {
+        "our-story": {
+          "title": "Our Story",
+          "paragraph1": "Founded in 2025, Hargile began as a small team with a big vision: to bridge the gap between human creativity and digital innovation. Our founders recognized that technology should enhance human experiences, not replace them.",
+          "paragraph2": "What started as a small agency quickly evolved into a comprehensive digital partner for businesses seeking to transform their online presence. Through challenges and successes, we've remained committed to our core belief that meaningful digital experiences begin with human understanding. This is the reason for our H in our name.",
+          "getInTouch": "Get in Touch"
+        }
+      }
     }
   }
 }

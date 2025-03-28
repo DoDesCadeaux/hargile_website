@@ -1,7 +1,8 @@
-import "./styles/globals.scss";
+import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
 import {SiteNavigationProvider} from "@/components/providers/site-navigation-provider";
-import {GlobalStyles} from "./styles/global-styles";
+
+import {ThemeProvider} from "@/components/providers/theme-provider";
 
 export const metadata = {
     title: "Create Next App",
@@ -9,13 +10,16 @@ export const metadata = {
 };
 
 export default async function RootLayout({children}) {
+    "use client"
+
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
         <body>
-        <GlobalStyles/>
-        <SiteNavigationProvider>
-            {children}
-        </SiteNavigationProvider>
+        <ThemeProvider>
+            <SiteNavigationProvider>
+                {children}
+            </SiteNavigationProvider>
+        </ThemeProvider>
         </body>
         </html>
     )

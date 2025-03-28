@@ -116,6 +116,16 @@
           }
         }
       }
+    },
+    "about-us": {
+      "sections": {
+        "our-story": {
+          "title": "Notre Histoire",
+          "paragraph1": "Fondée en 2025, Hargile a débuté comme une petite équipe avec une grande vision : combler le fossé entre la créativité humaine et l'innovation numérique. Nos fondateurs ont reconnu que la technologie devrait améliorer les expériences humaines, et non les remplacer.",
+          "paragraph2": "Ce qui a commencé comme une petite agence s'est rapidement transformé en partenaire numérique complet pour les entreprises cherchant à transformer leur présence en ligne. À travers les défis et les succès, nous sommes restés fidèles à notre conviction fondamentale que les expériences numériques significatives commencent par la compréhension humaine. C'est la raison du H dans notre nom.",
+          "getInTouch": "Nous Contacter"
+        }
+      }
     }
   }
 }
