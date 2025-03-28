@@ -51,7 +51,7 @@ const RecentWorks = () => {
             id: "agves",
             title: t("works.agves.title") || "AGVES",
             description: t("works.agves.description") || "Platform for schools",
-            image: "/images/crayons.jpg",
+            image: "/images/homepage/crayons.jpg",
             link: "/works/agves",
             parallaxFactor: 0.055   // AGVES moves down a lot
         },
@@ -59,7 +59,7 @@ const RecentWorks = () => {
             id: "i-go",
             title: t("works.i-go.title") || "I GO",
             description: t("works.i-go.description") || "Mobile development, AI",
-            image: "/images/crayons.jpg",
+            image: "/images/homepage/crayons.jpg",
             link: "/works/i-go",
             parallaxFactor: 0.0255 // I GO moves down slightly
         },
@@ -67,7 +67,7 @@ const RecentWorks = () => {
             id: "leafy",
             title: t("works.leafy.title") || "Leafy",
             description: t("works.leafy.description") || "E-commerce for plants, Full-stack",
-            image: "/images/crayons.jpg",
+            image: "/images/homepage/crayons.jpg",
             link: "/works/leafy",
             parallaxFactor: -0.055 // Leafy moves up
         }
