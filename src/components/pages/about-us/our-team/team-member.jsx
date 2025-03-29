@@ -8,6 +8,7 @@ const TeamMember = ({name, role, imageSrc}) => {
         <MemberCard>
             <MemberImage>
                 <OptimizedImage
+                    style={{maxWidth: '100%'}}
                     src={imageSrc}
                     alt={name}
                     width={240}

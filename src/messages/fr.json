@@ -158,6 +158,22 @@
               "description": "Tenir nos promesses avec transparence et pratiques éthiques."
             }
           }
+        },
+        "our-commitment": {
+          "title": "Notre Engagement",
+          "highlighted": "Favoriser l'innovation durable",
+          "subtitle": "grâce à une technologie responsable et des pratiques éthiques.",
+          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement transforment les entreprises, mais respectent également notre planète et autonomisent les communautés, rendant la technologie plus durable, responsable et impactante.",
+          "bubbles": {
+            "goodplanet": "De nos bénéfices vont à GoodPlanet",
+            "carbon": "Réduction de l'empreinte carbone",
+            "renewable": "Alimenté par énergie renouvelable"
+          },
+          "pillars": {
+            "environmental": "Responsabilité Environnementale",
+            "ethical": "Innovation Éthique",
+            "inclusion": "Inclusion Numérique"
+          }
         }
       }
     }

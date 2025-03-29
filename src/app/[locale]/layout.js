@@ -20,7 +20,6 @@ export default async function LocaleLayout({children, params}) {
     return (
         <NextIntlClientProvider>
             <Navbar/>
-            <div style={{height: 80}}></div>
             {children}
             <Footer/>
         </NextIntlClientProvider>

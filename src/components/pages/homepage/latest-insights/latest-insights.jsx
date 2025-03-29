@@ -111,14 +111,14 @@ const LatestInsights = () => {
             id: "b2b-websites",
             category: "WEB & DIGITAL DESIGN",
             title: "How the Next Gen of B2B Websites are Accelerating Business Growth",
-            image: "/images/homepage/crayons.jpg",
+            image: "/images/pages/homepage/crayons.jpg",
             link: "/insights/b2b-websites"
         },
         {
             id: "ai-customer-experience",
             category: "ARTIFICIAL INTELLIGENCE",
             title: "How AI is Transforming Customer Experience in 2025",
-            image: "/images/homepage/crayons.jpg",
+            image: "/images/pages/homepage/crayons.jpg",
             link: "/insights/ai-customer-experience"
         },
     ];

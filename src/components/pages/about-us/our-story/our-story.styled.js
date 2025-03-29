@@ -7,16 +7,7 @@ export const SectionContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8vh 2rem;
     overflow: hidden;
-
-    @media (min-width: 768px) {
-        padding: 8vh 4rem;
-    }
-
-    @media (min-width: 1200px) {
-        padding: 8vh 6rem;
-    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -26,6 +17,7 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: translateY(-30%);
 
     @media (min-width: 1024px) {
         flex-direction: row;
