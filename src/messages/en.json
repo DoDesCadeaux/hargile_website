@@ -176,6 +176,98 @@
           }
         }
       }
+    },
+    "services": {
+      "title": "Our services",
+      "subtitle": "We have all the tools to elevate your business",
+      "mainTitle": "Our Services",
+      "subtitleItalic": "Innovative solutions",
+      "subtitleBold": "for your digital transformation",
+      "description": "We propose a complete range of digital services to accompany you in each stage of your digital transformation, from conception to optimization.",
+      "categories": {
+        "dev": {
+          "title": "Development and Solution Design"
+        },
+        "maintenance": {
+          "title": "Maintenance and Modernization"
+        },
+        "ai": {
+          "title": "Artificial Intelligence and Cloud Solutions"
+        },
+        "analysis": {
+          "title": "Analysis and Quality"
+        }
+      },
+      "services": {
+        "web": {
+          "title": "Web Design and Development",
+          "description": "Showcase websites, web applications, portals and custom solutions"
+        },
+        "mobile": {
+          "title": "Mobile Application Development",
+          "description": "iOS and Android applications, responsive user interfaces"
+        },
+        "cms": {
+          "title": "CMS Development",
+          "description": "WordPress, Drupal and other content management systems"
+        },
+        "ecommerce": {
+          "title": "E-Commerce",
+          "description": "High-performance and secure e-commerce solutions"
+        },
+        "api": {
+          "title": "API Development",
+          "description": "Creating programming interfaces to connect your systems"
+        },
+        "seo": {
+          "title": "SEO Performance Optimization",
+          "description": "Natural referencing and optimization for search engines"
+        },
+        "support": {
+          "title": "Maintenance Support",
+          "description": "Technical support, updates and preventive maintenance"
+        },
+        "migration": {
+          "title": "Migration and Modernization",
+          "description": "Upgrading systems and migration to modern technologies"
+        },
+        "performance": {
+          "title": "Performance Optimization",
+          "description": "Improving speed and user experience"
+        },
+        "agents": {
+          "title": "Intelligent Agent Development",
+          "description": "Custom chatbots and virtual assistants"
+        },
+        "cloud": {
+          "title": "Cloud Solutions",
+          "description": "Cloud infrastructure, deployment and resource optimization"
+        },
+        "automation": {
+          "title": "Business Process Automation",
+          "description": "Workflow optimization and automation of repetitive tasks"
+        },
+        "ml": {
+          "title": "Machine Learning Prediction",
+          "description": "Predictive analytics and ML-powered solutions"
+        },
+        "consulting": {
+          "title": "Strategic AI Consulting",
+          "description": "Expert guidance for AI integration in your business"
+        },
+        "reporting": {
+          "title": "Analysis and Reporting",
+          "description": "Data analysis and creation of customized reports"
+        },
+        "qa": {
+          "title": "Quality Assurance Testing",
+          "description": "Functional, performance and quality assurance tests"
+        },
+        "apidev": {
+          "title": "API Development",
+          "description": "Design and implementation of robust APIs"
+        }
+      }
     }
   }
 }
