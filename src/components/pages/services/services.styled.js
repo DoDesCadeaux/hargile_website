@@ -19,7 +19,6 @@ export const PageContainer = styled.div`
 
 export const SectionContainer = styled.section`
     width: 100%;
-    max-width: 1400px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -37,11 +36,12 @@ export const SectionIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
     background-color: ${({bgColor}) => bgColor || 'rgba(255, 255, 255, 0.05)'};
     color: var(--color-text-light);
+    padding: 1 rem;
 `;
 
 export const SectionTitle = styled.h2.attrs({
@@ -61,7 +61,7 @@ export const ServiceGrid = styled.div`
     }
 
     @media (min-width: 1024px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(300px, 30vh));
     }
 `;
 
@@ -102,6 +102,8 @@ export const CardTitle = styled.h3.attrs({
     color: var(--color-text-light);
     font-weight: 600;
     margin-bottom: 0.5rem;
+    height: calc(2em * 1.5);
+
 `;
 
 export const CardDescription = styled.p.attrs({
@@ -124,26 +126,4 @@ export const ServiceArrow = styled(ChevronRight)`
         opacity: 1;
         transform: translateX(0);
     }
-`;
-
-// Header général de la page
-export const PageHeader = styled.div`
-    text-align: center;
-    margin-bottom: 5rem;
-`;
-
-export const PageTitle = styled.h1.attrs({
-    className: 'fluid-type-5'
-})`
-    color: var(--color-text-light);
-    margin-bottom: 1rem;
-    font-weight: 600;
-`;
-
-export const PageSubtitle = styled.p.attrs({
-    className: 'fluid-type-1'
-})`
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
 `;
