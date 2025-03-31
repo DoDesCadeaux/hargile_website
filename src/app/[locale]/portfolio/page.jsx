@@ -42,14 +42,16 @@ const SectionTitle = styled(motion.h2)`
 const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem; /* Increased from 2rem to 3rem for more spacing */
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 3rem; /* Consistent gap at different breakpoints */
   }
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem; /* Even more space between cards on larger screens */
   }
 `;
 
@@ -94,6 +96,8 @@ const CTAButton = styled(motion.a)`
 
 export default function PortfolioPage() {
   const t = useTranslations("pages.portfolio");
+
+  // Project data
   const projects = [
     {
       id: 1,
@@ -153,6 +157,7 @@ export default function PortfolioPage() {
 
   // Initialize Lenis smooth scrolling
   useEffect(() => {
+    // Create Lenis smooth scroll instance
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
@@ -163,6 +168,7 @@ export default function PortfolioPage() {
       touchMultiplier: 2,
     });
 
+    // Connect lenis to requestAnimationFrame
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -170,34 +176,11 @@ export default function PortfolioPage() {
 
     requestAnimationFrame(raf);
 
+    // Cleanup on unmount
     return () => {
       lenis.destroy();
     };
   }, []);
-
-  // Animation variants
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
-
-  const ctaVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
-    },
-  };
-
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: { scale: 1.05, transition: { duration: 0.2 } },
-  };
 
   return (
     <PageWrapper>
@@ -213,13 +196,17 @@ export default function PortfolioPage() {
 
         <ProjectsSection>
           <SectionTitle
-            variants={titleVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, ease: "easeOut" },
+            }}
             viewport={{ once: true, amount: 0.2 }}
           >
             {t("featuredProjects")}
           </SectionTitle>
+
           <ProjectsGrid>
             {projects.map((project, index) => (
               <ProjectCard
@@ -237,18 +224,22 @@ export default function PortfolioPage() {
         </ProjectsSection>
 
         <CallToActionSection
-          variants={ctaVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+          }}
           viewport={{ once: true, amount: 0.2 }}
         >
           <CTATitle>{t("cta.title")}</CTATitle>
           <CTADescription>{t("cta.description")}</CTADescription>
           <CTAButton
             href="/contact"
-            variants={buttonVariants}
-            initial="initial"
-            whileHover="hover"
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.2 },
+            }}
           >
             {t("cta.button")}
           </CTAButton>

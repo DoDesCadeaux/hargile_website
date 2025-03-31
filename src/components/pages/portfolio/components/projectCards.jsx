@@ -37,7 +37,7 @@ const PurpleAccent = styled.div`
 
 const CardImage = styled.div`
   width: 100%;
-  height: 220px;
+  height: 280px; /* Increased from 220px to 280px */
   overflow: hidden;
   img {
     width: 100%;
@@ -51,14 +51,14 @@ const CardImage = styled.div`
 `;
 
 const CardContent = styled.div`
-  padding: 1.5rem;
+  padding: 2rem; /* Increased from 1.5rem to 2rem */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 `;
 
 const CardHeader = styled.div`
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem; /* Increased from 0.75rem to 1.25rem */
 `;
 
 const CardTitle = styled.h3.attrs({
@@ -66,7 +66,7 @@ const CardTitle = styled.h3.attrs({
 })`
   font-weight: 700;
   color: white;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem; /* Increased from 0.25rem to 0.5rem */
 `;
 
 const CardSubtitle = styled.div.attrs({
@@ -79,8 +79,8 @@ const CardBody = styled.p.attrs({
   className: "fluid-type-0",
 })`
   color: #cbd5e1;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
+  line-height: 1.7; /* Increased from 1.5 to 1.7 */
+  margin-bottom: 1.75rem; /* Increased from 1.25rem to 1.75rem */
   flex-grow: 1;
 `;
 
