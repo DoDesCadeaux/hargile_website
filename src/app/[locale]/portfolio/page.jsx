@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useTranslations } from "next-intl";
+import Lenis from "lenis";
+import { motion } from "framer-motion";
 import { Header } from "@/components/header/mainHeader";
 import ProjectCard from "@/components/pages/portfolio/components/projectCards";
 import Earth from "@/components/Earth";
-
 
 // Page layout components
 const PageWrapper = styled.div`
@@ -20,7 +21,6 @@ const PageWrapper = styled.div`
   }
 `;
 
-
 const ContentContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
@@ -32,7 +32,7 @@ const ProjectsSection = styled.section`
   margin-top: 2rem;
 `;
 
-const SectionTitle = styled.h2`
+const SectionTitle = styled(motion.h2)`
   font-size: 1.75rem;
   font-weight: 700;
   color: white;
@@ -53,7 +53,7 @@ const ProjectsGrid = styled.div`
   }
 `;
 
-const CallToActionSection = styled.section`
+const CallToActionSection = styled(motion.section)`
   margin-top: 4rem;
   padding: 3rem;
   background: rgba(15, 10, 40, 0.7);
@@ -76,7 +76,7 @@ const CTADescription = styled.p`
   margin: 0 auto 2rem;
 `;
 
-const CTAButton = styled.a`
+const CTAButton = styled(motion.a)`
   display: inline-block;
   background-color: #3b82f6;
   color: white;
@@ -151,9 +151,57 @@ export default function PortfolioPage() {
     },
   ];
 
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smooth: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Animation variants
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const ctaVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+    },
+  };
+
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
+  };
+
   return (
     <PageWrapper>
-        <Earth/>
+      <Earth />
       <ContentContainer>
         <Header
           title={t("title")}
@@ -164,9 +212,16 @@ export default function PortfolioPage() {
         />
 
         <ProjectsSection>
-          <SectionTitle>{t("featuredProjects")}</SectionTitle>
+          <SectionTitle
+            variants={titleVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {t("featuredProjects")}
+          </SectionTitle>
           <ProjectsGrid>
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
                 title={project.title}
@@ -175,15 +230,28 @@ export default function PortfolioPage() {
                 image={project.image}
                 actionText={project.actionText}
                 actionUrl={project.actionUrl}
+                index={index} // Pass index for staggered animations
               />
             ))}
           </ProjectsGrid>
         </ProjectsSection>
 
-        <CallToActionSection>
+        <CallToActionSection
+          variants={ctaVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <CTATitle>{t("cta.title")}</CTATitle>
           <CTADescription>{t("cta.description")}</CTADescription>
-          <CTAButton href="/contact">{t("cta.button")}</CTAButton>
+          <CTAButton
+            href="/contact"
+            variants={buttonVariants}
+            initial="initial"
+            whileHover="hover"
+          >
+            {t("cta.button")}
+          </CTAButton>
         </CallToActionSection>
       </ContentContainer>
     </PageWrapper>
