@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { useTranslations } from "next-intl";
 import { Header } from "@/components/header/mainHeader";
 import ProjectCard from "@/components/pages/portfolio/components/projectCards";
+import Earth from "@/components/Earth";
+
 
 // Page layout components
 const PageWrapper = styled.div`
@@ -16,6 +18,20 @@ const PageWrapper = styled.div`
   @media (min-width: 768px) {
     padding: 4rem;
   }
+`;
+
+const BackgroundBlur = styled.div`
+  position: absolute;
+  top: 15vh;
+  left: calc(50% - 35rem);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #a855f7;
+  opacity: 0.4;
+  filter: blur(40px);
+  transform: scale(6);
+  z-index: -1;
 `;
 
 const ContentContainer = styled.div`
@@ -90,17 +106,14 @@ const CTAButton = styled.a`
 `;
 
 export default function PortfolioPage() {
-  // Use translations from your localization setup
   const t = useTranslations("pages.portfolio");
-
-  // Project data can be moved to a separate file or fetched from an API
   const projects = [
     {
       id: 1,
       title: "AGVES",
       subtitle: t("projects.agves.subtitle"),
       description: t("projects.agves.description"),
-      image: "/images/portfolio/agves.jpg",
+      image: "/images/portfolio/agves.jpeg",
       actionText: t("viewMore"),
       actionUrl: "/portfolio/agves",
     },
@@ -153,7 +166,9 @@ export default function PortfolioPage() {
 
   return (
     <PageWrapper>
+        <Earth/>
       <ContentContainer>
+        <BackgroundBlur/>
         <Header
           title={t("title")}
           subtitleRegular={t("subtitle.line1")}
