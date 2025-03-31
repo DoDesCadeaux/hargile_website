@@ -6,6 +6,7 @@ import { FormHeader } from "./components/FormHeader";
 import { ContactSection } from "./components/ContactSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { PrivacyFooter } from "./components/PrivacyFooter";
+import { Header } from "@/components/header/mainHeader";
 import {
   FormContainer,
   PageWrapper,
@@ -54,7 +55,14 @@ export default function QuoteRequestForm() {
       <BackgroundBlur />
 
       <FormContainer>
-        <FormHeader t={t} />
+        <Header
+          title={t("title")}
+          subtitleRegular={t("subtitle.part1")}
+          subtitleHighlight={t("subtitle.part2")}
+          description={t("description")}
+          showUnderline={true}
+          showBackgroundBlur={false}
+        />
 
         <FormGrid onSubmit={handleSubmit(onSubmit)}>
           <ContactSection
