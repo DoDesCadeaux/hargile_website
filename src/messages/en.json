@@ -162,6 +162,49 @@
           }
         }
       }
+    },
+    "portfolio": {
+      "title": "Our Portfolio",
+      "subtitle": {
+        "line1": "Transforming ideas into",
+        "line2": "exceptional digital experiences"
+      },
+      "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
+      "featuredProjects": "Featured Projects",
+      "viewMore": "Learn More",
+      "viewProject": "View Project",
+      "readCaseStudy": "Read case study",
+      "projects": {
+        "agves": {
+          "subtitle": "School Management Platform",
+          "description": "A comprehensive digital solution for educational institutions with advanced analytics and student management."
+        },
+        "igo": {
+          "subtitle": "Mobility Management System",
+          "description": "Intelligent transportation platform with real-time route optimization and sustainable mobility solutions."
+        },
+        "leafy": {
+          "subtitle": "E-commerce for Plants",
+          "description": "Feature-rich online marketplace for sustainable plant shopping with personalized care recommendations."
+        },
+        "multipass": {
+          "subtitle": "Swiss knife application",
+          "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols."
+        },
+        "datasense": {
+          "subtitle": "Analytics Dashboard",
+          "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities."
+        },
+        "ecotrack": {
+          "subtitle": "Sustainability Monitoring",
+          "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations."
+        }
+      },
+      "cta": {
+        "title": "Ready to transform your digital presence?",
+        "description": "Let's collaborate to create innovative and sustainable digital solutions tailored to your unique business needs.",
+        "button": "Get in Touch"
+      }
     }
   }
 }

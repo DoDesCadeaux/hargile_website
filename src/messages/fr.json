@@ -162,6 +162,49 @@
           }
         }
       }
+    },
+    "portfolio": {
+      "title": "Notre Portfolio",
+      "subtitle": {
+        "line1": "Transformer des idées en",
+        "line2": "expériences numériques exceptionnelles"
+      },
+      "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
+      "featuredProjects": "Projets en Vedette",
+      "viewMore": "En savoir plus",
+      "viewProject": "Voir le projet",
+      "readCaseStudy": "Lire l'étude de cas",
+      "projects": {
+        "agves": {
+          "subtitle": "Plateforme de Gestion Scolaire",
+          "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants."
+        },
+        "igo": {
+          "subtitle": "Système de Gestion de Mobilité",
+          "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables."
+        },
+        "leafy": {
+          "subtitle": "E-commerce pour Plantes",
+          "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées."
+        },
+        "multipass": {
+          "subtitle": "Application couteau suisse",
+          "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés."
+        },
+        "datasense": {
+          "subtitle": "Tableau de Bord Analytique",
+          "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées."
+        },
+        "ecotrack": {
+          "subtitle": "Surveillance de Durabilité",
+          "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables."
+        }
+      },
+      "cta": {
+        "title": "Prêt à transformer votre présence numérique ?",
+        "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
+        "button": "Contactez-nous"
+      }
     }
   }
 }
