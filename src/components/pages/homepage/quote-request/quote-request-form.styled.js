@@ -14,7 +14,7 @@ export const BackgroundBlur = styled.div`
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: #a855f7;
+  background-color:var(--color-accent-mihai);;
   opacity: 0.4;
   filter: blur(40px);
   transform: scale(6);
@@ -45,7 +45,7 @@ export const PageTitle = styled.h1.attrs({
 export const TitleUnderline = styled.div`
   width: 30%;
   height: 2px;
-  background-color: #a855f7;
+  background-color:var(--color-accent-mihai);;
   margin-bottom: 1.5rem;
 `;
 
@@ -58,7 +58,7 @@ export const SubTitle = styled.h2.attrs({
   margin-top: 1rem;
 
   span {
-    color: #a855f7;
+    color:var(--color-accent-mihai);;
   }
 `;
 
@@ -179,7 +179,7 @@ export const Input = styled.input`
     ${(props) => (props.hasError ? "#EF4444" : "rgba(107, 33, 168, 0.1)")};
 
   &:focus {
-    border-color: #a855f7;
+    border-color:var(--color-accent-mihai);;
   }
 `;
 
@@ -194,7 +194,7 @@ export const TextArea = styled.textarea`
     ${(props) => (props.hasError ? "#EF4444" : "rgba(107, 33, 168, 0.1)")};
 
   &:focus {
-    border-color: #a855f7;
+    border-color:var(--color-accent-mihai);;
   }
 `;
 
@@ -244,7 +244,7 @@ export const SelectButton = styled.button.attrs({
   }
 
   &:focus {
-    border-color: #a855f7;
+    border-color: var(--color-accent-mihai);
   }
 `;
 

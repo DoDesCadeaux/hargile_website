@@ -47,8 +47,6 @@ export default function QuoteRequestForm() {
       ),
     };
 
-    console.log("Form submitted:", formData);
-    // Here you would normally send this data to your API
   };
 
   return (

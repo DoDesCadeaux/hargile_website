@@ -22,6 +22,8 @@ $accent-agves: #4F46E5;
 $accent-i-go: #0EA5E9;
 $accent-multipass: #8B5CF6;
 
+$accent-mihai: #a855f7;
+
 // Apply Sass variables to CSS variables
 :root {
   /* Base colors */
@@ -43,6 +45,8 @@ $accent-multipass: #8B5CF6;
   --color-accent-agves: #{$accent-agves};
   --color-accent-i-go: #{$accent-i-go};
   --color-accent-multipass: #{$accent-multipass};
+  /* Couleurs de Mihai */
+  --color-accent-mihai: #{$accent-mihai};
 }
 
 @media (prefers-color-scheme: dark) {

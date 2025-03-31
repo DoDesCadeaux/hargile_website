@@ -20,19 +20,6 @@ const PageWrapper = styled.div`
   }
 `;
 
-const BackgroundBlur = styled.div`
-  position: absolute;
-  top: 15vh;
-  left: calc(50% - 35rem);
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: #a855f7;
-  opacity: 0.4;
-  filter: blur(40px);
-  transform: scale(6);
-  z-index: -1;
-`;
 
 const ContentContainer = styled.div`
   max-width: 1400px;
@@ -168,7 +155,6 @@ export default function PortfolioPage() {
     <PageWrapper>
         <Earth/>
       <ContentContainer>
-        <BackgroundBlur/>
         <Header
           title={t("title")}
           subtitleRegular={t("subtitle.line1")}

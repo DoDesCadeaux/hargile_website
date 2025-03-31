@@ -1,44 +1,85 @@
+"use client";
+
 import React from "react";
 import styled from "styled-components";
 
 // Styled components for the header
 const HeaderSection = styled.header`
+  position: relative;
   margin-bottom: 3rem;
 `;
 
-const PageTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
+const BackgroundBlur = styled.div`
+  position: absolute;
+  top: 15vh;
+  left: calc(50% - 35rem);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--color-accent-mihai);
+  opacity: 0.4;
+  filter: blur(40px);
+  transform: scale(6);
+  z-index: -1;
+`;
+
+const TitleWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+`;
+
+const PageTitle = styled.h1.attrs({
+  className: "fluid-type-4",
+})`
+  color: var(--color-text-light);
   margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
 `;
 
 const TitleUnderline = styled.div`
-  width: 160px;
+  width: 80%;
   height: 4px;
-  background: linear-gradient(90deg, #9333ea, #4f46e5);
+  background: var(--color-accent-mihai);
+  margin-bottom: 1.5rem;
+`;
+
+const SubtitleContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
 const SubTitle = styled.h2`
-  font-size: 1.75rem;
-  font-weight: 600;
   margin-bottom: 1rem;
   line-height: 1.3;
 
-  span {
-    color: white;
+  .regular {
+    display: block;
+    color: var(--color-text-light);
+    font-weight: 600;
   }
 
   .highlight {
-    color: #9333ea;
+    display: block;
+    color: var(--color-accent-mihai);
+    font-weight: 600;
   }
 `;
 
-const Description = styled.p`
-  font-size: 1rem;
+const SubtitleRegular = styled.span.attrs({
+  className: "fluid-type-3",
+})``;
+
+const SubtitleHighlight = styled.span.attrs({
+  className: "fluid-type-3",
+})``;
+
+const Description = styled.p.attrs({
+  className: "fluid-type-1",
+})`
+  color: var(--color-text-secondary);
   line-height: 1.6;
-  color: #cbd5e1;
+  margin-bottom: 1rem;
   max-width: 600px;
 `;
 
@@ -51,6 +92,7 @@ const Description = styled.p`
  * @param {string} props.subtitleHighlight - Highlighted text portion of subtitle
  * @param {string} props.description - Description text
  * @param {boolean} props.showUnderline - Whether to show the underline (default: true)
+ * @param {boolean} props.showBackgroundBlur - Whether to show the background blur effect (default: false)
  * @returns {JSX.Element} Header component
  */
 export function Header({
@@ -59,20 +101,32 @@ export function Header({
   subtitleHighlight = "",
   description = "",
   showUnderline = true,
+  showBackgroundBlur = false,
 }) {
   return (
     <HeaderSection>
-      <PageTitle>{title}</PageTitle>
-      {showUnderline && <TitleUnderline />}
+      {showBackgroundBlur && <BackgroundBlur />}
+
+      <TitleWrapper>
+        <PageTitle>{title}</PageTitle>
+        {showUnderline && <TitleUnderline />}
+      </TitleWrapper>
 
       {(subtitleRegular || subtitleHighlight) && (
-        <SubTitle>
-          {subtitleRegular && <span>{subtitleRegular}</span>}
-          {subtitleRegular && subtitleHighlight && <br />}
-          {subtitleHighlight && (
-            <span className="highlight">{subtitleHighlight}</span>
-          )}
-        </SubTitle>
+        <SubtitleContainer>
+          <SubTitle>
+            {subtitleRegular && (
+              <SubtitleRegular className="regular">
+                {subtitleRegular}
+              </SubtitleRegular>
+            )}
+            {subtitleHighlight && (
+              <SubtitleHighlight className="highlight">
+                {subtitleHighlight}
+              </SubtitleHighlight>
+            )}
+          </SubTitle>
+        </SubtitleContainer>
       )}
 
       {description && <Description>{description}</Description>}
@@ -80,4 +134,15 @@ export function Header({
   );
 }
 
-export { HeaderSection, PageTitle, TitleUnderline, SubTitle, Description };
+export {
+  HeaderSection,
+  BackgroundBlur,
+  TitleWrapper,
+  PageTitle,
+  TitleUnderline,
+  SubtitleContainer,
+  SubTitle,
+  SubtitleRegular,
+  SubtitleHighlight,
+  Description,
+};
