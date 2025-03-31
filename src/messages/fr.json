@@ -116,6 +116,158 @@
           }
         }
       }
+    },
+    "about-us": {
+      "sections": {
+        "our-story": {
+          "title": "Notre Histoire",
+          "paragraph1": "Fondée en 2025, Hargile a débuté comme une petite équipe avec une grande vision : combler le fossé entre la créativité humaine et l'innovation numérique. Nos fondateurs ont reconnu que la technologie devrait améliorer les expériences humaines, et non les remplacer.",
+          "paragraph2": "Ce qui a commencé comme une petite agence s'est rapidement transformé en partenaire numérique complet pour les entreprises cherchant à transformer leur présence en ligne. À travers les défis et les succès, nous sommes restés fidèles à notre conviction fondamentale que les expériences numériques significatives commencent par la compréhension humaine. C'est la raison du H dans notre nom.",
+          "getInTouch": "Nous Contacter"
+        },
+        "our-team": {
+          "title": "Notre Équipe",
+          "members": {
+            "charles": {
+              "role": "RPM"
+            },
+            "pascal": {
+              "role": "Admin"
+            },
+            "alexis": {
+              "role": "Développeur Principal"
+            }
+          }
+        },
+        "our-mission": {
+          "title": "Notre Mission",
+          "highlighted": "Transformer les expériences numériques",
+          "subheading": "par l'innovation centrée sur l'humain et la technologie.",
+          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement répondent aux objectifs commerciaux, mais qui améliorent également la connexion humaine, rendant la technologie plus accessible, intuitive et significative.",
+          "values": {
+            "human": {
+              "title": "Centré sur l'Humain",
+              "description": "Prioriser les personnes dans chaque solution numérique que nous créons."
+            },
+            "innovation": {
+              "title": "Innovation",
+              "description": "Adopter de nouvelles idées et technologies pour résoudre des défis complexes."
+            },
+            "integrity": {
+              "title": "Intégrité",
+              "description": "Tenir nos promesses avec transparence et pratiques éthiques."
+            }
+          }
+        },
+        "our-commitment": {
+          "title": "Notre Engagement",
+          "highlighted": "Favoriser l'innovation durable",
+          "subtitle": "grâce à une technologie responsable et des pratiques éthiques.",
+          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement transforment les entreprises, mais respectent également notre planète et autonomisent les communautés, rendant la technologie plus durable, responsable et impactante.",
+          "bubbles": {
+            "goodplanet": "De nos bénéfices vont à GoodPlanet",
+            "carbon": "Réduction de l'empreinte carbone",
+            "renewable": "Alimenté par énergie renouvelable"
+          },
+          "pillars": {
+            "environmental": "Responsabilité Environnementale",
+            "ethical": "Innovation Éthique",
+            "inclusion": "Inclusion Numérique"
+          }
+        }
+      }
+    },
+    "services": {
+      "title": "Nos services",
+      "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+      "mainTitle": "Nos Services",
+      "subtitleItalic": "Solutions innovantes",
+      "subtitleBold": "pour votre transformation digitale",
+      "description": "Nous proposons une gamme complète de services numériques pour vous accompagner dans chaque étape de votre transformation digitale, de la conception à l'optimisation.",
+      "categories": {
+        "dev": {
+          "title": "Développement et Conception de Solutions"
+        },
+        "maintenance": {
+          "title": "Maintenance et Modernisation"
+        },
+        "ai": {
+          "title": "Intelligence Artificielle et Solutions Cloud"
+        },
+        "analysis": {
+          "title": "Analyse et Qualité"
+        }
+      },
+      "services": {
+        "web": {
+          "title": "Conception, développement Web",
+          "description": "Sites vitrines, applications web, portails et solutions sur mesure"
+        },
+        "mobile": {
+          "title": "Développement d'applications mobiles",
+          "description": "Applications iOS et Android, interfaces utilisateur responsive"
+        },
+        "cms": {
+          "title": "Développement CMS",
+          "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu"
+        },
+        "ecommerce": {
+          "title": "E-Commerce",
+          "description": "Solutions de commerce électronique performantes et sécurisées"
+        },
+        "api": {
+          "title": "Développement d'APIs",
+          "description": "Création d'interfaces de programmation pour connecter vos systèmes"
+        },
+        "seo": {
+          "title": "Optimisation performance SEO",
+          "description": "Référencement naturel et optimisation pour les moteurs de recherche"
+        },
+        "support": {
+          "title": "Maintenance support",
+          "description": "Support technique, mises à jour et maintenance préventive"
+        },
+        "migration": {
+          "title": "Migration, modernisation d'applications",
+          "description": "Mise à niveau de systèmes existants et migration vers des technologies modernes"
+        },
+        "performance": {
+          "title": "Optimisation des performances",
+          "description": "Amélioration de la vitesse et de l'expérience utilisateur"
+        },
+        "agents": {
+          "title": "Développement d'agents intelligents",
+          "description": "Chatbots intelligents et assistants virtuels personnalisés"
+        },
+        "cloud": {
+          "title": "Solutions Cloud",
+          "description": "Infrastructure cloud, déploiement et optimisation des ressources"
+        },
+        "automation": {
+          "title": "Automatisation des processus métier",
+          "description": "Optimisation des flux de travail et automatisation des tâches répétitives"
+        },
+        "ml": {
+          "title": "Pipelines de prédiction avec Machine Learning",
+          "description": "Analyses prédictives et solutions basées sur l'apprentissage automatique"
+        },
+        "consulting": {
+          "title": "Conseil stratégique en IA",
+          "description": "Accompagnement expert pour l'intégration de l'IA dans votre entreprise"
+        },
+        "reporting": {
+          "title": "Analyse – reporting",
+          "description": "Analyse de données et création de rapports personnalisés"
+        },
+        "qa": {
+          "title": "Tests et assurance qualité (QA)",
+          "description": "Tests fonctionnels, de performance et assurance qualité des solutions"
+        },
+        "apidev": {
+          "title": "Développement d'APIs",
+          "description": "Conception et implémentation d'APIs robustes"
+        }
+      }
     }
   }
 }

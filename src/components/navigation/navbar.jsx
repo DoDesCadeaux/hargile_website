@@ -4,7 +4,7 @@ import {useEffect, useRef} from "react";
 import styled from "styled-components";
 import {NavbarButton} from "@/components/navigation/button/navbar-button";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
-import {Link} from "@/i18n/navigation";
+import {Link, useRouter} from "@/i18n/navigation";
 import {OptimizedImage} from "@/components/optimizedImage";
 import anime from "animejs";
 
@@ -18,6 +18,41 @@ const StyledNavbar = styled.div`
     align-items: center;
     padding: 1vh 1.77vw;
     z-index: 10000;
+`;
+
+const Brand = styled.button`
+    cursor: pointer;
+
+    &.transition::before {
+        content: '';
+        position: absolute;
+        width: 150vw;
+        height: 150vh;
+        top: -25vh;
+        left: -25vw;
+        background: rgba(0, 0, 0, 0);
+        z-index: 9999999;
+
+        animation: 3s appearInOut ease-in-out;
+    }
+
+    @keyframes appearInOut {
+        0% {
+            background: rgba(0, 0, 0, 0);
+        }
+
+        30% {
+            background: rgba(0, 0, 0, 1);
+        }
+
+        50% {
+            background: rgba(0, 0, 0, 1);
+        }
+
+        100% {
+            background: rgba(0, 0, 0, 0);
+        }
+    }
 `;
 
 const NavbarNavigation = styled.nav`
@@ -55,7 +90,9 @@ const Spacer = styled.div`
 
 export const Navbar = () => {
     const siteNavigation = useSiteNavigation();
+    const router = useRouter();
     const navbarRef = useRef(null);
+    const brandRef = useRef(null);
     const menuState = useRef({
         navbarHeight: 0,
         menuItemsAnimation: null,
@@ -164,18 +201,34 @@ export const Navbar = () => {
         {path: '/contact-us', label: 'Contact Us'},
     ];
 
+    const triggerHomeTransitionAnimation = () => {
+        brandRef.current.classList.add('transition')
+
+        setTimeout(() => {
+            router.push('/');
+
+            setTimeout(() => {
+                brandRef.current.classList.remove('transition')
+            }, 2200)
+        }, 800)
+
+    }
+
     return (
         <>
             <StyledNavbar ref={navbarRef}>
-                <div className="navbar__brand">
-                    <Link href="/">
-                        <OptimizedImage
-                            width="1754" height="815" src="/images/brand/brand_large.png"
-                            alt="Brand Logo"
-                            style={{width: "calc(150px + 5.4vw)"}}
-                        />
-                    </Link>
-                </div>
+                <Brand
+                    ref={brandRef}
+                    onClick={triggerHomeTransitionAnimation}
+                >
+                    <OptimizedImage
+                        width="1754"
+                        height="815"
+                        src="/images/brand/brand_large.png"
+                        alt="Brand Logo"
+                        style={{width: "calc(150px + 5.4vw)"}}
+                    />
+                </Brand>
 
                 <div className="navbar__menu__button"><NavbarButton/></div>
 
@@ -186,7 +239,8 @@ export const Navbar = () => {
                     $visible={menuState.current.navigationVisible}
                 >
                     {menuItems.map((item, index) => (
-                        <StyledLink key={index} className="navbar__navigation__item" href={item.path}>
+                        <StyledLink onClick={siteNavigation.toggleMenu} key={index} className="navbar__navigation__item"
+                                    href={item.path}>
                             {item.label}
                         </StyledLink>
                     ))}
