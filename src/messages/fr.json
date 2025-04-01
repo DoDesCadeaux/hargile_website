@@ -235,6 +235,24 @@
         "text": "En soumettant ce formulaire, vous acceptez notre",
         "link": "politique de confidentialité",
         "requiredFields": "Champs obligatoires"
+      },
+      "contactInfo": {
+        "title": "Nos coordonnées",
+        "email": {
+          "title": "Email",
+          "value": "contact@hargile.com"
+        },
+        "phone": {
+          "title": "Téléphone",
+          "value": "+32 (0)1 23 45 67 89"
+        },
+        "address": {
+          "title": "Adresse",
+          "value": "123 rue de l'Innovation, 1000 BXL"
+        }
+      },
+      "social": {
+        "title": "Suivez-nous"
       }
     }
   }

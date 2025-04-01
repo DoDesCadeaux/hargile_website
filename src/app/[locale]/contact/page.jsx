@@ -1,24 +1,34 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { ContactSection } from "@/components/pages/contact/components/ContactSection";
 import { ServicesSection } from "@/components/pages/contact/components/ServicesSection";
 import { PrivacyFooter } from "@/components/pages/contact/components/PrivacyFooter";
+import { SocialMedia } from "@/components/pages/contact/components/SocialMedia";
 import { Header } from "@/components/header/mainHeader";
+import styled from "styled-components";
 import {
   FormContainer,
   PageWrapper,
   BackgroundBlur,
-  FormGrid,
 } from "@/components/pages/homepage/quote-request/quote-request-form.styled";
+
+// Create a new grid component that doesn't use a form element
+const ContactFormGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 70% 30%;
+  }
+`;
 
 export default function ContactForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    watch,
   } = useForm();
 
   // Get translations from the contact page section
@@ -42,18 +52,15 @@ export default function ContactForm() {
           showBackgroundBlur={false}
         />
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormGrid>
-            <ContactSection
-              t={t}
-              register={register}
-              errors={errors}
-              setValue={setValue}
-              watch={watch}
-            />
+          <ContactFormGrid>
+            <ContactSection t={t} register={register} errors={errors} />
             <ServicesSection t={t} />
-          </FormGrid>
+          </ContactFormGrid>
           <PrivacyFooter t={t} />
         </form>
+
+        {/* Social Media section */}
+        <SocialMedia />
       </FormContainer>
     </PageWrapper>
   );

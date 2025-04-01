@@ -223,8 +223,7 @@
         "message": "Your message"
       },
       "services": {
-        "title": "Service Type",
-        "description": "Select one or more options",
+        "title": "Our Contact Details",
         "webDevelopment": "Web Development",
         "mobileApps": "Mobile Applications",
         "ai": "Artificial Intelligence",
@@ -235,6 +234,24 @@
         "text": "By submitting this form, you accept our",
         "link": "privacy policy",
         "requiredFields": "Required fields"
+      },
+      "contactInfo": {
+        "title": "Our Contact Details",
+        "email": {
+          "title": "Email",
+          "value": "contact@hargile.com"
+        },
+        "phone": {
+          "title": "Telephone",
+          "value": "+32 (0)1 23 45 67 89"
+        },
+        "address": {
+          "title": "Address",
+          "value": "123 rue de l'Innovation, 1000 BXL"
+        }
+      },
+      "social" : {
+        "title" : "Follow Us"
       }
     }
   }
