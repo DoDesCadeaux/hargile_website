@@ -122,11 +122,13 @@
             "part2": "for your project"
           },
           "description": "Complete the form below to receive a personalized estimate. Our team of experts will analyze your needs and contact you within 48 hours.",
+          "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
           "contact": {
             "title": "Contact Information",
             "name": "First and Last Name",
             "email": "Email",
             "phone": "Phone",
+            "message": "Your message",
             "projectDescription": "Project Description",
             "budget": {
               "label": "Estimated Budget",
@@ -204,6 +206,35 @@
         "title": "Ready to transform your digital presence?",
         "description": "Let's collaborate to create innovative and sustainable digital solutions tailored to your unique business needs.",
         "button": "Get in Touch"
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": {
+        "part1": "Get in touch",
+        "part2": "with our team"
+      },
+      "description": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
+      "contact": {
+        "title": "Contact Information",
+        "name": "First and Last Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Your message"
+      },
+      "services": {
+        "title": "Service Type",
+        "description": "Select one or more options",
+        "webDevelopment": "Web Development",
+        "mobileApps": "Mobile Applications",
+        "ai": "Artificial Intelligence",
+        "cloud": "Cloud Solutions"
+      },
+      "submit": "Send Message",
+      "privacy": {
+        "text": "By submitting this form, you accept our",
+        "link": "privacy policy",
+        "requiredFields": "Required fields"
       }
     }
   }

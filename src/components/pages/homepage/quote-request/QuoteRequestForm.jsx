@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations, useLocale } from "next-intl";
-import { FormHeader } from "./components/FormHeader";
 import { ContactSection } from "./components/ContactSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { PrivacyFooter } from "./components/PrivacyFooter";

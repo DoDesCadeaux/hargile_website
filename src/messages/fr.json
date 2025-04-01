@@ -122,11 +122,13 @@
             "part2": "gratuite pour votre projet"
           },
           "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
           "contact": {
             "title": "Informations de contact",
             "name": "Nom et prénom",
             "email": "Email",
             "phone": "Téléphone",
+            "message": "Votre message",
             "projectDescription": "Description du projet",
             "budget": {
               "label": "Budget estimé",
@@ -204,6 +206,35 @@
         "title": "Prêt à transformer votre présence numérique ?",
         "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
         "button": "Contactez-nous"
+      }
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "subtitle": {
+        "part1": "Entrez en contact",
+        "part2": "avec notre équipe"
+      },
+      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
+      "contact": {
+        "title": "Informations de contact",
+        "name": "Nom et prénom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "message": "Votre message"
+      },
+      "services": {
+        "title": "Type de service",
+        "description": "Sélectionnez une ou plusieurs options",
+        "webDevelopment": "Développement Web",
+        "mobileApps": "Applications Mobiles",
+        "ai": "Intelligence Artificielle",
+        "cloud": "Solutions Cloud"
+      },
+      "submit": "Envoyer le message",
+      "privacy": {
+        "text": "En soumettant ce formulaire, vous acceptez notre",
+        "link": "politique de confidentialité",
+        "requiredFields": "Champs obligatoires"
       }
     }
   }
