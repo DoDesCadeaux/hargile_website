@@ -264,7 +264,7 @@ export const DropdownContainer = styled.div`
 `;
 
 export const DropdownItem = styled.button.attrs({
-  className: "fluid-type--1",
+  className: "fluid-type-1",
 })`
   display: block;
   padding: 0.5rem 1rem;
@@ -368,7 +368,7 @@ export const SubmitButton = styled.button.attrs({
 `;
 
 export const PrivacyNote = styled.div.attrs({
-  className: "fluid-type--1",
+  className: "fluid-type-1",
 })`
   margin-top: 1.5rem;
   color: white;
