@@ -13,7 +13,7 @@ const BlurBackground = ({
   color,
   size = "50px",
   intensity = 2,
-  opacity = 0.1,
+  opacity = 0.15,
 }) => {
   const StyledBlur = styled.div`
     position: absolute;
@@ -24,7 +24,7 @@ const BlurBackground = ({
     opacity: ${opacity};
     filter: blur(40px);
     transform: scale(${intensity});
-    z-index: -99;
+    z-index: -9999;
   `;
 
   return <StyledBlur />;

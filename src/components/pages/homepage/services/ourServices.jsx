@@ -1,6 +1,7 @@
 // OurServices.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 import ServiceSection from "./ServiceSection";
 import SectionHeader from "./SectionHeader";
 import { getServiceIcons } from "./serviceIcons";
@@ -8,7 +9,7 @@ import { useResponsive } from "./useResponsive";
 import { POSITIONS } from "./constants";
 
 /**
- * Main component to display all services
+ * Main component to display all services with animations
  */
 const OurServices = () => {
   const t = useTranslations("pages.homepage.sections.services");
@@ -57,27 +58,63 @@ const OurServices = () => {
 
   const services = getServiceData();
 
+  // Animation variants for the container
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delayChildren: 0.2,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  // Animation variants for the grid items (desktop)
+  const gridItemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   // Render mobile layout
   if (isMobile) {
-    return renderMobileLayout(services, t);
+    return renderMobileLayout(services, t, containerVariants);
   }
 
   // Render desktop/tablet layout
-  return renderDesktopLayout(services, t, isTablet);
+  return renderDesktopLayout(
+    services,
+    t,
+    isTablet,
+    containerVariants,
+    gridItemVariants
+  );
 };
 
 /**
- * Renders the mobile layout
+ * Renders the mobile layout with animations and glassmorphism effect
  */
-const renderMobileLayout = (services, t) => (
+const renderMobileLayout = (services, t, containerVariants) => (
   <section className="relative w-full py-8 px-4">
     <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
-    <div
+    <motion.div
       className="container mx-auto px-4 relative"
       style={{ margin: "0 auto" }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <div
+      <motion.div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -87,27 +124,53 @@ const renderMobileLayout = (services, t) => (
         }}
       >
         {Object.keys(services).map((key) => (
-          <div key={key} style={{ margin: "1rem 0", paddingLeft: "0.5rem" }}>
+          <motion.div
+            key={key}
+            style={{
+              margin: "1rem 0",
+              padding: "1.5rem",
+              background: "rgba(17, 12, 41, 0.6)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              borderRadius: "16px",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <ServiceSection {...services[key]} />
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   </section>
 );
 
 /**
- * Renders the desktop/tablet layout
+ * Renders the desktop/tablet layout with animations
  */
-const renderDesktopLayout = (services, t, isTablet) => (
+const renderDesktopLayout = (
+  services,
+  t,
+  isTablet,
+  containerVariants,
+  gridItemVariants
+) => (
   <section className="relative w-full">
     <SectionHeader title={t("title")} subtitle={t("subtitle")} />
 
-    <div
+    <motion.div
       className="container mx-auto px-4 relative"
       style={{ margin: "0 auto" }}
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <div
+      <motion.div
         style={{
           display: "grid",
           gridTemplateColumns: isTablet ? "5fr 2fr 5fr" : "repeat(3, 1fr)",
@@ -116,7 +179,7 @@ const renderDesktopLayout = (services, t, isTablet) => (
         }}
       >
         {/* Left Column */}
-        <div
+        <motion.div
           style={{
             marginTop: "0",
             display: "flex",
@@ -124,20 +187,33 @@ const renderDesktopLayout = (services, t, isTablet) => (
             justifyContent: "space-between",
             height: isTablet ? "45vh" : "62vh",
           }}
+          variants={gridItemVariants}
         >
-          <div style={{ margin: "1rem 0" }}>
+          <motion.div
+            style={{ margin: "1rem 0" }}
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, type: "spring" }}
+            viewport={{ once: true }}
+          >
             <ServiceSection {...services[POSITIONS.TOP_LEFT]} />
-          </div>
-          <div style={{ margin: "2rem 0" }}>
+          </motion.div>
+          <motion.div
+            style={{ margin: "2rem 0" }}
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
+            viewport={{ once: true }}
+          >
             <ServiceSection {...services[POSITIONS.BOTTOM_LEFT]} />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Middle Column (Empty) */}
         <div></div>
 
         {/* Right Column */}
-        <div
+        <motion.div
           style={{
             marginTop: "0",
             display: "flex",
@@ -145,16 +221,29 @@ const renderDesktopLayout = (services, t, isTablet) => (
             justifyContent: "space-between",
             height: isTablet ? "45vh" : "60vh",
           }}
+          variants={gridItemVariants}
         >
-          <div style={{ margin: "2rem 0" }}>
+          <motion.div
+            style={{ margin: "2rem 0" }}
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, type: "spring" }}
+            viewport={{ once: true }}
+          >
             <ServiceSection {...services[POSITIONS.TOP_RIGHT]} />
-          </div>
-          <div style={{ margin: "2rem 0" }}>
+          </motion.div>
+          <motion.div
+            style={{ margin: "2rem 0" }}
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
+            viewport={{ once: true }}
+          >
             <ServiceSection {...services[POSITIONS.BOTTOM_RIGHT]} />
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   </section>
 );
 
