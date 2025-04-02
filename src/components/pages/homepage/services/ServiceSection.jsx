@@ -20,7 +20,7 @@ const ServiceSection = ({ icon, title, items, position }) => {
           {icon}
         </div>
         <h3
-          className="text-xl md:text-2xl font-bold text-white"
+          className="fluid-type-2 md:text-2xl font-bold text-white"
           style={{ margin: 0 }}
         >
           {title}

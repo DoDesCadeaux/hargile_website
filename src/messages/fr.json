@@ -114,6 +114,227 @@
               "api": "Développement d'APIs"
             }
           }
+        },
+        "quote-request": {
+          "title": "Demande de Devis",
+          "subtitle": {
+            "part1": "Obtenez une estimation",
+            "part2": "gratuite pour votre projet"
+          },
+          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
+          "contact": {
+            "title": "Informations de contact",
+            "name": "Nom et prénom",
+            "email": "Email",
+            "phone": "Téléphone",
+            "message": "Votre message",
+            "projectDescription": "Description du projet",
+            "budget": {
+              "label": "Budget estimé",
+              "select": "Sélectionner",
+              "less5k": "Moins de 5 000 €",
+              "5kTo10k": "5 000 € - 10 000 €",
+              "10kTo25k": "10 000 € - 25 000 €",
+              "25kTo50k": "25 000 € - 50 000 €",
+              "more50k": "Plus de 50 000 €"
+            },
+            "timeline": {
+              "label": "Échéance souhaitée",
+              "select": "Sélectionner",
+              "less1month": "Moins d'un mois",
+              "1To3months": "1 - 3 mois",
+              "3To6months": "3 - 6 mois",
+              "more6months": "Plus de 6 mois"
+            }
+          },
+          "services": {
+            "title": "Type de service",
+            "description": "Sélectionnez une ou plusieurs options",
+            "webDevelopment": "Développement Web",
+            "mobileApps": "Applications Mobiles",
+            "ai": "Intelligence Artificielle",
+            "cloud": "Solutions Cloud"
+          },
+          "submit": "Soumettre",
+          "privacy": {
+            "text": "En soumettant ce formulaire, vous acceptez notre",
+            "link": "politique de confidentialité",
+            "requiredFields": "Champs obligatoires"
+          }
+        }
+      }
+    },
+    "portfolio": {
+      "title": "Notre Portfolio",
+      "subtitle": {
+        "line1": "Transformer des idées en",
+        "line2": "expériences numériques exceptionnelles"
+      },
+      "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
+      "featuredProjects": "Projets en Vedette",
+      "viewMore": "En savoir plus",
+      "viewProject": "Voir le projet",
+      "readCaseStudy": "Lire l'étude de cas",
+      "projects": {
+        "agves": {
+          "subtitle": "Plateforme de Gestion Scolaire",
+          "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants."
+        },
+        "igo": {
+          "subtitle": "Système de Gestion de Mobilité",
+          "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables."
+        },
+        "leafy": {
+          "subtitle": "E-commerce pour Plantes",
+          "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées."
+        },
+        "multipass": {
+          "subtitle": "Application couteau suisse",
+          "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés."
+        },
+        "datasense": {
+          "subtitle": "Tableau de Bord Analytique",
+          "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées."
+        },
+        "ecotrack": {
+          "subtitle": "Surveillance de Durabilité",
+          "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables."
+        }
+      },
+      "cta": {
+        "title": "Prêt à transformer votre présence numérique ?",
+        "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
+        "button": "Contactez-nous"
+      }
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "subtitle": {
+        "part1": "Entrez en contact",
+        "part2": "avec notre équipe"
+      },
+      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
+      "contact": {
+        "title": "Informations de contact",
+        "name": "Nom et prénom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "message": "Votre message"
+      },
+      "services": {
+        "title": "Type de service",
+        "description": "Sélectionnez une ou plusieurs options",
+        "webDevelopment": "Développement Web",
+        "mobileApps": "Applications Mobiles",
+        "ai": "Intelligence Artificielle",
+        "cloud": "Solutions Cloud"
+      },
+      "submit": "Envoyer le message",
+      "privacy": {
+        "text": "En soumettant ce formulaire, vous acceptez notre",
+        "link": "politique de confidentialité",
+        "requiredFields": "Champs obligatoires"
+      },
+      "contactInfo": {
+        "title": "Nos coordonnées",
+        "email": {
+          "title": "Email",
+          "value": "contact@hargile.com"
+        },
+        "phone": {
+          "title": "Téléphone",
+          "value": "+32 (0)1 23 45 67 89"
+        },
+        "address": {
+          "title": "Adresse",
+          "value": "123 rue de l'Innovation, 1000 BXL"
+        }
+      },
+      "social": {
+        "title": "Suivez-nous"
+      }
+    },
+    "privacy-policy": {
+      "title": "Mentions Légales",
+      "lastUpdate": "Dernière mise à jour",
+      "lastUpdateDate": "18 mars 2025",
+      "inThisPage": "Dans cette page",
+      "downloadPDF": "Télécharger en PDF",
+      "print": "Imprimer",
+
+      "sections": {
+        "termsConditions": {
+          "title": "Termes et Conditions",
+          "welcome": "Bienvenue sur le site web d'Hargile. En accédant à ce site, vous acceptez d'être lié par ces conditions d'utilisation, toutes les lois et réglementations applicables. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce site.",
+          "intellectualProperty": {
+            "title": "Propriété intellectuelle",
+            "content": "Tous les contenus présents sur ce site, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques et compilations de logiciels sont la propriété d'Hargile ou de ses fournisseurs de contenu et sont protégés par les lois françaises et internationales sur le droit d'auteur."
+          },
+          "liability": {
+            "title": "Limitation de responsabilité",
+            "content": "Les informations sur ce site sont fournies \"telles quelles\", sans garantie d'aucune sorte, expresse ou implicite. Hargile n'assume aucune responsabilité quant à l'utilisation de ce site ou de son contenu. En aucun cas, Hargile ne sera responsable des dommages directs, indirects, accessoires, spéciaux ou consécutifs."
+          }
+        },
+        "privacyPolicy": {
+          "title": "Politique de Confidentialité",
+          "introduction": "Cette politique de confidentialité explique comment nous recueillons, utilisons, traitons et protégeons vos informations personnelles en conformité avec le Règlement Général sur la Protection des Données (RGPD).",
+          "dataCollection": {
+            "title": "Collecte des données",
+            "content": "Nous collectons les informations que vous nous fournissez directement lorsque vous vous inscrivez à nos services, remplissez un formulaire ou communiquez avec nous. Ces informations peuvent inclure votre nom, adresse email, numéro de téléphone et toute autre information que vous choisissez de nous fournir."
+          },
+          "dataUsage": {
+            "title": "Utilisation des données",
+            "content": "Nous utilisons vos données personnelles pour :",
+            "purposes": {
+              "services": "Fournir, maintenir et améliorer nos services",
+              "transactions": "Traiter les transactions et envoyer des notifications connexes",
+              "responses": "Répondre à vos commentaires, questions et demandes"
+            }
+          }
+        },
+        "cookies": {
+          "title": "Utilisation des Cookies",
+          "introduction": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser comment les utilisateurs utilisent notre site.",
+          "types": {
+            "title": "Types de cookies utilisés",
+            "essential": "Cookies essentiels : Nécessaires au fonctionnement du site",
+            "analytics": "Cookies analytiques : Pour analyser comment les visiteurs utilisent notre site",
+            "functional": "Cookies de fonctionnalité : Pour mémoriser vos préférences",
+            "advertising": "Cookies publicitaires : Pour diffuser des publicités pertinentes"
+          },
+          "control": {
+            "title": "Contrôle des cookies",
+            "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies déjà présents sur votre appareil et configurer la plupart des navigateurs pour les empêcher d'être placés."
+          }
+        },
+        "userRights": {
+          "title": "Droits des Utilisateurs",
+          "introduction": "Conformément au RGPD, vous disposez des droits suivants concernant vos données :",
+          "rights": {
+            "access": "Droit d'accès : Vous pouvez demander une copie de vos données personnelles",
+            "rectification": "Droit de rectification : Vous pouvez demander la correction de vos données inexactes",
+            "erasure": "Droit à l'effacement : Vous pouvez demander la suppression de vos données",
+            "restriction": "Droit à la limitation du traitement : Vous pouvez demander de limiter le traitement",
+            "portability": "Droit à la portabilité : Vous pouvez demander le transfert de vos données",
+            "objection": "Droit d'opposition : Vous pouvez vous opposer au traitement de vos données"
+          }
+        },
+        "other": {
+          "title": "Etc.",
+          "content": "Cette section contient des informations supplémentaires sur nos pratiques et politiques de confidentialité."
+        },
+        "contactUs": {
+          "title": "Nous contacter",
+          "content": "Si vous avez des questions sur notre politique de confidentialité ou nos pratiques, veuillez nous contacter via notre site web ou par email à privacy@hargile.com."
+        },
+        "international": {
+          "title": "Transferts Internationaux de données",
+          "content": "Vos informations peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction."
+        },
+        "contactSupport": {
+          "title": "Contactez-nous",
+          "content": "Pour toute question ou préoccupation concernant cette politique de confidentialité, veuillez contacter notre délégué à la protection des données à dpo@hargile.com."
         }
       }
     },

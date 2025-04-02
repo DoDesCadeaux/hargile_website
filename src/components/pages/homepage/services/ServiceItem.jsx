@@ -16,7 +16,7 @@ const ServiceItem = ({ color, text }) => (
         height: "0.75rem",
       }}
     />
-    <span className="text-white text-base md:text-lg" style={{ margin: 0 }}>
+    <span className="text-white fluid-type-1 md:text-lg" style={{ margin: 0 }}>
       {text}
     </span>
   </div>

@@ -198,7 +198,8 @@ export const Navbar = () => {
         {path: '/services', label: 'Services'},
         {path: '/solutions', label: 'Solutions'},
         {path: '/about-us', label: 'About Us'},
-        {path: '/contact-us', label: 'Contact Us'},
+        {path: '/contact', label: 'Contact'},
+        {path: '/portfolio', label: 'Portfolio'},
     ];
 
     const triggerHomeTransitionAnimation = () => {

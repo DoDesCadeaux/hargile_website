@@ -9,19 +9,20 @@ import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import LatestInsights from "@/components/pages/homepage/latest-insights/latest-insights";
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 import OurServices from "@/components/pages/homepage/services/ourServices";
-import OurCommitment from "@/components/pages/about-us/our-commitment/our-commitment";
+import QuoteRequestForm from '@/components/pages/homepage/quote-request/QuoteRequestForm';
 
 export default function HomePage() {
     return (
         <>
             <Earth>
-                <HeroSection/>
+                <HeroSection />
                 <OurSolutions/>
                 <TrustedBrandsContainer/>
                 <RecentWorks/>
                 <OurServices/>
                 <AboutUs/>
                 <LatestInsights/>
+                <QuoteRequestForm/>
             </Earth>
         </>
     );
