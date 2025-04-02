@@ -44,7 +44,7 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1.attrs({
-  className: "fluid-type-4",
+  className: "fluid-type-5",
 })`
   font-weight: bold;
   color: white;
