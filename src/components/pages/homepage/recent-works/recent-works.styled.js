@@ -64,7 +64,7 @@ export const OurWorksLink = styled.div`
 
 export const SectionLink = styled(Link)`
     display: inline-block;
-    color: var(--color-primary);
+    color: var(--color-text-light);
     font-size: 1.125rem;
     font-weight: 500;
     text-decoration: none;
@@ -78,7 +78,7 @@ export const SectionLink = styled(Link)`
         left: 0;
         width: 0;
         height: 1px;
-        background-color: var(--color-primary);
+        background-color: var(--color-text-light);
         transition: width 0.3s ease;
     }
 
