@@ -9,19 +9,21 @@ import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import LatestInsights from "@/components/pages/homepage/latest-insights/latest-insights";
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 import OurServices from "@/components/pages/homepage/services/ourServices";
-import QuoteRequestForm from '@/components/pages/homepage/quote-request/QuoteRequestForm';
+import OurCommitment from "@/components/pages/about-us/our-commitment/our-commitment";
 
 export default function HomePage() {
     return (
-        <Earth>
-            <HeroSection/>
-            <OurSolutions/>
-            <TrustedBrandsContainer/>
-            <RecentWorks/>
-            <OurServices/>
-            <AboutUs/>
-            <LatestInsights/>
-            <QuoteRequestForm/>
-        </Earth>
+        <>
+            <Earth>
+                <HeroSection/>
+                <OurSolutions/>
+                <TrustedBrandsContainer/>
+                <RecentWorks/>
+                <OurServices/>
+                <AboutUs/>
+                <LatestInsights/>
+                <OurCommitment/>
+            </Earth>
+        </>
     );
 }

@@ -44,9 +44,9 @@ export const SubtitleBold = styled.h2.attrs({
 `;
 
 export const Description = styled.p.attrs({
-    className: 'fluid-type-0'
+    className: 'fluid-type-1'
 })`
-  color: var(--color-text-light);
+  color: rgb(180,180,180);
   max-width: 800px;
   line-height: 1.6;
 `;
