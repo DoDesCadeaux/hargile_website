@@ -13,17 +13,15 @@ import QuoteRequestForm from '@/components/pages/homepage/quote-request/QuoteReq
 
 export default function HomePage() {
     return (
-        <>
-            <Earth>
-                <HeroSection />
-                <OurSolutions/>
-                <TrustedBrandsContainer/>
-                <RecentWorks/>
-                <OurServices/>
-                <AboutUs/>
-                <LatestInsights/>
-                <QuoteRequestForm/>
-            </Earth>
-        </>
+        <Earth>
+            <HeroSection/>
+            <OurSolutions/>
+            <TrustedBrandsContainer/>
+            <RecentWorks/>
+            <OurServices/>
+            <AboutUs/>
+            <LatestInsights/>
+            <QuoteRequestForm/>
+        </Earth>
     );
 }

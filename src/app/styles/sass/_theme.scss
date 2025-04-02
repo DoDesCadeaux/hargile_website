@@ -21,59 +21,5 @@ $background-card-light: rgba(15, 23, 42, 0.7);
 $accent-agves: #4F46E5;
 $accent-i-go: #0EA5E9;
 $accent-multipass: #8B5CF6;
-
 $accent-mihai: #a855f7;
 
-// Apply Sass variables to CSS variables
-:root {
-  /* Base colors */
-  --color-primary: #{$primary};
-  --color-primary-light: #{$primary-light};
-  --color-primary-hover: #{$primary-hover};
-
-  /* Text colors */
-  --color-text: #{$text-dark};
-  --color-text-light: #{$text-light};
-  --color-text-secondary: #{$text-secondary-light};
-
-  /* Background colors */
-  --color-background: #{$background-light};
-  --color-background-dark: #{$background-dark};
-  --color-background-card: #{$background-card-dark};
-
-  /* Accent colors for solutions */
-  --color-accent-agves: #{$accent-agves};
-  --color-accent-i-go: #{$accent-i-go};
-  --color-accent-multipass: #{$accent-multipass};
-  /* Couleurs de Mihai */
-  --color-accent-mihai: #{$accent-mihai};
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    font-weight: v.$font-weight-dark;
-    --color-text: #{$text-light};
-    --color-text-light: #{$text-light};
-    --color-text-secondary: #{$text-secondary-light};
-    --color-background: #{$background-dark};
-    --color-background-card: #{$background-card-dark};
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-text: #{$text-dark};
-    --color-text-light: #{$background-light};
-    --color-text-secondary: #{$text-secondary-dark};
-    --color-background: #{$background-light};
-    --color-background-dark: #0f172a;
-    --color-background-card: #{$background-card-light};
-  }
-}
-
-@media (prefers-contrast: high) {
-  :root {
-    --color-text: #000;
-    --color-background: #fff;
-  }
-}
