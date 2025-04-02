@@ -1,17 +1,8 @@
-import {Geist, Geist_Mono} from "next/font/google";
-import "./styles/globals.scss";
+import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
 import {SiteNavigationProvider} from "@/components/providers/site-navigation-provider";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+import {ThemeProvider} from "@/components/providers/theme-provider";
 
 export const metadata = {
     title: "Create Next App",
@@ -19,12 +10,16 @@ export const metadata = {
 };
 
 export default async function RootLayout({children}) {
+    "use client"
+
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
         <body>
-        <SiteNavigationProvider>
-            {children}
-        </SiteNavigationProvider>
+        <ThemeProvider>
+            <SiteNavigationProvider>
+                {children}
+            </SiteNavigationProvider>
+        </ThemeProvider>
         </body>
         </html>
     )

@@ -1,22 +1,20 @@
-@use "variables" as v;
+// Base Sass variables
+$primary: #2563eb;
+$primary-light: rgba(37, 99, 235, 0.1);
+$primary-hover: #1d4fd8;
 
-:root {
-  --color-text: #171717;
-  --color-background: #ffffff;
-  --color-primary: #2563eb;
-}
+$text-dark: #171717;
+$text-light: #ededed;
+$text-secondary-light: rgba(237, 237, 237, 0.7);
+$text-secondary-dark: rgba(23, 23, 23, 0.7);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #ededed;
-    --color-background: #0a0a0a;
-    font-weight: v.$font-weight-dark;
-  }
-}
+$background-light: #ffffff;
+$background-dark: #06030F;
+$background-card-dark: rgba(255, 255, 255, 0.05);
+$background-card-light: rgba(15, 23, 42, 0.7);
 
-@media (prefers-contrast: high) {
-  :root {
-    --color-text: #000;
-    --color-background: #fff;
-  }
-}
+// Accent colors for solutions
+$accent-agves: #4F46E5;
+$accent-i-go: #0EA5E9;
+$accent-multipass: #8B5CF6;
+

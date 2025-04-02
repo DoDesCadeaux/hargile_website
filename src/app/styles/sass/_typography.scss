@@ -67,7 +67,6 @@ blockquote {
   @include fluid.element-typography('blockquote');
   margin: 2em 0;
   padding-left: 1.5em;
-  border-left: 3px solid var(--color-primary);
 }
 
 pre {
@@ -98,7 +97,7 @@ li {
 // Form elements
 button, input, select, textarea {
   @include fluid.element-typography('button, input, select, textarea');
-  padding: 0.5em 1em;
+  padding: 0.5em 0em;
 }
 
 label {
@@ -141,6 +140,5 @@ time {
 
 a {
   @include fluid.element-typography('a');
-  color: var(--color-primary);
   text-decoration: underline;
 }

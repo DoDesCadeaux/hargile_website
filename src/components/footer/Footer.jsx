@@ -3,15 +3,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from "@/i18n/navigation";
-import {FooterLink} from "@/components/footer/footer-link";
-import {Column} from "@/components/footer/column";
-import {Heading} from "@/components/footer/heading";
-import {FooterContainer} from "@/components/footer/footer-container";
-import {FooterContent} from "@/components/footer/footer-content";
-import {NewsletterSection} from "@/components/footer/newsletter-section";
-import {EmailInput} from "@/components/footer/email-input";
-import {BottomBar} from "@/components/footer/bottom-bar";
-import {BottomLinks} from "@/components/footer/bottom-links";
+import {FooterLinkStyled} from "@/components/footer/footer-link.styled";
+import {ColumnStyled} from "@/components/footer/column.styled";
+import {HeadingStyled} from "@/components/footer/heading.styled";
+import {FooterContainerStyled} from "@/components/footer/footer-container.styled";
+import {FooterContentStyled} from "@/components/footer/footer-content.styled";
+import {NewsletterSectionStyled} from "@/components/footer/newsletter-section.styled";
+import {EmailInputStyled} from "@/components/footer/email-input.styled";
+import {BottomBarStyled} from "@/components/footer/bottom-bar.styled";
+import {BottomLinksStyled} from "@/components/footer/bottom-links.styled";
 
 const Text = styled.p`
     margin-bottom: 0.5rem;
@@ -23,69 +23,70 @@ const Copyright = styled.div`
 
 const Footer = () => {
     return (
-        <FooterContainer>
-            <FooterContent>
+        <FooterContainerStyled>
+            <FooterContentStyled>
                 {/* Company info */}
-                <Column>
-                    <Heading>Hargile</Heading>
+                <ColumnStyled>
+                    <HeadingStyled>Hargile</HeadingStyled>
                     <Text>123 Lorem ipsum</Text>
-                    <FooterLink href="mailto:info@hargile.com">info@hargile.com</FooterLink>
+                    <FooterLinkStyled href="mailto:info@hargile.com">info@hargile.com</FooterLinkStyled>
                     <Text>Numéro de téléphone</Text>
-                </Column>
+                </ColumnStyled>
 
                 {/* Solutions */}
-                <Column>
-                    <Heading>Solutions</Heading>
-                    <FooterLink as={Link} href="/solutions/agves">AGVES</FooterLink>
-                    <FooterLink as={Link} href="/solutions/i-go">I GO</FooterLink>
-                    <FooterLink as={Link} href="/solutions/multipass">MultiPass</FooterLink>
-                </Column>
+                <ColumnStyled>
+                    <HeadingStyled>Solutions</HeadingStyled>
+                    <FooterLinkStyled as={Link} href="/solutions/agves">AGVES</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/solutions/i-go">I GO</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/solutions/multipass">MultiPass</FooterLinkStyled>
+                </ColumnStyled>
 
                 {/* Services */}
-                <Column>
-                    <Heading>Services</Heading>
-                    <FooterLink as={Link} href="/services/web-development">Web Development</FooterLink>
-                    <FooterLink as={Link} href="/services/mobile-applications">Mobile applications</FooterLink>
-                    <FooterLink as={Link} href="/services/ai-solutions">AI Solutions</FooterLink>
-                    <FooterLink as={Link} href="/services/digital-marketing">Digital Marketing</FooterLink>
-                    <FooterLink as={Link} href="/services/cloud">Cloud</FooterLink>
-                </Column>
+                <ColumnStyled>
+                    <HeadingStyled>Services</HeadingStyled>
+                    <FooterLinkStyled as={Link} href="/services/web-development">Web Development</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/services/mobile-applications">Mobile
+                        applications</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/services/ai-solutions">AI Solutions</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/services/digital-marketing">Digital Marketing</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/services/cloud">Cloud</FooterLinkStyled>
+                </ColumnStyled>
 
                 {/* Company */}
-                <Column>
-                    <Heading>Company</Heading>
-                    <FooterLink as={Link} href="/about">About Us</FooterLink>
-                    <FooterLink as={Link} href="/team">Our Team</FooterLink>
-                    <FooterLink as={Link} href="/contact">Contact</FooterLink>
-                </Column>
+                <ColumnStyled>
+                    <HeadingStyled>Company</HeadingStyled>
+                    <FooterLinkStyled as={Link} href="/about">About Us</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/team">Our Team</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/contact">Contact</FooterLinkStyled>
+                </ColumnStyled>
 
                 {/* Resources */}
-                <Column>
-                    <Heading>Resources</Heading>
-                    <FooterLink as={Link} href="/blog">Blog</FooterLink>
-                    <FooterLink as={Link} href="/case-studies">Case studies</FooterLink>
-                </Column>
-            </FooterContent>
+                <ColumnStyled>
+                    <HeadingStyled>Resources</HeadingStyled>
+                    <FooterLinkStyled as={Link} href="/blog">Blog</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/case-studies">Case studies</FooterLinkStyled>
+                </ColumnStyled>
+            </FooterContentStyled>
 
             {/* Newsletter */}
-            <NewsletterSection>
-                <Heading>Stay updated</Heading>
+            <NewsletterSectionStyled>
+                <HeadingStyled>Stay updated</HeadingStyled>
                 <Text>Subscribe to our newsletter</Text>
-                <EmailInput type="email" placeholder="Your email address"/>
-            </NewsletterSection>
+                <EmailInputStyled type="email" placeholder="Your email address"/>
+            </NewsletterSectionStyled>
 
             {/* Bottom bar */}
-            <BottomBar>
+            <BottomBarStyled>
                 <Copyright>© 2025 Hargile. All Rights Reserved</Copyright>
-                <BottomLinks>
-                    <FooterLink as={Link} href="/legal/privacy">Privacy Policy</FooterLink>
-                    <FooterLink as={Link} href="/legal/terms">Terms of Services</FooterLink>
-                    <FooterLink as={Link} href="/legal/cookies">Cookie Policy</FooterLink>
-                    <FooterLink as={Link} href="/accessibility">Accessibility</FooterLink>
-                    <FooterLink as={Link} href="/sitemap">Site Map</FooterLink>
-                </BottomLinks>
-            </BottomBar>
-        </FooterContainer>
+                <BottomLinksStyled>
+                    <FooterLinkStyled as={Link} href="/legal/privacy">Privacy Policy</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/legal/terms">Terms of Services</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/legal/cookies">Cookie Policy</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/accessibility">Accessibility</FooterLinkStyled>
+                    <FooterLinkStyled as={Link} href="/sitemap">Site Map</FooterLinkStyled>
+                </BottomLinksStyled>
+            </BottomBarStyled>
+        </FooterContainerStyled>
     );
 };
 

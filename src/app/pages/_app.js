@@ -2,10 +2,8 @@
 
 import {useEffect} from "react";
 import Lenis from "lenis";
-import "@/styles/globals.css";
 import {NextIntlClientProvider} from "next-intl";
 import {router} from "next/client";
-
 
 
 export default function App({Component, pageProps}) {

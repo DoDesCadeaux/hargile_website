@@ -1,0 +1,78 @@
+@use "./sass/variables" as v;
+@use "./sass/fluid-typography/_config" as config;
+@use "./sass/fluid-typography/mixins/fluid-typography";
+@use "./sass/_font-family";
+@use "./sass/_base";
+@use "./sass/_typography";
+@use "sass/_theme" as theme;
+@use "./sass/_print";
+
+@use 'tailwindcss';
+
+@use "./sass/fluid-typography/_typography-helpers";
+
+@use "./sass/sections/_earth";
+
+
+@layer utilities {
+  .w-192 {
+    width: 48rem;
+  }
+
+  .h-192 {
+    height: 48rem;
+  }
+}
+
+// Apply Sass variables to CSS variables
+:root {
+  --font-weight-light: v.$font-weight-light;
+  --font-weight-dark: v.$font-weight-dark;
+  /* Base colors */
+  --color-primary: #{theme.$primary};
+  --color-primary-light: #{theme.$primary-light};
+  --color-primary-hover: #{theme.$primary-hover};
+
+  /* Text colors */
+  --color-text: #{theme.$text-dark};
+  --color-text-light: #{theme.$text-light};
+  --color-text-secondary: #{theme.$text-secondary-light};
+
+  /* Background colors */
+  --color-background: #{theme.$background-light};
+  --color-background-dark: #{theme.$background-dark};
+  --color-background-card: #{theme.$background-card-dark};
+
+  /* Accent colors for solutions */
+  --color-accent-agves: #{theme.$accent-agves};
+  --color-accent-i-go: #{theme.$accent-i-go};
+  --color-accent-multipass: #{theme.$accent-multipass};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #{theme.$text-light};
+    --color-text-light: #{theme.$text-light};
+    --color-text-secondary: #{theme.$text-secondary-light};
+    --color-background: #{theme.$background-dark};
+    --color-background-card: #{theme.$background-card-dark};
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #{theme.$text-dark};
+    --color-text-light: #{theme.$background-light};
+    --color-text-secondary: #{theme.$text-secondary-dark};
+    --color-background: #{theme.$background-light};
+    --color-background-dark: #0f172a;
+    --color-background-card: #{theme.$background-card-light};
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --color-text: #000;
+    --color-background: #fff;
+  }
+}

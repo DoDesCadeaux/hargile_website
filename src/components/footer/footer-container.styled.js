@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer`
+export const FooterContainerStyled = styled.footer`
     color: #fff;
     padding: 4rem 2rem 1rem;
     position: relative;
