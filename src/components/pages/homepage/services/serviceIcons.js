@@ -1,6 +1,9 @@
-// serviceIcons.js
 import React from "react";
 import { POSITIONS } from "./constants";
+// Import from lucide-react
+import { BrainCircuit, Laptop, ChartNoAxesCombined, Globe } from "lucide-react";
+// Import the BlurBackground component
+import BlurBackground from "@/components/BlurBackground";
 
 /**
  * Creates a set of icons for the services section
@@ -8,66 +11,77 @@ import { POSITIONS } from "./constants";
  * @returns {Object} Object containing icons for each position
  */
 export const getServiceIcons = (isMobile) => {
-  const iconSize = isMobile ? 32 : 48;
+  const iconSize = isMobile ? 40 : 65;
+
+  // Define colors for consistency
+  const colors = {
+    laptopColor: "#E56062",
+    brainColor: "#10B981",
+    chartColor: "#A855F7",
+    globeColor: "#3B82F6",
+  };
 
   return {
     [POSITIONS.TOP_LEFT]: (
-      <img
-        src="/icons/services/globe.svg"
-        alt="Web Development"
-        width={iconSize}
-        height={iconSize}
-        style={{
-          filter:
-            "invert(43%) sepia(98%) saturate(1677%) hue-rotate(202deg) brightness(102%) contrast(96%)",
-        }}
-      />
+      <div style={{ position: "relative" }}>
+        <Globe
+          size={iconSize}
+          color={colors.globeColor}
+          style={{ position: "relative", zIndex: 1 }}
+          strokeWidth="1px"
+        />
+        {/* Blue blur for globe icon */}
+        <BlurBackground
+          color="#3B82F6"
+          size={`${iconSize}px`}
+          intensity={isMobile ? 4 : 6}
+        />
+      </div>
     ),
     [POSITIONS.BOTTOM_LEFT]: (
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M6 24H12L18 6L30 42L36 24H42"
-          stroke="#EC4899"
-          strokeWidth="2"
+      <div style={{ position: "relative" }}>
+        <Laptop
+          size={iconSize}
+          color={colors.laptopColor}
+          style={{ position: "relative", zIndex: 1 }}
+          strokeWidth="1px"
         />
-      </svg>
+        <BlurBackground
+          color={colors.laptopColor}
+          size={`${iconSize}px`}
+          intensity={isMobile ? 4 : 6}
+        />
+      </div>
     ),
     [POSITIONS.TOP_RIGHT]: (
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="24" cy="24" r="8" stroke="#10B981" strokeWidth="2" />
-        <path
-          d="M24 8V2M24 46V40M8 24H2M46 24H40M12 12L8 8M36 36L40 40M12 36L8 40M36 12L40 8"
-          stroke="#10B981"
-          strokeWidth="2"
+      <div style={{ position: "relative" }}>
+        <BrainCircuit
+          size={iconSize}
+          color={colors.brainColor}
+          strokeWidth="1px"
+          style={{ position: "relative", zIndex: 1 }}
         />
-      </svg>
+        <BlurBackground
+          color={colors.brainColor}
+          size={`${iconSize}px`}
+          intensity={isMobile ? 4 : 6}
+        />
+      </div>
     ),
     [POSITIONS.BOTTOM_RIGHT]: (
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 48 48"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M6 6V42H42" stroke="#A855F7" strokeWidth="2" />
-        <path d="M14 30V34" stroke="#A855F7" strokeWidth="2" />
-        <path d="M22 26V34" stroke="#A855F7" strokeWidth="2" />
-        <path d="M30 18V34" stroke="#A855F7" strokeWidth="2" />
-        <path d="M38 10V34" stroke="#A855F7" strokeWidth="2" />
-      </svg>
+      <div style={{ position: "relative" }}>
+        <ChartNoAxesCombined
+          size={iconSize}
+          color={colors.chartColor}
+          strokeWidth="1px"
+          style={{ position: "relative", zIndex: 1 }}
+        />
+        <BlurBackground
+          color={colors.chartColor}
+          size={`${iconSize}px`}
+          intensity={isMobile ? 4 : 6}
+        />
+      </div>
     ),
   };
 };

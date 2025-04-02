@@ -43,7 +43,7 @@ export const HeadingContainer = styled.div`
 `;
 
 export const StoryHeading = styled.h1.attrs({
-    className: 'fluid-type-4'
+    className: 'fluid-type-5'
 })`
     color: var(--color-text-light);
     margin-bottom: 1rem;

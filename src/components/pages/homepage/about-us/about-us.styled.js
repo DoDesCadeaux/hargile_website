@@ -35,7 +35,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const MainTitle = styled.h1.attrs({
-    className: 'fluid-type-4'
+    className: 'fluid-type-5'
 })`
     color: var(--color-text-light);
     margin-bottom: 0.5rem;

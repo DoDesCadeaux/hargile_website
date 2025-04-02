@@ -8,7 +8,7 @@ export const TrustedBrandsContainer = styled.section`
 `;
 
 export const SectionTitle = styled.h2.attrs({
-    className: 'fluid-type-3'
+    className: 'fluid-type-4'
 })`
     text-align: center;
     margin-bottom: 8vh;

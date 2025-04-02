@@ -14,7 +14,7 @@ const HeroSection = () => {
             style={{ paddingLeft: 2 + "rem" }}
           >
             <h2 className="text-lg ">{t("companyName")}</h2>
-            <h1 className="text-6xl">
+            <h1 className="fluid-type-5">
               {t("headline.line1")}
               <br />
               {t("headline.line2")}

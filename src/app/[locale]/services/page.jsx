@@ -11,14 +11,7 @@ export default function ServicesPage() {
 
     return (
         <Earth>
-            <Header
-                description={t("description")}
-                title={t("mainTitle")}
-                subtitleHighlight={t("subtitleBold")}
-                subtitleRegular={t("subtitleItalic")}
-                showUnderline
-                showBackgroundBlur
-            />
+
             <ServicesHeader/>
             <Services/>
         </Earth>
