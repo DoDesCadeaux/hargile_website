@@ -46,7 +46,7 @@ const ServiceItem = ({ color, text, index }) => {
   return (
     <motion.div
       className="flex items-center mb-4"
-      style={{ margin: "0 0 1rem 0" }}
+      style={{ margin: "0 0 1rem 0", marginLeft: "1.5rem" }}
       variants={itemVariants}
       whileHover="hover"
     >
