@@ -8,12 +8,10 @@ import OurCommitment from "@/components/pages/about-us/our-commitment/our-commit
 export default function AboutUsPage() {
     return (
         <>
-            {/*<Earth>*/}
             <OurStory/>
             <OurTeam/>
             <OurMission/>
             <OurCommitment/>
-            {/*</Earth>*/}
         </>
     );
 }
