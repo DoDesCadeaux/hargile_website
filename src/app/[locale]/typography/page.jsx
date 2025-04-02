@@ -2,15 +2,12 @@
 
 
 import {useTranslations} from "next-intl";
-import {Navbar} from "@/components/navigation/navbar";
 
 export default function Home({}) {
     const t = useTranslations();
 
     return (
         <div>
-            <Navbar/>
-
             <section>
                 <p className={'fluid-type-d2'}>Lorem ipsum dolor d2</p>
                 <p className={'fluid-type-d1'}>Lorem ipsum dolor d1</p>

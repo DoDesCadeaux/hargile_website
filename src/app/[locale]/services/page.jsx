@@ -1,6 +1,5 @@
 "use client";
 
-import Earth from '@/components/Earth';
 import Services from "@/components/pages/services/services";
 import {Header} from "@/components/header/mainHeader";
 import {useTranslations} from "next-intl";
@@ -10,7 +9,7 @@ export default function ServicesPage() {
     const t = useTranslations("pages.services");
 
     return (
-        <Earth>
+        <>
             <Header
                 description={t("description")}
                 title={t("mainTitle")}
@@ -21,6 +20,6 @@ export default function ServicesPage() {
             />
             <ServicesHeader/>
             <Services/>
-        </Earth>
+        </>
     );
 }

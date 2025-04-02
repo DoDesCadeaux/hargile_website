@@ -4,6 +4,8 @@ import {routing} from '@/i18n/routing';
 import {setRequestLocale} from "next-intl/server";
 import {Navbar} from "@/components/navigation/navbar";
 import Footer from "@/components/footer/Footer";
+import EarthVideoLayer from "@/components/EarthVideoLayer";
+
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -19,8 +21,12 @@ export default async function LocaleLayout({children, params}) {
 
     return (
         <NextIntlClientProvider>
+            <EarthVideoLayer/>
             <Navbar/>
-            {children}
+            <div className={'content-container'}>
+                {children}
+            </div>
+
             <Footer/>
         </NextIntlClientProvider>
     );
