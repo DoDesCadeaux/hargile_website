@@ -186,7 +186,7 @@ export const ServiceTypesColumn = styled.div`
 `;
 
 export const SectionTitle = styled.h3.attrs({
-  className: "fluid-type-1",
+  className: "fluid-type-2",
 })`
   font-weight: 600;
   color: white;
