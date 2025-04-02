@@ -29,7 +29,7 @@ export const TitleWrapper = styled.div`
 `;
 
 export const SectionTitle = styled.h2.attrs({
-    className: 'fluid-type-5'
+    className: 'fluid-type-4'
 })`
     color: var(--color-text-light);
     font-weight: 600;
