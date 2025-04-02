@@ -185,7 +185,7 @@ const renderDesktopLayout = (
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            height: isTablet ? "45vh" : "62vh",
+            height: isTablet ? "45vh" : "70vh",
           }}
           variants={gridItemVariants}
         >
@@ -219,7 +219,7 @@ const renderDesktopLayout = (
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            height: isTablet ? "45vh" : "60vh",
+            height: isTablet ? "45vh" : "70vh",
           }}
           variants={gridItemVariants}
         >
