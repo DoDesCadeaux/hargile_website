@@ -19,6 +19,7 @@ export const CardContent = styled.div`
     position: relative;
     padding: 1.5rem;
     display: grid;
+    backdrop-filter: blur(8px);
     grid-template-areas:
                         "icon title"
                         "icon subtitle"
@@ -37,7 +38,7 @@ export const CardContent = styled.div`
         left: 0;
         width: calc(12 * 1% * 1.618);
         height: 4px;
-        background-color: var(--color-primary);
+        background-color: var(--color-accent-mihai);
     }
 `;
 
@@ -85,7 +86,7 @@ export const LearnMoreLink = styled(Link)`
     grid-area: button;
     display: flex;
     align-items: center;
-    color: var(--color-primary);
+    color: var(--color-text-light);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;

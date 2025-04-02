@@ -44,6 +44,8 @@ export const LogoWrapper = styled.div`
     box-shadow: 0 -4px 2px rgba(50, 50, 100, 0.45),
     inset 0 5px 4px rgba(50, 50, 100, 0.6),
     inset -1px -1px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    background: rgb(168, 85, 247, 0.05);
 
     &::before {
         content: '';

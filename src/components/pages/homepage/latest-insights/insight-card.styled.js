@@ -54,7 +54,7 @@ export const Category = styled.span.attrs({
 })`
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-text-light);
     margin-bottom: 0.75rem;
     letter-spacing: 0.05em;
 `;

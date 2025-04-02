@@ -86,17 +86,33 @@ export const InsightsGrid = styled.div`
 export const ViewAllLink = styled(Link)`
     margin-top: calc(2vw + 12vh);
     align-self: flex-start;
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
     z-index: 3;
-    position: relative;
+    width: max-content;
+    display: flex;
+    color: var(--color-text-light);
+    font-weight: 500;
+    text-decoration: none;
+    position: relative; /* Allow for absolute positioning of pseudo-elements */
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--color-text-light);
+        transition: width 0.3s ease;
+    }
 
     &:hover {
         transform: translateX(5px);
+
+        &:after {
+            width: 100%;
+        }
     }
 `;
