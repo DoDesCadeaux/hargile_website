@@ -1,13 +1,17 @@
 "use client"
 
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import Lenis from "lenis";
 import {NextIntlClientProvider} from "next-intl";
-import {router} from "next/client";
-import {motion} from "framer-motion";
+import {usePageTransition} from "@/components/TransitionLink";
 
+// Example of integrating the custom transition system with your app
 
 export default function App({Component, pageProps}) {
+    const [lenis, setLenis] = useState(null);
+    const {isTransitioning} = usePageTransition();
+
+    // Initialize Lenis
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.2,
@@ -25,25 +29,72 @@ export default function App({Component, pageProps}) {
         }
 
         requestAnimationFrame(raf);
+        setLenis(lenis);
 
         return () => lenis.destroy();
     }, []);
 
+    // Control scrolling during transitions
+    useEffect(() => {
+        if (!lenis) return;
+
+        if (isTransitioning) {
+            lenis.stop();
+        } else {
+            lenis.start();
+        }
+    }, [isTransitioning, lenis]);
+
     return (
         <NextIntlClientProvider
-            locale={router.locale}
+            locale={pageProps.locale}
             timeZone="Europe/Bruxelles"
             messages={pageProps.messages}
         >
-            <motion.main
-                initial="hidden" // Set the initial state to variants.hidden
-                animate="enter" // Animated state to variants.enter
-                exit="exit" // Exit state (used later) to variants.exit
-                transition={{type: 'linear'}} // Set the transition to linear
-                className=""
-            >
+            <style jsx global>{`
+                .page-transitioning {
+                    overflow: hidden !important;
+                }
+
+                html, body {
+                    overscroll-behavior-y: none;
+                }
+
+                .page-transition-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    z-index: 9999;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+                }
+
+                .page-transition-overlay.active {
+                    opacity: 1;
+                }
+
+                .page-content {
+                    min-height: 100vh;
+                    opacity: 0;
+                    transition: opacity 800ms cubic-bezier(0.33, 1, 0.68, 1);
+                }
+
+                .page-content.loaded {
+                    opacity: 1;
+                }
+            `}</style>
+
+            {/* Black overlay element for transitions */}
+            <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
+
+            {/* Page content */}
+            <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
                 <Component {...pageProps} />
-            </motion.main>
+            </main>
         </NextIntlClientProvider>
     );
 }

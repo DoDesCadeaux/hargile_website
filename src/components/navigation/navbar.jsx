@@ -8,6 +8,7 @@ import {Link, useRouter} from "@/i18n/navigation";
 import {OptimizedImage} from "@/components/optimizedImage";
 import {useMenuItems} from "@/hooks/useMenuItems";
 import {useNavigationVisibility} from "@/hooks/useNavigationVisibility";
+import {TransitionLink} from "@/components/TransitionLink";
 
 const StyledNavbar = styled.div`
     display: flex;
@@ -70,7 +71,7 @@ const NavbarNavigation = styled.nav`
     will-change: opacity;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(TransitionLink)`
     text-decoration: none;
     color: white;
     font-size: clamp(30px, 15vw, 4vw);

@@ -7,7 +7,7 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import { Header } from "@/components/header/mainHeader";
 import ProjectCard from "@/components/pages/portfolio/components/projectCards";
-import Earth from "@/components/Earth";
+import Earth from "@/components/earth/Earth";
 
 // Page layout components
 const PageWrapper = styled.div`
@@ -160,7 +160,7 @@ export default function PortfolioPage() {
     // Create Lenis smooth scroll instance
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       direction: "vertical",
       gestureDirection: "vertical",
       smooth: true,

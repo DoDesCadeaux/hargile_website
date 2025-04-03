@@ -15,6 +15,7 @@ import {
 } from "./our-story.styled";
 import {motion, useInView} from "framer-motion";
 import {useRef} from "react";
+import {TransitionLink} from "@/components/TransitionLink";
 
 const OurStory = () => {
     const t = useTranslations("pages.about-us.sections.our-story");
@@ -63,7 +64,7 @@ const OurStory = () => {
                     </motion.div>
 
                     <motion.div variants={itemVariants}>
-                        <GetInTouchButton as={Link} href="/contact">
+                        <GetInTouchButton as={TransitionLink} href="/contact">
                             {t("getInTouch")}
                         </GetInTouchButton>
                     </motion.div>

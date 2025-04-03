@@ -245,7 +245,7 @@ const Services = () => {
                                     key={service.id}
                                     as={motion.div}
                                     variants={itemVariants}
-                                    sectionColor={section.color}
+                                    sectioncolor={section.color}
                                 >
                                     <CardIcon bgcolor={section.bgColor}>{service.icon}</CardIcon>
                                     <CardContent>
