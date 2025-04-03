@@ -102,7 +102,7 @@ const EarthVideoLayer = () => {
 
     useEffect(() => {
         if (videoRef && videoSrc !== '') {
-            videoRef.current.getAnimations()[0].playState = 'running'
+            videoRef.current.getAnimations()[0].play();
         }
     }, [videoRef, videoSrc]);
 
