@@ -7,7 +7,7 @@ const HeroSection = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
-            <div className="container mx-auto px-4 xl:-translate-y-1/9">
+            <div className="container mx-auto px-4 xl:-translate-y-1/3">
                 <div className="flex">
                     <div className="w-full md:w-1/2 lg:w-3/5">
                         <h2 className="text-lg ">{t("companyName")}</h2>

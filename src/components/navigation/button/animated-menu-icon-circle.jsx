@@ -1,10 +1,11 @@
+"use client"
+
+import React, { memo, useEffect, useState } from "react";
 import styled from "styled-components";
-import {useEffect, useState} from "react";
-import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 
 const AnimatedMenuIconCircleStyled = styled.svg`
-    width: calc(${({$width}) => $width} * 1.8 /** factor */);
-    min-width: calc(30px * 1.8 /** factor */);
+    width: calc(${({$width}) => $width} * 1.8);
+    min-width: calc(30px * 1.8);
     position: absolute;
     overflow: initial;
     transition: width 200ms ease-in-out;
@@ -42,9 +43,8 @@ const AnimatedMenuIconCircleStyled = styled.svg`
     }
 `
 
-export const AnimatedMenuIconCircle = ({width, menuIconAnimationTime}) => {
+const AnimatedMenuIconCircle = ({width, menuIconAnimationTime, isOpen}) => {
     const [shouldAnimate, setShouldAnimate] = useState(false);
-    const siteNavigation = useSiteNavigation();
 
     useEffect(() => {
         setShouldAnimate(true);
@@ -55,14 +55,16 @@ export const AnimatedMenuIconCircle = ({width, menuIconAnimationTime}) => {
             viewBox="0 0 54 54"
             $width={width}
             $menuIconAnimationTime={menuIconAnimationTime}
-            $isOpen={siteNavigation.isOpen}
+            $isOpen={isOpen}
             $shouldAnimate={shouldAnimate}
         >
             <filter id="glowe" x="-50%" y="-50%" width="200%" height="200%">
                 <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="rgba(255, 255, 255, 0.6)"/>
             </filter>
-            <circle className={siteNavigation.isOpen ? 'open' : ''} cx="27" cy="27" r="25" filter={'url(#glowe)'}/>
-            <circle className={siteNavigation.isOpen ? 'open' : ''} cx="27" cy="27" r="25"/>
+            <circle className={isOpen ? 'open' : ''} cx="27" cy="27" r="25" filter={'url(#glowe)'}/>
+            <circle className={isOpen ? 'open' : ''} cx="27" cy="27" r="25"/>
         </AnimatedMenuIconCircleStyled>
     )
 }
+
+export default memo(AnimatedMenuIconCircle);
