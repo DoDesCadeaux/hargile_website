@@ -64,7 +64,7 @@ export const SectionSubtitle = styled.p.attrs({
 export const InsightsGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    gap: calc(3vw + 5vh);
+    gap: calc(14vh - 2vw);
     position: relative;
     z-index: 2;
 
