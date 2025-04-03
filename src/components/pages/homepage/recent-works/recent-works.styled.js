@@ -17,11 +17,15 @@ export const SectionTitle = styled.h2.attrs({
     className: 'fluid-type-4'
 })`
     position: relative;
-    margin-bottom: calc(15vh - 1vw); /* Adjusted spacing */
+    margin-bottom: calc(18vh); /* Adjusted spacing */
     color: var(--color-text-light);
     text-align: center; /* Centered title */
     width: 100%;
     z-index: 10;
+
+    @media screen and (min-width: 650px) {
+        margin-bottom: calc(14vh - 0.5vw); /* Adjusted spacing */
+    }
 `;
 
 export const WorksGrid = styled.div`
@@ -46,20 +50,24 @@ export const WorksGrid = styled.div`
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 3vw; /* Slightly reduced gap for better alignment */
         width: 100%;
-        min-height: 50vh; /* Ensure enough height for parallax */
+        min-height: 40vh; /* Ensure enough height for parallax */
 
         .work-card-container {
-            height: 60vh;
+            height: 40vh;
         }
     }
 `;
 
 export const OurWorksLink = styled.div`
-    margin-top: calc(4vw + 4vh);
+    margin-top: calc(1vw + 2vh);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+
+    @media screen  and  (min-width: 650px) {
+        margin-top: calc(2vw + 2vh);
+    }
 `;
 
 export const SectionLink = styled(Link)`

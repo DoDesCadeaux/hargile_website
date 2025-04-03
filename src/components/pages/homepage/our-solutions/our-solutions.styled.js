@@ -5,7 +5,7 @@ export const SectionContainer = styled.section`
     position: relative;
     width: 100%;
     padding-top: 8vh;
-    padding-bottom: 45vh;
+    padding-bottom: 25vh;
 `;
 
 export const ContentWrapper = styled.div`
