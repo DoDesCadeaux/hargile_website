@@ -16,27 +16,8 @@ const BoxStyled = styled.button`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    pointer-events: visible;
+    pointer-events: all;
     z-index: 100;
-`
-
-const BackgroundStyled = styled.div`
-    aspect-ratio: 1;
-    border-radius: 9999px;
-    width: calc(${({$width}) => $width} * 1.8);
-    min-width: calc(30px * 1.8);
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10px);
-    position: absolute;
-    transition: width 200ms ease-in-out, background 200ms ease-in-out;
-    pointer-events: none;
-    z-index: -1;
-
-    &.open {
-        transition: width 400ms ease-in-out, background 200ms ease-in-out;
-        background: rgba(0, 0, 0, 0.8);
-        width: 300vw;
-    }
 `
 
 const NavbarButton = ({width = '2.5vw'}) => {

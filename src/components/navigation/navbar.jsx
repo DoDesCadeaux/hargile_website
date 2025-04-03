@@ -18,7 +18,7 @@ const StyledNavbar = styled.div`
     left: 0;
     justify-content: space-between;
     align-items: center;
-    padding: 1vh 1.77vw;
+    padding: 4px 24px 4px 12px;
     z-index: 10000;
 `;
 
@@ -55,17 +55,19 @@ const Brand = styled.button`
 
 const NavbarNavigation = styled.nav`
     position: absolute;
-    top: 0;
+    top: 64px;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
+    max-height: 80vh;
+    padding-top: 20vh;
+    overflow-y: auto;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc((15vh - 5vw) * 1);
+    gap: calc((15vh - 5vw) * 2);
     z-index: 10001;
-    pointer-events: none;
     opacity: ${({$visible}) => $visible ? '1' : '0'};
     transition: opacity 0.5s ease;
     will-change: opacity;
@@ -76,7 +78,7 @@ const StyledLink = styled(TransitionLink)`
     color: white;
     font-size: clamp(30px, 15vw, 4vw);
     cursor: pointer;
-    pointer-events: visible;
+    pointer-events: all;
     font-weight: 650;
     text-transform: uppercase;
     opacity: 0;

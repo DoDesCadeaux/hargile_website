@@ -245,14 +245,14 @@ const Services = () => {
                                     key={service.id}
                                     as={motion.div}
                                     variants={itemVariants}
-                                    sectioncolor={section.color}
+                                    $sectionColor={section.color}
                                 >
-                                    <CardIcon bgcolor={section.bgColor}>{service.icon}</CardIcon>
+                                    <CardIcon $bgColor={section.bgColor}>{service.icon}</CardIcon>
                                     <CardContent>
                                         <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
                                     </CardContent>
-                                    <ServiceArrow color={section.color} />
+                                    <ServiceArrow $color={section.color} />
                                 </ServiceCard>
                             ))}
                         </ServiceGrid>
