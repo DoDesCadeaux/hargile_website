@@ -66,7 +66,7 @@ const NavbarNavigation = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc((15vh - 5vw) * 2);
+    gap: calc((15vh - 5vw) * 1);
     z-index: 10001;
     opacity: ${({$visible}) => $visible ? '1' : '0'};
     transition: opacity 0.5s ease;
