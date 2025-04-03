@@ -69,6 +69,7 @@ export const ServiceCard = styled.div`
     position: relative;
     display: flex;
     background-color: rgba(13, 16, 45, 0.5);
+    backdrop-filter: blur(8px);
     border-radius: 0.75rem;
     overflow: hidden;
     padding: 1.5rem;

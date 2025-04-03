@@ -81,7 +81,19 @@ export const TextWrapper = styled.div`
         text-align: left;
     }
 
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 3rem;
+        height: 3px;
+        background: #8B5CF6;
 
+        @media (min-width: 768px) {
+            width: 5rem;
+        }
+    }
 `;
 
 export const MainTitle = styled.h2.attrs({
@@ -111,20 +123,6 @@ export const HighlightedText = styled.h3.attrs({
     margin-bottom: 0.5rem;
     position: relative;
     display: inline-block;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: -1.5rem;
-        left: 0;
-        width: 3rem;
-        height: 3px;
-        background: #8B5CF6;
-
-        @media (min-width: 768px) {
-            width: 5rem;
-        }
-    }
 `;
 
 export const Subtitle = styled.h3.attrs({

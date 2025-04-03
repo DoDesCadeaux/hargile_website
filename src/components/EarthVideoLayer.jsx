@@ -28,11 +28,37 @@ const BackgroundVideo = styled.div`
     justify-content: center;
     align-items: center;
 
+    &::after {
+        z-index: 2;
+        display: block;
+        content: '';
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        animation: loop 15s 1500ms linear infinite;
+        background: rgba(0, 0, 0, 0);
+    }
+
+
+    @keyframes loop {
+        87% {
+            background: rgba(0, 0, 0, 0);
+        }
+
+        94% {
+            background: rgba(0, 0, 0, 1);
+        }
+
+        100% {
+            background: rgba(0, 0, 0, 0);
+        }
+    }
+
     video {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        z-index: 2;
+        z-index: 1;
     }
 `;
 
