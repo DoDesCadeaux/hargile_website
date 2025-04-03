@@ -2,9 +2,10 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {setRequestLocale} from "next-intl/server";
-import {Navbar} from "@/components/navigation/navbar";
 import Footer from "@/components/footer/Footer";
 import EarthVideoLayer from "@/components/EarthVideoLayer";
+import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
+import Navbar from "@/components/navigation/navbar";
 
 
 export function generateStaticParams() {
@@ -22,6 +23,7 @@ export default async function LocaleLayout({children, params}) {
     return (
         <NextIntlClientProvider>
             <EarthVideoLayer/>
+            <OptimizedSvgFilter/>
             <Navbar/>
             <div className={'content-container'}>
                 {children}

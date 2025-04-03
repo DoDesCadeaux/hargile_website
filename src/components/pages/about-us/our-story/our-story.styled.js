@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SectionContainer = styled.section`
     position: relative;
     width: 100%;
-    min-height: 60vh;
+    min-height: 80vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;

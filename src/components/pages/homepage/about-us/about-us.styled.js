@@ -1,6 +1,7 @@
 // src/components/pages/homepage/about-us/about-us.styled.js
 import styled from "styled-components";
 import { Link } from "@/i18n/navigation";
+import {TransitionLink} from "@/components/TransitionLink";
 
 export const SectionContainer = styled.section`
     position: relative;
@@ -44,7 +45,7 @@ export const TitleWrapper = styled.div`
     margin-bottom: 1rem;
 `;
 
-export const SubtitleContainer = styled(Link)`
+export const SubtitleContainer = styled(TransitionLink)`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

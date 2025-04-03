@@ -75,19 +75,21 @@ export const ServiceCard = styled.div`
     padding: 1.5rem;
     transition: transform 0.3s ease, background-color 0.3s ease;
     height: 100%;
-    border: 1px solid ${({sectionColor}) => `color-mix(in srgb, #000000 50%, ${sectionColor})`};
+    border: 1px solid ${({$sectionColor}) => `color-mix(in srgb, #000000 50%, ${$sectionColor})`};
 `;
 
 export const CardIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    height: 3.75rem;
+    width: 3.75rem;
+    padding: 1rem;
     border-radius: 50%;
-    background-color: ${({bgColor}) => bgColor || 'rgba(255, 255, 255, 0.05)'};
+    background-color: ${({$bgColor}) => $bgColor || 'rgba(255, 255, 255, 0.05)'};
     color: var(--color-text-light);
     margin-right: 1rem;
+    margin-top: 4px;
     flex-shrink: 0;
 `;
 
@@ -95,6 +97,7 @@ export const CardContent = styled.div`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    justify-content: space-between;
 `;
 
 export const CardTitle = styled.h3.attrs({
@@ -104,7 +107,9 @@ export const CardTitle = styled.h3.attrs({
     font-weight: 600;
     margin-bottom: 0.5rem;
     height: calc(2em * 1.5);
-
+    vertical-align: center;
+    display: flex;
+    align-items: center;
 `;
 
 export const CardDescription = styled.p.attrs({
@@ -121,7 +126,7 @@ export const ServiceArrow = styled(ChevronRight)`
     opacity: 0;
     transform: translateX(-0.5rem);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    color: ${({color}) => color || 'var(--color-primary)'};
+    color: ${({$color}) => $color || 'var(--color-primary)'};
 
     ${ServiceCard}:hover & {
         opacity: 1;

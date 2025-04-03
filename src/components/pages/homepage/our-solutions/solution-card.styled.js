@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Link} from "@/i18n/navigation";
+import {TransitionLink} from "@/components/TransitionLink";
 
 export const CardContainer = styled.div`
     background-color: var(--color-background-card);
@@ -82,7 +83,7 @@ export const CardDescription = styled.p.attrs({
     flex-grow: 1;
 `;
 
-export const LearnMoreLink = styled(Link)`
+export const LearnMoreLink = styled(TransitionLink)`
     grid-area: button;
     display: flex;
     align-items: center;

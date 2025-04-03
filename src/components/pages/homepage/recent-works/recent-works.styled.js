@@ -1,6 +1,7 @@
 // src/components/pages/homepage/recent-works/recent-works.styled.js
 import styled from "styled-components";
 import { Link } from "@/i18n/navigation";
+import {TransitionLink} from "@/components/TransitionLink";
 
 export const SectionContainer = styled.section`
     position: relative;
@@ -70,7 +71,7 @@ export const OurWorksLink = styled.div`
     }
 `;
 
-export const SectionLink = styled(Link)`
+export const SectionLink = styled(TransitionLink)`
     display: inline-block;
     color: var(--color-text-light);
     font-size: 1.125rem;

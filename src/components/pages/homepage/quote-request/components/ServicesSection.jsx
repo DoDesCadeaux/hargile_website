@@ -51,7 +51,7 @@ export function ServicesSection({ t, serviceTypes, toggleService }) {
             label={t(`services.${service.id}`)}
             isChecked={serviceTypes[service.id]}
             color={service.color}
-            bgColor={serviceTypes[service.id] ? service.bgColor : "transparent"}
+            bgcolor={serviceTypes[service.id] ? service.bgColor : "transparent"}
             hoverColor={service.hoverColor}
             onClick={() => toggleService(service.id)}
           />

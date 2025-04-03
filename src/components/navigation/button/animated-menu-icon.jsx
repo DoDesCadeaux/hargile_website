@@ -1,8 +1,7 @@
 "use client"
 
+import React, {memo, useEffect, useRef} from "react";
 import styled from "styled-components";
-import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
-import {useEffect, useRef} from "react";
 
 const ContentStyled = styled.div`
     padding: 1.125vw;
@@ -78,29 +77,21 @@ const MenuBarStyled = styled.div`
     ${({$position}) => {
         switch ($position) {
             case "right":
-                return `
-                    align-self: flex-end;
-                `;
+                return `align-self: flex-end;`;
             case "center":
-                return `
-                    align-self: center;
-                `;
+                return `align-self: center;`;
             case "left":
             default:
-                return `
-                    align-self: flex-start;
-                `;
+                return `align-self: flex-start;`;
         }
     }};
 `;
 
-export const AnimatedMenuIcon = ({menuIconAnimationTime, width = '2.5vw', onCrashComplete}) => {
-    const siteNavigation = useSiteNavigation();
+const AnimatedMenuIcon = ({menuIconAnimationTime, width = '2.5vw', onCrashComplete, isOpen}) => {
     const animationRef = useRef(null);
 
     useEffect(() => {
-        if (siteNavigation.isOpen && typeof onCrashComplete === 'function') {
-            // Trigger callback after the crash part (70% of animation)
+        if (isOpen && typeof onCrashComplete === 'function') {
             const totalAnimationTime = menuIconAnimationTime * 3;
             const crashTime = totalAnimationTime * 0.7;
             const timer = setTimeout(() => {
@@ -109,7 +100,7 @@ export const AnimatedMenuIcon = ({menuIconAnimationTime, width = '2.5vw', onCras
 
             return () => clearTimeout(timer);
         }
-    }, [siteNavigation.isOpen, menuIconAnimationTime, onCrashComplete]);
+    }, [isOpen, menuIconAnimationTime, onCrashComplete]);
 
     return (
         <ContentStyled
@@ -117,7 +108,7 @@ export const AnimatedMenuIcon = ({menuIconAnimationTime, width = '2.5vw', onCras
             $menuIconAnimationTime={menuIconAnimationTime}
             ref={animationRef}
         >
-            <div className={`menu-bar-container ${siteNavigation.isOpen ? "open" : ""}`}>
+            <div className={`menu-bar-container ${isOpen ? "open" : ""}`}>
                 <MenuBarStyled className="bar-top" $width="100%" $menuIconAnimationTime={menuIconAnimationTime}/>
                 <MenuBarStyled className="bar-middle" $width="100%" $menuIconAnimationTime={menuIconAnimationTime}/>
                 <MenuBarStyled className="bar-bottom" $width="100%" $menuIconAnimationTime={menuIconAnimationTime}/>
@@ -125,3 +116,5 @@ export const AnimatedMenuIcon = ({menuIconAnimationTime, width = '2.5vw', onCras
         </ContentStyled>
     )
 }
+
+export default memo(AnimatedMenuIcon);

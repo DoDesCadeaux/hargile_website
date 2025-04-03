@@ -154,7 +154,7 @@ export const ValueDescription = styled.p.attrs({
 export const ConnectorLine = styled.div`
     width: 2px;
     height: 3rem;
-    background-color: rgba(59, 130, 246, 0.5);
+    background-color: var(--color-accent-mihai);
     margin-left: 32px;
 
     @media (max-width: 768px) {

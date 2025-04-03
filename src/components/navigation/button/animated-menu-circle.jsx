@@ -1,6 +1,7 @@
+"use client"
+
+import React, {memo, useEffect, useRef} from "react";
 import styled from "styled-components";
-import {useEffect, useRef} from "react";
-import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 
 const SvgCircle = styled.svg`
     width: ${({$width}) => $width ? `calc(${$width} * 1.8)` : 'calc(30px * 1.8)'};
@@ -46,21 +47,22 @@ const Ripple = styled.circle`
     }
 `;
 
-export const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered = false}) => {
-    const siteNavigation = useSiteNavigation();
+const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered = false, isOpen}) => {
+    const circleRef = useRef(null);
+    const rippleRef = useRef(null);
+    const filterRef = useRef(null);
     const timerRef = useRef(null);
+
     const circleState = useRef({
         radius: 150,
         opacity: 0,
         showRipple: false,
         gaussianBlur: 2,
-        isFirstRender: true
     });
 
     const growDelay = crashTriggered ? 100 : menuIconAnimationTime;
 
     useEffect(() => {
-        // Clear any existing timers
         if (timerRef.current) {
             clearTimeout(timerRef.current);
             timerRef.current = null;
@@ -68,102 +70,80 @@ export const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered
 
         const state = circleState.current;
 
-        // Handle first render
-        if (state.isFirstRender) {
-            state.isFirstRender = false;
-            state.radius = 150;
-            state.opacity = 0;
-            return;
-        }
-
-        // Update DOM directly for performance
-        const circle = document.querySelector('.menu-animated-circle');
-        const ripple = document.querySelector('.menu-ripple');
-
-        if (!circle) return;
-
-        // Handle crash triggered animation
-        if (siteNavigation.isOpen && crashTriggered) {
+        if (isOpen && crashTriggered) {
             state.showRipple = true;
             state.opacity = 1;
 
-            if (circle) {
-                circle.setAttribute('opacity', '1');
+            if (circleRef.current) {
+                circleRef.current.setAttribute('opacity', '1');
             }
 
-            if (ripple) {
-                ripple.style.display = 'block';
+            if (rippleRef.current) {
+                rippleRef.current.style.display = 'block';
             }
 
             timerRef.current = setTimeout(() => {
                 state.radius = 30000;
                 state.gaussianBlur = 5;
 
-                if (circle) {
-                    circle.setAttribute('r', '30000');
+                if (circleRef.current) {
+                    circleRef.current.setAttribute('r', '30000');
                 }
 
-                const filter = document.querySelector('#glowEffect feGaussianBlur');
-                if (filter) {
-                    filter.setAttribute('stdDeviation', '5');
+                if (filterRef.current) {
+                    filterRef.current.setAttribute('stdDeviation', '5');
                 }
             }, 1800);
 
             setTimeout(() => {
                 state.showRipple = false;
-                if (ripple) {
-                    ripple.style.display = 'none';
+                if (rippleRef.current) {
+                    rippleRef.current.style.display = 'none';
                 }
             }, 1800);
-        }
-        // Handle standard open animation
-        else if (siteNavigation.isOpen) {
+        } else if (isOpen) {
             state.opacity = 0;
 
-            if (circle) {
-                circle.setAttribute('opacity', '0');
+            if (circleRef.current) {
+                circleRef.current.setAttribute('opacity', '0');
             }
 
             timerRef.current = setTimeout(() => {
                 state.opacity = 1;
-                if (circle) {
-                    circle.setAttribute('opacity', '1');
+                if (circleRef.current) {
+                    circleRef.current.setAttribute('opacity', '1');
                 }
 
                 setTimeout(() => {
                     state.radius = 30000;
-                    if (circle) {
-                        circle.setAttribute('r', '30000');
+                    if (circleRef.current) {
+                        circleRef.current.setAttribute('r', '30000');
                     }
                 }, 550);
 
                 setTimeout(() => {
                     state.gaussianBlur = 5;
-                    const filter = document.querySelector('#glowEffect feGaussianBlur');
-                    if (filter) {
-                        filter.setAttribute('stdDeviation', '5');
+                    if (filterRef.current) {
+                        filterRef.current.setAttribute('stdDeviation', '5');
                     }
                 }, 1150);
             }, 40);
-        }
-        // Handle menu close
-        else {
+        } else {
             state.radius = 150;
             state.gaussianBlur = 2;
 
-            if (circle) {
-                circle.setAttribute('r', '150');
+            if (circleRef.current) {
+                circleRef.current.setAttribute('r', '150');
             }
 
-            const filter = document.querySelector('#glowEffect feGaussianBlur');
-            if (filter) {
-                filter.setAttribute('stdDeviation', '2');
+            if (filterRef.current) {
+                filterRef.current.setAttribute('stdDeviation', '2');
             }
 
             timerRef.current = setTimeout(() => {
                 state.opacity = 0;
-                if (circle) {
-                    circle.setAttribute('opacity', '0');
+                if (circleRef.current) {
+                    circleRef.current.setAttribute('opacity', '0');
                 }
             }, 150);
         }
@@ -173,32 +153,31 @@ export const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered
                 clearTimeout(timerRef.current);
             }
         };
-    }, [siteNavigation.isOpen, menuIconAnimationTime, crashTriggered]);
+    }, [isOpen, menuIconAnimationTime, crashTriggered]);
 
     return (
         <SvgCircle
             viewBox="0 0 300 300"
             $width={width}
             $growDelay={growDelay}
-            $isOpen={siteNavigation.isOpen}
-            className={siteNavigation.isOpen ? "open" : "closed"}
+            $isOpen={isOpen}
+            className={isOpen ? "open" : "closed"}
             preserveAspectRatio="xMidYMid meet"
         >
             <defs>
                 <filter id="glowEffect" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation={circleState.current.gaussianBlur} result="blur"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
+                    <feGaussianBlur
+                        ref={filterRef}
+                        in="SourceAlpha"
+                        stdDeviation={circleState.current.gaussianBlur}
+                        result="blur"
+                    />
                     <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
                 </filter>
             </defs>
 
             <AnimatedCircle
-                className="menu-animated-circle"
+                ref={circleRef}
                 cx="150"
                 cy="150"
                 $r={circleState.current.radius}
@@ -207,7 +186,7 @@ export const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered
             />
             {circleState.current.showRipple && (
                 <Ripple
-                    className="menu-ripple"
+                    ref={rippleRef}
                     cx="150"
                     cy="150"
                     $opacity={0.9}
@@ -217,3 +196,5 @@ export const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered
         </SvgCircle>
     );
 };
+
+export default memo(AnimatedMenuCircle);

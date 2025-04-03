@@ -10,7 +10,6 @@
 @use 'tailwindcss';
 
 @use "./sass/fluid-typography/_typography-helpers";
-
 @use "./sass/sections/_earth";
 
 
@@ -66,7 +65,7 @@
     --color-text-light: #{theme.$background-light};
     --color-text-secondary: #{theme.$text-secondary-dark};
     --color-background: #{theme.$background-light};
-    --color-background-dark: #0f172a;
+    --color-background-dark: #{theme.$background-light};
     --color-background-card: #{theme.$background-card-light};
   }
 }
