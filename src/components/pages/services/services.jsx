@@ -235,7 +235,7 @@ const Services = () => {
                 {serviceSections.map((section) => (
                     <SectionContainer key={section.id} as={motion.section} variants={itemVariants}>
                         <SectionHeader>
-                            <SectionIcon bgColor={section.bgColor}>{section.icon}</SectionIcon>
+                            <SectionIcon bgcolor={section.bgColor}>{section.icon}</SectionIcon>
                             <SectionTitle>{section.title}</SectionTitle>
                         </SectionHeader>
 
@@ -247,7 +247,7 @@ const Services = () => {
                                     variants={itemVariants}
                                     sectionColor={section.color}
                                 >
-                                    <CardIcon bgColor={section.bgColor}>{service.icon}</CardIcon>
+                                    <CardIcon bgcolor={section.bgColor}>{service.icon}</CardIcon>
                                     <CardContent>
                                         <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
