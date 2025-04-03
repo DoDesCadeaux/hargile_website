@@ -92,10 +92,6 @@ export const LearnMoreLink = styled(Link)`
     transition: color 0.2s ease;
     gap: 8px;
 
-    &:hover {
-        color: var(--color-primary-hover);
-    }
-
     svg {
         margin-left: 0.5rem;
     }

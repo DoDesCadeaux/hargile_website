@@ -15,21 +15,16 @@ export const SectionContainer = styled.section`
 export const ContentWrapper = styled.div`
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     position: relative;
     z-index: 2;
-    padding: 0 2rem;
 
     @media (min-width: 768px) {
-        padding: 0 4rem;
         width: 60%;
-        margin: 0;
     }
 
     @media (min-width: 1440px) {
-        padding: 0 6rem;
         width: 50%;
     }
 `;

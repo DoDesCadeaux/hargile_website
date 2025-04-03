@@ -23,7 +23,6 @@ export const BackgroundBlur = styled.div`
 
 export const FormContainer = styled.div`
   max-width: 1400px;
-  margin: 0 auto;
   position: relative;
   z-index: 10;
   width: 100%;
