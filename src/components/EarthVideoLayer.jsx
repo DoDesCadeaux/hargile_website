@@ -28,6 +28,12 @@ const BackgroundVideo = styled.div`
     justify-content: center;
     align-items: center;
 
+    &.running {
+        &::after {
+            animation-play-state: running;
+        }
+    }
+
     &::after {
         z-index: 2;
         display: block;
@@ -74,7 +80,7 @@ const ParticlesWrapper = styled.div`
 
 const EarthVideoLayer = () => {
     const [videoSrc, setVideoSrc] = useState("");
-    const videoRef = useRef(null)
+    const backgroundVideoRef = useRef(null)
 
     const selectVideoResolution = () => {
         const width = window.innerWidth;
@@ -101,16 +107,16 @@ const EarthVideoLayer = () => {
     }, []);
 
     useEffect(() => {
-        if (videoRef && videoSrc !== '') {
-            videoRef.current.getAnimations()[0].play();
+        if (backgroundVideoRef && videoSrc !== '') {
+            backgroundVideoRef.current.classList.add('running')
         }
-    }, [videoRef, videoSrc]);
+    }, [backgroundVideoRef, videoSrc]);
 
     return (
         <VideoContainer>
-            <BackgroundVideo>
+            <BackgroundVideo ref={backgroundVideoRef}>
                 {videoSrc && (
-                    <video ref={videoRef} autoPlay loop muted playsInline>
+                    <video autoPlay loop muted playsInline>
                         <source src={videoSrc} type="video/mp4"/>
                     </video>
                 )}
