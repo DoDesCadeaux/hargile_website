@@ -70,7 +70,7 @@ export default function App({Component, pageProps}) {
                     z-index: 9999;
                     pointer-events: none;
                     opacity: 0;
-                    transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+                    transition: opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1);
                 }
 
                 .page-transition-overlay.active {
@@ -80,7 +80,7 @@ export default function App({Component, pageProps}) {
                 .page-content {
                     min-height: 100vh;
                     opacity: 0;
-                    transition: opacity 800ms cubic-bezier(0.33, 1, 0.68, 1);
+                    transition: opacity 1200ms cubic-bezier(0.33, 1, 0.68, 1);
                 }
 
                 .page-content.loaded {
