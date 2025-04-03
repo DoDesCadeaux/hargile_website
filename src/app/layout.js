@@ -14,7 +14,7 @@ export default async function RootLayout({children}) {
 
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
-        <body>
+        <body style={{overflowX: 'hidden'}}>
         <ThemeProvider>
             <SiteNavigationProvider>
                 {children}

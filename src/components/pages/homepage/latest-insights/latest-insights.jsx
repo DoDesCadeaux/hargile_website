@@ -1,4 +1,3 @@
-// src/components/pages/homepage/latest-insights/latest-insights.jsx
 "use client";
 
 import {useEffect, useRef, useState} from "react";
