@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 
 const VideoContainer = styled.div`
@@ -28,6 +28,12 @@ const BackgroundVideo = styled.div`
     justify-content: center;
     align-items: center;
 
+    &.running {
+        &::after {
+            animation-play-state: running;
+        }
+    }
+
     &::after {
         z-index: 2;
         display: block;
@@ -36,6 +42,7 @@ const BackgroundVideo = styled.div`
         height: 100vh;
         position: absolute;
         animation: loop 15s 1500ms linear infinite;
+        animation-play-state: paused;
         background: rgba(0, 0, 0, 0);
     }
 
@@ -73,6 +80,7 @@ const ParticlesWrapper = styled.div`
 
 const EarthVideoLayer = () => {
     const [videoSrc, setVideoSrc] = useState("");
+    const backgroundVideoRef = useRef(null)
 
     const selectVideoResolution = () => {
         const width = window.innerWidth;
@@ -98,9 +106,15 @@ const EarthVideoLayer = () => {
         return () => window.removeEventListener("resize", handleVideoResize);
     }, []);
 
+    useEffect(() => {
+        if (backgroundVideoRef && videoSrc !== '') {
+            backgroundVideoRef.current.classList.add('running')
+        }
+    }, [backgroundVideoRef, videoSrc]);
+
     return (
         <VideoContainer>
-            <BackgroundVideo>
+            <BackgroundVideo ref={backgroundVideoRef}>
                 {videoSrc && (
                     <video autoPlay loop muted playsInline>
                         <source src={videoSrc} type="video/mp4"/>
