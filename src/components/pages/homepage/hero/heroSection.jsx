@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import {useTranslations} from "next-intl";
+import Link from "next/link";
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
@@ -19,12 +20,12 @@ const HeroSection = () => {
                             {t("headline.line3")}
                         </h1>
                         <p
-                            className="text-xl mb-8 text-gray-200 w-full md:w-1/2 lg:w-3/5"
+                            className="text-xl text-gray-200 w-full md:w-1/2 lg:w-3/5"
                             style={{fontWeight: "200"}}
                         >
                             {t("description")}
                         </p>
-                        <button className="flex items-center bg-transparent text-white font-bold">
+                        <Link href="/audit" className="flex items-center bg-transparent text-white font-bold no-underline">
                             <p className="fluid-type-2">{t("ctaButton")}</p>
                             <Image
                                 src="/icons/arrows/maximize 01.svg"
@@ -34,7 +35,7 @@ const HeroSection = () => {
                                 className="ml-2 mb-3"
                                 style={{marginBottom: 3 + "rem", marginLeft: 1 + "rem"}}
                             />
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
