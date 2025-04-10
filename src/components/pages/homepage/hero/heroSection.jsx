@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { useState } from "react";
+import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
+    const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
@@ -14,18 +17,21 @@ const HeroSection = () => {
                         <h2 className="text-lg ">{t("companyName")}</h2>
                         <h1 className="fluid-type-5">
                             {t("headline.line1")}
-                            <br/>
+                            <br />
                             {t("headline.line2")}
-                            <br/>
+                            <br />
                             {t("headline.line3")}
                         </h1>
                         <p
                             className="text-xl text-gray-200 w-full md:w-1/2 lg:w-3/5"
-                            style={{fontWeight: "200"}}
+                            style={{ fontWeight: "200" }}
                         >
                             {t("description")}
                         </p>
-                        <Link href="/audit" className="flex items-center bg-transparent text-white font-bold no-underline">
+                        <button
+                            onClick={() => setIsAuditModalOpen(true)}
+                            className="flex items-center bg-transparent text-white font-bold no-underline cursor-pointer"
+                        >
                             <p className="fluid-type-2">{t("ctaButton")}</p>
                             <Image
                                 src="/icons/arrows/maximize 01.svg"
@@ -33,12 +39,15 @@ const HeroSection = () => {
                                 width={30}
                                 height={30}
                                 className="ml-2 mb-3"
-                                style={{marginBottom: 3 + "rem", marginLeft: 1 + "rem"}}
+                                style={{ marginBottom: "3rem", marginLeft: "1rem" }}
                             />
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
+            {isAuditModalOpen && (
+                <AuditMultiModal onClose={() => setIsAuditModalOpen(false)} />
+            )}
         </div>
     );
 };
