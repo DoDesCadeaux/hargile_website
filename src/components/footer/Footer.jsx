@@ -31,7 +31,9 @@ const Copyright = styled.div`
 
 const Footer = () => {
     return (
+
         <FooterContainerStyled>
+            <hr/>
             <FooterContentStyled>
                 {/* Company info */}
                 <ColumnStyled>

@@ -33,7 +33,7 @@ export default function AuditResultPage() {
     };
 
     return (
-        <div className="!p-8 max-w-5xl mx-auto text-white ">
+        <div className="!p-8 max-w-5xl !mx-auto text-white ">
             <h1 className="text-3xl font-bold !mb-6">Audit Results</h1>
 
             <section className="!mb-8">
@@ -69,10 +69,10 @@ export default function AuditResultPage() {
                         </p>
                     </div>
                 </div>
-                <section className="mt-6 space-y-8 text-sm text-gray-300">
+                <section className="!mt-6 space-y-8 text-sm text-gray-300">
                     <div>
                         <h3 className="text-lg font-semibold text-white">Performance</h3>
-                        <p className="mt-1">A high performance score means your website loads quickly and efficiently. This improves user experience, reduces bounce rates, and positively impacts your SEO ranking.</p>
+                        <p className="!mt-1">A high performance score means your website loads quickly and efficiently. This improves user experience, reduces bounce rates, and positively impacts your SEO ranking.</p>
                         {performanceScore < 90 && (
                             <p className="mt-1 text-yellow-400">🚀 Your performance score could be improved. Let us help you optimize your loading speed, scripts, and assets.</p>
                         )}
@@ -80,17 +80,17 @@ export default function AuditResultPage() {
 
                     <div>
                         <h3 className="text-lg font-semibold text-white">SEO</h3>
-                        <p className="mt-1">A strong SEO score ensures your website is well structured for search engines. It means your pages are crawlable, mobile-friendly, and follow best practices.</p>
+                        <p className="!mt-1">A strong SEO score ensures your website is well structured for search engines. It means your pages are crawlable, mobile-friendly, and follow best practices.</p>
                         {seoScore < 90 && (
-                            <p className="mt-1 text-yellow-400">📈 Your SEO score can be improved. We can help enhance your visibility and boost your traffic.</p>
+                            <p className="!mt-1 text-yellow-400">📈 Your SEO score can be improved. We can help enhance your visibility and boost your traffic.</p>
                         )}
                     </div>
 
                     <div>
                         <h3 className="text-lg font-semibold text-white">Accessibility</h3>
-                        <p className="mt-1">Accessibility ensures that your website can be used by people with disabilities. This not only improves your reach but also shows commitment to inclusion and can be legally important in some regions.</p>
+                        <p className="!mt-1">Accessibility ensures that your website can be used by people with disabilities. This not only improves your reach but also shows commitment to inclusion and can be legally important in some regions.</p>
                         {accessibilityScore < 90 && (
-                            <p className="mt-1 text-yellow-400">♿ Your accessibility score needs work. We can help make your website more inclusive and compliant.</p>
+                            <p className="!mt-1 text-yellow-400">♿ Your accessibility score needs work. We can help make your website more inclusive and compliant.</p>
                         )}
                     </div>
                 </section>
