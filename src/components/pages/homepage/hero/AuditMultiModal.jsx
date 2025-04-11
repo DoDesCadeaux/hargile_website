@@ -28,7 +28,7 @@ export default function AuditMultiModal({ onClose }) {
 
     const handleStartAudit = async () => {
         setLoading(true);
-        setStep(2); // Affiche directement le formulaire
+        setStep(2);
 
         try {
             const res = await fetch('/api/audit', {
