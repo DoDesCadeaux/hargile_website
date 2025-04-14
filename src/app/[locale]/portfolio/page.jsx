@@ -184,7 +184,7 @@ export default function PortfolioPage() {
 
   return (
     <PageWrapper>
-      <Earth />
+  
       <ContentContainer>
         <Header
           title={t("title")}
