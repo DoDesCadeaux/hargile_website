@@ -34,7 +34,7 @@ const Brand = styled.button`
         left: -25vw;
         background: rgba(0, 0, 0, 0);
         z-index: 9999999;
-        animation: 3700ms appearInOut ease-in-out;
+        animation: 2000ms appearInOut ease-in-out;
     }
 
     @keyframes appearInOut {
@@ -55,7 +55,7 @@ const Brand = styled.button`
 
 const NavbarNavigation = styled.nav`
     position: absolute;
-    top: 64px;
+    top: 15vh;
     left: 0;
     width: 100vw;
     height: 80vh;
@@ -69,7 +69,7 @@ const NavbarNavigation = styled.nav`
     gap: calc((15vh - 5vw) * 1);
     z-index: 10001;
     opacity: ${({$visible}) => $visible ? '1' : '0'};
-    transition: opacity 0.5s ease;
+    transition: opacity 0.25s ease;
     will-change: opacity;
 `;
 
@@ -137,8 +137,8 @@ const Navbar = () => {
                     if (brandRef.current) {
                         brandRef.current.classList.remove('transition');
                     }
-                }, 2450);
-            }, 1050);
+                }, 150);
+            }, 150);
 
             return () => {
                 clearTimeout(navigationTimer);

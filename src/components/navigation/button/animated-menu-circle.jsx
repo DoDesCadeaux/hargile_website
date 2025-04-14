@@ -93,14 +93,14 @@ const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered = fals
                 if (filterRef.current) {
                     filterRef.current.setAttribute('stdDeviation', '5');
                 }
-            }, 1800);
+            }, 900);
 
             setTimeout(() => {
                 state.showRipple = false;
                 if (rippleRef.current) {
                     rippleRef.current.style.display = 'none';
                 }
-            }, 1800);
+            }, 900);
         } else if (isOpen) {
             state.opacity = 0;
 
@@ -126,7 +126,7 @@ const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered = fals
                     if (filterRef.current) {
                         filterRef.current.setAttribute('stdDeviation', '5');
                     }
-                }, 1150);
+                }, 750);
             }, 40);
         } else {
             state.radius = 150;

@@ -27,7 +27,8 @@ export const SectionContainer = styled.section`
 
 export const SectionHeader = styled.div`
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    
     gap: 1rem;
     margin-bottom: 1.5rem;
 `;
@@ -40,8 +41,10 @@ export const SectionIcon = styled.div`
     height: 4.5rem;
     border-radius: 1rem;
     background-color: ${({bgColor}) => bgColor || 'rgba(255, 255, 255, 0.05)'};
+    position: relative;
+    top: -8px;
     color: var(--color-text-light);
-    padding: 1 rem;
+    padding: 1rem;
 `;
 
 export const SectionTitle = styled.h2.attrs({
