@@ -1,7 +1,6 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {Link} from "@/i18n/navigation";
 import {
     ContentWrapper,
     EarthImageContainer,
@@ -9,12 +8,14 @@ import {
     HeadingContainer,
     SectionContainer,
     StoryHeading,
+    StoryLegend,
+    StorySubHeading,
     StoryText,
     TextContainer,
     TitleUnderline
 } from "./our-story.styled";
 import {motion, useInView} from "framer-motion";
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {TransitionLink} from "@/components/TransitionLink";
 
 const OurStory = () => {
@@ -53,14 +54,34 @@ const OurStory = () => {
                     <HeadingContainer as={motion.div} variants={itemVariants}>
                         <StoryHeading>{t("title")}</StoryHeading>
                         <TitleUnderline/>
+                        <StorySubHeading>{t("subtitle")}</StorySubHeading>
                     </HeadingContainer>
 
                     <motion.div variants={itemVariants}>
-                        <StoryText>{t("paragraph1")}</StoryText>
+                        <StoryText>{t("paragraph1").split('\n').map((line, i) => (
+                            <React.Fragment key={i}>
+                                {line === '' && <br/>}
+                                <span>{line}</span>
+                            </React.Fragment>
+                        ))}</StoryText>
                     </motion.div>
 
                     <motion.div variants={itemVariants}>
-                        <StoryText>{t("paragraph2")}</StoryText>
+                        <StoryText>{t("paragraph2").split('\n').map((line, i) => (
+                            <React.Fragment key={i}>
+                                {line === '' && <br/>}
+                                <span>{line}</span>
+                            </React.Fragment>
+                        ))}</StoryText>
+                    </motion.div>
+
+                    <motion.div variants={itemVariants}>
+                        <StoryLegend>{t("paragraph3").split('\n').map((line, i) => (
+                            <React.Fragment key={i}>
+                                {line === '' && <br/>}
+                                <span>{line}</span>
+                            </React.Fragment>
+                        ))}</StoryLegend>
                     </motion.div>
 
                     <motion.div variants={itemVariants}>
@@ -69,10 +90,6 @@ const OurStory = () => {
                         </GetInTouchButton>
                     </motion.div>
                 </TextContainer>
-
-                <EarthImageContainer as={motion.div} variants={itemVariants}>
-                    {/* Image is provided by the Earth component background */}
-                </EarthImageContainer>
             </ContentWrapper>
         </SectionContainer>
     );

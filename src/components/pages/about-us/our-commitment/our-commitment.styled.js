@@ -60,7 +60,7 @@ export const InfoBubbleContainer = styled.div`
 
 export const TextWrapper = styled.div`
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@ export const TextWrapper = styled.div`
         left: 2rem;
         width: 3rem;
         height: 3px;
-        background: #8B5CF6;
+        background: var(--color-accent-mihai);
 
         @media (min-width: 768px) {
             width: 5rem;
@@ -118,7 +118,7 @@ export const MainTitle = styled.h2.attrs({
 export const HighlightedText = styled.h3.attrs({
     className: 'fluid-type-2'
 })`
-    color: #8B5CF6;
+    color: var(--color-text-light);
     font-weight: 500;
     margin-bottom: 0.5rem;
     position: relative;
@@ -129,7 +129,7 @@ export const Subtitle = styled.h3.attrs({
     className: 'fluid-type-2'
 })`
     color: var(--color-text-light);
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 `;
 
@@ -170,8 +170,9 @@ export const PillarIcon = styled.div`
     color: var(--color-text-light);
 
     @media (min-width: 450px) {
-        width: 3rem;
-        height: 3rem;
+        width: 3.8rem;
+        height: 3.8rem;
+        padding: 0.6rem;
     }
 `;
 
@@ -180,6 +181,7 @@ export const PillarTitle = styled.h4.attrs({
 })`
     color: var(--color-text-light);
     font-weight: 500;
+    margin-bottom: 0;
 `;
 
 export const InfoBubble = styled.div`
@@ -197,7 +199,7 @@ export const InfoBubble = styled.div`
     }
 
     @media (min-width: 1300px) {
-        max-width: 150px;
+        max-width: 170px;
     }
 
     &.bubble-1 {

@@ -3,29 +3,27 @@ import styled from "styled-components";
 export const SectionContainer = styled.section`
     position: relative;
     width: 100%;
-    min-height: 80vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    overflow: hidden;
+    padding-bottom: 15vw;
 `;
 
 export const ContentWrapper = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
 
     @media (min-width: 1024px) {
         flex-direction: row;
         align-items: flex-start;
-        justify-content: space-between;
-        transform: translateY(50%);
+        transform: translateY(10%);
     }
 `;
 
 export const TextContainer = styled.div`
-    max-width: 92ch;
+    max-width: 98ch;
     margin-bottom: 4rem;
 
     @media (min-width: 1024px) {
@@ -40,22 +38,37 @@ export const HeadingContainer = styled.div`
 `;
 
 export const StoryHeading = styled.h1.attrs({
-    className: 'fluid-type-5'
+    className: 'fluid-type-4'
 })`
     color: var(--color-text-light);
     margin-bottom: 1rem;
 `;
 
+export const StorySubHeading = styled.h2.attrs({
+    className: 'fluid-type-2-5'
+})`
+    color: var(--color-text-light);
+`;
+
 export const TitleUnderline = styled.div`
-    width: 50%;
+    width: 30%;
     height: 4px;
     background: linear-gradient(90deg, var(--color-accent-agves) 0%, var(--color-accent-multipass) 100%);
-    margin-top: 1.7em;
+    margin-bottom: 3.5rem;
 `;
 
 export const StoryText = styled.p.attrs({
     className: 'fluid-type-0-5'
 })`
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+`;
+
+export const StoryLegend = styled.p.attrs({
+    className: 'fluid-type-1-5'
+})`
+    margin-top: 3rem;
     color: var(--color-text-light);
     margin-bottom: 1.5rem;
     line-height: 1.75;

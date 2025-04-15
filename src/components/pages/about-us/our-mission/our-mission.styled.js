@@ -22,7 +22,6 @@ export const SectionContainer = styled.section`
 
 export const ContentWrapper = styled.div`
     width: 100%;
-    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -50,7 +49,7 @@ export const MainTitle = styled.h2.attrs({
 export const HighlightedText = styled.h3.attrs({
     className: 'fluid-type-3'
 })`
-    color: #8B5CF6; /* Purple color from the image */
+    color: var(--color-accent-mihai); /* Purple color from the image */
     margin: 0;
     font-weight: 600;
     line-height: 1.2;
@@ -93,27 +92,19 @@ export const Description = styled.p.attrs({
 export const ValuesContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     width: 100%;
-
-
-    @media (min-width: 768px) {
-        width: 66%;
-        align-items: flex-start;
-    }
 `;
 
 export const ValueItem = styled.div`
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
+    
+    @media (min-width: 768px) {
         align-items: center;
-        text-align: center;
     }
 `;
 
@@ -125,14 +116,9 @@ export const IconContainer = styled.div`
     height: 64px;
     border-radius: 50%;
     backdrop-filter: blur(4px);
-    background-color: rgba(255,255,255, 0.02);
+    background-color: rgba(255, 255, 255, 0.02);
     color: var(--color-text-light);
-    margin-top: 0.5rem;
     flex-shrink: 0;
-
-    @media (max-width: 768px) {
-        margin-bottom: 1rem;
-    }
 `;
 
 export const ValueTitle = styled.h4.attrs({
@@ -153,7 +139,7 @@ export const ValueDescription = styled.p.attrs({
 
 export const ConnectorLine = styled.div`
     width: 2px;
-    height: 3rem;
+    height: 2.5rem;
     background-color: var(--color-accent-mihai);
     margin-left: 32px;
 

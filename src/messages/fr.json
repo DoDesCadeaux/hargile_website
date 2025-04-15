@@ -1,40 +1,54 @@
 {
   "test": "lorem fr",
+  "menu": {
+    "services": "Services",
+    "solutions": "Solutions",
+    "our-dna":  "Notre ADN",
+    "contact": "Contacte",
+    "portfolio":  "Portfolio"
+  },
   "pages": {
     "homepage": {
       "sections": {
-        "about-us": {
-          "title": "À Propos",
-          "subtitle": "Découvrez notre agence et notre parcours",
-          "who_title": "Qui nous sommes",
-          "who_description": "Hargile est une agence numérique dynamique spécialisée dans le développement web innovant, les solutions d'IA et les stratégies marketing personnalisées. Avec des années d'expérience, nous transformons les idées en réalité numérique. Notre H signifie Humain, nous nous efforçons de développer avec cela à l'esprit.",
-          "approach_title": "Notre Approche",
-          "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
-          "stats": {
-            "years": "Années d'expérience",
-            "projects": "Projets livrés",
-            "satisfaction": "Satisfaction client"
-          }
+        "hero": {
+          "companyName": "HARGILE",
+          "headline": {
+            "line1": "L’innovation digitale ",
+            "line2": "au service de votre entreprise",
+            "line3": ""
+          },
+          "description": "HARGILE est une agence digitale pensée pour concevoir et développer des solutions technologiques innovantes, adaptées à vos défis stratégiques et opérationnels.",
+          "ctaButton": "Auditer votre site web",
+          "paragraph": "Transformer les défis complexes en solutions numériques est notre mission. \n\n Agence visionnaire portée par la synergie du Marketing Digital Stratégique et de l’Intelligence Artificielle, nous donnons vie à des expériences digitales puissantes et porteuses de sens. La technologie de pointe associée à l'approche Humaine, nous permet de proposer des solutions innovantes pour accompagner les entreprises dans leur transformation numérique.",
+          "arrowAlt": "Flèche",
+          "quote": "Se démarquer, grandir et prospérer dans un monde de plus en plus connecté."
         },
         "our-solutions": {
-          "title": "Nos Solutions",
+          "title": "Web, mobile, cloud, IA",
+          "description": "Notre expertise tech est votre levier —- créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
+          "paragraph": "HARGILE propose des solutions numériques personnalisées fondées sur le principe de la maîtrise technologique et l'innovation créative. Notre équipe associe expertise, ingéniosité et vision stratégique d’entreprise pour transformer vos défis en leviers de croissance.",
           "learn-more": "En savoir plus",
           "coming-soon": "Bientôt disponible",
           "solutions": {
             "agves": {
               "title": "AGVES",
-              "subtitle": "CRM de gestion scolaire",
-              "description": "En simplifiant l'organisation et la gestion scolaire, le CRM AGVES assure que les élèves disposent des fonds dont ils ont besoin tout au long de l'année scolaire. Il assure une communication fluide entre l'école et les parents, protégeant les élèves grâce à des porte-monnaie électroniques et des clés d'accès numériques."
+              "subtitle": "ERP évolutif pour la gestion scolaire",
+              "description": "Application de gestion des ventes spécialisée pour le secteur de l'éducation. AGVES révolutionne la communication de la vie scolaire et extrascolaire par la mise en place d’un interface simplificateur. Il améliore toutes opérations liées aux transactions financières comme les process de sécurité."
             },
             "i-go": {
               "title": "I GO",
-              "subtitle": "Localisateur de recharge pour mobilité",
-              "description": "Né du constat qu'il est difficile pour les EDPM (Engins de Déplacement Personnel Motorisés) et les VAE (Vélos à Assistance Électrique) de trouver des points de recharge. I GO vise à répertorier les points de recharge et à les rendre facilement accessibles via un moteur de recherche dédié."
+              "subtitle": "Une navigation GPS spécialisé",
+              "description": "I GO est une application mobile innovante dédiée à la mobilité électrique, conçue pour répondre aux besoins croissants des utilisateurs d'Engins de Déplacement Personnel Motorisés (EDPM) et de Vélo à Assistance Électrique (VAE)."
             },
             "multipass": {
               "title": "Multipass",
-              "subtitle": "Bientôt disponible",
-              "description": ""
+              "subtitle": "la solution agile qui s’adapte à votre entreprise.",
+              "description": "Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre une plateforme modulable et évolutive. Conçue pour s’adapter à tous les secteurs d’activité, notre solution vous permet de centraliser, gérer et optimiser vos relations clients avec une flexibilité inégalée."
+            },
+            "your-project": {
+              "title": "Votre projet",
+              "subtitle": "Facteur de croissance.",
+              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre a participation à votre succès."
             }
           }
         },
@@ -58,22 +72,6 @@
               "description": "E-commerce pour plantes, Full-stack"
             }
           }
-        },
-        "latest-insights": {
-          "title": "Dernières actualités",
-          "subtitle": "Nos réflexions et perspectives sur le monde numérique",
-          "view-all": "Voir toutes les actualités"
-        },
-        "hero": {
-          "companyName": "HARGILE",
-          "headline": {
-            "line1": "Transforme",
-            "line2": "vos idées en",
-            "line3": "réalité numérique"
-          },
-          "description": "Nous sommes une agence digitale spécialisée dans le développement web, les solutions d'IA et les stratégies marketing pour élever votre entreprise",
-          "ctaButton": "Auditer votre site web",
-          "arrowAlt": "Flèche"
         },
         "services": {
           "title": "Nos services",
@@ -115,8 +113,32 @@
             }
           }
         },
+        "about-us": {
+          "subtitle": "Découvrez notre agence",
+          "who_title": "Notre vision de la croissance",
+          "who_description": "Chez HARGILE, nous façonnons notre développement comme on sculpte une œuvre : avec soin, intention et sens du détail.\n\nNotre ambition ? Créer des solutions numériques qui ont du sens, qui servent vos objectifs et qui évoluent avec vous.",
+          "approach_title": "Chaque projet est une opportunité,\n\n révéler le potentiel d’une idée",
+          "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
+          "ideas": [
+            "Des sites de présentation élégants et percutants, véritables vitrines de votre identité",
+            "Des plateformes e-commerce centrées sur l’expérience utilisateur, pensées pour convertir et fidéliser",
+            "Des espaces de contenu dynamiques et collaboratifs, qui donnent du souffle à vos communautés",
+            "Des applications personnalisées, taillées pour vos enjeux métier, sans superflu"
+          ],
+          "conclusion": "Votre objectif se construit pas à pas, portée par des collaborations alignées sur nos expertises et nos valeurs. Nous privilégions les projets en phase avec nos expertises clés pour garantir un développement progressif, cohérent et durable, sans compromis sur la qualité.",
+          "stats": {
+            "years": "Années d'expérience",
+            "projects": "Projets livrés",
+            "satisfaction": "Satisfaction client"
+          }
+        },
+        "latest-insights": {
+          "title": "Dernières actualités",
+          "subtitle": "Nos réflexions et perspectives sur le monde numérique",
+          "view-all": "Voir toutes les actualités"
+        },
         "quote-request": {
-          "title": "Demande de Devis",
+          "title": "Contacter-nous",
           "subtitle": {
             "part1": "Obtenez une estimation",
             "part2": "gratuite pour votre projet"
@@ -262,7 +284,6 @@
       "inThisPage": "Dans cette page",
       "downloadPDF": "Télécharger en PDF",
       "print": "Imprimer",
-
       "sections": {
         "termsConditions": {
           "title": "Termes et Conditions",
@@ -341,9 +362,11 @@
     "about-us": {
       "sections": {
         "our-story": {
-          "title": "Notre Histoire",
-          "paragraph1": "Fondée en 2025, Hargile a débuté comme une petite équipe avec une grande vision : combler le fossé entre la créativité humaine et l'innovation numérique. Nos fondateurs ont reconnu que la technologie devrait améliorer les expériences humaines, et non les remplacer.",
-          "paragraph2": "Ce qui a commencé comme une petite agence s'est rapidement transformé en partenaire numérique complet pour les entreprises cherchant à transformer leur présence en ligne. À travers les défis et les succès, nous sommes restés fidèles à notre conviction fondamentale que les expériences numériques significatives commencent par la compréhension humaine. C'est la raison du H dans notre nom.",
+          "title": "Notre ADN",
+          "subtitle": "Une vision pour demain",
+          "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
+          "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
+          "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
           "getInTouch": "Nous Contacter"
         },
         "our-team": {
@@ -364,27 +387,36 @@
           "title": "Notre Mission",
           "highlighted": "Transformer les expériences numériques",
           "subheading": "par l'innovation centrée sur l'humain et la technologie.",
-          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement répondent aux objectifs commerciaux, mais qui améliorent également la connexion humaine, rendant la technologie plus accessible, intuitive et significative.",
+          "description": "Nous ne créons pas seulement des solutions numériques, nous bâtissons des partenariats qui grandissent avec vous.\n\n L'innovation et le développement commercial sont au cœur de notre équipe, afin de vous offrir des solutions évolutives qui anticipent vos défis futurs.",
           "values": {
+            "technic": {
+              "title": "Excellence technique",
+              "description": "Notre équipe est à l'avant-garde des innovations technologiques."
+            },
+            "vision": {
+              "title": "Vision commerciale",
+              "description": "Une compréhension profonde du marché pour vous offrir un avantage concurrentiel."
+            },
+            "creativity": {
+              "title": "Créativité",
+              "description": "Des solutions innovantes face à des défis complexes."
+            },
             "human": {
-              "title": "Centré sur l'Humain",
-              "description": "Prioriser les personnes dans chaque solution numérique que nous créons."
+              "title": "Approche humaine",
+              "description": "Des expériences utilisateurs intuitives et engageantes."
             },
-            "innovation": {
-              "title": "Innovation",
-              "description": "Adopter de nouvelles idées et technologies pour résoudre des défis complexes."
-            },
-            "integrity": {
-              "title": "Intégrité",
-              "description": "Tenir nos promesses avec transparence et pratiques éthiques."
+            "partnership": {
+              "title": "Partenariat durable",
+              "description": "Un engagement au-delà du projet, pour soutenir votre succès à long terme."
             }
           }
         },
         "our-commitment": {
           "title": "Notre Engagement",
-          "highlighted": "Favoriser l'innovation durable",
-          "subtitle": "grâce à une technologie responsable et des pratiques éthiques.",
-          "description": "Nous nous efforçons de créer des solutions numériques qui non seulement transforment les entreprises, mais respectent également notre planète et autonomisent les communautés, rendant la technologie plus durable, responsable et impactante.",
+          "highlighted": "Révolutionner l'innovation par une technologie responsable",
+          "paragraph1": "Notre conviction est d’agir concrètement par des actions significatives  pour un numérique plus vertueux afin que notre engagement se mesure en résultats tangibles.",
+          "subtitle": "Performances et responsabilités.",
+          "paragraph2": "L’environnement social et environnemental est notre priorité. Notre vision est de transformer leurs contraintes en opportunités d'excellence. Nos solutions ne sont pas seulement performantes – elles sont résolument tournées vers l'avenir.",
           "bubbles": {
             "goodplanet": "De nos bénéfices vont à GoodPlanet",
             "carbon": "Réduction de l'empreinte carbone",
@@ -404,7 +436,7 @@
       "mainTitle": "Nos Services",
       "subtitleItalic": "Solutions innovantes",
       "subtitleBold": "pour votre transformation digitale",
-      "description": "Nous proposons une gamme complète de services numériques pour vous accompagner dans chaque étape de votre transformation digitale, de la conception à l'optimisation.",
+      "description": "Avec HARGILE, vous alliez expertise technique et créativité pour concevoir des solutions numériques personnalisées. En associant des méthodes éprouvées à des technologies innovantes, nous concevons des applications adaptées et puissantes qui répondent avec précision à vos besoins spécifiques et à vos objectifs commerciaux.",
       "categories": {
         "dev": {
           "title": "Développement et Conception de Solutions"
@@ -421,20 +453,20 @@
       },
       "services": {
         "web": {
-          "title": "Conception, développement Web",
+          "title": "Web",
           "description": "Sites vitrines, applications web, portails et solutions sur mesure"
         },
         "mobile": {
-          "title": "Développement d'applications mobiles",
-          "description": "Applications iOS et Android, interfaces utilisateur responsive"
+          "title": "Applications mobile",
+          "description": "Développement d'applications iOS et Android."
         },
         "cms": {
-          "title": "Développement CMS",
+          "title": "Applications de gestion de contenu",
           "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu"
         },
         "ecommerce": {
           "title": "E-Commerce",
-          "description": "Solutions de commerce électronique performantes et sécurisées"
+          "description": "Solutions de commerce en ligne électronique performantes et sécurisées"
         },
         "api": {
           "title": "Développement d'APIs",
@@ -443,6 +475,10 @@
         "seo": {
           "title": "Optimisation performance SEO",
           "description": "Référencement naturel et optimisation pour les moteurs de recherche"
+        },
+        "banking-connector": {
+          "title": "Connecteur(s) banquaire(s)",
+          "description": "Solutions banquaire, Wordline payment, SIPS Atos, ..."
         },
         "support": {
           "title": "Maintenance support",
@@ -490,5 +526,9 @@
         }
       }
     }
+  },
+  "audit-button": {
+    "title": "Button d'audit",
+    "description": "Description du button d'audit"
   }
 }

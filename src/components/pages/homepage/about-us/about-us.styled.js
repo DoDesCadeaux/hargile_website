@@ -22,11 +22,11 @@ export const ContentWrapper = styled.div`
     z-index: 2;
 
     @media (min-width: 768px) {
-        width: 60%;
+        width: 75%;
     }
 
     @media (min-width: 1440px) {
-        width: 50%;
+        width: 55%;
     }
 `;
 
@@ -52,19 +52,25 @@ export const SubtitleContainer = styled(TransitionLink)`
     align-items: center;
     gap: 16px;
     text-decoration: none;
-    margin-bottom: 4rem;
+    margin-bottom: 0.5rem;
     color: var(--color-text-secondary);
     cursor: pointer;
+    width: max-content;
+    transition: color 600ms ease-in-out, border-color 600ms ease-in-out, text-underline-color 600ms ease-in-out;
 
     & > * {
         transition: color 600ms ease-in-out, border-color 600ms ease-in-out, text-underline-color 600ms ease-in-out;
     }
 
     &:hover > * {
-        color: var(--color-text-light);
-        border-color: var(--color-text-light);
-        text-underline-color: var(--color-text-light);
+        border-color: var(--color-accent-mihai);
+        text-underline-color: var(--color-accent-mihai);
         transition: color 300ms ease-in-out, border-color 300ms ease-in-out, text-underline-color 300ms ease-in-out;
+
+        svg {
+            color: var(--color-accent-mihai);
+            transition: color 300ms ease-in-out;
+        }
     }
 `;
 
@@ -75,6 +81,12 @@ export const Subtitle = styled("span").attrs({
     display: block;
     position: relative;
     text-wrap: balance;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+        color: var(--color-text-secondary);
+        transition: color 300ms ease-in-out;
+    }
 
     &::after {
         content: '';
@@ -83,8 +95,8 @@ export const Subtitle = styled("span").attrs({
         bottom: -2px;
         width: 0;
         height: 1px;
-        background-color: var(--color-text-secondary);
-        transition: width 0.4s ease;
+        background-color: var(--color-accent-mihai);
+        transition: width 0.3s ease-in-out, color 0.3s ease-in-out;
     }
 
     &.animate-underline::after {
@@ -117,6 +129,24 @@ export const Description = styled.p.attrs({
     max-width: 600px;
 `;
 
+export const Conclusion = styled.p.attrs({
+    className: 'fluid-type-0'
+})`
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+`;
+
+export const StyledLi = styled.li.attrs({
+    className: 'fluid-type-0'
+})`
+    color: var(--color-text-light);
+    line-height: 1.6;
+    padding-left: 10px
+
+`;
+
 export const PlusIcon = styled.div`
     width: 40px;
     height: 40px;
@@ -127,6 +157,8 @@ export const PlusIcon = styled.div`
     align-items: center;
     justify-content: center;
     color: var(--color-text-secondary);
+    transition: color 300ms ease-in-out;
+
 
     @media (max-width: 768px) {
         width: 35px;

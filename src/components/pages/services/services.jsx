@@ -1,51 +1,50 @@
-import React from "react";
-import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
+import React, {useRef} from "react";
+import {useTranslations} from "next-intl";
+import {motion, useInView} from "framer-motion";
 import {
-    Globe,
-    Smartphone,
-    FileText,
-    ShoppingCart,
-    Code,
-    Search,
-    Brain,
-    Cloud,
-    Zap,
-    LineChart,
-    Lightbulb,
-    Fingerprint,
-    Settings,
-    RefreshCw,
     BarChart3,
+    Brain,
     ClipboardCheck,
-    Database
+    Cloud,
+    Code,
+    Database,
+    FileText,
+    Fingerprint,
+    Globe,
+    LandmarkIcon,
+    Lightbulb,
+    LineChart,
+    RefreshCw,
+    Search,
+    Settings,
+    ShoppingCart,
+    Smartphone,
+    Zap
 } from "lucide-react";
 
 import {
+    CardContent,
+    CardDescription,
+    CardIcon,
+    CardTitle,
     PageContainer,
     SectionContainer,
     SectionHeader,
     SectionIcon,
     SectionTitle,
-    ServiceGrid,
     ServiceCard,
-    CardIcon,
-    CardContent,
-    CardTitle,
-    CardDescription,
-    ServiceArrow
+    ServiceGrid
 } from "./services.styled";
+import {OptimizedImage} from "@/components/optimizedImage";
 
 const Services = () => {
     const t = useTranslations("pages.services");
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+    const isInView = useInView(sectionRef, {once: true, amount: 0.2});
 
     // Animation variants
     const containerVariants = {
-        hidden: { opacity: 0 },
+        hidden: {opacity: 0},
         visible: {
             opacity: 1,
             transition: {
@@ -55,11 +54,11 @@ const Services = () => {
     };
 
     const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: {opacity: 0, y: 20},
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, ease: "easeOut" }
+            transition: {duration: 0.5, ease: "easeOut"}
         }
     };
 
@@ -88,7 +87,7 @@ const Services = () => {
         {
             id: "development",
             title: t("categories.dev.title"),
-            icon: <Globe size={32} strokeWidth={1.5} />,
+            icon: <Globe size={32} strokeWidth={1.5}/>,
             color: sectionColors.development.main,
             bgColor: sectionColors.development.bg,
             services: [
@@ -96,44 +95,50 @@ const Services = () => {
                     id: "web",
                     title: t("services.web.title"),
                     description: t("services.web.description"),
-                    icon: <Globe size={24} strokeWidth={1.5} />
+                    icon: <Globe size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "mobile",
                     title: t("services.mobile.title"),
                     description: t("services.mobile.description"),
-                    icon: <Smartphone size={24} strokeWidth={1.5} />
+                    icon: <Smartphone size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "cms",
                     title: t("services.cms.title"),
                     description: t("services.cms.description"),
-                    icon: <FileText size={24} strokeWidth={1.5} />
+                    icon: <FileText size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "ecommerce",
                     title: t("services.ecommerce.title"),
                     description: t("services.ecommerce.description"),
-                    icon: <ShoppingCart size={24} strokeWidth={1.5} />
+                    icon: <ShoppingCart size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "api",
                     title: t("services.api.title"),
                     description: t("services.api.description"),
-                    icon: <Code size={24} strokeWidth={1.5} />
+                    icon: <Code size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "seo",
                     title: t("services.seo.title"),
                     description: t("services.seo.description"),
-                    icon: <Search size={24} strokeWidth={1.5} />
+                    icon: <Search size={24} strokeWidth={1.5}/>
+                },
+                {
+                    id: "banking-connector",
+                    title: t("services.banking-connector.title"),
+                    description: t("services.banking-connector.description"),
+                    icon: <LandmarkIcon size={24} strokeWidth={1.5}/>
                 }
             ]
         },
         {
             id: "maintenance",
             title: t("categories.maintenance.title"),
-            icon: <Settings size={32} strokeWidth={1.5} />,
+            icon: <Settings size={32} strokeWidth={1.5}/>,
             color: sectionColors.maintenance.main,
             bgColor: sectionColors.maintenance.bg,
             services: [
@@ -141,26 +146,26 @@ const Services = () => {
                     id: "support",
                     title: t("services.support.title"),
                     description: t("services.support.description"),
-                    icon: <Settings size={24} strokeWidth={1.5} />
+                    icon: <Settings size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "migration",
                     title: t("services.migration.title"),
                     description: t("services.migration.description"),
-                    icon: <RefreshCw size={24} strokeWidth={1.5} />
+                    icon: <RefreshCw size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "performance",
                     title: t("services.performance.title"),
                     description: t("services.performance.description"),
-                    icon: <Zap size={24} strokeWidth={1.5} />
+                    icon: <Zap size={24} strokeWidth={1.5}/>
                 }
             ]
         },
         {
             id: "ai",
             title: t("categories.ai.title"),
-            icon: <Brain size={32} strokeWidth={1.5} />,
+            icon: <Brain size={32} strokeWidth={1.5}/>,
             color: sectionColors.ai.main,
             bgColor: sectionColors.ai.bg,
             services: [
@@ -168,38 +173,38 @@ const Services = () => {
                     id: "agents",
                     title: t("services.agents.title"),
                     description: t("services.agents.description"),
-                    icon: <Fingerprint size={24} strokeWidth={1.5} />
+                    icon: <Fingerprint size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "cloud",
                     title: t("services.cloud.title"),
                     description: t("services.cloud.description"),
-                    icon: <Cloud size={24} strokeWidth={1.5} />
+                    icon: <Cloud size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "automation",
                     title: t("services.automation.title"),
                     description: t("services.automation.description"),
-                    icon: <Zap size={24} strokeWidth={1.5} />
+                    icon: <Zap size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "ml",
                     title: t("services.ml.title"),
                     description: t("services.ml.description"),
-                    icon: <LineChart size={24} strokeWidth={1.5} />
+                    icon: <LineChart size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "consulting",
                     title: t("services.consulting.title"),
                     description: t("services.consulting.description"),
-                    icon: <Lightbulb size={24} strokeWidth={1.5} />
+                    icon: <Lightbulb size={24} strokeWidth={1.5}/>
                 }
             ]
         },
         {
             id: "analysis",
             title: t("categories.analysis.title"),
-            icon: <BarChart3 size={32} strokeWidth={1.5} />,
+            icon: <BarChart3 size={32} strokeWidth={1.5}/>,
             color: sectionColors.analysis.main,
             bgColor: sectionColors.analysis.bg,
             services: [
@@ -207,19 +212,19 @@ const Services = () => {
                     id: "reporting",
                     title: t("services.reporting.title"),
                     description: t("services.reporting.description"),
-                    icon: <BarChart3 size={24} strokeWidth={1.5} />
+                    icon: <BarChart3 size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "qa",
                     title: t("services.qa.title"),
                     description: t("services.qa.description"),
-                    icon: <ClipboardCheck size={24} strokeWidth={1.5} />
+                    icon: <ClipboardCheck size={24} strokeWidth={1.5}/>
                 },
                 {
                     id: "apidev",
                     title: t("services.apidev.title"),
                     description: t("services.apidev.description"),
-                    icon: <Database size={24} strokeWidth={1.5} />
+                    icon: <Database size={24} strokeWidth={1.5}/>
                 }
             ]
         }
@@ -251,8 +256,24 @@ const Services = () => {
                                     <CardContent>
                                         <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
+                                        {service.id === 'banking-connector' && (
+                                            <div style={{
+                                                display: "flex",
+                                                width: "100%",
+                                                justifyContent: "space-evenly",
+                                            }}>
+                                                <OptimizedImage width={30} src="/icons/banking-brands/mastercard.svg"
+                                                                alt=""/>
+                                                <OptimizedImage width={30} src="/icons/banking-brands/amex.svg" alt=""/>
+                                                <OptimizedImage width={30} src="/icons/banking-brands/visa.svg" alt=""/>
+                                                <OptimizedImage width={30} src="/icons/banking-brands/maestro.svg"
+                                                                alt=""/>
+                                                <OptimizedImage width={30} src="/icons/banking-brands/paypal.svg"
+                                                                alt=""/>
+                                            </div>
+                                        )}
                                     </CardContent>
-                                    <ServiceArrow $color={section.color} />
+                                    {/*<ServiceArrow $color={section.color} />*/}
                                 </ServiceCard>
                             ))}
                         </ServiceGrid>

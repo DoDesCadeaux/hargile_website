@@ -3,6 +3,7 @@
 
 import {useTranslations} from "next-intl";
 import {
+    Conclusion,
     ContentWrapper,
     Description,
     MainTitle,
@@ -10,15 +11,12 @@ import {
     SectionContainer,
     SectionTitle,
     SectionWrapper,
-    StatItem,
-    StatLabel,
-    StatsWrapper,
-    StatValue,
+    StyledLi,
     Subtitle,
     SubtitleContainer,
     TitleWrapper
 } from "./about-us.styled";
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {motion, useInView} from "framer-motion";
 import {Plus} from "lucide-react";
 
@@ -60,10 +58,10 @@ const AboutUs = () => {
                 animate={isInView ? "visible" : "hidden"}
                 variants={containerVariants}
             >
-                <motion.div variants={itemVariants}>
-                    <TitleWrapper>
-                        <MainTitle>{t("title")}</MainTitle>
-                    </TitleWrapper>
+
+                <SectionWrapper as={motion.div} variants={itemVariants}>
+                    <SectionTitle>{t("who_title")}</SectionTitle>
+                    <Description>{t("who_description")}</Description>
                     <SubtitleContainer href="/about-us">
                         <Subtitle className={isInView ? "animate-underline" : ""}>
                             {t("subtitle")}
@@ -72,26 +70,29 @@ const AboutUs = () => {
                             <Plus size={24}/>
                         </PlusIcon>
                     </SubtitleContainer>
-                </motion.div>
-
-                <SectionWrapper as={motion.div} variants={itemVariants}>
-                    <SectionTitle>{t("who_title")}</SectionTitle>
-                    <Description>{t("who_description")}</Description>
                 </SectionWrapper>
 
                 <SectionWrapper as={motion.div} variants={itemVariants}>
-                    <SectionTitle>{t("approach_title")}</SectionTitle>
+                    <SectionTitle>{t("approach_title").split('\n').map((line, i) => (
+                        <React.Fragment key={i}>
+                            {line === '' && <br/>}
+                            <span>{line}</span>
+                        </React.Fragment>
+                    ))}</SectionTitle>
                     <Description>{t("approach_description")}</Description>
+                    <ul style={{
+                        listStyleType: "disclosure-closed",
+                    }}>
+                        {
+                            t.raw('ideas').map((line, i) => (
+                                <StyledLi key={i}>{line}</StyledLi>
+                            ))
+                        }
+                    </ul>
+
+                    <Conclusion>{t("conclusion")}</Conclusion>
                 </SectionWrapper>
 
-                <StatsWrapper as={motion.div} variants={itemVariants}>
-                    {stats.map((stat, index) => (
-                        <StatItem key={index}>
-                            <StatValue>{stat.value}</StatValue>
-                            <StatLabel>{stat.label}</StatLabel>
-                        </StatItem>
-                    ))}
-                </StatsWrapper>
             </ContentWrapper>
         </SectionContainer>
     );

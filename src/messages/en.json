@@ -1,15 +1,41 @@
 {
   "test": "lorem en",
+  "menu": {
+    "services": "Services",
+    "solutions": "Solutions",
+    "our-dna": "Our DNA",
+    "contact": "Contact",
+    "portfolio": "Portfolio"
+  },
   "pages": {
     "homepage": {
       "sections": {
+        "hero": {
+          "companyName": "HARGILE",
+          "headline": {
+            "line1": "Transforms",
+            "line2": "Ideas into",
+            "line3": "Digital Reality"
+          },
+          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
+          "ctaButton": "Audit your website",
+          "paragraph": "Transforming complex challenges into digital solutions is our mission.\n Visionary agency driven by the synergy of Strategic Digital Marketing and Artificial Intelligence, we bring powerful and meaningful digital experiences to life. Cutting-edge technology combined with a Human approach allows us to offer innovative solutions to support businesses in their digital transformation.",
+          "arrowAlt": "Arrow",
+          "quote": "Stand out, grow and thrive in an increasingly connected world."
+        },
         "about-us": {
-          "title": "About Us",
-          "subtitle": "Get to know our agency and our journey",
-          "who_title": "Who we are",
-          "who_description": "Hargile is a dynamic digital agency specializing in innovative web developement, AI solutions, and tailored marketing strategies. With years of experience, we trasnfrom ideas into digital reality. Our H stands for Human, we strive to develop with that in mind.",
-          "approach_title": "Our Approach",
+          "subtitle": "Get to know our agency",
+          "who_title": "Our vision of growth",
+          "who_description": "At HARGILE, we shape our development like sculpting a work of art: with care, intention, and attention to detail.\n\nOur ambition? To create digital solutions that make sense, serve your objectives, and evolve with you.",
+          "approach_title": "Each project is an opportunity, \n\n to reveal the potential of an idea",
           "approach_description": "We believe in collaborative partnerships and innovative thinking. By understanding your business goals and challenges, we deliver solutions that drive real results.",
+          "ideas": [
+            "Elegant and impactful presentation websites, true showcases of your identity",
+            "E-commerce platforms centered on user experience, designed to convert and build loyalty",
+            "Dynamic and collaborative content spaces that breathe life into your communities",
+            "Customized applications, tailored to your business challenges, without excess"
+          ],
+          "conclusion": "Your goal is built step by step, driven by collaborations aligned with our expertise and values. We prioritize projects that align with our key expertise to ensure progressive, coherent, and sustainable development, without compromising on quality.",
           "stats": {
             "years": "Years experience",
             "projects": "Projects delivered",
@@ -17,24 +43,31 @@
           }
         },
         "our-solutions": {
-          "title": "Our Solutions",
+          "title": "Web, mobile, cloud, AI",
+          "description": "Our tech expertise is your lever —- creating human solutions, tailored to your objectives and boosting your development.",
+          "paragraph": "HARGILE offers customized digital solutions based on the principle of technological mastery and creative innovation. Our team combines expertise, ingenuity, and strategic business vision to transform your challenges into growth levers.",
           "learn-more": "Learn More",
           "coming-soon": "Coming soon",
           "solutions": {
             "agves": {
               "title": "AGVES",
-              "subtitle": "School Management CRM",
-              "description": "By simplifying school organization and management, the AGVES CRM ensures that pupils have the funds they need throughout the school year. It ensures smooth communication between the school and the parents, protecting the students with electronic purses and digital access keys."
+              "subtitle": "Scalable ERP for school management",
+              "description": "Specialized sales management application for the education sector. AGVES revolutionizes school and extracurricular communication by implementing a simplifying interface. It improves all operations related to financial transactions such as security processes."
             },
             "i-go": {
               "title": "I GO",
-              "subtitle": "Mobility Recharging Locator",
-              "description": "Born of the observation that it is difficult for EDPMs (Electric Personal Mobility Devices) and VAEs (Electric Assisted Bikes) to find recharging points. I GO aims to list recharging points and make them easily accessible through a dedicated search engine."
+              "subtitle": "Specialized GPS navigation",
+              "description": "I GO is an innovative mobile application dedicated to electric mobility, designed to meet the growing needs of users of Motorized Personal Mobility Devices (MPMD) and Electric Assisted Bicycles (EAB)."
             },
             "multipass": {
               "title": "Multipass",
-              "subtitle": "Coming soon",
-              "description": ""
+              "subtitle": "The agile solution that adapts to your business.",
+              "description": "Whether you're an ambitious startup or an established company, Multipass offers you a flexible and scalable platform. Designed to adapt to all business sectors, our solution allows you to centralize, manage, and optimize your customer relationships with unmatched flexibility."
+            },
+            "your-project": {
+              "title": "Your project",
+              "subtitle": "Growth factor.",
+              "description": "Behind every project, every person, there is a unique encounter. We put technology at the service of a vision: yours. Creating experiences that touch, that bring people together, that help them grow, that are sustainable and meaningful is our contribution to your success."
             }
           }
         },
@@ -63,17 +96,6 @@
           "title": "Latest insights",
           "subtitle": "Our thoughts and perspectives on the digital world",
           "view-all": "View all insights"
-        },
-        "hero": {
-          "companyName": "HARGILE",
-          "headline": {
-            "line1": "Transforms",
-            "line2": "Ideas into",
-            "line3": "Digital Reality"
-          },
-          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
-          "ctaButton": "Audit your website",
-          "arrowAlt": "Arrow"
         },
         "services": {
           "title": "Our services",
@@ -116,7 +138,7 @@
           }
         },
         "quote-request": {
-          "title": "Quote Request",
+          "title": "Contact us",
           "subtitle": {
             "part1": "Get a free estimate",
             "part2": "for your project"
@@ -262,7 +284,6 @@
       "inThisPage": "In this page",
       "downloadPDF": "Download as PDF",
       "print": "Print",
-
       "sections": {
         "termsConditions": {
           "title": "Terms and Conditions",
@@ -341,9 +362,11 @@
     "about-us": {
       "sections": {
         "our-story": {
-          "title": "Our Story",
-          "paragraph1": "Founded in 2025, Hargile began as a small team with a big vision: to bridge the gap between human creativity and digital innovation. Our founders recognized that technology should enhance human experiences, not replace them.",
-          "paragraph2": "What started as a small agency quickly evolved into a comprehensive digital partner for businesses seeking to transform their online presence. Through challenges and successes, we've remained committed to our core belief that meaningful digital experiences begin with human understanding. This is the reason for our H in our name.",
+          "title": "Our DNA",
+          "subtitle": "A vision for tomorrow",
+          "paragraph1": "At Hargile, we're not building a digital company like others. We cultivate a team with complementary talents, where technological excellence meets real business intelligence.\n\nHere, innovation is not done to shine, but to concretely serve the growth of our partners.",
+          "paragraph2": "Our ambition goes beyond products: \n\nWe create lasting alliances, based on trust, co-construction, and shared success.\n\n Each solution we develop is designed to evolve with your company, address your real challenges, and anticipate tomorrow's challenges.",
+          "paragraph3": "For us, supporting your growth is much more than a service, it's a responsibility, and a source of pride.",
           "getInTouch": "Get in Touch"
         },
         "our-team": {
@@ -364,27 +387,36 @@
           "title": "Our Mission",
           "highlighted": "To transform digital experiences",
           "subheading": "through human-centered innovation and technology.",
-          "description": "We strive to create digital solutions that not only meet business objectives but also enhance human connection, making technology more accessible, intuitive, and meaningful.",
+          "description": "We don't just create digital solutions, we build partnerships that grow with you.\n\n Innovation and business development are at the heart of our team, to offer you scalable solutions that anticipate your future challenges.",
           "values": {
+            "technic": {
+              "title": "Technical excellence",
+              "description": "Our team is at the forefront of technological innovations."
+            },
+            "vision": {
+              "title": "Business vision",
+              "description": "A deep understanding of the market to give you a competitive advantage."
+            },
+            "creativity": {
+              "title": "Creativity",
+              "description": "Innovative solutions to complex challenges."
+            },
             "human": {
-              "title": "Human-Centered",
-              "description": "Prioritizing people in every digital solution we create."
+              "title": "Human approach",
+              "description": "Intuitive and engaging user experiences."
             },
-            "innovation": {
-              "title": "Innovation",
-              "description": "Embracing new ideas and technologies to solve complex challenges."
-            },
-            "integrity": {
-              "title": "Integrity",
-              "description": "Delivering on our promises with transparency and ethical practices"
+            "partnership": {
+              "title": "Sustainable partnership",
+              "description": "A commitment beyond the project, to support your long-term success."
             }
           }
         },
         "our-commitment": {
           "title": "Our Commitment",
-          "highlighted": "To foster sustainable innovation",
-          "subtitle": "through responsible technology and ethical practices.",
-          "description": "We strive to create digital solutions that not only transform businesses but also respect our planet and empower communities, making technology more sustainable, responsible, and impactful.",
+          "highlighted": "Revolutionizing innovation through responsible technology",
+          "paragraph1": "Our conviction is to take concrete action through meaningful initiatives for more virtuous digital practices so that our commitment is measured in tangible results.",
+          "subtitle": "Performance and responsibilities.",
+          "paragraph2": "The social and environmental context is our priority. Our vision is to transform their constraints into opportunities for excellence. Our solutions are not just performant – they are resolutely forward-looking.",
           "bubbles": {
             "goodplanet": "Of our profits go to GoodPlanet",
             "carbon": "Carbon footprint reduction",
@@ -404,7 +436,7 @@
       "mainTitle": "Our Services",
       "subtitleItalic": "Innovative solutions",
       "subtitleBold": "for your digital transformation",
-      "description": "We propose a complete range of digital services to accompany you in each stage of your digital transformation, from conception to optimization.",
+      "description": "With HARGILE, you combine technical expertise and creativity to design customized digital solutions. By combining proven methods with innovative technologies, we design powerful and adaptable applications that precisely meet your specific needs and business objectives.",
       "categories": {
         "dev": {
           "title": "Development and Solution Design"
@@ -421,7 +453,7 @@
       },
       "services": {
         "web": {
-          "title": "Web Design and Development",
+          "title": "Web design and Development",
           "description": "Showcase websites, web applications, portals and custom solutions"
         },
         "mobile": {
@@ -443,6 +475,10 @@
         "seo": {
           "title": "SEO Performance Optimization",
           "description": "Natural referencing and optimization for search engines"
+        },
+        "banking-connector": {
+          "title": "Banking connector(s)",
+          "description": "Banking solutions, Wordline payment, SIPS Atos, ..."
         },
         "support": {
           "title": "Maintenance Support",
@@ -490,5 +526,9 @@
         }
       }
     }
+  },
+  "audit-button": {
+    "title": "Audit button",
+    "description": "Description of the audit button"
   }
 }

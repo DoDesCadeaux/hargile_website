@@ -4,11 +4,12 @@ import React, {memo, useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import NavbarButton from "@/components/navigation/button/navbar-button";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
-import {Link, useRouter} from "@/i18n/navigation";
+import {useRouter} from "@/i18n/navigation";
 import {OptimizedImage} from "@/components/optimizedImage";
 import {useMenuItems} from "@/hooks/useMenuItems";
 import {useNavigationVisibility} from "@/hooks/useNavigationVisibility";
 import {TransitionLink} from "@/components/TransitionLink";
+import {useTranslations} from "next-intl";
 
 const StyledNavbar = styled.div`
     display: flex;
@@ -91,11 +92,11 @@ const Spacer = styled.div`
 `;
 
 const menuItems = [
-    {path: '/services', label: 'Services'},
-    {path: '/solutions', label: 'Solutions'},
-    {path: '/about-us', label: 'About Us'},
-    {path: '/contact', label: 'Contact'},
-    {path: '/portfolio', label: 'Portfolio'},
+    {path: '/services', id: 'services'},
+    {path: '/solutions', id: 'solutions'},
+    {path: '/about-us', id: 'our-dna'},
+    {path: '/contact', id: 'contact'},
+    {path: '/portfolio', id: 'portfolio'}
 ];
 
 const Navbar = () => {
@@ -104,6 +105,7 @@ const Navbar = () => {
     const navbarRef = useRef(null);
     const brandRef = useRef(null);
     const [navbarHeight, setNavbarHeight] = useState(0);
+    const t = useTranslations('menu')
 
     useMenuItems(isOpen);
     const {menuItemDisplayed, navigationVisible} = useNavigationVisibility(isOpen);
@@ -179,7 +181,7 @@ const Navbar = () => {
                             className="navbar__navigation__item"
                             href={item.path}
                         >
-                            {item.label}
+                            {t(item.id)}
                         </StyledLink>
                     ))}
                 </NavbarNavigation>
