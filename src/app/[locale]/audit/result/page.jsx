@@ -33,9 +33,12 @@ export default function AuditResultPage() {
     const performanceScore = Math.round(auditData.auditResults.lighthouseResult?.categories?.performance?.score * 100);
     const seoScore = Math.round(auditData.auditResults.lighthouseResult?.categories?.seo?.score * 100);
     const accessibilityScore = Math.round(auditData.auditResults.lighthouseResult?.categories?.accessibility?.score * 100);
+    const bestPracticeScore = Math.round(auditData.auditResults.lighthouseResult?.categories?.["best-practices"]?.score * 100);
+
+    console.log(bestPracticeScore);
 
     return (
-        <div className="min-h-screen bg-gradient-to-b  text-white">
+        <div className="min-h-screen bg-gradient-to-b text-white container !mx-auto">
             <div className="max-w-6xl mx-auto !px-4 !py-12 sm:!px-6 lg:!px-8 container">
                 {/* Header with glass effect */}
                 <div className="backdrop-blur-md bg-gray-900/70 rounded-xl !p-8 !mb-10 border border-gray-800 shadow-xl">
@@ -111,11 +114,12 @@ export default function AuditResultPage() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
                             { score: performanceScore, label: "Performance", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
                             { score: seoScore, label: "SEO", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
-                            { score: accessibilityScore, label: "Accessibility", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" }
+                            { score: accessibilityScore, label: "Accessibility", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
+                            { score: bestPracticeScore, label: "Best Practices", icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"},
                         ].map((item, index) => (
                             <div key={index} className="backdrop-blur-md bg-gray-900/60 rounded-xl !p-6 border border-gray-800 shadow-lg transition-transform hover:transform hover:scale-105">
                                 <div className="flex justify-between items-center !mb-4">
@@ -167,6 +171,13 @@ export default function AuditResultPage() {
                             description: "Accessibility ensures that your website can be used by people with disabilities. This not only improves your reach but also shows commitment to inclusion and can be legally important in some regions.",
                             warning: accessibilityScore < 90 && "♿ Your accessibility score needs work. We can help make your website more inclusive and compliant.",
                             icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        },
+                        {
+                            title: "Best Practices",
+                            score: bestPracticeScore,
+                            description: "Best Practices refer to modern web development techniques that ensure your site runs reliably and securely. This includes avoiding deprecated APIs, using HTTPS, ensuring correct image aspect ratios, and more.",
+                            warning: bestPracticeScore < 90 && "🛡️ Your site doesn't follow all best practices. Let's address outdated code, insecure endpoints, or minor implementation flaws.",
+                            icon: "M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                         }
                     ].map((section, index) => (
                         <div key={index} className="backdrop-blur-md bg-gray-900/60 rounded-xl !p-6 border border-gray-800 shadow-lg !my-5">
@@ -194,25 +205,80 @@ export default function AuditResultPage() {
                                 </div>
                             )}
 
-                            <div className="bg-gray-800/50 rounded-md !p-4 text-sm">
-                                <p className="text-gray-400 !mb-2 font-medium">Score breakdown:</p>
-                                <div className="space-y-2">
-                                    <div className="flex items-center">
-                                        <div className="w-3 h-3 rounded-full bg-green-400 !mr-2"></div>
-                                        <span className="text-green-400 font-medium">90-100 (Good):</span>
-                                        <span className="text-gray-300 !ml-2">Fast, optimized, efficient. Great UX and SEO impact.</span>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <div className="w-3 h-3 rounded-full bg-yellow-400 !mr-2"></div>
-                                        <span className="text-yellow-400 font-medium">50-89 (Average):</span>
-                                        <span className="text-gray-300 !ml-2">Some issues affecting user experience or speed.</span>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <div className="w-3 h-3 rounded-full bg-red-400 !mr-2"></div>
-                                        <span className="text-red-400 font-medium">0-49 (Poor):</span>
-                                        <span className="text-gray-300 !ml-2">Critical performance issues that need urgent attention.</span>
-                                    </div>
-                                </div>
+                            {/*<div className="bg-gray-800/50 rounded-md !p-4 text-sm space-y-4">*/}
+                            {/*    <p className="text-gray-400 font-medium !mb-2">Score breakdown by category:</p>*/}
+
+                            {/*    <div className="space-y-2">*/}
+                            {/*        <p className="text-violet-400 font-semibold">Performance</p>*/}
+                            {/*        <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">*/}
+                            {/*            <li>90-100 (Good): Your site loads extremely fast, with optimized assets, minimal main-thread work, and reduced TTI.</li>*/}
+                            {/*            <li>50-89 (Average): Room for improvement in script execution time, image optimization, or render-blocking resources.</li>*/}
+                            {/*            <li>0-49 (Poor): Users likely face long load times, jank, or unresponsive pages — especially on mobile.</li>*/}
+                            {/*        </ul>*/}
+                            {/*    </div>*/}
+
+                            {/*    <div className="space-y-2">*/}
+                            {/*        <p className="text-violet-400 font-semibold">SEO</p>*/}
+                            {/*        <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">*/}
+                            {/*            <li>90-100 (Good): Well-structured HTML, mobile-friendly design, meta tags correctly used, good crawlability.</li>*/}
+                            {/*            <li>50-89 (Average): Minor issues like missing meta tags or some mobile usability flaws.</li>*/}
+                            {/*            <li>0-49 (Poor): Major problems like missing titles, broken links, or poor mobile optimization.</li>*/}
+                            {/*        </ul>*/}
+                            {/*    </div>*/}
+
+                            {/*    <div className="space-y-2">*/}
+                            {/*        <p className="text-violet-400 font-semibold">Accessibility</p>*/}
+                            {/*        <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">*/}
+                            {/*            <li>90-100 (Good): Complies with WCAG guidelines, keyboard navigation works, color contrast is appropriate.</li>*/}
+                            {/*            <li>50-89 (Average): Some elements are inaccessible (e.g. missing labels, poor contrast, etc.).</li>*/}
+                            {/*            <li>0-49 (Poor): Major issues preventing use by people with disabilities. Legal compliance risks.</li>*/}
+                            {/*        </ul>*/}
+                            {/*    </div>*/}
+
+                            {/*    <div className="space-y-2">*/}
+                            {/*        <p className="text-violet-400 font-semibold">Best Practices</p>*/}
+                            {/*        <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">*/}
+                            {/*            <li>90-100 (Good): Secure HTTPS setup, no deprecated APIs, good coding practices.</li>*/}
+                            {/*            <li>50-89 (Average): Some deprecated methods, inefficient resource loading, minor security flags.</li>*/}
+                            {/*            <li>0-49 (Poor): Usage of insecure libraries, unoptimized code, or unsafe requests.</li>*/}
+                            {/*        </ul>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
+
+                            <div className="bg-gray-800/50 rounded-md !p-4 text-sm space-y-4">
+                                <p className="text-gray-400 font-medium !mb-2">Score breakdown:</p>
+
+                                {section.title === "Performance" && (
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                                        <li>90-100 (Good): Your site loads extremely fast, with optimized assets, minimal main-thread work, and reduced TTI.</li>
+                                        <li>50-89 (Average): Room for improvement in script execution time, image optimization, or render-blocking resources.</li>
+                                        <li>0-49 (Poor): Users likely face long load times, jank, or unresponsive pages — especially on mobile.</li>
+                                    </ul>
+                                )}
+
+                                {section.title === "SEO" && (
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                                        <li>90-100 (Good): Well-structured HTML, mobile-friendly design, meta tags correctly used, good crawlability.</li>
+                                        <li>50-89 (Average): Minor issues like missing meta tags or some mobile usability flaws.</li>
+                                        <li>0-49 (Poor): Major problems like missing titles, broken links, or poor mobile optimization.</li>
+                                    </ul>
+                                )}
+
+                                {section.title === "Accessibility" && (
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                                        <li>90-100 (Good): Complies with WCAG guidelines, keyboard navigation works, color contrast is appropriate.</li>
+                                        <li>50-89 (Average): Some elements are inaccessible (e.g. missing labels, poor contrast, etc.).</li>
+                                        <li>0-49 (Poor): Major issues preventing use by people with disabilities. Legal compliance risks.</li>
+                                    </ul>
+                                )}
+
+                                {section.title === "Best Practices" && (
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                                        <li>90-100 (Good): Secure HTTPS setup, no deprecated APIs, good coding practices.</li>
+                                        <li>50-89 (Average): Some deprecated methods, inefficient resource loading, minor security flags.</li>
+                                        <li>0-49 (Poor): Usage of insecure libraries, unoptimized code, or unsafe requests.</li>
+                                    </ul>
+                                )}
                             </div>
 
                             <div className="!mt-4 !p-3 rounded-md bg-red-900/20 border border-red-800">

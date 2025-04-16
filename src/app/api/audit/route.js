@@ -20,7 +20,7 @@ export async function POST(req) {
         const apiKey = process.env.PAGESPEED_API_KEY;
         const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
             url
-        )}&key=${apiKey}&category=performance&category=seo&category=accessibility`;
+        )}&key=${apiKey}&category=performance&category=seo&category=accessibility&category=best-practices`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
