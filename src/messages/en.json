@@ -29,6 +29,28 @@
           "who_description": "At HARGILE, we shape our development like sculpting a work of art: with care, intention, and attention to detail.\n\nOur ambition? To create digital solutions that make sense, serve your objectives, and evolve with you.",
           "approach_title": "Each project is an opportunity, \n\n to reveal the potential of an idea",
           "approach_description": "We believe in collaborative partnerships and innovative thinking. By understanding your business goals and challenges, we deliver solutions that drive real results.",
+          "our-values": [
+            {
+              "value": "Excellence",
+              "description": "We pursue technical perfection in everything we build"
+            },
+            {
+              "value": "Innovation",
+              "description": "We continuously explore emerging technologies to stay at the cutting edge"
+            },
+            {
+              "value": "Collaboration",
+              "description": "We work as an extension of your team, not just as a service provider"
+            },
+            {
+              "value": "Integrity",
+              "description": "We maintain transparency throughout the development process"
+            },
+            {
+              "value": "Adaptability",
+              "description": "We evolve with technological trends while maintaining solid foundations"
+            }
+          ],
           "ideas": [
             "Elegant and impactful presentation websites, true showcases of your identity",
             "E-commerce platforms centered on user experience, designed to convert and build loyalty",

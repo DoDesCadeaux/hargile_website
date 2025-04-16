@@ -5,8 +5,8 @@ import {useTranslations} from "next-intl";
 import {
     Conclusion,
     ContentWrapper,
+    DefinitionList,
     Description,
-    MainTitle,
     PlusIcon,
     SectionContainer,
     SectionTitle,
@@ -14,7 +14,10 @@ import {
     StyledLi,
     Subtitle,
     SubtitleContainer,
-    TitleWrapper
+    ValueDescription,
+    ValueItem,
+    ValuesContainer,
+    ValueTitle
 } from "./about-us.styled";
 import React, {useRef} from "react";
 import {motion, useInView} from "framer-motion";
@@ -50,6 +53,19 @@ const AboutUs = () => {
         }
     };
 
+    const ourValues = () => (
+        <ValuesContainer>
+            <DefinitionList>
+                {t.raw('our-values').map((value, i) => (
+                    <ValueItem key={i}>
+                        <ValueTitle>{value.value}</ValueTitle>
+                        <ValueDescription>{value.description}</ValueDescription>
+                    </ValueItem>
+                ))}
+            </DefinitionList>
+        </ValuesContainer>
+    )
+
     return (
         <SectionContainer ref={sectionRef}>
             <ContentWrapper
@@ -58,10 +74,10 @@ const AboutUs = () => {
                 animate={isInView ? "visible" : "hidden"}
                 variants={containerVariants}
             >
-
                 <SectionWrapper as={motion.div} variants={itemVariants}>
                     <SectionTitle>{t("who_title")}</SectionTitle>
                     <Description>{t("who_description")}</Description>
+                    {window.innerWidth < 1600 && ourValues()}
                     <SubtitleContainer href="/about-us">
                         <Subtitle className={isInView ? "animate-underline" : ""}>
                             {t("subtitle")}
@@ -94,6 +110,8 @@ const AboutUs = () => {
                 </SectionWrapper>
 
             </ContentWrapper>
+
+            {window.innerWidth >= 1600 && ourValues()}
         </SectionContainer>
     );
 };

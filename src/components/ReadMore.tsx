@@ -42,7 +42,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
         return (
             <>
                 <div ref={fullTextRef} style={{visibility: 'hidden', position: 'absolute'}}>
-                    <p className={'text-gray-200' + ' ' + classNames} style={{fontWeight: 200}}>
+                    <p className={classNames} style={{fontWeight: 200}}>
                         {text.split('\n').map((line, i) => (
                             <React.Fragment key={i}>
                                 {line === '' && <br/>}
@@ -52,7 +52,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
                     </p>
                 </div>
                 <div ref={shortTextRef} style={{visibility: 'hidden', position: 'absolute'}}>
-                    <p className={'text-gray-200' + ' ' + classNames} style={{fontWeight: 200}}>
+                    <p className={classNames} style={{fontWeight: 200}}>
                         {beginText.split('\n').map((line, i) => (
                             <React.Fragment key={i}>
                                 {line === '' && <br/>}
@@ -75,11 +75,11 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
     return (
         <p
             id={id}
-            className={'text-gray-200' + ' ' + classNames}
+            className={classNames}
             style={{
                 fontWeight: 200,
-                height: isExpanded ? `${fullHeight}px` : `${shortHeight}px`,
-                transition: 'height 0.3s ease',
+                height: fullHeight + 'px',
+                transition: 'height 1s ease',
                 overflow: 'hidden',
             }}
         >

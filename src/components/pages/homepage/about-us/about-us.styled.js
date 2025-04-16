@@ -11,6 +11,11 @@ export const SectionContainer = styled.section`
     padding: 15vh 0;
     justify-content: center;
     overflow: hidden;
+
+    @media screen and (min-width: 1600px ) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -170,39 +175,69 @@ export const SectionWrapper = styled.div`
     margin-bottom: 3rem;
 `;
 
-export const StatsWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 3rem 0;
-    margin-top: 2rem;
+export const ValueItem = styled.div`
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
 
-    @media (min-width: 485px) {
-        justify-content: space-evenly;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, color-mix(in srgb, var(--color-accent-mihai), transparent 20%) 100%);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
     }
 
-    @media (min-width: 850px) {
-        justify-content: flex-start;
-        gap: 3rem 4vw;
+    &:hover {
+        transform: translateX(6px);
+    }
+
+    &:hover::before {
+        width: 10px;
+        height: 10px;
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
     }
 `;
 
-export const StatItem = styled.div`
+export const ValueTitle = styled.dt.attrs({
+    className: 'fluid-type-1-5'
+})`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+
+  ${ValueItem}:hover & {
+    color: var(--color-accent-mihai);
+  }
+`;
+
+export const ValueDescription = styled.dd.attrs({
+    className: 'fluid-type-0-5'
+})`
+    transition: color 0.3s ease;
+    width: 60ch;
+`;
+
+export const DefinitionList = styled.dl`
+    width: max-content;
+`;
+
+export const ValuesContainer = styled.div`
+    width: 100%;
+    height: fill-available;
     display: flex;
-    flex-direction: column;
-`;
+    justify-content: flex-start;
+    align-items: center;
 
-export const StatValue = styled.span.attrs({
-    className: 'fluid-type-4'
-})`
-    font-weight: 700;
-    color: var(--color-text-light);
-    line-height: 1;
-`;
+    @media (min-width: 1600px) {
+        justify-content: flex-end;
+    }
 
-export const StatLabel = styled.span.attrs({
-    className: 'fluid-type--1'
-})`
-    color: var(--color-text-secondary);
-    margin-top: 0.5rem;
+
 `;

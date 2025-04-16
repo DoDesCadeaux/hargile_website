@@ -3,9 +3,9 @@
   "menu": {
     "services": "Services",
     "solutions": "Solutions",
-    "our-dna":  "Notre ADN",
+    "our-dna": "Notre ADN",
     "contact": "Contacte",
-    "portfolio":  "Portfolio"
+    "portfolio": "Portfolio"
   },
   "pages": {
     "homepage": {
@@ -119,6 +119,28 @@
           "who_description": "Chez HARGILE, nous façonnons notre développement comme on sculpte une œuvre : avec soin, intention et sens du détail.\n\nNotre ambition ? Créer des solutions numériques qui ont du sens, qui servent vos objectifs et qui évoluent avec vous.",
           "approach_title": "Chaque projet est une opportunité,\n\n révéler le potentiel d’une idée",
           "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
+          "our-values": [
+            {
+              "value": "Excellence",
+              "description": "Nous recherchons la perfection technique dans tout ce que nous construisons"
+            },
+            {
+              "value": "Innovation",
+              "description": "Nous explorons constamment les technologies émergentes pour rester à la pointe"
+            },
+            {
+              "value": "Collaboration",
+              "description": "Nous travaillons comme une extension de votre équipe, pas seulement comme un prestataire de services"
+            },
+            {
+              "value": "Intégrité",
+              "description": "Nous maintenons la transparence tout au long du processus de développement"
+            },
+            {
+              "value": "Adaptabilité",
+              "description": "Nous évoluons avec les tendances technologiques tout en maintenant des bases solides"
+            }
+          ],
           "ideas": [
             "Des sites de présentation élégants et percutants, véritables vitrines de votre identité",
             "Des plateformes e-commerce centrées sur l’expérience utilisateur, pensées pour convertir et fidéliser",

@@ -14,6 +14,9 @@ const SvgCircle = styled.svg`
     overflow: visible;
     z-index: 99;
     pointer-events: none;
+    backface-visibility: hidden;
+    shape-rendering: geometricPrecision;
+    will-change: transform;
 
     &.closed {
         transform: translateZ(0) translate(-50%, -50%) scale(1);
@@ -23,18 +26,26 @@ const SvgCircle = styled.svg`
 
 const AnimatedCircle = styled.circle`
     fill: white;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    shape-rendering: geometricPrecision;
     transition: r 800ms ease-in, opacity 600ms ease-in-out;
     r: ${({$r}) => $r}px;
     opacity: ${({$opacity}) => $opacity};
+    will-change: transform;
 `;
 
 const Ripple = styled.circle`
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    shape-rendering: geometricPrecision;
     fill: rgba(255, 255, 255, 0.3);
     transform-origin: center;
     opacity: ${({$opacity}) => $opacity};
     r: ${({$r}) => $r}px;
     animation: rippleEffect 1000ms ease-out;
-
+    will-change: transform;
+    
     @keyframes rippleEffect {
         0% {
             opacity: 0.7;
