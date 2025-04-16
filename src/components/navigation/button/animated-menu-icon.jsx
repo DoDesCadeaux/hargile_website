@@ -13,6 +13,7 @@ const ContentStyled = styled.div`
     align-items: center;
     z-index: 100;
     perspective: 800px;
+    transform: translateZ(0);
 
     .menu-bar-container {
         display: flex;
@@ -63,6 +64,7 @@ const ContentStyled = styled.div`
 
 const MenuBarStyled = styled.div`
     width: ${({$width}) => $width};
+    transform: translateZ(0);
     height: 13%;
     background: white;
     border-radius: 6px;

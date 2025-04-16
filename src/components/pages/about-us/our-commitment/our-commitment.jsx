@@ -121,12 +121,21 @@ const OurCommitment = () => {
                 >
                     <motion.div variants={itemVariants}>
                         <HighlightedText>{t("highlighted", "To foster sustainable innovation")}</HighlightedText>
+                    </motion.div>
+
+                    <motion.div variants={itemVariants}>
+                        <Description>
+                            {t("paragraph1", "We strive to create digital solutions that not only transform businesses but also respect our planet and empower communities, making technology more sustainable, responsible, and impactful.")}
+                        </Description>
+                    </motion.div>
+
+                    <motion.div variants={itemVariants}>
                         <Subtitle>{t("subtitle", "through responsible technology and ethical practices.")}</Subtitle>
                     </motion.div>
 
                     <motion.div variants={itemVariants}>
                         <Description>
-                            {t("description", "We strive to create digital solutions that not only transform businesses but also respect our planet and empower communities, making technology more sustainable, responsible, and impactful.")}
+                            {t("paragraph1", "We strive to create digital solutions that not only transform businesses but also respect our planet and empower communities, making technology more sustainable, responsible, and impactful.")}
                         </Description>
                     </motion.div>
 

@@ -2,24 +2,33 @@
 "use client";
 
 import {useTranslations} from "next-intl";
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {motion, useInView} from "framer-motion";
 import {
     ConnectorLine,
     ContentWrapper,
     Description,
-    HighlightedText,
     IconContainer,
     MainTitle,
     SectionContainer,
-    SubheadingText,
     TitleWrapper,
     ValueDescription,
     ValueItem,
     ValuesContainer,
     ValueTitle
 } from "./our-mission.styled";
-import {Heart, Megaphone, User} from "lucide-react";
+import {
+    Cpu,
+    HandHeart,
+    Heart, HeartHandshake,
+    Lightbulb,
+    LightbulbIcon,
+    Megaphone, Recycle, Shield,
+    Sparkle,
+    SparklesIcon,
+    TrendingUp,
+    User
+} from "lucide-react";
 
 const OurMission = () => {
     const t = useTranslations("pages.about-us.sections.our-mission");
@@ -66,19 +75,60 @@ const OurMission = () => {
                     <MainTitle>{t("title")}</MainTitle>
                 </TitleWrapper>
 
-                <motion.div variants={titleVariants}>
-                    <HighlightedText>{t("highlighted")}</HighlightedText>
-                    <SubheadingText>{t("subheading")}</SubheadingText>
-                </motion.div>
+                {/*<motion.div variants={titleVariants}>*/}
+                {/*    <HighlightedText>{t("highlighted")}</HighlightedText>*/}
+                {/*    <SubheadingText>{t("subheading")}</SubheadingText>*/}
+                {/*</motion.div>*/}
 
                 <motion.div variants={titleVariants}>
-                    <Description>{t("description")}</Description>
+                    <Description>{t("description").split('\n').map((line, i) => (
+                        <React.Fragment key={i}>
+                            {line === '' && <br/>}
+                            <span>{line}</span>
+                        </React.Fragment>
+                    ))}</Description>
                 </motion.div>
 
                 <ValuesContainer>
                     <ValueItem as={motion.div} variants={valueVariants}>
                         <IconContainer>
-                            <User size={32} strokeWidth={1.5}/>
+                            <Cpu size={32} strokeWidth={1.5}/>
+                        </IconContainer>
+                        <div>
+                            <ValueTitle>{t("values.technic.title")}</ValueTitle>
+                            <ValueDescription>{t("values.technic.description")}</ValueDescription>
+                        </div>
+                    </ValueItem>
+
+                    <ConnectorLine/>
+
+                    <ValueItem as={motion.div} variants={valueVariants}>
+                        <IconContainer>
+                            <TrendingUp size={32} strokeWidth={1.5}/>
+                        </IconContainer>
+                        <div>
+                            <ValueTitle>{t("values.vision.title")}</ValueTitle>
+                            <ValueDescription>{t("values.vision.description")}</ValueDescription>
+                        </div>
+                    </ValueItem>
+
+                    <ConnectorLine/>
+
+                    <ValueItem as={motion.div} variants={valueVariants}>
+                        <IconContainer>
+                            <SparklesIcon size={32} strokeWidth={1.5}/>
+                        </IconContainer>
+                        <div>
+                            <ValueTitle>{t("values.creativity.title")}</ValueTitle>
+                            <ValueDescription>{t("values.creativity.description")}</ValueDescription>
+                        </div>
+                    </ValueItem>
+
+                    <ConnectorLine/>
+
+                    <ValueItem as={motion.div} variants={valueVariants}>
+                        <IconContainer>
+                            <HandHeart size={32} strokeWidth={1.5}/>
                         </IconContainer>
                         <div>
                             <ValueTitle>{t("values.human.title")}</ValueTitle>
@@ -90,23 +140,11 @@ const OurMission = () => {
 
                     <ValueItem as={motion.div} variants={valueVariants}>
                         <IconContainer>
-                            <Megaphone size={32} strokeWidth={1.5}/>
+                            <HeartHandshake size={32} strokeWidth={1.5}/>
                         </IconContainer>
                         <div>
-                            <ValueTitle>{t("values.innovation.title")}</ValueTitle>
-                            <ValueDescription>{t("values.innovation.description")}</ValueDescription>
-                        </div>
-                    </ValueItem>
-
-                    <ConnectorLine/>
-
-                    <ValueItem as={motion.div} variants={valueVariants}>
-                        <IconContainer>
-                            <Heart size={32} strokeWidth={1.5}/>
-                        </IconContainer>
-                        <div>
-                            <ValueTitle>{t("values.integrity.title")}</ValueTitle>
-                            <ValueDescription>{t("values.integrity.description")}</ValueDescription>
+                            <ValueTitle>{t("values.partnership.title")}</ValueTitle>
+                            <ValueDescription>{t("values.partnership.description")}</ValueDescription>
                         </div>
                     </ValueItem>
                 </ValuesContainer>

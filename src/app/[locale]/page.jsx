@@ -9,7 +9,7 @@ import LatestInsights from "@/components/pages/homepage/latest-insights/latest-i
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 import OurServices from "@/components/pages/homepage/services/ourServices";
 import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
-import EarthVideoLayer from "@/components/EarthVideoLayer";
+import {AuditButton} from "@/components/AuditButton";
 
 export default function HomePage() {
     return (
@@ -22,6 +22,8 @@ export default function HomePage() {
             <AboutUs/>
             <LatestInsights/>
             <QuoteRequestForm/>
+
+            <AuditButton/>
         </>
     );
 }

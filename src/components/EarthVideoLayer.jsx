@@ -10,7 +10,7 @@ const VideoContainer = styled.div`
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #000000;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,6 +27,7 @@ const BackgroundVideo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background: black;
 
     &.running {
         &::after {
@@ -116,7 +117,7 @@ const EarthVideoLayer = () => {
         <VideoContainer>
             <BackgroundVideo ref={backgroundVideoRef}>
                 {videoSrc && (
-                    <video autoPlay loop muted playsInline>
+                    <video autoPlay loop muted playsInline style={{background: "black"}}>
                         <source src={videoSrc} type="video/mp4"/>
                     </video>
                 )}

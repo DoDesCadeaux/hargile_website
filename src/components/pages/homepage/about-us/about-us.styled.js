@@ -11,6 +11,11 @@ export const SectionContainer = styled.section`
     padding: 15vh 0;
     justify-content: center;
     overflow: hidden;
+
+    @media screen and (min-width: 1600px ) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 export const ContentWrapper = styled.div`
@@ -22,11 +27,11 @@ export const ContentWrapper = styled.div`
     z-index: 2;
 
     @media (min-width: 768px) {
-        width: 60%;
+        width: 75%;
     }
 
     @media (min-width: 1440px) {
-        width: 50%;
+        width: 55%;
     }
 `;
 
@@ -52,19 +57,25 @@ export const SubtitleContainer = styled(TransitionLink)`
     align-items: center;
     gap: 16px;
     text-decoration: none;
-    margin-bottom: 4rem;
+    margin-bottom: 0.5rem;
     color: var(--color-text-secondary);
     cursor: pointer;
+    width: max-content;
+    transition: color 600ms ease-in-out, border-color 600ms ease-in-out, text-underline-color 600ms ease-in-out;
 
     & > * {
         transition: color 600ms ease-in-out, border-color 600ms ease-in-out, text-underline-color 600ms ease-in-out;
     }
 
     &:hover > * {
-        color: var(--color-text-light);
-        border-color: var(--color-text-light);
-        text-underline-color: var(--color-text-light);
+        border-color: var(--color-accent-mihai);
+        text-underline-color: var(--color-accent-mihai);
         transition: color 300ms ease-in-out, border-color 300ms ease-in-out, text-underline-color 300ms ease-in-out;
+
+        svg {
+            color: var(--color-accent-mihai);
+            transition: color 300ms ease-in-out;
+        }
     }
 `;
 
@@ -75,6 +86,12 @@ export const Subtitle = styled("span").attrs({
     display: block;
     position: relative;
     text-wrap: balance;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+        color: var(--color-text-secondary);
+        transition: color 300ms ease-in-out;
+    }
 
     &::after {
         content: '';
@@ -83,8 +100,8 @@ export const Subtitle = styled("span").attrs({
         bottom: -2px;
         width: 0;
         height: 1px;
-        background-color: var(--color-text-secondary);
-        transition: width 0.4s ease;
+        background-color: var(--color-accent-mihai);
+        transition: width 0.3s ease-in-out, color 0.3s ease-in-out;
     }
 
     &.animate-underline::after {
@@ -117,6 +134,24 @@ export const Description = styled.p.attrs({
     max-width: 600px;
 `;
 
+export const Conclusion = styled.p.attrs({
+    className: 'fluid-type-0'
+})`
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+`;
+
+export const StyledLi = styled.li.attrs({
+    className: 'fluid-type-0'
+})`
+    color: var(--color-text-light);
+    line-height: 1.6;
+    padding-left: 10px
+
+`;
+
 export const PlusIcon = styled.div`
     width: 40px;
     height: 40px;
@@ -127,6 +162,8 @@ export const PlusIcon = styled.div`
     align-items: center;
     justify-content: center;
     color: var(--color-text-secondary);
+    transition: color 300ms ease-in-out;
+
 
     @media (max-width: 768px) {
         width: 35px;
@@ -138,39 +175,69 @@ export const SectionWrapper = styled.div`
     margin-bottom: 3rem;
 `;
 
-export const StatsWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 3rem 0;
-    margin-top: 2rem;
+export const ValueItem = styled.div`
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
 
-    @media (min-width: 485px) {
-        justify-content: space-evenly;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, color-mix(in srgb, var(--color-accent-mihai), transparent 20%) 100%);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
     }
 
-    @media (min-width: 850px) {
-        justify-content: flex-start;
-        gap: 3rem 4vw;
+    &:hover {
+        transform: translateX(6px);
+    }
+
+    &:hover::before {
+        width: 10px;
+        height: 10px;
+        box-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
     }
 `;
 
-export const StatItem = styled.div`
+export const ValueTitle = styled.dt.attrs({
+    className: 'fluid-type-1-5'
+})`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+
+  ${ValueItem}:hover & {
+    color: var(--color-accent-mihai);
+  }
+`;
+
+export const ValueDescription = styled.dd.attrs({
+    className: 'fluid-type-0-5'
+})`
+    transition: color 0.3s ease;
+    width: 60ch;
+`;
+
+export const DefinitionList = styled.dl`
+    width: max-content;
+`;
+
+export const ValuesContainer = styled.div`
+    width: 100%;
+    height: fill-available;
     display: flex;
-    flex-direction: column;
-`;
+    justify-content: flex-start;
+    align-items: center;
 
-export const StatValue = styled.span.attrs({
-    className: 'fluid-type-4'
-})`
-    font-weight: 700;
-    color: var(--color-text-light);
-    line-height: 1;
-`;
+    @media (min-width: 1600px) {
+        justify-content: flex-end;
+    }
 
-export const StatLabel = styled.span.attrs({
-    className: 'fluid-type--1'
-})`
-    color: var(--color-text-secondary);
-    margin-top: 0.5rem;
+
 `;

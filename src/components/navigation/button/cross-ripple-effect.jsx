@@ -12,6 +12,7 @@ const CrossRippleContainer = styled.div`
     pointer-events: none;
     z-index: 101;
     overflow: visible;
+    transform: translateZ(0);
 `;
 
 export const CrossRippleEffect = ({width = '5.5vw', crashTriggered = false, isOpen}) => {
@@ -72,11 +73,14 @@ export const CrossRippleEffect = ({width = '5.5vw', crashTriggered = false, isOp
             ripple.style.width = `${baseWidth * 3}px`;
             ripple.style.height = `${Math.max(2, baseWidth * 0.08)}px`;
             ripple.style.background = 'rgba(255, 255, 255, 0.1)';
-            ripple.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+            ripple.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) translateZ(0)`;
             ripple.style.transformOrigin = 'center';
             ripple.style.opacity = '0.3';
             ripple.style.borderRadius = `${Math.max(1, baseWidth * 0.04)}px`;
             ripple.style.boxShadow = '0 0 0px 0px rgba(255, 255, 255, 1)';
+            ripple.style.backfaceVisibility = 'hidden';
+            ripple.style.willChange = 'transform';
+            ripple.setAttribute('shape-rendering', 'geometricPrecision')
 
             // Create and start the animation
             const animation = ripple.animate([
