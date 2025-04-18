@@ -317,7 +317,7 @@ export default function AuditResultPage() {
                         </div>
                         <div className="flex space-x-4">
                             <button
-                                onClick={() => setShowCalendar(true)}
+                                // onClick={() => setShowCalendar(true)}
                                 className="bg-white text-violet-900 hover:bg-gray-100 !px-6 !py-3 !mx-2 rounded-md font-medium transition-colors cursor-pointer"
                             >
                                 Contact Us
@@ -328,7 +328,8 @@ export default function AuditResultPage() {
             </div>
             {showCalendar && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm"
-                     onClick={() => setShowCalendar(false)}>
+                     onClick={() => setShowCalendar(false)}
+                >
                     <div
                         className="bg-violet-600/10 border border-violet-800/50 rounded-lg shadow-xl max-w-3xl w-full !mx-4 !p-4"
                         onClick={(e) => e.stopPropagation()}>
