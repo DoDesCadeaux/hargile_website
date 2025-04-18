@@ -1,10 +1,13 @@
 "use client";
 import Image from "next/image";
+import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {ReadMore} from "@/components/ReadMore";
+import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
+    const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
@@ -13,9 +16,9 @@ const HeroSection = () => {
                     <div className="w-full md:w-1/2 lg:w-4/5">
                         <h1 className="fluid-type-3">
                             {t("headline.line1")}
-                            <br/>
+                            <br />
                             {t("headline.line2")}
-                            <br/>
+                            <br />
                             {t("headline.line3")}
                         </h1>
                         <p
@@ -24,7 +27,10 @@ const HeroSection = () => {
                         >
                             {t("description")}
                         </p>
-                        <button className="flex items-center bg-transparent text-white font-bold">
+                        <button
+                            onClick={() => setIsAuditModalOpen(true)}
+                            className="flex items-center bg-transparent text-white font-bold no-underline cursor-pointer"
+                        >
                             <p className="fluid-type-2">{t("ctaButton")}</p>
                             <Image
                                 src="/icons/arrows/maximize 01.svg"
@@ -32,7 +38,7 @@ const HeroSection = () => {
                                 width={30}
                                 height={30}
                                 className="ml-2 mb-3"
-                                style={{marginBottom: 3 + "rem", marginLeft: 1 + "rem"}}
+                                style={{ marginBottom: "3rem", marginLeft: "1rem" }}
                             />
                         </button>
 
@@ -52,6 +58,9 @@ const HeroSection = () => {
                 mixBlendMode: "plus-lighter",
                 color: 'var(--color-accent-blue-planet)',
             }} className={'w-full text-center fluid-type-2 italic'}>{t('quote')}</blockquote>
+            {isAuditModalOpen && (
+                <AuditMultiModal onClose={() => setIsAuditModalOpen(false)} />
+            )}
         </div>
     );
 };
