@@ -19,7 +19,7 @@ import {
     ValuesContainer,
     ValueTitle
 } from "./about-us.styled";
-import React, {useRef} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {motion, useInView} from "framer-motion";
 import {Plus} from "lucide-react";
 
@@ -27,6 +27,13 @@ const AboutUs = () => {
     const t = useTranslations("pages.homepage.sections.about-us");
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {once: true, amount: 0.2});
+    const [windowWidth, setWindowWidth] = useState(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setWindowWidth(window.innerWidth);
+        }
+    }, []);
 
     const stats = [
         {value: "10+", label: t("stats.years")},
@@ -77,7 +84,7 @@ const AboutUs = () => {
                 <SectionWrapper as={motion.div} variants={itemVariants}>
                     <SectionTitle>{t("who_title")}</SectionTitle>
                     <Description>{t("who_description")}</Description>
-                    {window.innerWidth < 1600 && ourValues()}
+                    {windowWidth !== null && windowWidth < 1600 && ourValues()}
                     <SubtitleContainer href="/about-us">
                         <Subtitle className={isInView ? "animate-underline" : ""}>
                             {t("subtitle")}
@@ -111,7 +118,7 @@ const AboutUs = () => {
 
             </ContentWrapper>
 
-            {window.innerWidth >= 1600 && ourValues()}
+            {windowWidth !== null && windowWidth >= 1600 && ourValues()}
         </SectionContainer>
     );
 };
