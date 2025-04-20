@@ -1,5 +1,5 @@
-// src/app/api/audit/route.js
-// src/app/api/audit/route.js
+export const runtime = 'edge';
+
 export async function POST(req) {
     try {
         const body = await req.json();
@@ -26,53 +26,33 @@ export async function POST(req) {
             url
         )}&key=${apiKey}&category=performance&category=seo&category=accessibility&category=best-practices`;
 
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
-
-        try {
-            const response = await fetch(apiUrl, {
-                signal: controller.signal,
-                headers: {
-                    "Accept": "application/json"
-                }
-            });
-
-            clearTimeout(timeoutId);
-
-            if (!response.ok) {
-                const error = await response.text();
-                console.error("PageSpeed API error response:", error);
-                return Response.json({
-                    message: `PageSpeed API returned error: ${response.status}`,
-                    error
-                }, {status: response.status});
+        const response = await fetch(apiUrl, {
+            headers: {
+                "Accept": "application/json"
             }
+        });
 
-            const data = await response.json();
-
+        if (!response.ok) {
             return Response.json({
-                success: true,
-                auditResults: data,
-                submittedData: {
-                    firstName,
-                    lastName,
-                    email,
-                    url,
-                    isForOwnCompany,
-                    industry,
-                },
-            });
-        } catch (fetchError) {
-            clearTimeout(timeoutId);
-
-            if (fetchError.name === 'AbortError') {
-                return Response.json({message: "PageSpeed API request timed out"}, {status: 504});
-            }
-
-            throw fetchError;
+                message: `PageSpeed API returned error: ${response.status}`
+            }, {status: response.status});
         }
+
+        const data = await response.json();
+
+        return Response.json({
+            success: true,
+            auditResults: data,
+            submittedData: {
+                firstName,
+                lastName,
+                email,
+                url,
+                isForOwnCompany,
+                industry,
+            },
+        });
     } catch (error) {
-        console.error("API error:", error);
         return Response.json({
             message: "Internal server error",
             error: error.message
