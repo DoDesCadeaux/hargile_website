@@ -1,23 +1,27 @@
 import {useTranslations} from "next-intl";
 import React from "react";
 import styled from "styled-components";
+import {Radar} from "lucide-react";
+import {useSiteNavigation} from "@/components/providers/site-navigation-provider"
 
 const AuditButtonStyled = styled.button.attrs({
     className: 'fluid-type-0-5'
 })`
     cursor: pointer;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
     position: fixed;
     bottom: 24px;
     right: 24px;
     height: max-content;
-    padding: 0 12px;
+    padding: 12px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 6px;
     border: 1px solid var(--color-accent-blue-planet);
+    gap: 1rem;
+    z-index: 10000;
 
     .text-side {
         color: var(--color-accent-blue-planet);
@@ -34,24 +38,17 @@ const AuditButtonStyled = styled.button.attrs({
 `
 
 export const AuditButton = () => {
+    const navigation = useSiteNavigation()
     const t = useTranslations('audit-button');
 
     return (
-        <AuditButtonStyled onClick={() => alert("Ouverture de l'overlay")}>
+        <AuditButtonStyled onClick={() => navigation.setIsAuditModalOpen(true)}>
             <div className="text-side">
                 <span style={{fontWeight: 550}}>{t('title')}</span>
                 <span>{t('description')}</span>
             </div>
 
-            <div className={'fluid-type-3 image-side'} style={{
-                width: '75px',
-                height: '75px',
-                borderRadius: '99999px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>😉
-            </div>
+            <Radar width={35} height={35} color={'var(--color-accent-blue-planet)'} strokeWidth={1.4}/>
         </AuditButtonStyled>
     )
 }

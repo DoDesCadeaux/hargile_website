@@ -1,4 +1,3 @@
-// src/app/[locale]/page.jsx
 "use client";
 
 import OurSolutions from "@/components/pages/homepage/our-solutions/our-solutions";
@@ -22,8 +21,6 @@ export default function HomePage() {
             <AboutUs/>
             <LatestInsights/>
             <QuoteRequestForm/>
-
-            <AuditButton/>
         </>
     );
 }

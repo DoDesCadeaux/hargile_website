@@ -19,6 +19,7 @@ export default async function RootLayout({children}) {
             <SiteNavigationProvider>
                 {children}
             </SiteNavigationProvider>
+
         </ThemeProvider>
         </body>
         </html>

@@ -550,7 +550,7 @@
     }
   },
   "audit-button": {
-    "title": "Button d'audit",
-    "description": "Description du button d'audit"
+    "title": "Auditer votre site web",
+    "description": ""
   }
 }

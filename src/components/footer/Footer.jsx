@@ -33,7 +33,6 @@ const Footer = () => {
     return (
 
         <FooterContainerStyled>
-            <hr/>
             <FooterContentStyled>
                 {/* Company info */}
                 <ColumnStyled>

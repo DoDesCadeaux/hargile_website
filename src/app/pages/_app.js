@@ -96,6 +96,7 @@ export default function App({Component, pageProps}) {
             {/* Page content */}
             <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
                 <Component {...pageProps} />
+
             </main>
         </NextIntlClientProvider>
     );
