@@ -160,7 +160,7 @@ const Navbar = () => {
                         height="815"
                         src="/images/brand/brand_large.png"
                         alt="Brand Logo"
-                        style={{width: "calc(150px + 5.4vw)"}}
+                        style={{width: "calc(100px + 6vw)"}}
                     />
                 </Brand>
 

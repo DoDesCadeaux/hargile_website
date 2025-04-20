@@ -45,11 +45,11 @@ export const CrossRippleEffect = ({width = '5.5vw', crashTriggered = false, isOp
             containerRef.current.removeChild(containerRef.current.firstChild);
         }
 
-        rippleCountRef.current = 0;
+        rippleCountRef.current = 2;
         animationsRef.current = [];
 
         // Create 3 sets of cross ripples with different delays
-        createRippleSet(0);
+        createRippleSet(2);
     };
 
     const createRippleSet = (setIndex) => {
@@ -70,7 +70,7 @@ export const CrossRippleEffect = ({width = '5.5vw', crashTriggered = false, isOp
             ripple.style.position = 'absolute';
             ripple.style.top = '50%';
             ripple.style.left = '50%';
-            ripple.style.width = `${baseWidth * 3}px`;
+            ripple.style.width = `${baseWidth * 5}px`;
             ripple.style.height = `${Math.max(2, baseWidth * 0.08)}px`;
             ripple.style.background = 'rgba(255, 255, 255, 0.1)';
             ripple.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) translateZ(0)`;

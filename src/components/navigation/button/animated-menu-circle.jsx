@@ -18,6 +18,7 @@ const SvgCircle = styled.svg`
     shape-rendering: geometricPrecision;
     will-change: transform;
 
+
     &.closed {
         transform: translateZ(0) translate(-50%, -50%) scale(1);
         transition: transform 300ms ease-in;
@@ -45,7 +46,8 @@ const Ripple = styled.circle`
     r: ${({$r}) => $r}px;
     animation: rippleEffect 1000ms ease-out;
     will-change: transform;
-    
+
+
     @keyframes rippleEffect {
         0% {
             opacity: 0.7;
@@ -167,44 +169,46 @@ const AnimatedMenuCircle = ({width, menuIconAnimationTime, crashTriggered = fals
     }, [isOpen, menuIconAnimationTime, crashTriggered]);
 
     return (
-        <SvgCircle
-            viewBox="0 0 300 300"
-            $width={width}
-            $growDelay={growDelay}
-            $isOpen={isOpen}
-            className={isOpen ? "open" : "closed"}
-            preserveAspectRatio="xMidYMid meet"
-        >
-            <defs>
-                <filter id="glowEffect" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur
-                        ref={filterRef}
-                        in="SourceAlpha"
-                        stdDeviation={circleState.current.gaussianBlur}
-                        result="blur"
-                    />
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
-                </filter>
-            </defs>
+        <>
+            <SvgCircle
+                viewBox="0 0 300 300"
+                $width={width}
+                $growDelay={growDelay}
+                $isOpen={isOpen}
+                className={isOpen ? "open" : "closed"}
+                preserveAspectRatio="xMidYMid meet"
+            >
+                <defs>
+                    <filter id="glowEffect" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur
+                            ref={filterRef}
+                            in="SourceAlpha"
+                            stdDeviation={circleState.current.gaussianBlur}
+                            result="blur"
+                        />
+                        <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="rgba(255, 255, 255, 1)"/>
+                    </filter>
+                </defs>
 
-            <AnimatedCircle
-                ref={circleRef}
-                cx="150"
-                cy="150"
-                $r={circleState.current.radius}
-                $opacity={circleState.current.opacity}
-                filter="url(#glowEffect)"
-            />
-            {circleState.current.showRipple && (
-                <Ripple
-                    ref={rippleRef}
+                <AnimatedCircle
+                    ref={circleRef}
                     cx="150"
                     cy="150"
-                    $opacity={0.9}
-                    $r={0}
+                    $r={circleState.current.radius}
+                    $opacity={circleState.current.opacity}
+                    filter="url(#glowEffect)"
                 />
-            )}
-        </SvgCircle>
+                {circleState.current.showRipple && (
+                    <Ripple
+                        ref={rippleRef}
+                        cx="150"
+                        cy="150"
+                        $opacity={0.9}
+                        $r={0}
+                    />
+                )}
+            </SvgCircle>
+        </>
     );
 };
 
