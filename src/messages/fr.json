@@ -396,232 +396,232 @@
           }
         }
       }
-    }
-  },
-  "portfolio": {
-    "cta": {
-      "button": "Contactez-nous",
-      "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
-      "title": "Prêt à transformer votre présence numérique ?"
     },
-    "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
-    "featuredProjects": "Projets en Vedette",
-    "projects": {
-      "agves": {
-        "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants.",
-        "subtitle": "Plateforme de Gestion Scolaire"
+    "portfolio": {
+      "cta": {
+        "button": "Contactez-nous",
+        "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
+        "title": "Prêt à transformer votre présence numérique ?"
       },
-      "datasense": {
-        "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées.",
-        "subtitle": "Tableau de Bord Analytique"
-      },
-      "ecotrack": {
-        "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables.",
-        "subtitle": "Surveillance de Durabilité"
-      },
-      "igo": {
-        "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables.",
-        "subtitle": "Système de Gestion de Mobilité"
-      },
-      "leafy": {
-        "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées.",
-        "subtitle": "E-commerce pour Plantes"
-      },
-      "multipass": {
-        "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés.",
-        "subtitle": "Application couteau suisse"
-      }
-    },
-    "readCaseStudy": "Lire l'étude de cas",
-    "subtitle": {
-      "line1": "Transformer des idées en",
-      "line2": "expériences numériques exceptionnelles"
-    },
-    "title": "Notre Portfolio",
-    "viewMore": "En savoir plus",
-    "viewProject": "Voir le projet"
-  },
-  "privacy-policy": {
-    "downloadPDF": "Télécharger en PDF",
-    "inThisPage": "Dans cette page",
-    "lastUpdate": "Dernière mise à jour",
-    "lastUpdateDate": "18 mars 2025",
-    "print": "Imprimer",
-    "sections": {
-      "contactSupport": {
-        "content": "Pour toute question ou préoccupation concernant cette politique de confidentialité, veuillez contacter notre délégué à la protection des données à dpo@hargile.com.",
-        "title": "Contactez-nous"
-      },
-      "contactUs": {
-        "content": "Si vous avez des questions sur notre politique de confidentialité ou nos pratiques, veuillez nous contacter via notre site web ou par email à privacy@hargile.com.",
-        "title": "Nous contacter"
-      },
-      "cookies": {
-        "control": {
-          "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies déjà présents sur votre appareil et configurer la plupart des navigateurs pour les empêcher d'être placés.",
-          "title": "Contrôle des cookies"
+      "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
+      "featuredProjects": "Projets en Vedette",
+      "projects": {
+        "agves": {
+          "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants.",
+          "subtitle": "Plateforme de Gestion Scolaire"
         },
-        "introduction": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser comment les utilisateurs utilisent notre site.",
-        "title": "Utilisation des Cookies",
-        "types": {
-          "advertising": "Cookies publicitaires : Pour diffuser des publicités pertinentes",
-          "analytics": "Cookies analytiques : Pour analyser comment les visiteurs utilisent notre site",
-          "essential": "Cookies essentiels : Nécessaires au fonctionnement du site",
-          "functional": "Cookies de fonctionnalité : Pour mémoriser vos préférences",
-          "title": "Types de cookies utilisés"
+        "datasense": {
+          "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées.",
+          "subtitle": "Tableau de Bord Analytique"
+        },
+        "ecotrack": {
+          "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables.",
+          "subtitle": "Surveillance de Durabilité"
+        },
+        "igo": {
+          "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables.",
+          "subtitle": "Système de Gestion de Mobilité"
+        },
+        "leafy": {
+          "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées.",
+          "subtitle": "E-commerce pour Plantes"
+        },
+        "multipass": {
+          "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés.",
+          "subtitle": "Application couteau suisse"
         }
       },
-      "international": {
-        "content": "Vos informations peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction.",
-        "title": "Transferts Internationaux de données"
+      "readCaseStudy": "Lire l'étude de cas",
+      "subtitle": {
+        "line1": "Transformer des idées en",
+        "line2": "expériences numériques exceptionnelles"
       },
-      "other": {
-        "content": "Cette section contient des informations supplémentaires sur nos pratiques et politiques de confidentialité.",
-        "title": "Etc."
-      },
-      "privacyPolicy": {
-        "dataCollection": {
-          "content": "Nous collectons les informations que vous nous fournissez directement lorsque vous vous inscrivez à nos services, remplissez un formulaire ou communiquez avec nous. Ces informations peuvent inclure votre nom, adresse email, numéro de téléphone et toute autre information que vous choisissez de nous fournir.",
-          "title": "Collecte des données"
+      "title": "Notre Portfolio",
+      "viewMore": "En savoir plus",
+      "viewProject": "Voir le projet"
+    },
+    "privacy-policy": {
+      "downloadPDF": "Télécharger en PDF",
+      "inThisPage": "Dans cette page",
+      "lastUpdate": "Dernière mise à jour",
+      "lastUpdateDate": "18 mars 2025",
+      "print": "Imprimer",
+      "sections": {
+        "contactSupport": {
+          "content": "Pour toute question ou préoccupation concernant cette politique de confidentialité, veuillez contacter notre délégué à la protection des données à dpo@hargile.com.",
+          "title": "Contactez-nous"
         },
-        "dataUsage": {
-          "content": "Nous utilisons vos données personnelles pour :",
-          "purposes": {
-            "responses": "Répondre à vos commentaires, questions et demandes",
-            "services": "Fournir, maintenir et améliorer nos services",
-            "transactions": "Traiter les transactions et envoyer des notifications connexes"
+        "contactUs": {
+          "content": "Si vous avez des questions sur notre politique de confidentialité ou nos pratiques, veuillez nous contacter via notre site web ou par email à privacy@hargile.com.",
+          "title": "Nous contacter"
+        },
+        "cookies": {
+          "control": {
+            "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies déjà présents sur votre appareil et configurer la plupart des navigateurs pour les empêcher d'être placés.",
+            "title": "Contrôle des cookies"
           },
-          "title": "Utilisation des données"
+          "introduction": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser comment les utilisateurs utilisent notre site.",
+          "title": "Utilisation des Cookies",
+          "types": {
+            "advertising": "Cookies publicitaires : Pour diffuser des publicités pertinentes",
+            "analytics": "Cookies analytiques : Pour analyser comment les visiteurs utilisent notre site",
+            "essential": "Cookies essentiels : Nécessaires au fonctionnement du site",
+            "functional": "Cookies de fonctionnalité : Pour mémoriser vos préférences",
+            "title": "Types de cookies utilisés"
+          }
         },
-        "introduction": "Cette politique de confidentialité explique comment nous recueillons, utilisons, traitons et protégeons vos informations personnelles en conformité avec le Règlement Général sur la Protection des Données (RGPD).",
-        "title": "Politique de Confidentialité"
+        "international": {
+          "content": "Vos informations peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction.",
+          "title": "Transferts Internationaux de données"
+        },
+        "other": {
+          "content": "Cette section contient des informations supplémentaires sur nos pratiques et politiques de confidentialité.",
+          "title": "Etc."
+        },
+        "privacyPolicy": {
+          "dataCollection": {
+            "content": "Nous collectons les informations que vous nous fournissez directement lorsque vous vous inscrivez à nos services, remplissez un formulaire ou communiquez avec nous. Ces informations peuvent inclure votre nom, adresse email, numéro de téléphone et toute autre information que vous choisissez de nous fournir.",
+            "title": "Collecte des données"
+          },
+          "dataUsage": {
+            "content": "Nous utilisons vos données personnelles pour :",
+            "purposes": {
+              "responses": "Répondre à vos commentaires, questions et demandes",
+              "services": "Fournir, maintenir et améliorer nos services",
+              "transactions": "Traiter les transactions et envoyer des notifications connexes"
+            },
+            "title": "Utilisation des données"
+          },
+          "introduction": "Cette politique de confidentialité explique comment nous recueillons, utilisons, traitons et protégeons vos informations personnelles en conformité avec le Règlement Général sur la Protection des Données (RGPD).",
+          "title": "Politique de Confidentialité"
+        },
+        "termsConditions": {
+          "intellectualProperty": {
+            "content": "Tous les contenus présents sur ce site, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques et compilations de logiciels sont la propriété d'Hargile ou de ses fournisseurs de contenu et sont protégés par les lois françaises et internationales sur le droit d'auteur.",
+            "title": "Propriété intellectuelle"
+          },
+          "liability": {
+            "content": "Les informations sur ce site sont fournies \"telles quelles\", sans garantie d'aucune sorte, expresse ou implicite. Hargile n'assume aucune responsabilité quant à l'utilisation de ce site ou de son contenu. En aucun cas, Hargile ne sera responsable des dommages directs, indirects, accessoires, spéciaux ou consécutifs.",
+            "title": "Limitation de responsabilité"
+          },
+          "title": "Termes et Conditions",
+          "welcome": "Bienvenue sur le site web d'Hargile. En accédant à ce site, vous acceptez d'être lié par ces conditions d'utilisation, toutes les lois et réglementations applicables. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce site."
+        },
+        "userRights": {
+          "introduction": "Conformément au RGPD, vous disposez des droits suivants concernant vos données :",
+          "rights": {
+            "access": "Droit d'accès : Vous pouvez demander une copie de vos données personnelles",
+            "erasure": "Droit à l'effacement : Vous pouvez demander la suppression de vos données",
+            "objection": "Droit d'opposition : Vous pouvez vous opposer au traitement de vos données",
+            "portability": "Droit à la portabilité : Vous pouvez demander le transfert de vos données",
+            "rectification": "Droit de rectification : Vous pouvez demander la correction de vos données inexactes",
+            "restriction": "Droit à la limitation du traitement : Vous pouvez demander de limiter le traitement"
+          },
+          "title": "Droits des Utilisateurs"
+        }
       },
-      "termsConditions": {
-        "intellectualProperty": {
-          "content": "Tous les contenus présents sur ce site, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques et compilations de logiciels sont la propriété d'Hargile ou de ses fournisseurs de contenu et sont protégés par les lois françaises et internationales sur le droit d'auteur.",
-          "title": "Propriété intellectuelle"
-        },
-        "liability": {
-          "content": "Les informations sur ce site sont fournies \"telles quelles\", sans garantie d'aucune sorte, expresse ou implicite. Hargile n'assume aucune responsabilité quant à l'utilisation de ce site ou de son contenu. En aucun cas, Hargile ne sera responsable des dommages directs, indirects, accessoires, spéciaux ou consécutifs.",
-          "title": "Limitation de responsabilité"
-        },
-        "title": "Termes et Conditions",
-        "welcome": "Bienvenue sur le site web d'Hargile. En accédant à ce site, vous acceptez d'être lié par ces conditions d'utilisation, toutes les lois et réglementations applicables. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce site."
-      },
-      "userRights": {
-        "introduction": "Conformément au RGPD, vous disposez des droits suivants concernant vos données :",
-        "rights": {
-          "access": "Droit d'accès : Vous pouvez demander une copie de vos données personnelles",
-          "erasure": "Droit à l'effacement : Vous pouvez demander la suppression de vos données",
-          "objection": "Droit d'opposition : Vous pouvez vous opposer au traitement de vos données",
-          "portability": "Droit à la portabilité : Vous pouvez demander le transfert de vos données",
-          "rectification": "Droit de rectification : Vous pouvez demander la correction de vos données inexactes",
-          "restriction": "Droit à la limitation du traitement : Vous pouvez demander de limiter le traitement"
-        },
-        "title": "Droits des Utilisateurs"
-      }
+      "title": "Mentions Légales"
     },
-    "title": "Mentions Légales"
-  },
-  "services": {
-    "categories": {
-      "ai": {
-        "title": "Intelligence Artificielle et Solutions Cloud"
-      },
-      "analysis": {
-        "title": "Analyse et Qualité"
-      },
-      "dev": {
-        "title": "Développement et Conception de Solutions"
-      },
-      "maintenance": {
-        "title": "Maintenance et Modernisation"
-      }
-    },
-    "description": "Avec HARGILE, vous alliez expertise technique et créativité pour concevoir des solutions numériques personnalisées. En associant des méthodes éprouvées à des technologies innovantes, nous concevons des applications adaptées et puissantes qui répondent avec précision à vos besoins spécifiques et à vos objectifs commerciaux.",
-    "mainTitle": "Nos Services",
     "services": {
-      "agents": {
-        "description": "Chatbots intelligents et assistants virtuels personnalisés",
-        "title": "Développement d'agents intelligents"
+      "categories": {
+        "ai": {
+          "title": "Intelligence Artificielle et Solutions Cloud"
+        },
+        "analysis": {
+          "title": "Analyse et Qualité"
+        },
+        "dev": {
+          "title": "Développement et Conception de Solutions"
+        },
+        "maintenance": {
+          "title": "Maintenance et Modernisation"
+        }
       },
-      "api": {
-        "description": "Création d'interfaces de programmation pour connecter vos systèmes",
-        "title": "Développement d'APIs"
+      "description": "Avec HARGILE, vous alliez expertise technique et créativité pour concevoir des solutions numériques personnalisées. En associant des méthodes éprouvées à des technologies innovantes, nous concevons des applications adaptées et puissantes qui répondent avec précision à vos besoins spécifiques et à vos objectifs commerciaux.",
+      "mainTitle": "Nos Services",
+      "services": {
+        "agents": {
+          "description": "Chatbots intelligents et assistants virtuels personnalisés",
+          "title": "Développement d'agents intelligents"
+        },
+        "api": {
+          "description": "Création d'interfaces de programmation pour connecter vos systèmes",
+          "title": "Développement d'APIs"
+        },
+        "apidev": {
+          "description": "Conception et implémentation d'APIs robustes",
+          "title": "Développement d'APIs"
+        },
+        "automation": {
+          "description": "Optimisation des flux de travail et automatisation des tâches répétitives",
+          "title": "Automatisation des processus métier"
+        },
+        "banking-connector": {
+          "description": "Solutions banquaire, Wordline payment, SIPS Atos, ...",
+          "title": "Connecteur(s) banquaire(s)"
+        },
+        "cloud": {
+          "description": "Infrastructure cloud, déploiement et optimisation des ressources",
+          "title": "Solutions Cloud"
+        },
+        "cms": {
+          "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu",
+          "title": "Applications de gestion de contenu"
+        },
+        "consulting": {
+          "description": "Accompagnement expert pour l'intégration de l'IA dans votre entreprise",
+          "title": "Conseil stratégique en IA"
+        },
+        "ecommerce": {
+          "description": "Solutions de commerce en ligne électronique performantes et sécurisées",
+          "title": "E-Commerce"
+        },
+        "migration": {
+          "description": "Mise à niveau de systèmes existants et migration vers des technologies modernes",
+          "title": "Migration, modernisation d'applications"
+        },
+        "ml": {
+          "description": "Analyses prédictives et solutions basées sur l'apprentissage automatique",
+          "title": "Pipelines de prédiction avec Machine Learning"
+        },
+        "mobile": {
+          "description": "Développement d'applications iOS et Android.",
+          "title": "Applications mobile"
+        },
+        "performance": {
+          "description": "Amélioration de la vitesse et de l'expérience utilisateur",
+          "title": "Optimisation des performances"
+        },
+        "qa": {
+          "description": "Tests fonctionnels, de performance et assurance qualité des solutions",
+          "title": "Tests et assurance qualité (QA)"
+        },
+        "reporting": {
+          "description": "Analyse de données et création de rapports personnalisés",
+          "title": "Analyse – reporting"
+        },
+        "seo": {
+          "description": "Référencement naturel et optimisation pour les moteurs de recherche",
+          "title": "Optimisation performance SEO"
+        },
+        "support": {
+          "description": "Support technique, mises à jour et maintenance préventive",
+          "title": "Maintenance support"
+        },
+        "web": {
+          "description": "Sites vitrines, applications web, portails et solutions sur mesure",
+          "title": "Web"
+        }
       },
-      "apidev": {
-        "description": "Conception et implémentation d'APIs robustes",
-        "title": "Développement d'APIs"
-      },
-      "automation": {
-        "description": "Optimisation des flux de travail et automatisation des tâches répétitives",
-        "title": "Automatisation des processus métier"
-      },
-      "banking-connector": {
-        "description": "Solutions banquaire, Wordline payment, SIPS Atos, ...",
-        "title": "Connecteur(s) banquaire(s)"
-      },
-      "cloud": {
-        "description": "Infrastructure cloud, déploiement et optimisation des ressources",
-        "title": "Solutions Cloud"
-      },
-      "cms": {
-        "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu",
-        "title": "Applications de gestion de contenu"
-      },
-      "consulting": {
-        "description": "Accompagnement expert pour l'intégration de l'IA dans votre entreprise",
-        "title": "Conseil stratégique en IA"
-      },
-      "ecommerce": {
-        "description": "Solutions de commerce en ligne électronique performantes et sécurisées",
-        "title": "E-Commerce"
-      },
-      "migration": {
-        "description": "Mise à niveau de systèmes existants et migration vers des technologies modernes",
-        "title": "Migration, modernisation d'applications"
-      },
-      "ml": {
-        "description": "Analyses prédictives et solutions basées sur l'apprentissage automatique",
-        "title": "Pipelines de prédiction avec Machine Learning"
-      },
-      "mobile": {
-        "description": "Développement d'applications iOS et Android.",
-        "title": "Applications mobile"
-      },
-      "performance": {
-        "description": "Amélioration de la vitesse et de l'expérience utilisateur",
-        "title": "Optimisation des performances"
-      },
-      "qa": {
-        "description": "Tests fonctionnels, de performance et assurance qualité des solutions",
-        "title": "Tests et assurance qualité (QA)"
-      },
-      "reporting": {
-        "description": "Analyse de données et création de rapports personnalisés",
-        "title": "Analyse – reporting"
-      },
-      "seo": {
-        "description": "Référencement naturel et optimisation pour les moteurs de recherche",
-        "title": "Optimisation performance SEO"
-      },
-      "support": {
-        "description": "Support technique, mises à jour et maintenance préventive",
-        "title": "Maintenance support"
-      },
-      "web": {
-        "description": "Sites vitrines, applications web, portails et solutions sur mesure",
-        "title": "Web"
-      }
+      "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+      "subtitleBold": "pour votre transformation digitale",
+      "subtitleItalic": "Solutions innovantes",
+      "title": "Nos services"
     },
-    "subtitle": "Nous avons tous les outils pour élever votre entreprise",
-    "subtitleBold": "pour votre transformation digitale",
-    "subtitleItalic": "Solutions innovantes",
-    "title": "Nos services"
-  },
-  "read-more": {
-    "less": "Réduire",
-    "more": "Voir plus"
+    "read-more": {
+      "less": "Réduire",
+      "more": "Voir plus"
+    }
   },
   "test": "lorem fr"
 }
