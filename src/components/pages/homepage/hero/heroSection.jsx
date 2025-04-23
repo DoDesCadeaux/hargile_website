@@ -12,7 +12,7 @@ const HeroSection = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
-            <div className="container mx-auto px-4 xl:-translate-y-1/6">
+            <div className="container mx-auto px-4 xl:translate-y-1/6">
                 <div className="flex">
                     <div className="w-full md:w-1/2 lg:w-4/5">
                         <h1 className="fluid-type-3">

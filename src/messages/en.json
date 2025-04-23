@@ -552,5 +552,9 @@
   "audit-button": {
     "title": "Audit your website",
     "description": ""
+  },
+  "read-more": {
+    "more": "Show more",
+    "less": "Show less"
   }
 }
