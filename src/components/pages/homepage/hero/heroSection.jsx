@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {ReadMore} from "@/components/ReadMore";
-import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 
 const HeroSection = () => {
@@ -15,7 +13,7 @@ const HeroSection = () => {
             <div className="container mx-auto px-4 xl:translate-y-1/6">
                 <div className="flex">
                     <div className="w-full md:w-1/2 lg:w-4/5">
-                        <h1 className="fluid-type-4">
+                        <h1 className={window.innerWidth >= 1024 ? 'fluid-type-4' : 'fluid-type-3'}>
                             {t("headline.line1") + ' '}
                             {t("headline.line2")}
                             <br/>
