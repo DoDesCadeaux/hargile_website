@@ -86,15 +86,31 @@ export const FeatureText = styled.span.attrs({
 `;
 
 export const DetailsList = styled.div`
-    margin: 4rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 10vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media screen and (min-width: 1200px){
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1920px){
+        grid-template-columns: repeat(3, 1fr);
+    }
 `;
 
 export const DetailItem = styled.div`
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    background-color: rgba(17, 12, 41, 0.2);
+    border: 1px solid rgba(147, 51, 234, 0.1);
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(6px);
+    padding: 1.8rem 2rem;
+    max-width: 800px;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
 
     &:last-child {
         border-bottom: none;
@@ -113,6 +129,7 @@ export const DetailText = styled.p.attrs({
     className: 'fluid-type-0-5'
 })`
     color: var(--color-text-light);
-    max-width: 900px;
     text-align: justify;
+text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
 `;
