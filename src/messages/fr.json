@@ -640,11 +640,11 @@
       "subtitleBold": "pour votre transformation digitale",
       "subtitleItalic": "Solutions innovantes",
       "title": "Nos services"
-    },
-    "read-more": {
-      "less": "Réduire",
-      "more": "Voir plus"
     }
+  },
+  "read-more": {
+    "less": "Réduire",
+    "more": "Voir plus"
   },
   "test": "lorem fr"
 }
