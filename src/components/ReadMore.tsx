@@ -97,7 +97,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
                     <span className={`${!isExpanded && 'hidden'}`} aria-hidden={!isExpanded}>{endText}</span>
 
                     <span
-                        style={{paddingLeft: '1rem'}}
+                        style={{paddingLeft: '1rem', mixBlendMode: "plus-lighter", fontWeight: 300}}
                         className='text-violet-400 cursor-pointer'
                         role="button"
                         tabIndex={0}
