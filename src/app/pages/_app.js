@@ -14,6 +14,7 @@ export default function App({Component, pageProps}) {
 
     // Initialize Lenis
     useEffect(() => {
+        // Create Lenis smooth scroll instance
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -23,18 +24,26 @@ export default function App({Component, pageProps}) {
             smoothTouch: false,
             touchMultiplier: 2,
         });
-    }, []);
 
-    // Control scrolling during transitions
-    useEffect(() => {
-        if (!lenis) return;
+        // Connect lenis to requestAnimationFrame
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
 
         if (isTransitioning) {
-            lenis.stop();
-        } else {
             lenis.start();
+        } else {
+            lenis.stop();
         }
-    }, [isTransitioning, lenis]);
+
+        requestAnimationFrame(raf);
+
+        // Cleanup on unmount
+        return () => {
+            lenis.destroy();
+        };
+    }, [isTransitioning]);
 
     return (
         <NextIntlClientProvider
