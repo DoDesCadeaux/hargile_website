@@ -1,14 +1,11 @@
 "use client"
 
 import {NextIntlClientProvider} from "next-intl";
-import {usePageTransition} from "@/components/TransitionLink";
 import {SpeedInsights} from "@vercel/speed-insights/next"
 
 // Example of integrating the custom transition system with your app
 
 export default function App({Component, pageProps}) {
-    const {isTransitioning} = usePageTransition();
-
     return (
         <NextIntlClientProvider
             locale={pageProps.locale}

@@ -3,8 +3,6 @@ import {routing} from "@/i18n/routing";
 import {SiteNavigationProvider} from "@/components/providers/site-navigation-provider";
 
 import {ThemeProvider} from "@/components/providers/theme-provider";
-import {useEffect} from "react";
-import Lenis from "lenis";
 
 export const metadata = {
     title: "Create Next App",
@@ -13,39 +11,6 @@ export const metadata = {
 
 export default async function RootLayout({children}) {
     "use client"
-
-    // Initialize Lenis
-    useEffect(() => {
-        // Create Lenis smooth scroll instance
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: "vertical",
-            gestureDirection: "vertical",
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        // Connect lenis to requestAnimationFrame
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        if (isTransitioning) {
-            lenis.start();
-        } else {
-            lenis.stop();
-        }
-
-        requestAnimationFrame(raf);
-
-        // Cleanup on unmount
-        return () => {
-            lenis.destroy();
-        };
-    }, [isTransitioning]);
 
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
