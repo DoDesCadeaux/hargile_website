@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import Lenis from "lenis";
 import {NextIntlClientProvider} from "next-intl";
 import {usePageTransition} from "@/components/TransitionLink";
@@ -9,7 +9,6 @@ import {SpeedInsights} from "@vercel/speed-insights/next"
 // Example of integrating the custom transition system with your app
 
 export default function App({Component, pageProps}) {
-    const [lenis, setLenis] = useState(null);
     const {isTransitioning} = usePageTransition();
 
     // Initialize Lenis
