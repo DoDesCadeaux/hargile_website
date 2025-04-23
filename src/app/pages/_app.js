@@ -23,16 +23,6 @@ export default function App({Component, pageProps}) {
             smoothTouch: false,
             touchMultiplier: 2,
         });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-        setLenis(lenis);
-
-        return () => lenis.destroy();
     }, []);
 
     // Control scrolling during transitions
