@@ -3,7 +3,7 @@
     "description": "",
     "title": "Audit your website"
   },
-  "audit-modal" : {
+  "audit-modal": {
     "modal-title": "Website Audit",
     "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
     "modal-url-placeholder": "https://yourwebiste.com",
@@ -200,9 +200,9 @@
           "ctaButton": "Audit your website",
           "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
           "headline": {
-            "line1": "Transforms",
-            "line2": "Ideas into",
-            "line3": "Digital Reality"
+            "line1": "Digital innovation ",
+            "line2": "for your business",
+            "line3": ""
           },
           "paragraph": "Transforming complex challenges into digital solutions is our mission.\n Visionary agency driven by the synergy of Strategic Digital Marketing and Artificial Intelligence, we bring powerful and meaningful digital experiences to life. Cutting-edge technology combined with a Human approach allows us to offer innovative solutions to support businesses in their digital transformation.",
           "quote": "Stand out, grow and thrive in an increasingly connected world."
@@ -679,7 +679,7 @@
           "best-poor": "0-49 (Poor): Usage of insecure libraries, unoptimized code, or unsafe requests.",
           "score-like": "A score like",
           "may-look": "% may look okay, but it still indicates ",
-          "may-look-performances" : "suboptimal load times or resource usage. On slower connections or mobile devices, this could mean users leave before the page loads.",
+          "may-look-performances": "suboptimal load times or resource usage. On slower connections or mobile devices, this could mean users leave before the page loads.",
           "may-look-seo": " fewer pages indexed and lost traffic to competitors.",
           "may-look-access": " your site isn't accessible to everyone. This could be excluding part of your audience and pose compliance risks.",
           "may-look-best": " a lack of secure and modern web development standards, which can expose your site to vulnerabilities and harm user trust.",

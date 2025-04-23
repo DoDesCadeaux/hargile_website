@@ -6,9 +6,10 @@ interface ReadMoreProps {
     text: string
     amountOfWords?: number
     classNames?: string
+    style?: React.CSSProperties
 }
 
-export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMoreProps) => {
+export const ReadMore = ({id, text, amountOfWords = 36, classNames, style}: ReadMoreProps) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const [shortHeight, setShortHeight] = useState<number | null>(null)
     const [fullHeight, setFullHeight] = useState<number | null>(null)
@@ -43,7 +44,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
     if (fullHeight === null || shortHeight === null) {
         return (
             <>
-                <div ref={fullTextRef} style={{visibility: 'hidden', position: 'absolute'}}>
+                <div ref={fullTextRef} style={{visibility: 'hidden', position: 'absolute', ...style}}>
                     <p className={classNames} style={{fontWeight: 200}}>
                         {text.split('\n').map((line, i) => (
                             <React.Fragment key={i}>
@@ -83,6 +84,8 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
                 height: fullHeight + 'px',
                 transition: 'height 1s ease',
                 overflow: 'hidden',
+                textAlign: 'justify',
+                ...style
             }}
         >
             {beginText.split('\n').map((line, i) => (
@@ -94,10 +97,16 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
             {itCanOverflow && (
                 <>
                     {!isExpanded && <span>... </span>}
-                    <span className={`${!isExpanded && 'hidden'}`} aria-hidden={!isExpanded}>{endText}</span>
+                    <span style={{textAlign: 'justify'}} className={`${!isExpanded && 'hidden'}`}
+                          aria-hidden={!isExpanded}>{endText}</span>
 
                     <span
-                        style={{paddingLeft: '1rem', mixBlendMode: "plus-lighter", fontWeight: 300}}
+                        style={{
+                            paddingLeft: '1rem',
+                            mixBlendMode: "plus-lighter",
+                            fontWeight: 300,
+                            textAlign: 'justify'
+                        }}
                         className='text-violet-400 cursor-pointer'
                         role="button"
                         tabIndex={0}
