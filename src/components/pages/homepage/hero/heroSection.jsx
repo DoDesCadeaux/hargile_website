@@ -15,7 +15,7 @@ const HeroSection = () => {
             <div className="container mx-auto px-4 xl:translate-y-1/6">
                 <div className="flex">
                     <div className="w-full md:w-1/2 lg:w-4/5">
-                        <h1 className="fluid-type-3">
+                        <h1 className="fluid-type-4">
                             {t("headline.line1") + ' '}
                             {t("headline.line2")}
                             <br/>
