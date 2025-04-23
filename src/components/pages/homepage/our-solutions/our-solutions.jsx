@@ -48,8 +48,8 @@ const OurSolutions = () => {
         <SectionContainer className="our-solutions">
             <ContentWrapper>
                 <SectionTitle>{t("title")}</SectionTitle>
-                <p className={'fluid-type-1-5'}>{t('description')}</p>
-                <p className={'fluid-type-1-5'}>{t('paragraph')}</p>
+                <p style={{maxWidth: '60ch'}} className={'fluid-type-1'}>{t('description')}</p>
+                <p style={{maxWidth: '64ch', textAlign: 'justify'}} className={'fluid-type-1'}>{t('paragraph')}</p>
 
                 <CardsContainer>
                     {solutions.map((solution) => (
