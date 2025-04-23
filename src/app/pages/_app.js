@@ -1,51 +1,11 @@
 "use client"
 
-import {useEffect, useState} from "react";
-import Lenis from "lenis";
 import {NextIntlClientProvider} from "next-intl";
-import {usePageTransition} from "@/components/TransitionLink";
 import {SpeedInsights} from "@vercel/speed-insights/next"
 
 // Example of integrating the custom transition system with your app
 
 export default function App({Component, pageProps}) {
-    const [lenis, setLenis] = useState(null);
-    const {isTransitioning} = usePageTransition();
-
-    // Initialize Lenis
-    useEffect(() => {
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: "vertical",
-            gestureDirection: "vertical",
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-        setLenis(lenis);
-
-        return () => lenis.destroy();
-    }, []);
-
-    // Control scrolling during transitions
-    useEffect(() => {
-        if (!lenis) return;
-
-        if (isTransitioning) {
-            lenis.stop();
-        } else {
-            lenis.start();
-        }
-    }, [isTransitioning, lenis]);
-
     return (
         <NextIntlClientProvider
             locale={pageProps.locale}
