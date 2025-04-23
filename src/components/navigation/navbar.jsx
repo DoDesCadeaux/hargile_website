@@ -98,7 +98,7 @@ const Spacer = styled.div`
 
 const menuItems = [
     {path: '/services', id: 'services'},
-    {path: '/solutions', id: 'solutions'},
+    // {path: '/solutions', id: 'solutions'},
     {path: '/about-us', id: 'our-dna'},
     {path: '/contact', id: 'contact'},
     {path: '/portfolio', id: 'portfolio'}
