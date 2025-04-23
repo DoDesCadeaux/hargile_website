@@ -64,7 +64,7 @@ export const LanguageOption = styled.button.attrs({
 })`
     display: flex;
     align-items: center;
-    width: max-content;
+    width: 100%;
     padding: 0.75rem 1rem;
     text-align: left;
     background-color: ${props => props.isActive ? 'rgba(147, 51, 234, 0.2)' : 'transparent'};
