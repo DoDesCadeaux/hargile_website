@@ -3,7 +3,7 @@
     "description": "",
     "title": "Auditer votre site web"
   },
-  "audit-modal" : {
+  "audit-modal": {
     "modal-title": "Audit de votre site",
     "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
     "modal-url-placeholder": "https://votresite.com",
@@ -640,11 +640,61 @@
       "subtitleBold": "pour votre transformation digitale",
       "subtitleItalic": "Solutions innovantes",
       "title": "Nos services"
+    },
+    "audit-results": {
+      "sections": {
+        "audit-results": {
+          "title": "Résultats de l’Audit",
+          "informations": "Vos Informations",
+          "name": "Nom",
+          "company": "Pour l'entreprise",
+          "industry": "Secteur d'activité",
+          "website": "Site web",
+          "Performance": "Performance",
+          "SEO": "SEO",
+          "Accessibility": "Accessibilité",
+          "Best Practices": "Bonnes pratiques",
+          "good": "Bon",
+          "average": "Moyen",
+          "poor": "Médiocre",
+          "description-performance": "Un score de performance élevé signifie que votre site se charge rapidement et efficacement. Cela améliore l’expérience utilisateur, réduit le taux de rebond et a un impact positif sur votre classement SEO.",
+          "warning-performance": "Votre score de performance peut être amélioré. Laissez-nous vous aider à optimiser la vitesse de chargement, les scripts et les ressources.",
+          "description-seo": "Un bon score SEO garantit que votre site est bien structuré pour les moteurs de recherche. Cela signifie que vos pages sont explorables, adaptées aux mobiles et suivent les bonnes pratiques.",
+          "warning-seo": "Votre score SEO peut être amélioré. Nous pouvons vous aider à améliorer votre visibilité et à augmenter votre trafic.",
+          "description-accessibility": "L'accessibilité garantit que votre site peut être utilisé par les personnes en situation de handicap. Cela augmente votre portée, démontre votre engagement pour l’inclusion, et peut être une obligation légale dans certaines régions.",
+          "warning-accessibility": "Votre score d’accessibilité nécessite des améliorations. Nous pouvons vous aider à rendre votre site plus inclusif et conforme.",
+          "description-bestpractices": "Les bonnes pratiques font référence aux techniques modernes de développement web qui garantissent la fiabilité et la sécurité de votre site. Cela inclut l’évitement des API obsolètes, l’utilisation de HTTPS, le respect des proportions d’image, etc.",
+          "warning-bestpractices": "Votre site ne suit pas toutes les bonnes pratiques. Corrigeons ensemble le code obsolète, les points d’accès non sécurisés ou les petites failles d’implémentation.",
+          "score-breakdown": "Détail des scores :",
+          "performances-good": "90-100 (Bon) : Votre site se charge très rapidement, avec des ressources optimisées, peu de travail sur le thread principal et un temps interactif réduit.",
+          "performances-average": "50-89 (Moyen) : Des améliorations sont possibles sur l’exécution des scripts, l’optimisation des images ou les ressources bloquant le rendu.",
+          "performances-poor": "0-49 (Médiocre) : Les utilisateurs rencontrent probablement de longs temps de chargement, des saccades ou des pages non réactives — surtout sur mobile.",
+          "seo-good": "90-100 (Bon) : HTML bien structuré, design mobile-friendly, balises meta bien utilisées, bonne explorabilité.",
+          "seo-average": "50-89 (Moyen) : Petits problèmes comme des balises meta manquantes ou des défauts d’ergonomie mobile.",
+          "seo-poor": "0-49 (Médiocre) : Problèmes majeurs comme titres manquants, liens cassés ou mauvaise optimisation mobile.",
+          "access-good": "90-100 (Bon) : Conforme aux directives WCAG, navigation au clavier fonctionnelle, contraste des couleurs adéquat.",
+          "access-average": "50-89 (Moyen) : Certains éléments sont inaccessibles (ex : étiquettes manquantes, faible contraste, etc.).",
+          "access-poor": "0-49 (Médiocre) : Problèmes majeurs empêchant l’utilisation par des personnes en situation de handicap. Risques de non-conformité légale.",
+          "best-good": "90-100 (Bon) : HTTPS bien configuré, aucune API obsolète, bonnes pratiques de codage.",
+          "best-average": "50-89 (Moyen) : Certaines méthodes obsolètes, chargement inefficace des ressources, petits problèmes de sécurité.",
+          "best-poor": "0-49 (Médiocre) : Utilisation de bibliothèques non sécurisées, code non optimisé ou requêtes non sûres.",
+          "score-like": "Un score de",
+          "may-look": "% peut sembler correct, mais il indique tout de même",
+          "may-look-performances": " des temps de chargement ou une utilisation des ressources sous-optimale. Sur des connexions lentes ou mobiles, cela peut faire fuir les utilisateurs avant que la page ne s’affiche.",
+          "may-look-seo": " moins de pages indexées et une perte de trafic face à vos concurrents.",
+          "may-look-access": " que votre site n’est pas accessible à tous. Cela pourrait exclure une partie de votre audience et poser des problèmes de conformité.",
+          "may-look-best": " un manque de standards modernes et sécurisés en développement web, ce qui peut exposer votre site à des vulnérabilités et nuire à la confiance des utilisateurs.",
+          "improve": "Vous souhaitez améliorer vos scores ?",
+          "experts": "Notre équipe d’experts peut vous aider à optimiser votre site pour de meilleures performances, SEO et accessibilité.",
+          "book": "Réservez un rendez-vous avec notre équipe",
+          "contact": "Contactez-nous"
+        }
+      }
     }
   },
   "read-more": {
     "less": "Réduire",
     "more": "Voir plus"
   },
-  "test": "lorem fr"
+  "test": "lorem en"
 }
