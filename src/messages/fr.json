@@ -3,7 +3,7 @@
     "description": "",
     "title": "Auditer votre site web"
   },
-  "audit-modal" : {
+  "audit-modal": {
     "modal-title": "Audit de votre site",
     "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
     "modal-url-placeholder": "https://votresite.com",
@@ -690,11 +690,11 @@
           "contact": "Contactez-nous"
         }
       }
-    },
-    "read-more": {
-      "less": "Réduire",
-      "more": "Voir plus"
     }
   },
-  "test": "lorem fr"
+  "read-more": {
+    "less": "Réduire",
+    "more": "Voir plus"
+  },
+  "test": "lorem en"
 }
