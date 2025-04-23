@@ -66,7 +66,8 @@ const NavbarNavigation = styled.nav`
     width: 100vw;
     height: 80vh;
     max-height: 80vh;
-    padding-top: 20vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     overflow-y: auto;
     flex-direction: column;
     display: flex;

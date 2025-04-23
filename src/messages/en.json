@@ -1,34 +1,146 @@
 {
-  "test": "lorem en",
+  "audit-button": {
+    "description": "",
+    "title": "Audit your website"
+  },
   "menu": {
-    "services": "Services",
-    "solutions": "Solutions",
-    "our-dna": "Our DNA",
     "contact": "Contact",
-    "portfolio": "Portfolio"
+    "our-dna": "Our DNA",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "solutions": "Solutions"
   },
   "pages": {
+    "about-us": {
+      "sections": {
+        "our-commitment": {
+          "bubbles": {
+            "carbon": "Carbon footprint reduction",
+            "goodplanet": "Of our profits go to GoodPlanet",
+            "renewable": "Renewable energy powered"
+          },
+          "highlighted": "Revolutionizing innovation through responsible technology",
+          "paragraph1": "Our conviction is to take concrete action through meaningful initiatives for more virtuous digital practices so that our commitment is measured in tangible results.",
+          "paragraph2": "The social and environmental context is our priority. Our vision is to transform their constraints into opportunities for excellence. Our solutions are not just performant – they are resolutely forward-looking.",
+          "pillars": {
+            "environmental": "Environmental Responsibility",
+            "ethical": "Ethical Innovation",
+            "inclusion": "Digital Inclusion"
+          },
+          "subtitle": "Performance and responsibilities.",
+          "title": "Our Commitment"
+        },
+        "our-mission": {
+          "description": "We don't just create digital solutions, we build partnerships that grow with you.\n\n Innovation and business development are at the heart of our team, to offer you scalable solutions that anticipate your future challenges.",
+          "highlighted": "To transform digital experiences",
+          "subheading": "through human-centered innovation and technology.",
+          "title": "Our Mission",
+          "values": {
+            "creativity": {
+              "description": "Innovative solutions to complex challenges.",
+              "title": "Creativity"
+            },
+            "human": {
+              "description": "Intuitive and engaging user experiences.",
+              "title": "Human approach"
+            },
+            "partnership": {
+              "description": "A commitment beyond the project, to support your long-term success.",
+              "title": "Sustainable partnership"
+            },
+            "technic": {
+              "description": "Our team is at the forefront of technological innovations.",
+              "title": "Technical excellence"
+            },
+            "vision": {
+              "description": "A deep understanding of the market to give you a competitive advantage.",
+              "title": "Business vision"
+            }
+          }
+        },
+        "our-story": {
+          "getInTouch": "Get in Touch",
+          "paragraph1": "At Hargile, we're not building a digital company like others. We cultivate a team with complementary talents, where technological excellence meets real business intelligence.\n\nHere, innovation is not done to shine, but to concretely serve the growth of our partners.",
+          "paragraph2": "Our ambition goes beyond products: \n\nWe create lasting alliances, based on trust, co-construction, and shared success.\n\n Each solution we develop is designed to evolve with your company, address your real challenges, and anticipate tomorrow's challenges.",
+          "paragraph3": "For us, supporting your growth is much more than a service, it's a responsibility, and a source of pride.",
+          "subtitle": "A vision for tomorrow",
+          "title": "Our DNA"
+        },
+        "our-team": {
+          "members": {
+            "alexis": {
+              "role": "Lead Developer"
+            },
+            "charles": {
+              "role": "RPM"
+            },
+            "pascal": {
+              "role": "Admin"
+            }
+          },
+          "title": "Our Team"
+        }
+      }
+    },
+    "contact": {
+      "contact": {
+        "email": "Email",
+        "message": "Your message",
+        "name": "First and Last Name",
+        "phone": "Phone",
+        "title": "Contact Information"
+      },
+      "contactInfo": {
+        "address": {
+          "title": "Address",
+          "value": "123 rue de l'Innovation, 1000 BXL"
+        },
+        "email": {
+          "title": "Email",
+          "value": "contact@hargile.com"
+        },
+        "phone": {
+          "title": "Telephone",
+          "value": "+32 (0)1 23 45 67 89"
+        },
+        "title": "Our Contact Details"
+      },
+      "description": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
+      "privacy": {
+        "link": "privacy policy",
+        "requiredFields": "Required fields",
+        "text": "By submitting this form, you accept our"
+      },
+      "services": {
+        "ai": "Artificial Intelligence",
+        "cloud": "Cloud Solutions",
+        "description": "Select one or more options",
+        "mobileApps": "Mobile Applications",
+        "title": "Service Type",
+        "webDevelopment": "Web Development"
+      },
+      "social": {
+        "title": "Follow Us"
+      },
+      "submit": "Send Message",
+      "subtitle": {
+        "part1": "Get in touch",
+        "part2": "with our team"
+      },
+      "title": "Contact Us"
+    },
     "homepage": {
       "sections": {
-        "hero": {
-          "companyName": "HARGILE",
-          "headline": {
-            "line1": "Transforms",
-            "line2": "Ideas into",
-            "line3": "Digital Reality"
-          },
-          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
-          "ctaButton": "Audit your website",
-          "paragraph": "Transforming complex challenges into digital solutions is our mission.\n Visionary agency driven by the synergy of Strategic Digital Marketing and Artificial Intelligence, we bring powerful and meaningful digital experiences to life. Cutting-edge technology combined with a Human approach allows us to offer innovative solutions to support businesses in their digital transformation.",
-          "arrowAlt": "Arrow",
-          "quote": "Stand out, grow and thrive in an increasingly connected world."
-        },
         "about-us": {
-          "subtitle": "Get to know our agency",
-          "who_title": "Our vision of growth",
-          "who_description": "At HARGILE, we shape our development like sculpting a work of art: with care, intention, and attention to detail.\n\nOur ambition? To create digital solutions that make sense, serve your objectives, and evolve with you.",
-          "approach_title": "Each project is an opportunity, \n\n to reveal the potential of an idea",
           "approach_description": "We believe in collaborative partnerships and innovative thinking. By understanding your business goals and challenges, we deliver solutions that drive real results.",
+          "approach_title": "Each project is an opportunity, \n\n to reveal the potential of an idea",
+          "conclusion": "Your goal is built step by step, driven by collaborations aligned with our expertise and values. We prioritize projects that align with our key expertise to ensure progressive, coherent, and sustainable development, without compromising on quality.",
+          "ideas": [
+            "Elegant and impactful presentation websites, true showcases of your identity",
+            "E-commerce platforms centered on user experience, designed to convert and build loyalty",
+            "Dynamic and collaborative content spaces that breathe life into your communities",
+            "Customized applications, tailored to your business challenges, without excess"
+          ],
           "our-values": [
             {
               "value": "Excellence",
@@ -51,510 +163,398 @@
               "description": "We evolve with technological trends while maintaining solid foundations"
             }
           ],
-          "ideas": [
-            "Elegant and impactful presentation websites, true showcases of your identity",
-            "E-commerce platforms centered on user experience, designed to convert and build loyalty",
-            "Dynamic and collaborative content spaces that breathe life into your communities",
-            "Customized applications, tailored to your business challenges, without excess"
-          ],
-          "conclusion": "Your goal is built step by step, driven by collaborations aligned with our expertise and values. We prioritize projects that align with our key expertise to ensure progressive, coherent, and sustainable development, without compromising on quality.",
           "stats": {
-            "years": "Years experience",
             "projects": "Projects delivered",
-            "satisfaction": "Client satisfaction"
-          }
+            "satisfaction": "Client satisfaction",
+            "years": "Years experience"
+          },
+          "subtitle": "Get to know our agency",
+          "who_description": "At HARGILE, we shape our development like sculpting a work of art: with care, intention, and attention to detail.\n\nOur ambition? To create digital solutions that make sense, serve your objectives, and evolve with you.",
+          "who_title": "Our vision of growth"
+        },
+        "hero": {
+          "arrowAlt": "Arrow",
+          "companyName": "HARGILE",
+          "ctaButton": "Audit your website",
+          "description": "We are a digital agency specializing in web development, AI solutions, and marketing strategies to elevate your business",
+          "headline": {
+            "line1": "Transforms",
+            "line2": "Ideas into",
+            "line3": "Digital Reality"
+          },
+          "paragraph": "Transforming complex challenges into digital solutions is our mission.\n Visionary agency driven by the synergy of Strategic Digital Marketing and Artificial Intelligence, we bring powerful and meaningful digital experiences to life. Cutting-edge technology combined with a Human approach allows us to offer innovative solutions to support businesses in their digital transformation.",
+          "quote": "Stand out, grow and thrive in an increasingly connected world."
+        },
+        "latest-insights": {
+          "subtitle": "Our thoughts and perspectives on the digital world",
+          "title": "Latest insights",
+          "view-all": "View all insights"
         },
         "our-solutions": {
-          "title": "Web, mobile, cloud, AI",
-          "description": "Our tech expertise is your lever —- creating human solutions, tailored to your objectives and boosting your development.",
-          "paragraph": "HARGILE offers customized digital solutions based on the principle of technological mastery and creative innovation. Our team combines expertise, ingenuity, and strategic business vision to transform your challenges into growth levers.",
-          "learn-more": "Learn More",
           "coming-soon": "Coming soon",
+          "description": "Our tech expertise is your lever —- creating human solutions, tailored to your objectives and boosting your development.",
+          "learn-more": "Learn More",
+          "paragraph": "HARGILE offers customized digital solutions based on the principle of technological mastery and creative innovation. Our team combines expertise, ingenuity, and strategic business vision to transform your challenges into growth levers.",
           "solutions": {
             "agves": {
-              "title": "AGVES",
+              "description": "Specialized sales management application for the education sector. AGVES revolutionizes school and extracurricular communication by implementing a simplifying interface. It improves all operations related to financial transactions such as security processes.",
               "subtitle": "Scalable ERP for school management",
-              "description": "Specialized sales management application for the education sector. AGVES revolutionizes school and extracurricular communication by implementing a simplifying interface. It improves all operations related to financial transactions such as security processes."
+              "title": "AGVES"
             },
             "i-go": {
-              "title": "I GO",
+              "description": "I GO is an innovative mobile application dedicated to electric mobility, designed to meet the growing needs of users of Motorized Personal Mobility Devices (MPMD) and Electric Assisted Bicycles (EAB).",
               "subtitle": "Specialized GPS navigation",
-              "description": "I GO is an innovative mobile application dedicated to electric mobility, designed to meet the growing needs of users of Motorized Personal Mobility Devices (MPMD) and Electric Assisted Bicycles (EAB)."
+              "title": "I GO"
             },
             "multipass": {
-              "title": "Multipass",
+              "description": "Whether you're an ambitious startup or an established company, Multipass offers you a flexible and scalable platform. Designed to adapt to all business sectors, our solution allows you to centralize, manage, and optimize your customer relationships with unmatched flexibility.",
               "subtitle": "The agile solution that adapts to your business.",
-              "description": "Whether you're an ambitious startup or an established company, Multipass offers you a flexible and scalable platform. Designed to adapt to all business sectors, our solution allows you to centralize, manage, and optimize your customer relationships with unmatched flexibility."
+              "title": "Multipass"
             },
             "your-project": {
-              "title": "Your project",
+              "description": "Behind every project, every person, there is a unique encounter. We put technology at the service of a vision: yours. Creating experiences that touch, that bring people together, that help them grow, that are sustainable and meaningful is our contribution to your success.",
               "subtitle": "Growth factor.",
-              "description": "Behind every project, every person, there is a unique encounter. We put technology at the service of a vision: yours. Creating experiences that touch, that bring people together, that help them grow, that are sustainable and meaningful is our contribution to your success."
+              "title": "Your project"
             }
-          }
+          },
+          "title": "Web, mobile, cloud, AI"
         },
-        "trusted-brands": {
-          "title": "They trust us"
+        "quote-request": {
+          "contact": {
+            "budget": {
+              "10kTo25k": "€10,000 - €25,000",
+              "25kTo50k": "€25,000 - €50,000",
+              "5kTo10k": "€5,000 - €10,000",
+              "label": "Estimated Budget",
+              "less5k": "Less than €5,000",
+              "more50k": "More than €50,000",
+              "select": "Select"
+            },
+            "email": "Email",
+            "message": "Your message",
+            "name": "First and Last Name",
+            "phone": "Phone",
+            "projectDescription": "Project Description",
+            "timeline": {
+              "1To3months": "1 - 3 months",
+              "3To6months": "3 - 6 months",
+              "label": "Desired Timeline",
+              "less1month": "Less than a month",
+              "more6months": "More than 6 months",
+              "select": "Select"
+            },
+            "title": "Contact Information"
+          },
+          "description": "Complete the form below to receive a personalized estimate. Our team of experts will analyze your needs and contact you within 48 hours.",
+          "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
+          "privacy": {
+            "link": "privacy policy",
+            "requiredFields": "Required fields",
+            "text": "By submitting this form, you accept our"
+          },
+          "services": {
+            "ai": "Artificial Intelligence",
+            "cloud": "Cloud Solutions",
+            "description": "Select one or more options",
+            "mobileApps": "Mobile Applications",
+            "title": "Service Type",
+            "webDevelopment": "Web Development"
+          },
+          "submit": "Submit",
+          "subtitle": {
+            "part1": "Get a free estimate",
+            "part2": "for your project"
+          },
+          "title": "Contact us"
         },
         "recent-works": {
           "title": "Our recent works",
           "view-all": "All our works",
           "works": {
             "agves": {
-              "title": "AGVES",
-              "description": "Platform for schools"
+              "description": "Platform for schools",
+              "title": "AGVES"
             },
             "i-go": {
-              "title": "I GO",
-              "description": "Mobile development, AI"
+              "description": "Mobile development, AI",
+              "title": "I GO"
             },
             "leafy": {
-              "title": "Leafy",
-              "description": "E-commerce for plants, Full-stack"
+              "description": "E-commerce for plants, Full-stack",
+              "title": "Leafy"
             }
           }
-        },
-        "latest-insights": {
-          "title": "Latest insights",
-          "subtitle": "Our thoughts and perspectives on the digital world",
-          "view-all": "View all insights"
         },
         "services": {
-          "title": "Our services",
-          "subtitle": "We have all the tools to elevate your business",
-          "dev": {
-            "title": "Development and Solution Design",
-            "items": {
-              "web": "Web Design and Development",
-              "mobile": "Mobile Application Development",
-              "cms": "CMS Development",
-              "ecommerce": "E-Commerce"
-            }
-          },
-          "maintenance": {
-            "title": "Maintenance and Modernization",
-            "items": {
-              "support": "Maintenance Support",
-              "migration": "Application Migration and Modernization",
-              "seo": "SEO Performance Optimization"
-            }
-          },
           "ai": {
-            "title": "Artificial Intelligence and Cloud Solutions",
             "items": {
               "agents": "Intelligent Agent Development",
-              "cloud": "Cloud Solutions",
               "automation": "Business Process Automation",
-              "ml": "Machine Learning Prediction Pipelines",
+              "cloud": "Cloud Solutions",
               "consulting": "Strategic AI Consulting",
-              "custom": "Customized AI Solutions"
-            }
+              "custom": "Customized AI Solutions",
+              "ml": "Machine Learning Prediction Pipelines"
+            },
+            "title": "Artificial Intelligence and Cloud Solutions"
           },
           "analysis": {
-            "title": "Analysis and Quality",
             "items": {
-              "reporting": "Analysis and Reporting",
+              "api": "API Development",
               "qa": "Quality Assurance Testing (QA)",
-              "api": "API Development"
-            }
-          }
-        },
-        "quote-request": {
-          "title": "Contact us",
-          "subtitle": {
-            "part1": "Get a free estimate",
-            "part2": "for your project"
-          },
-          "description": "Complete the form below to receive a personalized estimate. Our team of experts will analyze your needs and contact you within 48 hours.",
-          "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-          "contact": {
-            "title": "Contact Information",
-            "name": "First and Last Name",
-            "email": "Email",
-            "phone": "Phone",
-            "message": "Your message",
-            "projectDescription": "Project Description",
-            "budget": {
-              "label": "Estimated Budget",
-              "select": "Select",
-              "less5k": "Less than €5,000",
-              "5kTo10k": "€5,000 - €10,000",
-              "10kTo25k": "€10,000 - €25,000",
-              "25kTo50k": "€25,000 - €50,000",
-              "more50k": "More than €50,000"
+              "reporting": "Analysis and Reporting"
             },
-            "timeline": {
-              "label": "Desired Timeline",
-              "select": "Select",
-              "less1month": "Less than a month",
-              "1To3months": "1 - 3 months",
-              "3To6months": "3 - 6 months",
-              "more6months": "More than 6 months"
-            }
+            "title": "Analysis and Quality"
           },
-          "services": {
-            "title": "Service Type",
-            "description": "Select one or more options",
-            "webDevelopment": "Web Development",
-            "mobileApps": "Mobile Applications",
-            "ai": "Artificial Intelligence",
-            "cloud": "Cloud Solutions"
+          "dev": {
+            "items": {
+              "cms": "CMS Development",
+              "ecommerce": "E-Commerce",
+              "mobile": "Mobile Application Development",
+              "web": "Web Design and Development"
+            },
+            "title": "Development and Solution Design"
           },
-          "submit": "Submit",
-          "privacy": {
-            "text": "By submitting this form, you accept our",
-            "link": "privacy policy",
-            "requiredFields": "Required fields"
-          }
+          "maintenance": {
+            "items": {
+              "migration": "Application Migration and Modernization",
+              "seo": "SEO Performance Optimization",
+              "support": "Maintenance Support"
+            },
+            "title": "Maintenance and Modernization"
+          },
+          "subtitle": "We have all the tools to elevate your business",
+          "title": "Our services"
+        },
+        "trusted-brands": {
+          "title": "They trust us"
         }
       }
     },
     "portfolio": {
-      "title": "Our Portfolio",
+      "cta": {
+        "button": "Get in Touch",
+        "description": "Let's collaborate to create innovative and sustainable digital solutions tailored to your unique business needs.",
+        "title": "Ready to transform your digital presence?"
+      },
+      "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
+      "featuredProjects": "Featured Projects",
+      "projects": {
+        "agves": {
+          "description": "A comprehensive digital solution for educational institutions with advanced analytics and student management.",
+          "subtitle": "School Management Platform"
+        },
+        "datasense": {
+          "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities.",
+          "subtitle": "Analytics Dashboard"
+        },
+        "ecotrack": {
+          "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations.",
+          "subtitle": "Sustainability Monitoring"
+        },
+        "igo": {
+          "description": "Intelligent transportation platform with real-time route optimization and sustainable mobility solutions.",
+          "subtitle": "Mobility Management System"
+        },
+        "leafy": {
+          "description": "Feature-rich online marketplace for sustainable plant shopping with personalized care recommendations.",
+          "subtitle": "E-commerce for Plants"
+        },
+        "multipass": {
+          "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols.",
+          "subtitle": "Swiss knife application"
+        }
+      },
+      "readCaseStudy": "Read case study",
       "subtitle": {
         "line1": "Transforming ideas into",
         "line2": "exceptional digital experiences"
       },
-      "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
-      "featuredProjects": "Featured Projects",
+      "title": "Our Portfolio",
       "viewMore": "Learn More",
-      "viewProject": "View Project",
-      "readCaseStudy": "Read case study",
-      "projects": {
-        "agves": {
-          "subtitle": "School Management Platform",
-          "description": "A comprehensive digital solution for educational institutions with advanced analytics and student management."
-        },
-        "igo": {
-          "subtitle": "Mobility Management System",
-          "description": "Intelligent transportation platform with real-time route optimization and sustainable mobility solutions."
-        },
-        "leafy": {
-          "subtitle": "E-commerce for Plants",
-          "description": "Feature-rich online marketplace for sustainable plant shopping with personalized care recommendations."
-        },
-        "multipass": {
-          "subtitle": "Swiss knife application",
-          "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols."
-        },
-        "datasense": {
-          "subtitle": "Analytics Dashboard",
-          "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities."
-        },
-        "ecotrack": {
-          "subtitle": "Sustainability Monitoring",
-          "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations."
-        }
-      },
-      "cta": {
-        "title": "Ready to transform your digital presence?",
-        "description": "Let's collaborate to create innovative and sustainable digital solutions tailored to your unique business needs.",
-        "button": "Get in Touch"
-      }
-    },
-    "contact": {
-      "title": "Contact Us",
-      "subtitle": {
-        "part1": "Get in touch",
-        "part2": "with our team"
-      },
-      "description": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-      "contact": {
-        "title": "Contact Information",
-        "name": "First and Last Name",
-        "email": "Email",
-        "phone": "Phone",
-        "message": "Your message"
-      },
-      "services": {
-        "title": "Service Type",
-        "description": "Select one or more options",
-        "webDevelopment": "Web Development",
-        "mobileApps": "Mobile Applications",
-        "ai": "Artificial Intelligence",
-        "cloud": "Cloud Solutions"
-      },
-      "submit": "Send Message",
-      "privacy": {
-        "text": "By submitting this form, you accept our",
-        "link": "privacy policy",
-        "requiredFields": "Required fields"
-      },
-      "contactInfo": {
-        "title": "Our Contact Details",
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Telephone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "address": {
-          "title": "Address",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        }
-      },
-      "social": {
-        "title": "Follow Us"
-      }
+      "viewProject": "View Project"
     },
     "privacy-policy": {
-      "title": "Legal Notices",
+      "downloadPDF": "Download as PDF",
+      "inThisPage": "In this page",
       "lastUpdate": "Last updated",
       "lastUpdateDate": "March 18, 2025",
-      "inThisPage": "In this page",
-      "downloadPDF": "Download as PDF",
       "print": "Print",
       "sections": {
-        "termsConditions": {
-          "title": "Terms and Conditions",
-          "welcome": "Welcome to Hargile's website. By accessing this site, you agree to be bound by these terms of use, all applicable laws and regulations. If you do not accept these conditions, please do not use this site.",
-          "intellectualProperty": {
-            "title": "Intellectual Property",
-            "content": "All content present on this site, including but not limited to texts, graphics, logos, icons, images, audio clips, digital downloads and software compilations are the property of Hargile or its content suppliers and are protected by French and international copyright laws."
-          },
-          "liability": {
-            "title": "Limitation of Liability",
-            "content": "The information on this site is provided 'as is', without warranty of any kind, express or implied. Hargile assumes no responsibility for the use of this site or its content. Under no circumstances shall Hargile be liable for any direct, indirect, incidental, special or consequential damages."
-          }
+        "contactSupport": {
+          "content": "For any questions or concerns regarding this privacy policy, please contact our data protection officer at dpo@hargile.com.",
+          "title": "Contact Support"
         },
-        "privacyPolicy": {
-          "title": "Privacy Policy",
-          "introduction": "This privacy policy explains how we collect, use, process and protect your personal information in accordance with the General Data Protection Regulation (GDPR).",
-          "dataCollection": {
-            "title": "Data Collection",
-            "content": "We collect the information that you provide us directly when you register for our services, fill out a form or communicate with us. This information may include your name, email address, phone number and any other information that you choose to provide us."
-          },
-          "dataUsage": {
-            "title": "Data Usage",
-            "content": "We use your personal data for:",
-            "purposes": {
-              "services": "Provide, maintain and improve our services",
-              "transactions": "Process transactions and send related notifications",
-              "responses": "Respond to your comments, questions and requests"
-            }
-          }
+        "contactUs": {
+          "content": "If you have any questions about our privacy policy or practices, please contact us through our website or by email at privacy@hargile.com.",
+          "title": "Contact Us"
         },
         "cookies": {
-          "title": "Use of Cookies",
-          "introduction": "Our site uses cookies to improve your browsing experience. Cookies are small text files stored on your device that help us analyze how users use our site.",
-          "types": {
-            "title": "Types of cookies used",
-            "essential": "Essential cookies: Necessary for the functioning of the site",
-            "analytics": "Analytics cookies: To analyze how visitors use our site",
-            "functional": "Functional cookies: To remember your preferences",
-            "advertising": "Advertising cookies: To deliver relevant advertisements"
-          },
           "control": {
-            "title": "Cookie Control",
-            "content": "You can control and/or delete cookies as you wish. You can delete all cookies already on your device and configure most browsers to prevent them from being placed."
+            "content": "You can control and/or delete cookies as you wish. You can delete all cookies already on your device and configure most browsers to prevent them from being placed.",
+            "title": "Cookie Control"
+          },
+          "introduction": "Our site uses cookies to improve your browsing experience. Cookies are small text files stored on your device that help us analyze how users use our site.",
+          "title": "Use of Cookies",
+          "types": {
+            "advertising": "Advertising cookies: To deliver relevant advertisements",
+            "analytics": "Analytics cookies: To analyze how visitors use our site",
+            "essential": "Essential cookies: Necessary for the functioning of the site",
+            "functional": "Functional cookies: To remember your preferences",
+            "title": "Types of cookies used"
           }
         },
+        "international": {
+          "content": "Your information may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those in your jurisdiction.",
+          "title": "International Transfers"
+        },
+        "other": {
+          "content": "This section contains additional information about our privacy practices and policies.",
+          "title": "Other"
+        },
+        "privacyPolicy": {
+          "dataCollection": {
+            "content": "We collect the information that you provide us directly when you register for our services, fill out a form or communicate with us. This information may include your name, email address, phone number and any other information that you choose to provide us.",
+            "title": "Data Collection"
+          },
+          "dataUsage": {
+            "content": "We use your personal data for:",
+            "purposes": {
+              "responses": "Respond to your comments, questions and requests",
+              "services": "Provide, maintain and improve our services",
+              "transactions": "Process transactions and send related notifications"
+            },
+            "title": "Data Usage"
+          },
+          "introduction": "This privacy policy explains how we collect, use, process and protect your personal information in accordance with the General Data Protection Regulation (GDPR).",
+          "title": "Privacy Policy"
+        },
+        "termsConditions": {
+          "intellectualProperty": {
+            "content": "All content present on this site, including but not limited to texts, graphics, logos, icons, images, audio clips, digital downloads and software compilations are the property of Hargile or its content suppliers and are protected by French and international copyright laws.",
+            "title": "Intellectual Property"
+          },
+          "liability": {
+            "content": "The information on this site is provided 'as is', without warranty of any kind, express or implied. Hargile assumes no responsibility for the use of this site or its content. Under no circumstances shall Hargile be liable for any direct, indirect, incidental, special or consequential damages.",
+            "title": "Limitation of Liability"
+          },
+          "title": "Terms and Conditions",
+          "welcome": "Welcome to Hargile's website. By accessing this site, you agree to be bound by these terms of use, all applicable laws and regulations. If you do not accept these conditions, please do not use this site."
+        },
         "userRights": {
-          "title": "User Rights",
           "introduction": "In accordance with the GDPR, you have the following rights regarding your data:",
           "rights": {
             "access": "Right of access: You can request a copy of your personal data",
-            "rectification": "Right to rectification: You can request correction of your inaccurate data",
             "erasure": "Right to erasure: You can request deletion of your data",
-            "restriction": "Right to restriction of processing: You can request to limit the processing",
+            "objection": "Right to object: You can object to the processing of your data",
             "portability": "Right to data portability: You can request the transfer of your data",
-            "objection": "Right to object: You can object to the processing of your data"
-          }
-        },
-        "other": {
-          "title": "Other",
-          "content": "This section contains additional information about our privacy practices and policies."
-        },
-        "contactUs": {
-          "title": "Contact Us",
-          "content": "If you have any questions about our privacy policy or practices, please contact us through our website or by email at privacy@hargile.com."
-        },
-        "international": {
-          "title": "International Transfers",
-          "content": "Your information may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those in your jurisdiction."
-        },
-        "contactSupport": {
-          "title": "Contact Support",
-          "content": "For any questions or concerns regarding this privacy policy, please contact our data protection officer at dpo@hargile.com."
-        }
-      }
-    },
-    "about-us": {
-      "sections": {
-        "our-story": {
-          "title": "Our DNA",
-          "subtitle": "A vision for tomorrow",
-          "paragraph1": "At Hargile, we're not building a digital company like others. We cultivate a team with complementary talents, where technological excellence meets real business intelligence.\n\nHere, innovation is not done to shine, but to concretely serve the growth of our partners.",
-          "paragraph2": "Our ambition goes beyond products: \n\nWe create lasting alliances, based on trust, co-construction, and shared success.\n\n Each solution we develop is designed to evolve with your company, address your real challenges, and anticipate tomorrow's challenges.",
-          "paragraph3": "For us, supporting your growth is much more than a service, it's a responsibility, and a source of pride.",
-          "getInTouch": "Get in Touch"
-        },
-        "our-team": {
-          "title": "Our Team",
-          "members": {
-            "charles": {
-              "role": "RPM"
-            },
-            "pascal": {
-              "role": "Admin"
-            },
-            "alexis": {
-              "role": "Lead Developer"
-            }
-          }
-        },
-        "our-mission": {
-          "title": "Our Mission",
-          "highlighted": "To transform digital experiences",
-          "subheading": "through human-centered innovation and technology.",
-          "description": "We don't just create digital solutions, we build partnerships that grow with you.\n\n Innovation and business development are at the heart of our team, to offer you scalable solutions that anticipate your future challenges.",
-          "values": {
-            "technic": {
-              "title": "Technical excellence",
-              "description": "Our team is at the forefront of technological innovations."
-            },
-            "vision": {
-              "title": "Business vision",
-              "description": "A deep understanding of the market to give you a competitive advantage."
-            },
-            "creativity": {
-              "title": "Creativity",
-              "description": "Innovative solutions to complex challenges."
-            },
-            "human": {
-              "title": "Human approach",
-              "description": "Intuitive and engaging user experiences."
-            },
-            "partnership": {
-              "title": "Sustainable partnership",
-              "description": "A commitment beyond the project, to support your long-term success."
-            }
-          }
-        },
-        "our-commitment": {
-          "title": "Our Commitment",
-          "highlighted": "Revolutionizing innovation through responsible technology",
-          "paragraph1": "Our conviction is to take concrete action through meaningful initiatives for more virtuous digital practices so that our commitment is measured in tangible results.",
-          "subtitle": "Performance and responsibilities.",
-          "paragraph2": "The social and environmental context is our priority. Our vision is to transform their constraints into opportunities for excellence. Our solutions are not just performant – they are resolutely forward-looking.",
-          "bubbles": {
-            "goodplanet": "Of our profits go to GoodPlanet",
-            "carbon": "Carbon footprint reduction",
-            "renewable": "Renewable energy powered"
+            "rectification": "Right to rectification: You can request correction of your inaccurate data",
+            "restriction": "Right to restriction of processing: You can request to limit the processing"
           },
-          "pillars": {
-            "environmental": "Environmental Responsibility",
-            "ethical": "Ethical Innovation",
-            "inclusion": "Digital Inclusion"
-          }
+          "title": "User Rights"
         }
-      }
+      },
+      "title": "Legal Notices"
     },
     "services": {
-      "title": "Our services",
-      "subtitle": "We have all the tools to elevate your business",
-      "mainTitle": "Our Services",
-      "subtitleItalic": "Innovative solutions",
-      "subtitleBold": "for your digital transformation",
-      "description": "With HARGILE, you combine technical expertise and creativity to design customized digital solutions. By combining proven methods with innovative technologies, we design powerful and adaptable applications that precisely meet your specific needs and business objectives.",
       "categories": {
-        "dev": {
-          "title": "Development and Solution Design"
-        },
-        "maintenance": {
-          "title": "Maintenance and Modernization"
-        },
         "ai": {
           "title": "Artificial Intelligence and Cloud Solutions"
         },
         "analysis": {
           "title": "Analysis and Quality"
+        },
+        "dev": {
+          "title": "Development and Solution Design"
+        },
+        "maintenance": {
+          "title": "Maintenance and Modernization"
         }
       },
+      "description": "With HARGILE, you combine technical expertise and creativity to design customized digital solutions. By combining proven methods with innovative technologies, we design powerful and adaptable applications that precisely meet your specific needs and business objectives.",
+      "mainTitle": "Our Services",
       "services": {
-        "web": {
-          "title": "Web design and Development",
-          "description": "Showcase websites, web applications, portals and custom solutions"
-        },
-        "mobile": {
-          "title": "Mobile Application Development",
-          "description": "iOS and Android applications, responsive user interfaces"
-        },
-        "cms": {
-          "title": "CMS Development",
-          "description": "WordPress, Drupal and other content management systems"
-        },
-        "ecommerce": {
-          "title": "E-Commerce",
-          "description": "High-performance and secure e-commerce solutions"
+        "agents": {
+          "description": "Custom chatbots and virtual assistants",
+          "title": "Intelligent Agent Development"
         },
         "api": {
-          "title": "API Development",
-          "description": "Creating programming interfaces to connect your systems"
-        },
-        "seo": {
-          "title": "SEO Performance Optimization",
-          "description": "Natural referencing and optimization for search engines"
-        },
-        "banking-connector": {
-          "title": "Banking connector(s)",
-          "description": "Banking solutions, Wordline payment, SIPS Atos, ..."
-        },
-        "support": {
-          "title": "Maintenance Support",
-          "description": "Technical support, updates and preventive maintenance"
-        },
-        "migration": {
-          "title": "Migration and Modernization",
-          "description": "Upgrading systems and migration to modern technologies"
-        },
-        "performance": {
-          "title": "Performance Optimization",
-          "description": "Improving speed and user experience"
-        },
-        "agents": {
-          "title": "Intelligent Agent Development",
-          "description": "Custom chatbots and virtual assistants"
-        },
-        "cloud": {
-          "title": "Cloud Solutions",
-          "description": "Cloud infrastructure, deployment and resource optimization"
-        },
-        "automation": {
-          "title": "Business Process Automation",
-          "description": "Workflow optimization and automation of repetitive tasks"
-        },
-        "ml": {
-          "title": "Machine Learning Prediction",
-          "description": "Predictive analytics and ML-powered solutions"
-        },
-        "consulting": {
-          "title": "Strategic AI Consulting",
-          "description": "Expert guidance for AI integration in your business"
-        },
-        "reporting": {
-          "title": "Analysis and Reporting",
-          "description": "Data analysis and creation of customized reports"
-        },
-        "qa": {
-          "title": "Quality Assurance Testing",
-          "description": "Functional, performance and quality assurance tests"
+          "description": "Creating programming interfaces to connect your systems",
+          "title": "API Development"
         },
         "apidev": {
-          "title": "API Development",
-          "description": "Design and implementation of robust APIs"
+          "description": "Design and implementation of robust APIs",
+          "title": "API Development"
+        },
+        "automation": {
+          "description": "Workflow optimization and automation of repetitive tasks",
+          "title": "Business Process Automation"
+        },
+        "banking-connector": {
+          "description": "Banking solutions, Wordline payment, SIPS Atos, ...",
+          "title": "Banking connector(s)"
+        },
+        "cloud": {
+          "description": "Cloud infrastructure, deployment and resource optimization",
+          "title": "Cloud Solutions"
+        },
+        "cms": {
+          "description": "WordPress, Drupal and other content management systems",
+          "title": "CMS Development"
+        },
+        "consulting": {
+          "description": "Expert guidance for AI integration in your business",
+          "title": "Strategic AI Consulting"
+        },
+        "ecommerce": {
+          "description": "High-performance and secure e-commerce solutions",
+          "title": "E-Commerce"
+        },
+        "migration": {
+          "description": "Upgrading systems and migration to modern technologies",
+          "title": "Migration and Modernization"
+        },
+        "ml": {
+          "description": "Predictive analytics and ML-powered solutions",
+          "title": "Machine Learning Prediction"
+        },
+        "mobile": {
+          "description": "iOS and Android applications, responsive user interfaces",
+          "title": "Mobile Application Development"
+        },
+        "performance": {
+          "description": "Improving speed and user experience",
+          "title": "Performance Optimization"
+        },
+        "qa": {
+          "description": "Functional, performance and quality assurance tests",
+          "title": "Quality Assurance Testing"
+        },
+        "reporting": {
+          "description": "Data analysis and creation of customized reports",
+          "title": "Analysis and Reporting"
+        },
+        "seo": {
+          "description": "Natural referencing and optimization for search engines",
+          "title": "SEO Performance Optimization"
+        },
+        "support": {
+          "description": "Technical support, updates and preventive maintenance",
+          "title": "Maintenance Support"
+        },
+        "web": {
+          "description": "Showcase websites, web applications, portals and custom solutions",
+          "title": "Web design and Development"
         }
-      }
+      },
+      "subtitle": "We have all the tools to elevate your business",
+      "subtitleBold": "for your digital transformation",
+      "subtitleItalic": "Innovative solutions",
+      "title": "Our services"
     }
   },
-  "audit-button": {
-    "title": "Audit your website",
-    "description": ""
-  },
   "read-more": {
-    "more": "Show more",
-    "less": "Show less"
-  }
+    "less": "Show less",
+    "more": "Show more"
+  },
+  "test": "lorem en"
 }
