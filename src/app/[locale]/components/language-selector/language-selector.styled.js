@@ -67,7 +67,7 @@ export const LanguageOption = styled.button.attrs({
     width: max-content;
     padding: 0.75rem 1rem;
     text-align: left;
-    background-color: ${props => props.isActive ? 'rgba(147, 51, 234, 0.2)' : 'transparent'};
+    background-color: ${props => props.isactive ? 'rgba(147, 51, 234, 0.2)' : 'transparent'};
     color: var(--color-text-light);
     border: none;
     cursor: pointer;
