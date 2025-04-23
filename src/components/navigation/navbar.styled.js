@@ -31,6 +31,7 @@ export const Brand = styled.button`
         background: rgba(0, 0, 0, 0);
         z-index: 9999999;
         animation: 2000ms appearInOut ease-in-out;
+        pointer-events: none;
     }
 
     @keyframes appearInOut {
