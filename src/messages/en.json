@@ -3,6 +3,28 @@
     "description": "",
     "title": "Audit your website"
   },
+  "audit-modal" : {
+    "modal-title": "Website Audit",
+    "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
+    "modal-url-placeholder": "https://yourwebiste.com",
+    "start-audit": "Start Audit",
+    "analyzing": "Analyzing your website... You can complete the form while we work.",
+    "analysis-complete": "Analysis complete! Fill in your details to view the results.",
+    "contact": "Contact Information",
+    "error": "Error during the audit. The URL you entered might be incorrect. Please try again.",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "company": "Is this for your company?",
+    "select": "Please Select",
+    "yes": "Yes",
+    "no": "No",
+    "industry": "Industry",
+    "processing": "Processing...",
+    "view-results": "View Audit Results",
+    "wait": "Please wait for the audit to complete before accessing results.",
+    "back-url": "Go back",
+    "incomplete": "Please complete all required fields marked with *"
+  },
   "menu": {
     "contact": "Contact",
     "our-dna": "Our DNA",
