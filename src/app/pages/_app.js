@@ -1,7 +1,5 @@
 "use client"
 
-import {useEffect} from "react";
-import Lenis from "lenis";
 import {NextIntlClientProvider} from "next-intl";
 import {usePageTransition} from "@/components/TransitionLink";
 import {SpeedInsights} from "@vercel/speed-insights/next"
@@ -10,39 +8,6 @@ import {SpeedInsights} from "@vercel/speed-insights/next"
 
 export default function App({Component, pageProps}) {
     const {isTransitioning} = usePageTransition();
-
-    // Initialize Lenis
-    useEffect(() => {
-        // Create Lenis smooth scroll instance
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: "vertical",
-            gestureDirection: "vertical",
-            smooth: true,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        // Connect lenis to requestAnimationFrame
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        if (isTransitioning) {
-            lenis.start();
-        } else {
-            lenis.stop();
-        }
-
-        requestAnimationFrame(raf);
-
-        // Cleanup on unmount
-        return () => {
-            lenis.destroy();
-        };
-    }, [isTransitioning]);
 
     return (
         <NextIntlClientProvider
