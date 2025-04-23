@@ -40,16 +40,16 @@ const NavbarButton = ({width = '2vw'}) => {
                 onCrashComplete={handleCrashComplete}
                 isOpen={isOpen}
             />
-            <AnimatedMenuIconCircle
-                menuIconAnimationTime={menuIconAnimationTime}
-                width={width}
-                isOpen={isOpen}
-            />
-            <CrossRippleEffect
-                crashTriggered={crashTriggered}
-                isOpen={isOpen}
-                width={width}
-            />
+            {/*<AnimatedMenuIconCircle*/}
+            {/*    menuIconAnimationTime={menuIconAnimationTime}*/}
+            {/*    width={width}*/}
+            {/*    isOpen={isOpen}*/}
+            {/*/>*/}
+            {/*<CrossRippleEffect*/}
+            {/*    crashTriggered={crashTriggered}*/}
+            {/*    isOpen={isOpen}*/}
+            {/*    width={width}*/}
+            {/*/>*/}
         </BoxStyled>
     )
 }
