@@ -19,12 +19,17 @@ const StyledNavbar = styled.div`
     left: 0;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 24px 4px 12px;
+    padding: 0 24px 0 12px;
     z-index: 10000;
+    backdrop-filter: blur(8px);
 `;
 
 const Brand = styled.button`
     cursor: pointer;
+
+    &:hover {
+        box-shadow: none
+    }
 
     &.transition::before {
         content: '';
@@ -160,7 +165,9 @@ const Navbar = () => {
                         height="815"
                         src="/images/brand/brand_large.png"
                         alt="Brand Logo"
-                        style={{width: "calc(100px + 6vw)"}}
+                        style={{
+                            width: "calc(100px + 6vw)",
+                        }}
                     />
                 </Brand>
 

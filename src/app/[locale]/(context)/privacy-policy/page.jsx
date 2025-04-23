@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useTranslations } from "next-intl";
 import { Menu, X, FileText, Printer } from "lucide-react";
 
-// Main page container with background
 const PageContainer = styled.div`
   min-height: 100vh;
   background-color: #0a051a;
@@ -13,22 +12,19 @@ const PageContainer = styled.div`
   overflow: hidden;
 `;
 
-// Background globe effect
-
-// Main content wrapper
 const ContentWrapper = styled.div`
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  position: relative;
-  z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 10;
 
-  @media (min-width: 768px) {
-    padding: 3rem 2rem;
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 2rem;
-  }
+    @media (min-width: 768px) {
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2rem;
+    }
 `;
 
 // Header section
@@ -82,8 +78,6 @@ const MenuButton = styled.button`
   }
 `;
 
-// Sidebar navigation
-// Fix: Use CSS for showing/hiding instead of passing isOpen as a prop
 const Sidebar = styled.aside`
   background-color: #0f0927;
   border-radius: 0.75rem;
