@@ -235,9 +235,9 @@ export default function AuditMultiModal({onClose}) {
                                             onChange={handleChange}
                                             className="w-full !p-3 bg-gray-800/60 text-white border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent appearance-none !pr-10"
                                         >
-                                            <option value="">{t('select')}</option>
-                                            <option value="yes">{t('yes')}</option>
-                                            <option value="no">{t('no')}</option>
+                                            <option value="" >{t('select')}</option>
+                                            <option value={t('yes')}>{t('yes')}</option>
+                                            <option value={t('no')}>{t('no')}</option>
                                         </select>
                                         <div
                                             className="absolute inset-y-0 right-0 flex items-center !pr-3 pointer-events-none">
