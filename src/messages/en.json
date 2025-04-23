@@ -327,6 +327,73 @@
         },
         "trusted-brands": {
           "title": "They trust us"
+        },
+        "digital-audit": {
+          "title": "A performing website is much more than ",
+          "titleAccent": "beautiful design.",
+          "description": "Is your website generating enough traffic? Does it effectively convert visitors into customers? Is it optimized for Google?<br/><br/><strong>HARGILE has developed an online performance analysis tool. By simply entering a website URL, you get a precise diagnosis in seconds</strong>:",
+          "features": {
+            "speed": "✅ <strong>Loading Speed</strong> – A slow site drives visitors away!",
+            "seo": "✅ <strong>SEO Ranking</strong> – Are you visible on Google?",
+            "ux": "✅ <strong>User Experience (UX)</strong> – Smooth and responsive navigation?",
+            "security": "✅ <strong>Security & Reliability</strong> – Is your site well protected?"
+          },
+          "whyImportant": {
+            "title": "Why is this important?",
+            "text": "because good performance indicators create more traffic, more engagement, and more conversions."
+          },
+          "form": {
+            "placeholder": "https://yourwebsite.com",
+            "submit": "Start Audit",
+            "loading": "Analyzing..."
+          },
+          "results": {
+            "title": "Audit Results",
+            "performance": "Performance",
+            "performanceLabel": "Performance",
+            "seo": "SEO",
+            "seoLabel": "SEO",
+            "accessibility": "Accessibility",
+            "accessibilityLabel": "Accessibility",
+            "security": "Security",
+            "securityLabel": "Security",
+            "mobile": "Mobile",
+            "mobileLabel": "Mobile",
+            "bestPractices": "Best Practices",
+            "bestPracticesLabel": "Practices",
+            "detailedReport": "View Detailed Report",
+            "contactUs": "Contact Us"
+          },
+          "moreInfo": {
+            "title": "The Digital Audit",
+            "description": "Our digital audit tool helps identify your website's weaknesses and define a clear roadmap to improve its technical performance, accessibility, security, and search engine optimization (SEO)."
+          },
+          "details": {
+            "performance": {
+              "title": "Performance",
+              "text": "A slow website increases bounce rate and generates frustration among users. It also negatively impacts your organic search ranking. Conversely, a fast site offers a better user experience and improves conversions."
+            },
+            "seo": {
+              "title": "Visibility (SEO)",
+              "text": "A well-optimized site structure makes it easier for search engines to crawl and index your content. The result: better positioning on Google and an increase in qualified traffic to your site."
+            },
+            "security": {
+              "title": "Security",
+              "text": "An unsecured site is exposed to cyber attacks and can quickly lose user trust, especially in e-commerce. The audit verifies the presence of SSL certificates, secure headers, and essential protection mechanisms."
+            },
+            "accessibility": {
+              "title": "Accessibility",
+              "text": "An accessible website ensures that everyone, including people with disabilities, can navigate and interact with your content. Beyond the ethical aspect, this expands your potential audience and strengthens your compliance with accessibility standards."
+            },
+            "mobile": {
+              "title": "Mobile Optimization",
+              "text": "Currently, more than 50% of web traffic comes from mobile devices. A site not adapted to mobile offers a poor experience and suffers penalties from search engines. The audit evaluates mobile compatibility to ensure smooth navigation on all screens."
+            },
+            "bestPractices": {
+              "title": "Technical Best Practices",
+              "text": "Following the best technical practices recommended by Google ensures that your site is robust, performant, and secure. The audit identifies common errors such as obsolete resources, poorly optimized JavaScript or CSS, insecure libraries, and misconfigurations that can affect user experience and organic ranking. A good Best Practices score guarantees an up-to-date, reliable site that complies with modern web standards."
+            }
+          }
         }
       }
     },
