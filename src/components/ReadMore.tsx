@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react'
+import {useTranslations} from "next-intl";
 
 interface ReadMoreProps {
     id: string
@@ -13,6 +14,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
     const [fullHeight, setFullHeight] = useState<number | null>(null)
     const shortTextRef = useRef<HTMLDivElement>(null)
     const fullTextRef = useRef<HTMLDivElement>(null)
+    const t = useTranslations('read-more')
 
     const splittedText = text.replace('/\n/gi', '').split(' ').map((e: string) => e + ' ')
     const itCanOverflow = splittedText.length > amountOfWords
@@ -104,7 +106,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames}: ReadMorePro
                         onKeyDown={handleKeyboard}
                         onClick={() => setIsExpanded(!isExpanded)}
                     >
-                        {isExpanded ? 'show less' : 'show more'}
+                        {isExpanded ? t('less') : t('more')}
                     </span>
                 </>
             )}

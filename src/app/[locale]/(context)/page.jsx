@@ -1,4 +1,3 @@
-// src/app/[locale]/page.jsx
 "use client";
 
 import OurSolutions from "@/components/pages/homepage/our-solutions/our-solutions";
@@ -9,7 +8,7 @@ import LatestInsights from "@/components/pages/homepage/latest-insights/latest-i
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 import OurServices from "@/components/pages/homepage/services/ourServices";
 import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
-import {AuditButton} from "@/components/AuditButton";
+import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";
 
 export default function HomePage() {
     return (
@@ -21,9 +20,8 @@ export default function HomePage() {
             <OurServices/>
             <AboutUs/>
             <LatestInsights/>
+            <DigitalAuditSection/>
             <QuoteRequestForm/>
-
-            <AuditButton/>
         </>
     );
 }

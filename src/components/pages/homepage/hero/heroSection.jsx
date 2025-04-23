@@ -4,31 +4,31 @@ import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {ReadMore} from "@/components/ReadMore";
 import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
+import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
-    const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+    const navigation = useSiteNavigation()
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
-            <div className="container mx-auto px-4 xl:-translate-y-1/6">
+            <div className="container mx-auto px-4 xl:translate-y-1/6">
                 <div className="flex">
                     <div className="w-full md:w-1/2 lg:w-4/5">
                         <h1 className="fluid-type-3">
-                            {t("headline.line1")}
-                            <br />
+                            {t("headline.line1") + ' '}
                             {t("headline.line2")}
-                            <br />
+                            <br/>
                             {t("headline.line3")}
                         </h1>
                         <p
-                            className="mb-8  w-full md:w-1/2 lg:w-3/5 fluid-type-1"
+                            className="mb-8  w-full lg:w-3/5 fluid-type-1"
                             style={{fontWeight: "200"}}
                         >
                             {t("description")}
                         </p>
                         <button
-                            onClick={() => setIsAuditModalOpen(true)}
+                            onClick={() => navigation.setIsAuditModalOpen(true)}
                             className="flex items-center bg-transparent text-white font-bold no-underline cursor-pointer"
                         >
                             <p className="fluid-type-2">{t("ctaButton")}</p>
@@ -38,7 +38,7 @@ const HeroSection = () => {
                                 width={30}
                                 height={30}
                                 className="ml-2 mb-3"
-                                style={{ marginBottom: "3rem", marginLeft: "1rem" }}
+                                style={{marginBottom: "3rem", marginLeft: "1rem"}}
                             />
                         </button>
 
@@ -58,9 +58,6 @@ const HeroSection = () => {
                 mixBlendMode: "plus-lighter",
                 color: 'var(--color-accent-blue-planet)',
             }} className={'w-full text-center fluid-type-2 italic'}>{t('quote')}</blockquote>
-            {isAuditModalOpen && (
-                <AuditMultiModal onClose={() => setIsAuditModalOpen(false)} />
-            )}
         </div>
     );
 };

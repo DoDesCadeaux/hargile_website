@@ -62,12 +62,11 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-text: #{theme.$text-dark};
-    --color-text-light: #{theme.$background-light};
-    --color-text-secondary: #{theme.$text-secondary-dark};
-    --color-background: #{theme.$background-light};
-    --color-background-dark: #{theme.$background-light};
-    --color-background-card: #{theme.$background-card-light};
+    --color-text: #{theme.$text-light};
+    --color-text-light: #{theme.$text-light};
+    --color-text-secondary: #{theme.$text-secondary-light};
+    --color-background: #{theme.$background-dark};
+    --color-background-card: #{theme.$background-card-dark};
   }
 }
 

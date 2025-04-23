@@ -6,6 +6,6 @@ export const FooterContainerStyled = styled.footer`
     padding: 1rem 26px 2rem 12px;
 
     @media (min-width: 1024px) {
-        padding: 1rem clamp(26px, 8vw, 6vw) 4rem clamp(12px, 8vw, 6vw);
+        padding: 1rem clamp(26px, 8vw, 6vw) 7rem clamp(12px, 8vw, 6vw);
     }
 `;

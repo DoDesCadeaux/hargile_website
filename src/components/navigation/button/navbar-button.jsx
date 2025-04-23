@@ -21,7 +21,7 @@ const BoxStyled = styled.button`
     z-index: 100;
 `
 
-const NavbarButton = ({width = '2.5vw'}) => {
+const NavbarButton = ({width = '2vw'}) => {
     const {isOpen, toggleMenu} = useSiteNavigation();
     const menuIconAnimationTime = 300;
     const {crashTriggered, handleCrashComplete} = useMenuCrashState(isOpen);
@@ -40,15 +40,16 @@ const NavbarButton = ({width = '2.5vw'}) => {
                 onCrashComplete={handleCrashComplete}
                 isOpen={isOpen}
             />
-            <AnimatedMenuIconCircle
-                menuIconAnimationTime={menuIconAnimationTime}
-                width={width}
-                isOpen={isOpen}
-            />
-            <CrossRippleEffect
-                crashTriggered={crashTriggered}
-                isOpen={isOpen}
-            />
+            {/*<AnimatedMenuIconCircle*/}
+            {/*    menuIconAnimationTime={menuIconAnimationTime}*/}
+            {/*    width={width}*/}
+            {/*    isOpen={isOpen}*/}
+            {/*/>*/}
+            {/*<CrossRippleEffect*/}
+            {/*    crashTriggered={crashTriggered}*/}
+            {/*    isOpen={isOpen}*/}
+            {/*    width={width}*/}
+            {/*/>*/}
         </BoxStyled>
     )
 }

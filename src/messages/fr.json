@@ -1,124 +1,146 @@
 {
-  "test": "lorem fr",
+  "audit-button": {
+    "description": "",
+    "title": "Auditer votre site web"
+  },
   "menu": {
-    "services": "Services",
-    "solutions": "Solutions",
-    "our-dna": "Notre ADN",
     "contact": "Contacte",
-    "portfolio": "Portfolio"
+    "our-dna": "Notre ADN",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "solutions": "Solutions"
   },
   "pages": {
+    "about-us": {
+      "sections": {
+        "our-commitment": {
+          "bubbles": {
+            "carbon": "Réduction de l'empreinte carbone",
+            "goodplanet": "De nos bénéfices vont à GoodPlanet",
+            "renewable": "Alimenté par énergie renouvelable"
+          },
+          "highlighted": "Révolutionner l'innovation par une technologie responsable",
+          "paragraph1": "Notre conviction est d’agir concrètement par des actions significatives  pour un numérique plus vertueux afin que notre engagement se mesure en résultats tangibles.",
+          "paragraph2": "L’environnement social et environnemental est notre priorité. Notre vision est de transformer leurs contraintes en opportunités d'excellence. Nos solutions ne sont pas seulement performantes – elles sont résolument tournées vers l'avenir.",
+          "pillars": {
+            "environmental": "Responsabilité Environnementale",
+            "ethical": "Innovation Éthique",
+            "inclusion": "Inclusion Numérique"
+          },
+          "subtitle": "Performances et responsabilités.",
+          "title": "Notre Engagement"
+        },
+        "our-mission": {
+          "description": "Nous ne créons pas seulement des solutions numériques, nous bâtissons des partenariats qui grandissent avec vous.\n\n L'innovation et le développement commercial sont au cœur de notre équipe, afin de vous offrir des solutions évolutives qui anticipent vos défis futurs.",
+          "highlighted": "Transformer les expériences numériques",
+          "subheading": "par l'innovation centrée sur l'humain et la technologie.",
+          "title": "Notre Mission",
+          "values": {
+            "creativity": {
+              "description": "Des solutions innovantes face à des défis complexes.",
+              "title": "Créativité"
+            },
+            "human": {
+              "description": "Des expériences utilisateurs intuitives et engageantes.",
+              "title": "Approche humaine"
+            },
+            "partnership": {
+              "description": "Un engagement au-delà du projet, pour soutenir votre succès à long terme.",
+              "title": "Partenariat durable"
+            },
+            "technic": {
+              "description": "Notre équipe est à l'avant-garde des innovations technologiques.",
+              "title": "Excellence technique"
+            },
+            "vision": {
+              "description": "Une compréhension profonde du marché pour vous offrir un avantage concurrentiel.",
+              "title": "Vision commerciale"
+            }
+          }
+        },
+        "our-story": {
+          "getInTouch": "Nous Contacter",
+          "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
+          "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
+          "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
+          "subtitle": "Une vision pour demain",
+          "title": "Notre ADN"
+        },
+        "our-team": {
+          "members": {
+            "alexis": {
+              "role": "Développeur Principal"
+            },
+            "charles": {
+              "role": "RPM"
+            },
+            "pascal": {
+              "role": "Admin"
+            }
+          },
+          "title": "Notre Équipe"
+        }
+      }
+    },
+    "contact": {
+      "contact": {
+        "email": "Email",
+        "message": "Votre message",
+        "name": "Nom et prénom",
+        "phone": "Téléphone",
+        "title": "Informations de contact"
+      },
+      "contactInfo": {
+        "address": {
+          "title": "Adresse",
+          "value": "123 rue de l'Innovation, 1000 BXL"
+        },
+        "email": {
+          "title": "Email",
+          "value": "contact@hargile.com"
+        },
+        "phone": {
+          "title": "Téléphone",
+          "value": "+32 (0)1 23 45 67 89"
+        },
+        "title": "Nos coordonnées"
+      },
+      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
+      "privacy": {
+        "link": "politique de confidentialité",
+        "requiredFields": "Champs obligatoires",
+        "text": "En soumettant ce formulaire, vous acceptez notre"
+      },
+      "services": {
+        "ai": "Intelligence Artificielle",
+        "cloud": "Solutions Cloud",
+        "description": "Sélectionnez une ou plusieurs options",
+        "mobileApps": "Applications Mobiles",
+        "title": "Type de service",
+        "webDevelopment": "Développement Web"
+      },
+      "social": {
+        "title": "Suivez-nous"
+      },
+      "submit": "Envoyer le message",
+      "subtitle": {
+        "part1": "Entrez en contact",
+        "part2": "avec notre équipe"
+      },
+      "title": "Contactez-nous"
+    },
     "homepage": {
       "sections": {
-        "hero": {
-          "companyName": "HARGILE",
-          "headline": {
-            "line1": "L’innovation digitale ",
-            "line2": "au service de votre entreprise",
-            "line3": ""
-          },
-          "description": "HARGILE est une agence digitale pensée pour concevoir et développer des solutions technologiques innovantes, adaptées à vos défis stratégiques et opérationnels.",
-          "ctaButton": "Auditer votre site web",
-          "paragraph": "Transformer les défis complexes en solutions numériques est notre mission. \n\n Agence visionnaire portée par la synergie du Marketing Digital Stratégique et de l’Intelligence Artificielle, nous donnons vie à des expériences digitales puissantes et porteuses de sens. La technologie de pointe associée à l'approche Humaine, nous permet de proposer des solutions innovantes pour accompagner les entreprises dans leur transformation numérique.",
-          "arrowAlt": "Flèche",
-          "quote": "Se démarquer, grandir et prospérer dans un monde de plus en plus connecté."
-        },
-        "our-solutions": {
-          "title": "Web, mobile, cloud, IA",
-          "description": "Notre expertise tech est votre levier —- créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
-          "paragraph": "HARGILE propose des solutions numériques personnalisées fondées sur le principe de la maîtrise technologique et l'innovation créative. Notre équipe associe expertise, ingéniosité et vision stratégique d’entreprise pour transformer vos défis en leviers de croissance.",
-          "learn-more": "En savoir plus",
-          "coming-soon": "Bientôt disponible",
-          "solutions": {
-            "agves": {
-              "title": "AGVES",
-              "subtitle": "ERP évolutif pour la gestion scolaire",
-              "description": "Application de gestion des ventes spécialisée pour le secteur de l'éducation. AGVES révolutionne la communication de la vie scolaire et extrascolaire par la mise en place d’un interface simplificateur. Il améliore toutes opérations liées aux transactions financières comme les process de sécurité."
-            },
-            "i-go": {
-              "title": "I GO",
-              "subtitle": "Une navigation GPS spécialisé",
-              "description": "I GO est une application mobile innovante dédiée à la mobilité électrique, conçue pour répondre aux besoins croissants des utilisateurs d'Engins de Déplacement Personnel Motorisés (EDPM) et de Vélo à Assistance Électrique (VAE)."
-            },
-            "multipass": {
-              "title": "Multipass",
-              "subtitle": "la solution agile qui s’adapte à votre entreprise.",
-              "description": "Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre une plateforme modulable et évolutive. Conçue pour s’adapter à tous les secteurs d’activité, notre solution vous permet de centraliser, gérer et optimiser vos relations clients avec une flexibilité inégalée."
-            },
-            "your-project": {
-              "title": "Votre projet",
-              "subtitle": "Facteur de croissance.",
-              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre a participation à votre succès."
-            }
-          }
-        },
-        "trusted-brands": {
-          "title": "Ils nous font confiance"
-        },
-        "recent-works": {
-          "title": "Nos réalisations récentes",
-          "view-all": "Toutes nos réalisations",
-          "works": {
-            "agves": {
-              "title": "AGVES",
-              "description": "Plateforme pour établissements scolaires"
-            },
-            "i-go": {
-              "title": "I GO",
-              "description": "Développement mobile, IA"
-            },
-            "leafy": {
-              "title": "Leafy",
-              "description": "E-commerce pour plantes, Full-stack"
-            }
-          }
-        },
-        "services": {
-          "title": "Nos services",
-          "subtitle": "Nous avons tous les outils pour élever votre entreprise",
-          "dev": {
-            "title": "Développement et conception de solutions",
-            "items": {
-              "web": "Conception, développement Web",
-              "mobile": "Développement d'applications mobiles",
-              "cms": "Développement CMS",
-              "ecommerce": "E-Commerce"
-            }
-          },
-          "maintenance": {
-            "title": "Maintenace et modernisation",
-            "items": {
-              "support": "Maintenance suppot",
-              "migration": "Migration, modernisation d'applications",
-              "seo": "Optimisation performances SEO"
-            }
-          },
-          "ai": {
-            "title": "Intelligence Artificielle et Solutions Cloud",
-            "items": {
-              "agents": "Développement d'agents intelligents",
-              "cloud": "Solutions Cloud",
-              "automation": "Automatisation des processus métier",
-              "ml": "Pipelines de prédition avec Machine Learning",
-              "consulting": "Conseil stratégique en IA",
-              "custom": "Personnalisation des solutions IA"
-            }
-          },
-          "analysis": {
-            "title": "Analyse et qualité",
-            "items": {
-              "reporting": "Analyse – reporting",
-              "qa": "Tests et assurance qualité (QA)",
-              "api": "Développement d'APIs"
-            }
-          }
-        },
         "about-us": {
-          "subtitle": "Découvrez notre agence",
-          "who_title": "Notre vision de la croissance",
-          "who_description": "Chez HARGILE, nous façonnons notre développement comme on sculpte une œuvre : avec soin, intention et sens du détail.\n\nNotre ambition ? Créer des solutions numériques qui ont du sens, qui servent vos objectifs et qui évoluent avec vous.",
-          "approach_title": "Chaque projet est une opportunité,\n\n révéler le potentiel d’une idée",
           "approach_description": "Nous croyons aux partenariats collaboratifs et à la pensée innovante. En comprenant vos objectifs et défis commerciaux, nous livrons des solutions qui génèrent des résultats concrets.",
+          "approach_title": "Chaque projet est une opportunité,\n\n révéler le potentiel d’une idée",
+          "conclusion": "Votre objectif se construit pas à pas, portée par des collaborations alignées sur nos expertises et nos valeurs. Nous privilégions les projets en phase avec nos expertises clés pour garantir un développement progressif, cohérent et durable, sans compromis sur la qualité.",
+          "ideas": [
+            "Des sites de présentation élégants et percutants, véritables vitrines de votre identité",
+            "Des plateformes e-commerce centrées sur l’expérience utilisateur, pensées pour convertir et fidéliser",
+            "Des espaces de contenu dynamiques et collaboratifs, qui donnent du souffle à vos communautés",
+            "Des applications personnalisées, taillées pour vos enjeux métier, sans superflu"
+          ],
           "our-values": [
             {
               "value": "Excellence",
@@ -141,416 +163,465 @@
               "description": "Nous évoluons avec les tendances technologiques tout en maintenant des bases solides"
             }
           ],
-          "ideas": [
-            "Des sites de présentation élégants et percutants, véritables vitrines de votre identité",
-            "Des plateformes e-commerce centrées sur l’expérience utilisateur, pensées pour convertir et fidéliser",
-            "Des espaces de contenu dynamiques et collaboratifs, qui donnent du souffle à vos communautés",
-            "Des applications personnalisées, taillées pour vos enjeux métier, sans superflu"
-          ],
-          "conclusion": "Votre objectif se construit pas à pas, portée par des collaborations alignées sur nos expertises et nos valeurs. Nous privilégions les projets en phase avec nos expertises clés pour garantir un développement progressif, cohérent et durable, sans compromis sur la qualité.",
           "stats": {
-            "years": "Années d'expérience",
             "projects": "Projets livrés",
-            "satisfaction": "Satisfaction client"
-          }
+            "satisfaction": "Satisfaction client",
+            "years": "Années d'expérience"
+          },
+          "subtitle": "Découvrez notre agence",
+          "who_description": "Chez HARGILE, nous façonnons notre développement comme on sculpte une œuvre : avec soin, intention et sens du détail.\n\nNotre ambition ? Créer des solutions numériques qui ont du sens, qui servent vos objectifs et qui évoluent avec vous.",
+          "who_title": "Notre vision de la croissance"
+        },
+        "hero": {
+          "arrowAlt": "Flèche",
+          "companyName": "HARGILE",
+          "ctaButton": "Auditer votre site web",
+          "description": "HARGILE est une agence digitale pensée pour concevoir et développer des solutions technologiques innovantes, adaptées à vos défis stratégiques et opérationnels.",
+          "headline": {
+            "line1": "L’innovation digitale ",
+            "line2": "au service de votre entreprise",
+            "line3": ""
+          },
+          "paragraph": "Transformer les défis complexes en solutions numériques est notre mission. \n\n Agence visionnaire portée par la synergie du Marketing Digital Stratégique et de l’Intelligence Artificielle, nous donnons vie à des expériences digitales puissantes et porteuses de sens. La technologie de pointe associée à l'approche Humaine, nous permet de proposer des solutions innovantes pour accompagner les entreprises dans leur transformation numérique.",
+          "quote": "Se démarquer, grandir et prospérer dans un monde de plus en plus connecté."
         },
         "latest-insights": {
-          "title": "Dernières actualités",
           "subtitle": "Nos réflexions et perspectives sur le monde numérique",
+          "title": "Dernières actualités",
           "view-all": "Voir toutes les actualités"
         },
+        "our-solutions": {
+          "coming-soon": "Bientôt disponible",
+          "description": "Notre expertise tech est votre levier —- créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
+          "learn-more": "En savoir plus",
+          "paragraph": "HARGILE propose des solutions numériques personnalisées fondées sur le principe de la maîtrise technologique et l'innovation créative. Notre équipe associe expertise, ingéniosité et vision stratégique d’entreprise pour transformer vos défis en leviers de croissance.",
+          "solutions": {
+            "agves": {
+              "description": "Application de gestion des ventes spécialisée pour le secteur de l'éducation. AGVES révolutionne la communication de la vie scolaire et extrascolaire par la mise en place d’un interface simplificateur. Il améliore toutes opérations liées aux transactions financières comme les process de sécurité.",
+              "subtitle": "ERP évolutif pour la gestion scolaire",
+              "title": "AGVES"
+            },
+            "i-go": {
+              "description": "I GO est une application mobile innovante dédiée à la mobilité électrique, conçue pour répondre aux besoins croissants des utilisateurs d'Engins de Déplacement Personnel Motorisés (EDPM) et de Vélo à Assistance Électrique (VAE).",
+              "subtitle": "Une navigation GPS spécialisé",
+              "title": "I GO"
+            },
+            "multipass": {
+              "description": "Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre une plateforme modulable et évolutive. Conçue pour s’adapter à tous les secteurs d’activité, notre solution vous permet de centraliser, gérer et optimiser vos relations clients avec une flexibilité inégalée.",
+              "subtitle": "la solution agile qui s’adapte à votre entreprise.",
+              "title": "Multipass"
+            },
+            "your-project": {
+              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre a participation à votre succès.",
+              "subtitle": "Facteur de croissance.",
+              "title": "Votre projet"
+            }
+          },
+          "title": "Web, mobile, cloud, IA"
+        },
         "quote-request": {
-          "title": "Contacter-nous",
+          "contact": {
+            "budget": {
+              "10kTo25k": "10 000 € - 25 000 €",
+              "25kTo50k": "25 000 € - 50 000 €",
+              "5kTo10k": "5 000 € - 10 000 €",
+              "label": "Budget estimé",
+              "less5k": "Moins de 5 000 €",
+              "more50k": "Plus de 50 000 €",
+              "select": "Sélectionner"
+            },
+            "email": "Email",
+            "message": "Votre message",
+            "name": "Nom et prénom",
+            "phone": "Téléphone",
+            "projectDescription": "Description du projet",
+            "timeline": {
+              "1To3months": "1 - 3 mois",
+              "3To6months": "3 - 6 mois",
+              "label": "Échéance souhaitée",
+              "less1month": "Moins d'un mois",
+              "more6months": "Plus de 6 mois",
+              "select": "Sélectionner"
+            },
+            "title": "Informations de contact"
+          },
+          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
+          "privacy": {
+            "link": "politique de confidentialité",
+            "requiredFields": "Champs obligatoires",
+            "text": "En soumettant ce formulaire, vous acceptez notre"
+          },
+          "services": {
+            "ai": "Intelligence Artificielle",
+            "cloud": "Solutions Cloud",
+            "description": "Sélectionnez une ou plusieurs options",
+            "mobileApps": "Applications Mobiles",
+            "title": "Type de service",
+            "webDevelopment": "Développement Web"
+          },
+          "submit": "Soumettre",
           "subtitle": {
             "part1": "Obtenez une estimation",
             "part2": "gratuite pour votre projet"
           },
-          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
-          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-          "contact": {
-            "title": "Informations de contact",
-            "name": "Nom et prénom",
-            "email": "Email",
-            "phone": "Téléphone",
-            "message": "Votre message",
-            "projectDescription": "Description du projet",
-            "budget": {
-              "label": "Budget estimé",
-              "select": "Sélectionner",
-              "less5k": "Moins de 5 000 €",
-              "5kTo10k": "5 000 € - 10 000 €",
-              "10kTo25k": "10 000 € - 25 000 €",
-              "25kTo50k": "25 000 € - 50 000 €",
-              "more50k": "Plus de 50 000 €"
+          "title": "Contacter-nous"
+        },
+        "recent-works": {
+          "title": "Nos réalisations récentes",
+          "view-all": "Toutes nos réalisations",
+          "works": {
+            "agves": {
+              "description": "Plateforme pour établissements scolaires",
+              "title": "AGVES"
             },
-            "timeline": {
-              "label": "Échéance souhaitée",
-              "select": "Sélectionner",
-              "less1month": "Moins d'un mois",
-              "1To3months": "1 - 3 mois",
-              "3To6months": "3 - 6 mois",
-              "more6months": "Plus de 6 mois"
-            }
-          },
-          "services": {
-            "title": "Type de service",
-            "description": "Sélectionnez une ou plusieurs options",
-            "webDevelopment": "Développement Web",
-            "mobileApps": "Applications Mobiles",
-            "ai": "Intelligence Artificielle",
-            "cloud": "Solutions Cloud"
-          },
-          "submit": "Soumettre",
-          "privacy": {
-            "text": "En soumettant ce formulaire, vous acceptez notre",
-            "link": "politique de confidentialité",
-            "requiredFields": "Champs obligatoires"
-          }
-        }
-      }
-    },
-    "portfolio": {
-      "title": "Notre Portfolio",
-      "subtitle": {
-        "line1": "Transformer des idées en",
-        "line2": "expériences numériques exceptionnelles"
-      },
-      "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
-      "featuredProjects": "Projets en Vedette",
-      "viewMore": "En savoir plus",
-      "viewProject": "Voir le projet",
-      "readCaseStudy": "Lire l'étude de cas",
-      "projects": {
-        "agves": {
-          "subtitle": "Plateforme de Gestion Scolaire",
-          "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants."
-        },
-        "igo": {
-          "subtitle": "Système de Gestion de Mobilité",
-          "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables."
-        },
-        "leafy": {
-          "subtitle": "E-commerce pour Plantes",
-          "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées."
-        },
-        "multipass": {
-          "subtitle": "Application couteau suisse",
-          "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés."
-        },
-        "datasense": {
-          "subtitle": "Tableau de Bord Analytique",
-          "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées."
-        },
-        "ecotrack": {
-          "subtitle": "Surveillance de Durabilité",
-          "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables."
-        }
-      },
-      "cta": {
-        "title": "Prêt à transformer votre présence numérique ?",
-        "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
-        "button": "Contactez-nous"
-      }
-    },
-    "contact": {
-      "title": "Contactez-nous",
-      "subtitle": {
-        "part1": "Entrez en contact",
-        "part2": "avec notre équipe"
-      },
-      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-      "contact": {
-        "title": "Informations de contact",
-        "name": "Nom et prénom",
-        "email": "Email",
-        "phone": "Téléphone",
-        "message": "Votre message"
-      },
-      "services": {
-        "title": "Type de service",
-        "description": "Sélectionnez une ou plusieurs options",
-        "webDevelopment": "Développement Web",
-        "mobileApps": "Applications Mobiles",
-        "ai": "Intelligence Artificielle",
-        "cloud": "Solutions Cloud"
-      },
-      "submit": "Envoyer le message",
-      "privacy": {
-        "text": "En soumettant ce formulaire, vous acceptez notre",
-        "link": "politique de confidentialité",
-        "requiredFields": "Champs obligatoires"
-      },
-      "contactInfo": {
-        "title": "Nos coordonnées",
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Téléphone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "address": {
-          "title": "Adresse",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        }
-      },
-      "social": {
-        "title": "Suivez-nous"
-      }
-    },
-    "privacy-policy": {
-      "title": "Mentions Légales",
-      "lastUpdate": "Dernière mise à jour",
-      "lastUpdateDate": "18 mars 2025",
-      "inThisPage": "Dans cette page",
-      "downloadPDF": "Télécharger en PDF",
-      "print": "Imprimer",
-      "sections": {
-        "termsConditions": {
-          "title": "Termes et Conditions",
-          "welcome": "Bienvenue sur le site web d'Hargile. En accédant à ce site, vous acceptez d'être lié par ces conditions d'utilisation, toutes les lois et réglementations applicables. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce site.",
-          "intellectualProperty": {
-            "title": "Propriété intellectuelle",
-            "content": "Tous les contenus présents sur ce site, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques et compilations de logiciels sont la propriété d'Hargile ou de ses fournisseurs de contenu et sont protégés par les lois françaises et internationales sur le droit d'auteur."
-          },
-          "liability": {
-            "title": "Limitation de responsabilité",
-            "content": "Les informations sur ce site sont fournies \"telles quelles\", sans garantie d'aucune sorte, expresse ou implicite. Hargile n'assume aucune responsabilité quant à l'utilisation de ce site ou de son contenu. En aucun cas, Hargile ne sera responsable des dommages directs, indirects, accessoires, spéciaux ou consécutifs."
-          }
-        },
-        "privacyPolicy": {
-          "title": "Politique de Confidentialité",
-          "introduction": "Cette politique de confidentialité explique comment nous recueillons, utilisons, traitons et protégeons vos informations personnelles en conformité avec le Règlement Général sur la Protection des Données (RGPD).",
-          "dataCollection": {
-            "title": "Collecte des données",
-            "content": "Nous collectons les informations que vous nous fournissez directement lorsque vous vous inscrivez à nos services, remplissez un formulaire ou communiquez avec nous. Ces informations peuvent inclure votre nom, adresse email, numéro de téléphone et toute autre information que vous choisissez de nous fournir."
-          },
-          "dataUsage": {
-            "title": "Utilisation des données",
-            "content": "Nous utilisons vos données personnelles pour :",
-            "purposes": {
-              "services": "Fournir, maintenir et améliorer nos services",
-              "transactions": "Traiter les transactions et envoyer des notifications connexes",
-              "responses": "Répondre à vos commentaires, questions et demandes"
+            "i-go": {
+              "description": "Développement mobile, IA",
+              "title": "I GO"
+            },
+            "leafy": {
+              "description": "E-commerce pour plantes, Full-stack",
+              "title": "Leafy"
             }
           }
         },
-        "cookies": {
-          "title": "Utilisation des Cookies",
-          "introduction": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser comment les utilisateurs utilisent notre site.",
-          "types": {
-            "title": "Types de cookies utilisés",
-            "essential": "Cookies essentiels : Nécessaires au fonctionnement du site",
-            "analytics": "Cookies analytiques : Pour analyser comment les visiteurs utilisent notre site",
-            "functional": "Cookies de fonctionnalité : Pour mémoriser vos préférences",
-            "advertising": "Cookies publicitaires : Pour diffuser des publicités pertinentes"
+        "services": {
+          "ai": {
+            "items": {
+              "agents": "Développement d'agents intelligents",
+              "automation": "Automatisation des processus métier",
+              "cloud": "Solutions Cloud",
+              "consulting": "Conseil stratégique en IA",
+              "custom": "Personnalisation des solutions IA",
+              "ml": "Pipelines de prédition avec Machine Learning"
+            },
+            "title": "Intelligence Artificielle et Solutions Cloud"
           },
-          "control": {
-            "title": "Contrôle des cookies",
-            "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies déjà présents sur votre appareil et configurer la plupart des navigateurs pour les empêcher d'être placés."
-          }
-        },
-        "userRights": {
-          "title": "Droits des Utilisateurs",
-          "introduction": "Conformément au RGPD, vous disposez des droits suivants concernant vos données :",
-          "rights": {
-            "access": "Droit d'accès : Vous pouvez demander une copie de vos données personnelles",
-            "rectification": "Droit de rectification : Vous pouvez demander la correction de vos données inexactes",
-            "erasure": "Droit à l'effacement : Vous pouvez demander la suppression de vos données",
-            "restriction": "Droit à la limitation du traitement : Vous pouvez demander de limiter le traitement",
-            "portability": "Droit à la portabilité : Vous pouvez demander le transfert de vos données",
-            "objection": "Droit d'opposition : Vous pouvez vous opposer au traitement de vos données"
-          }
-        },
-        "other": {
-          "title": "Etc.",
-          "content": "Cette section contient des informations supplémentaires sur nos pratiques et politiques de confidentialité."
-        },
-        "contactUs": {
-          "title": "Nous contacter",
-          "content": "Si vous avez des questions sur notre politique de confidentialité ou nos pratiques, veuillez nous contacter via notre site web ou par email à privacy@hargile.com."
-        },
-        "international": {
-          "title": "Transferts Internationaux de données",
-          "content": "Vos informations peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction."
-        },
-        "contactSupport": {
-          "title": "Contactez-nous",
-          "content": "Pour toute question ou préoccupation concernant cette politique de confidentialité, veuillez contacter notre délégué à la protection des données à dpo@hargile.com."
-        }
-      }
-    },
-    "about-us": {
-      "sections": {
-        "our-story": {
-          "title": "Notre ADN",
-          "subtitle": "Une vision pour demain",
-          "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
-          "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
-          "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
-          "getInTouch": "Nous Contacter"
-        },
-        "our-team": {
-          "title": "Notre Équipe",
-          "members": {
-            "charles": {
-              "role": "RPM"
+          "analysis": {
+            "items": {
+              "api": "Développement d'APIs",
+              "qa": "Tests et assurance qualité (QA)",
+              "reporting": "Analyse – reporting"
             },
-            "pascal": {
-              "role": "Admin"
+            "title": "Analyse et qualité"
+          },
+          "dev": {
+            "items": {
+              "cms": "Développement CMS",
+              "ecommerce": "E-Commerce",
+              "mobile": "Développement d'applications mobiles",
+              "web": "Conception, développement Web"
             },
-            "alexis": {
-              "role": "Développeur Principal"
+            "title": "Développement et conception de solutions"
+          },
+          "maintenance": {
+            "items": {
+              "migration": "Migration, modernisation d'applications",
+              "seo": "Optimisation performances SEO",
+              "support": "Maintenance suppot"
+            },
+            "title": "Maintenace et modernisation"
+          },
+          "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+          "title": "Nos services"
+        },
+        "trusted-brands": {
+          "title": "Ils nous font confiance"
+        },
+        "digital-audit": {
+          "title": "Un site web performant, c'est bien plus qu'un ",
+          "titleAccent": "beau design.",
+          "description": "Votre site génère-t-il assez de trafic ? Convertit-il bien vos visiteurs en clients ? Est-il optimisé pour Google ?<br/><br/><strong>HARGILE a développé un outil d'analyse de performance en ligne. En entrant simplement l'URL d'un site web, vous obtenez en quelques secondes un diagnostic précis</strong> :",
+          "features": {
+            "speed": "✅ <strong>Vitesse de chargement</strong> – Un site lent fait fuir les visiteurs !",
+            "seo": "✅ <strong>Référencement SEO</strong> – Êtes-vous visible sur Google ?",
+            "ux": "✅ <strong>Expérience utilisateur (UX)</strong> – Navigation fluide et responsive ?",
+            "security": "✅ <strong>Sécurité et fiabilité</strong> – Votre site est-il bien protégé ?"
+          },
+          "whyImportant": {
+            "title": "Pourquoi est-ce important ?",
+            "text": "parce que de bons indices de performances créent plus de trafic, plus d'engagement et plus de conversions."
+          },
+          "form": {
+            "placeholder": "https://votresite.com",
+            "submit": "Lancer l'audit",
+            "loading": "Analyse en cours..."
+          },
+          "results": {
+            "title": "Résultats de l'audit",
+            "performance": "Performance",
+            "performanceLabel": "Performance",
+            "seo": "SEO",
+            "seoLabel": "SEO",
+            "accessibility": "Accessibilité",
+            "accessibilityLabel": "Accessibilité",
+            "security": "Sécurité",
+            "securityLabel": "Sécurité",
+            "mobile": "Mobile",
+            "mobileLabel": "Mobile",
+            "bestPractices": "Bonnes pratiques",
+            "bestPracticesLabel": "Pratiques",
+            "detailedReport": "Voir le rapport détaillé",
+            "contactUs": "Nous contacter"
+          },
+          "moreInfo": {
+            "title": "L'audit digital",
+            "description": "Notre outil d'audit digital permet d'identifier les faiblesses de votre site web et de définir une feuille de route claire pour améliorer sa performance technique, son accessibilité, sa sécurité ainsi que son optimisation pour les moteurs de recherche (SEO)."
+          },
+          "details": {
+            "performance": {
+              "title": "Performance",
+              "text": "Un site lent augmente le taux de rebond et génère de la frustration chez les utilisateurs. Cela impacte également négativement votre référencement naturel. À l'inverse, un site rapide offre une meilleure expérience utilisateur et améliore les conversions."
+            },
+            "seo": {
+              "title": "Visibilité (SEO)",
+              "text": "Une structure de site bien optimisée facilite le travail des moteurs de recherche pour explorer et indexer votre contenu. Résultat : un meilleur positionnement sur Google et une augmentation du trafic qualifié vers votre site."
+            },
+            "security": {
+              "title": "Sécurité",
+              "text": "Un site non sécurisé est exposé aux cyberattaques et peut rapidement perdre la confiance des utilisateurs, notamment dans le cadre du e-commerce. L'audit vérifie la présence de certificats SSL, d'en-têtes sécurisés et de mécanismes de protection essentiels."
+            },
+            "accessibility": {
+              "title": "Accessibilité",
+              "text": "Un site accessible garantit que tout le monde, y compris les personnes en situation de handicap, peut naviguer et interagir avec votre contenu. Au-delà de l'aspect éthique, cela élargit votre audience potentielle et renforce votre conformité aux normes d'accessibilité."
+            },
+            "mobile": {
+              "title": "Optimisation mobile",
+              "text": "Actuellement, plus de 50 % du trafic web provient des appareils mobiles. Un site non adapté aux mobiles offre une expérience médiocre et subit des pénalités de la part des moteurs de recherche. L'audit évalue la compatibilité mobile pour garantir une navigation fluide sur tous les écrans."
+            },
+            "bestPractices": {
+              "title": "Bonnes pratiques techniques (Best Practices)",
+              "text": "Respecter les meilleures pratiques techniques recommandées par Google assure que votre site est robuste, performant et sécurisé. L'audit identifie les erreurs courantes telles que des ressources obsolètes, du JavaScript ou CSS mal optimisé, des bibliothèques non sécurisées, ainsi que les mauvaises configurations qui peuvent affecter l'expérience utilisateur et le référencement naturel. Un bon score en Best Practices garantit un site à jour, fiable et conforme aux standards modernes du web."
             }
           }
-        },
-        "our-mission": {
-          "title": "Notre Mission",
-          "highlighted": "Transformer les expériences numériques",
-          "subheading": "par l'innovation centrée sur l'humain et la technologie.",
-          "description": "Nous ne créons pas seulement des solutions numériques, nous bâtissons des partenariats qui grandissent avec vous.\n\n L'innovation et le développement commercial sont au cœur de notre équipe, afin de vous offrir des solutions évolutives qui anticipent vos défis futurs.",
-          "values": {
-            "technic": {
-              "title": "Excellence technique",
-              "description": "Notre équipe est à l'avant-garde des innovations technologiques."
-            },
-            "vision": {
-              "title": "Vision commerciale",
-              "description": "Une compréhension profonde du marché pour vous offrir un avantage concurrentiel."
-            },
-            "creativity": {
-              "title": "Créativité",
-              "description": "Des solutions innovantes face à des défis complexes."
-            },
-            "human": {
-              "title": "Approche humaine",
-              "description": "Des expériences utilisateurs intuitives et engageantes."
-            },
-            "partnership": {
-              "title": "Partenariat durable",
-              "description": "Un engagement au-delà du projet, pour soutenir votre succès à long terme."
-            }
-          }
-        },
-        "our-commitment": {
-          "title": "Notre Engagement",
-          "highlighted": "Révolutionner l'innovation par une technologie responsable",
-          "paragraph1": "Notre conviction est d’agir concrètement par des actions significatives  pour un numérique plus vertueux afin que notre engagement se mesure en résultats tangibles.",
-          "subtitle": "Performances et responsabilités.",
-          "paragraph2": "L’environnement social et environnemental est notre priorité. Notre vision est de transformer leurs contraintes en opportunités d'excellence. Nos solutions ne sont pas seulement performantes – elles sont résolument tournées vers l'avenir.",
-          "bubbles": {
-            "goodplanet": "De nos bénéfices vont à GoodPlanet",
-            "carbon": "Réduction de l'empreinte carbone",
-            "renewable": "Alimenté par énergie renouvelable"
-          },
-          "pillars": {
-            "environmental": "Responsabilité Environnementale",
-            "ethical": "Innovation Éthique",
-            "inclusion": "Inclusion Numérique"
-          }
-        }
-      }
-    },
-    "services": {
-      "title": "Nos services",
-      "subtitle": "Nous avons tous les outils pour élever votre entreprise",
-      "mainTitle": "Nos Services",
-      "subtitleItalic": "Solutions innovantes",
-      "subtitleBold": "pour votre transformation digitale",
-      "description": "Avec HARGILE, vous alliez expertise technique et créativité pour concevoir des solutions numériques personnalisées. En associant des méthodes éprouvées à des technologies innovantes, nous concevons des applications adaptées et puissantes qui répondent avec précision à vos besoins spécifiques et à vos objectifs commerciaux.",
-      "categories": {
-        "dev": {
-          "title": "Développement et Conception de Solutions"
-        },
-        "maintenance": {
-          "title": "Maintenance et Modernisation"
-        },
-        "ai": {
-          "title": "Intelligence Artificielle et Solutions Cloud"
-        },
-        "analysis": {
-          "title": "Analyse et Qualité"
-        }
-      },
-      "services": {
-        "web": {
-          "title": "Web",
-          "description": "Sites vitrines, applications web, portails et solutions sur mesure"
-        },
-        "mobile": {
-          "title": "Applications mobile",
-          "description": "Développement d'applications iOS et Android."
-        },
-        "cms": {
-          "title": "Applications de gestion de contenu",
-          "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu"
-        },
-        "ecommerce": {
-          "title": "E-Commerce",
-          "description": "Solutions de commerce en ligne électronique performantes et sécurisées"
-        },
-        "api": {
-          "title": "Développement d'APIs",
-          "description": "Création d'interfaces de programmation pour connecter vos systèmes"
-        },
-        "seo": {
-          "title": "Optimisation performance SEO",
-          "description": "Référencement naturel et optimisation pour les moteurs de recherche"
-        },
-        "banking-connector": {
-          "title": "Connecteur(s) banquaire(s)",
-          "description": "Solutions banquaire, Wordline payment, SIPS Atos, ..."
-        },
-        "support": {
-          "title": "Maintenance support",
-          "description": "Support technique, mises à jour et maintenance préventive"
-        },
-        "migration": {
-          "title": "Migration, modernisation d'applications",
-          "description": "Mise à niveau de systèmes existants et migration vers des technologies modernes"
-        },
-        "performance": {
-          "title": "Optimisation des performances",
-          "description": "Amélioration de la vitesse et de l'expérience utilisateur"
-        },
-        "agents": {
-          "title": "Développement d'agents intelligents",
-          "description": "Chatbots intelligents et assistants virtuels personnalisés"
-        },
-        "cloud": {
-          "title": "Solutions Cloud",
-          "description": "Infrastructure cloud, déploiement et optimisation des ressources"
-        },
-        "automation": {
-          "title": "Automatisation des processus métier",
-          "description": "Optimisation des flux de travail et automatisation des tâches répétitives"
-        },
-        "ml": {
-          "title": "Pipelines de prédiction avec Machine Learning",
-          "description": "Analyses prédictives et solutions basées sur l'apprentissage automatique"
-        },
-        "consulting": {
-          "title": "Conseil stratégique en IA",
-          "description": "Accompagnement expert pour l'intégration de l'IA dans votre entreprise"
-        },
-        "reporting": {
-          "title": "Analyse – reporting",
-          "description": "Analyse de données et création de rapports personnalisés"
-        },
-        "qa": {
-          "title": "Tests et assurance qualité (QA)",
-          "description": "Tests fonctionnels, de performance et assurance qualité des solutions"
-        },
-        "apidev": {
-          "title": "Développement d'APIs",
-          "description": "Conception et implémentation d'APIs robustes"
         }
       }
     }
   },
-  "audit-button": {
-    "title": "Button d'audit",
-    "description": "Description du button d'audit"
-  }
+  "portfolio": {
+    "cta": {
+      "button": "Contactez-nous",
+      "description": "Collaborons pour créer des solutions numériques innovantes et durables adaptées aux besoins uniques de votre entreprise.",
+      "title": "Prêt à transformer votre présence numérique ?"
+    },
+    "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
+    "featuredProjects": "Projets en Vedette",
+    "projects": {
+      "agves": {
+        "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants.",
+        "subtitle": "Plateforme de Gestion Scolaire"
+      },
+      "datasense": {
+        "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées.",
+        "subtitle": "Tableau de Bord Analytique"
+      },
+      "ecotrack": {
+        "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables.",
+        "subtitle": "Surveillance de Durabilité"
+      },
+      "igo": {
+        "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables.",
+        "subtitle": "Système de Gestion de Mobilité"
+      },
+      "leafy": {
+        "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées.",
+        "subtitle": "E-commerce pour Plantes"
+      },
+      "multipass": {
+        "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés.",
+        "subtitle": "Application couteau suisse"
+      }
+    },
+    "readCaseStudy": "Lire l'étude de cas",
+    "subtitle": {
+      "line1": "Transformer des idées en",
+      "line2": "expériences numériques exceptionnelles"
+    },
+    "title": "Notre Portfolio",
+    "viewMore": "En savoir plus",
+    "viewProject": "Voir le projet"
+  },
+  "privacy-policy": {
+    "downloadPDF": "Télécharger en PDF",
+    "inThisPage": "Dans cette page",
+    "lastUpdate": "Dernière mise à jour",
+    "lastUpdateDate": "18 mars 2025",
+    "print": "Imprimer",
+    "sections": {
+      "contactSupport": {
+        "content": "Pour toute question ou préoccupation concernant cette politique de confidentialité, veuillez contacter notre délégué à la protection des données à dpo@hargile.com.",
+        "title": "Contactez-nous"
+      },
+      "contactUs": {
+        "content": "Si vous avez des questions sur notre politique de confidentialité ou nos pratiques, veuillez nous contacter via notre site web ou par email à privacy@hargile.com.",
+        "title": "Nous contacter"
+      },
+      "cookies": {
+        "control": {
+          "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies déjà présents sur votre appareil et configurer la plupart des navigateurs pour les empêcher d'être placés.",
+          "title": "Contrôle des cookies"
+        },
+        "introduction": "Notre site utilise des cookies pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers texte stockés sur votre appareil qui nous aident à analyser comment les utilisateurs utilisent notre site.",
+        "title": "Utilisation des Cookies",
+        "types": {
+          "advertising": "Cookies publicitaires : Pour diffuser des publicités pertinentes",
+          "analytics": "Cookies analytiques : Pour analyser comment les visiteurs utilisent notre site",
+          "essential": "Cookies essentiels : Nécessaires au fonctionnement du site",
+          "functional": "Cookies de fonctionnalité : Pour mémoriser vos préférences",
+          "title": "Types de cookies utilisés"
+        }
+      },
+      "international": {
+        "content": "Vos informations peuvent être transférées et maintenues sur des ordinateurs situés en dehors de votre état, province, pays ou autre juridiction gouvernementale où les lois sur la protection des données peuvent différer de celles de votre juridiction.",
+        "title": "Transferts Internationaux de données"
+      },
+      "other": {
+        "content": "Cette section contient des informations supplémentaires sur nos pratiques et politiques de confidentialité.",
+        "title": "Etc."
+      },
+      "privacyPolicy": {
+        "dataCollection": {
+          "content": "Nous collectons les informations que vous nous fournissez directement lorsque vous vous inscrivez à nos services, remplissez un formulaire ou communiquez avec nous. Ces informations peuvent inclure votre nom, adresse email, numéro de téléphone et toute autre information que vous choisissez de nous fournir.",
+          "title": "Collecte des données"
+        },
+        "dataUsage": {
+          "content": "Nous utilisons vos données personnelles pour :",
+          "purposes": {
+            "responses": "Répondre à vos commentaires, questions et demandes",
+            "services": "Fournir, maintenir et améliorer nos services",
+            "transactions": "Traiter les transactions et envoyer des notifications connexes"
+          },
+          "title": "Utilisation des données"
+        },
+        "introduction": "Cette politique de confidentialité explique comment nous recueillons, utilisons, traitons et protégeons vos informations personnelles en conformité avec le Règlement Général sur la Protection des Données (RGPD).",
+        "title": "Politique de Confidentialité"
+      },
+      "termsConditions": {
+        "intellectualProperty": {
+          "content": "Tous les contenus présents sur ce site, y compris, mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques et compilations de logiciels sont la propriété d'Hargile ou de ses fournisseurs de contenu et sont protégés par les lois françaises et internationales sur le droit d'auteur.",
+          "title": "Propriété intellectuelle"
+        },
+        "liability": {
+          "content": "Les informations sur ce site sont fournies \"telles quelles\", sans garantie d'aucune sorte, expresse ou implicite. Hargile n'assume aucune responsabilité quant à l'utilisation de ce site ou de son contenu. En aucun cas, Hargile ne sera responsable des dommages directs, indirects, accessoires, spéciaux ou consécutifs.",
+          "title": "Limitation de responsabilité"
+        },
+        "title": "Termes et Conditions",
+        "welcome": "Bienvenue sur le site web d'Hargile. En accédant à ce site, vous acceptez d'être lié par ces conditions d'utilisation, toutes les lois et réglementations applicables. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser ce site."
+      },
+      "userRights": {
+        "introduction": "Conformément au RGPD, vous disposez des droits suivants concernant vos données :",
+        "rights": {
+          "access": "Droit d'accès : Vous pouvez demander une copie de vos données personnelles",
+          "erasure": "Droit à l'effacement : Vous pouvez demander la suppression de vos données",
+          "objection": "Droit d'opposition : Vous pouvez vous opposer au traitement de vos données",
+          "portability": "Droit à la portabilité : Vous pouvez demander le transfert de vos données",
+          "rectification": "Droit de rectification : Vous pouvez demander la correction de vos données inexactes",
+          "restriction": "Droit à la limitation du traitement : Vous pouvez demander de limiter le traitement"
+        },
+        "title": "Droits des Utilisateurs"
+      }
+    },
+    "title": "Mentions Légales"
+  },
+  "services": {
+    "categories": {
+      "ai": {
+        "title": "Intelligence Artificielle et Solutions Cloud"
+      },
+      "analysis": {
+        "title": "Analyse et Qualité"
+      },
+      "dev": {
+        "title": "Développement et Conception de Solutions"
+      },
+      "maintenance": {
+        "title": "Maintenance et Modernisation"
+      }
+    },
+    "description": "Avec HARGILE, vous alliez expertise technique et créativité pour concevoir des solutions numériques personnalisées. En associant des méthodes éprouvées à des technologies innovantes, nous concevons des applications adaptées et puissantes qui répondent avec précision à vos besoins spécifiques et à vos objectifs commerciaux.",
+    "mainTitle": "Nos Services",
+    "services": {
+      "agents": {
+        "description": "Chatbots intelligents et assistants virtuels personnalisés",
+        "title": "Développement d'agents intelligents"
+      },
+      "api": {
+        "description": "Création d'interfaces de programmation pour connecter vos systèmes",
+        "title": "Développement d'APIs"
+      },
+      "apidev": {
+        "description": "Conception et implémentation d'APIs robustes",
+        "title": "Développement d'APIs"
+      },
+      "automation": {
+        "description": "Optimisation des flux de travail et automatisation des tâches répétitives",
+        "title": "Automatisation des processus métier"
+      },
+      "banking-connector": {
+        "description": "Solutions banquaire, Wordline payment, SIPS Atos, ...",
+        "title": "Connecteur(s) banquaire(s)"
+      },
+      "cloud": {
+        "description": "Infrastructure cloud, déploiement et optimisation des ressources",
+        "title": "Solutions Cloud"
+      },
+      "cms": {
+        "description": "Solutions WordPress, Drupal et autres systèmes de gestion de contenu",
+        "title": "Applications de gestion de contenu"
+      },
+      "consulting": {
+        "description": "Accompagnement expert pour l'intégration de l'IA dans votre entreprise",
+        "title": "Conseil stratégique en IA"
+      },
+      "ecommerce": {
+        "description": "Solutions de commerce en ligne électronique performantes et sécurisées",
+        "title": "E-Commerce"
+      },
+      "migration": {
+        "description": "Mise à niveau de systèmes existants et migration vers des technologies modernes",
+        "title": "Migration, modernisation d'applications"
+      },
+      "ml": {
+        "description": "Analyses prédictives et solutions basées sur l'apprentissage automatique",
+        "title": "Pipelines de prédiction avec Machine Learning"
+      },
+      "mobile": {
+        "description": "Développement d'applications iOS et Android.",
+        "title": "Applications mobile"
+      },
+      "performance": {
+        "description": "Amélioration de la vitesse et de l'expérience utilisateur",
+        "title": "Optimisation des performances"
+      },
+      "qa": {
+        "description": "Tests fonctionnels, de performance et assurance qualité des solutions",
+        "title": "Tests et assurance qualité (QA)"
+      },
+      "reporting": {
+        "description": "Analyse de données et création de rapports personnalisés",
+        "title": "Analyse – reporting"
+      },
+      "seo": {
+        "description": "Référencement naturel et optimisation pour les moteurs de recherche",
+        "title": "Optimisation performance SEO"
+      },
+      "support": {
+        "description": "Support technique, mises à jour et maintenance préventive",
+        "title": "Maintenance support"
+      },
+      "web": {
+        "description": "Sites vitrines, applications web, portails et solutions sur mesure",
+        "title": "Web"
+      }
+    },
+    "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+    "subtitleBold": "pour votre transformation digitale",
+    "subtitleItalic": "Solutions innovantes",
+    "title": "Nos services"
+  },
+  "read-more": {
+    "less": "Réduire",
+    "more": "Voir plus"
+  },
+  "test": "lorem fr"
 }

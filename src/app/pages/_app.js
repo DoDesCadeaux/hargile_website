@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import Lenis from "lenis";
 import {NextIntlClientProvider} from "next-intl";
 import {usePageTransition} from "@/components/TransitionLink";
+import {SpeedInsights} from "@vercel/speed-insights/next"
 
 // Example of integrating the custom transition system with your app
 
@@ -87,6 +88,7 @@ export default function App({Component, pageProps}) {
                     opacity: 1;
                 }
             `}</style>
+            <SpeedInsights/>
 
             {/* Black overlay element for transitions */}
             <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
@@ -94,6 +96,7 @@ export default function App({Component, pageProps}) {
             {/* Page content */}
             <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
                 <Component {...pageProps} />
+
             </main>
         </NextIntlClientProvider>
     );

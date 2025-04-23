@@ -90,7 +90,7 @@ const GaugeChart = ({score = 0, label = 'Score'}) => {
                         dataKey="value"
                     >
                         {data.map((_, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index]}/>
+                            <Cell key={`cell-${index}`} fill={COLORS[index]} stroke={COLORS[index]} />
                         ))}
                     </Pie>
                 </PieChart>
