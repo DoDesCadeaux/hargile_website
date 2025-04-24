@@ -1,21 +1,16 @@
-// src/components/pages/homepage/latest-insights/insight-card.jsx
+"use client"
 import {useEffect, useRef} from "react";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
 import {CardContainer, CardContent, CardImage, CardTitle, Category, ImageContainer} from "./insight-card.styled";
 
 
-const InsightCard = ({insight, index}) => {
+const InsightCard = ({insight, index, isInView}) => {
     const cardRef = useRef(null);
     const imageRef = useRef(null);
-    const isInView = useIntersectionObserver(cardRef, {
-        threshold: 0.2,
-        triggerOnce: true
-    });
 
     useEffect(() => {
         if (isInView && cardRef.current) {
             setTimeout(() => {
-                cardRef.current.classList.add("visible");
+                cardRef.current.classList.add("card-visible");
             }, index * 150);
         }
     }, [isInView, index]);
@@ -45,7 +40,7 @@ const InsightCard = ({insight, index}) => {
             href={insight.link}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="insight-card"
+            $opacity={isInView ? 1 : 0}
         >
             <ImageContainer>
                 <CardImage

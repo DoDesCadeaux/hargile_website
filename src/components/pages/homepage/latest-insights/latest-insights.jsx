@@ -97,8 +97,6 @@ const LatestInsights = () => {
         const direction = index % 2 === 0 ? -1 : 1;
         const parallaxOffset = scrollProgress * windowHeight * parallaxFactor * direction;
 
-        // Add a slight rotation for more visual interest
-
         return {
             transform: `translateY(${parallaxOffset}px)`,
             transition: "transform 0.1s ease-out" // Smooth transition for any changes
@@ -125,12 +123,11 @@ const LatestInsights = () => {
     return (
         <SectionContainer ref={sectionRef}>
             <ContentWrapper
-                as={motion.div}
                 initial="hidden"
                 animate={controls}
                 variants={sectionVariants}
             >
-                <SectionHeader as={motion.div} variants={headerVariants}>
+                <SectionHeader variants={headerVariants}>
                     <SectionSubHeader>
                         <SectionTitle>{t("title") || "Latest insights"}</SectionTitle>
                         <SectionSubtitle>
@@ -143,12 +140,13 @@ const LatestInsights = () => {
                     {insights.map((insight, index) => (
                         <div
                             key={insight.id}
-                            style={getCardParallaxStyle(index === 1 ? (index * 0.3) : 1)}
+                            style={getCardParallaxStyle(index)}
                             className="parallax-card-container"
                         >
                             <InsightCard
                                 insight={insight}
                                 index={index}
+                                isInView={isInView}
                             />
                         </div>
                     ))}

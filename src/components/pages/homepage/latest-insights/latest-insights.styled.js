@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import {Link} from "@/i18n/navigation";
 import {TransitionLink} from "@/components/TransitionLink";
+import {motion} from "framer-motion";
 
 export const SectionContainer = styled.section`
     position: relative;
@@ -16,7 +17,7 @@ export const SectionContainer = styled.section`
     }
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled(motion.div)`
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
@@ -29,7 +30,7 @@ export const ContentWrapper = styled.div`
     }
 `;
 
-export const SectionHeader = styled.div`
+export const SectionHeader = styled(motion.div)`
     margin-bottom: 5rem;
     display: flex;
     flex-direction: column;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {Link} from "@/i18n/navigation";
 import {OptimizedImage} from "@/components/optimizedImage";
 import {TransitionLink} from "@/components/TransitionLink";
 
@@ -12,12 +11,11 @@ export const CardContainer = styled(TransitionLink)`
     height: 100%;
     text-decoration: none;
     transform: translateY(50px);
-    opacity: 0;
+    opacity: ${({$opacity}) => $opacity};
     transition: transform 0.6s ease-out, opacity 0.6s ease-out, box-shadow 0.3s ease;
 
-    &.visible {
+    &.card-visible {
         transform: translateY(0);
-        opacity: 1;
     }
 
     &:hover {
