@@ -4,9 +4,15 @@ import { useRouter } from 'next/navigation';
 import { createContext, useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 
+// Simple transition timing variables
+const TRANSITION_DURATION = 600; // milliseconds
+const BLACK_SCREEN_DURATION = 400; // milliseconds
+
 const PageTransitionContext = createContext({
     isTransitioning: false,
+    transitionState: 'idle', // 'idle', 'exiting', 'entering'
     setIsTransitioning: () => {},
+    setTransitionState: () => {},
 });
 
 export const usePageTransition = () => {
@@ -15,9 +21,15 @@ export const usePageTransition = () => {
 
 export const PageTransitionProvider = ({ children }) => {
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const [transitionState, setTransitionState] = useState('idle');
 
     return (
-        <PageTransitionContext.Provider value={{ isTransitioning, setIsTransitioning }}>
+        <PageTransitionContext.Provider value={{
+            isTransitioning,
+            transitionState,
+            setIsTransitioning,
+            setTransitionState
+        }}>
             {children}
         </PageTransitionContext.Provider>
     );
@@ -25,7 +37,7 @@ export const PageTransitionProvider = ({ children }) => {
 
 export const TransitionLink = ({ href, children, className, onClick, ...props }) => {
     const router = useRouter();
-    const { setIsTransitioning } = usePageTransition();
+    const { setIsTransitioning, setTransitionState } = usePageTransition();
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -41,15 +53,25 @@ export const TransitionLink = ({ href, children, className, onClick, ...props })
             onClick(e);
         }
 
+        // Start exit animation
         setIsTransitioning(true);
+        setTransitionState('exiting');
 
+        // Wait for exit animation to complete before navigation
         setTimeout(() => {
             router.push(href);
 
+            // Add a delay to show black screen
             setTimeout(() => {
-                setIsTransitioning(false);
-            }, 1000);
-        }, 500);
+                setTransitionState('entering');
+
+                // Reset states after entry completes
+                setTimeout(() => {
+                    setIsTransitioning(false);
+                    setTransitionState('idle');
+                }, TRANSITION_DURATION);
+            }, BLACK_SCREEN_DURATION);
+        }, TRANSITION_DURATION);
     };
 
     if (!isMounted) {

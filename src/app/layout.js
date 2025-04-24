@@ -1,8 +1,6 @@
 import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
-import {SiteNavigationProvider} from "@/components/providers/site-navigation-provider";
-import {ThemeProvider} from "@/components/providers/theme-provider";
-import {PageTransitionProvider} from "@/components/TransitionLink";
+import RootClientWrapper from "@/components/layout/RootClientWrapper";
 
 export const metadata = {
     title: "Create Next App",
@@ -13,13 +11,9 @@ export default function RootLayout({children}) {
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
         <body style={{overflowX: 'hidden'}}>
-        <ThemeProvider>
-            <PageTransitionProvider>
-                <SiteNavigationProvider>
-                    {children}
-                </SiteNavigationProvider>
-            </PageTransitionProvider>
-        </ThemeProvider>
+        <RootClientWrapper>
+            {children}
+        </RootClientWrapper>
         </body>
         </html>
     );

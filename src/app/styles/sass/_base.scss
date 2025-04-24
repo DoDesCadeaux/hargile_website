@@ -21,13 +21,19 @@ body {
     height: 100%;
     background: var(--color-background-dark);
     z-index: 9999;
-    transform: translateY(-100%);
-    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease;
     pointer-events: none;
+    will-change: opacity;
   }
 
-  &.transitioning::after {
-    transform: translateY(0);
+  &.exiting::after {
+    opacity: 1;
+  }
+
+  &.entering::after {
+    opacity: 1;
+    transition-duration: var(--transition-duration);
   }
 }
 
@@ -43,18 +49,39 @@ img {
 }
 
 .earth-video-layer {
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-duration) ease;
 
-  &.transitioning {
+  &.exiting {
     opacity: 0;
   }
 }
 
 .content-container {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) ease,
+  transform var(--transition-duration) ease;
 
-  &.transitioning {
+  &.exiting {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(-20px);
+  }
+
+  &.entering {
+    opacity: 0;
+    /* No transform for entering state - prevents bad animation */
+    transform: none;
+  }
+}
+
+.hero-section,
+.our-solutions-section,
+.trusted-brands-section {
+  transition: opacity var(--transition-duration) ease,
+  transform var(--transition-duration) ease;
+
+  &.exiting {
+    opacity: 0;
+    transform: translateY(-30px);
   }
 }

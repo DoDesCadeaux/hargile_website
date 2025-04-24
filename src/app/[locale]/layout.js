@@ -2,11 +2,7 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {setRequestLocale} from "next-intl/server";
-import Footer from "@/components/footer/Footer";
-import EarthVideoLayer from "@/components/EarthVideoLayer";
-import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
-import Navbar from "@/components/navigation/navbar";
-
+import ClientLayoutContent from "@/components/layout/ClientLayoutContent";
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -18,18 +14,13 @@ export default async function LocaleLayout({children, params}) {
         notFound();
     }
 
-    setRequestLocale(locale)
+    setRequestLocale(locale);
 
     return (
         <NextIntlClientProvider>
-            <EarthVideoLayer/>
-            <OptimizedSvgFilter/>
-            <Navbar/>
-            <div className={'content-container'}>
+            <ClientLayoutContent>
                 {children}
-            </div>
-
-            <Footer/>
+            </ClientLayoutContent>
         </NextIntlClientProvider>
     );
 }

@@ -84,7 +84,7 @@ const EarthVideoLayer = () => {
     const [videoSrc, setVideoSrc] = useState("");
     const backgroundVideoRef = useRef(null)
     const [isMounted, setIsMounted] = useState(false);
-    const {isTransitioning} = usePageTransition();
+    const {transitionState} = usePageTransition();
 
     const selectVideoResolution = () => {
         const width = window.innerWidth;
@@ -100,6 +100,7 @@ const EarthVideoLayer = () => {
 
     useEffect(() => {
         setIsMounted(true);
+
         return () => {
             setIsMounted(false);
         };
@@ -127,8 +128,10 @@ const EarthVideoLayer = () => {
         return null;
     }
 
+    const isExiting = transitionState === 'exiting';
+
     return (
-        <div className={`earth-video-layer ${isTransitioning ? 'transitioning' : ''}`}>
+        <div className={`earth-video-layer ${isExiting ? 'exiting' : ''}`}>
             <VideoContainer>
                 <BackgroundVideo ref={backgroundVideoRef}>
                     {videoSrc && (
