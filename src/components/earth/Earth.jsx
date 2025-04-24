@@ -5,7 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import Stats from "three/examples/jsm/libs/stats.module";
 import { useEffect, useState, useRef } from "react";
 import Lenis from 'lenis';
-import Loading from "@/components/Loading";
+import Loading from "@/components/earth/Loading";
 
 export default function Earth({ children }) {
     const [loading, setLoading] = useState(true);

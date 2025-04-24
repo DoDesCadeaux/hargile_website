@@ -5,7 +5,6 @@ export const LanguageSelectorContainer = styled.div.attrs({
 })`
     position: relative;
     display: inline-block;
-    z-index: 50;
 `;
 
 export const SelectedLanguage = styled.button.attrs({

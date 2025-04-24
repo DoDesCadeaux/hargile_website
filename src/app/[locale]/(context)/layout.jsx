@@ -3,7 +3,6 @@ import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {usePageTransition} from "@/components/TransitionLink";
 import {useEffect, useRef} from "react";
-import {AuditButton} from "@/components/AuditButton";
 
 export default function ContextLayout({children}) {
     const navigation = useSiteNavigation()

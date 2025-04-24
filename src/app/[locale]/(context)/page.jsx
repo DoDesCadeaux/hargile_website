@@ -5,15 +5,14 @@ import dynamic from 'next/dynamic';
 // Import components with proper section classes for animations
 const HeroSection = dynamic(() => import("@/components/pages/homepage/hero/heroSection"), {
     ssr: false,
-    loading: () => <div className="hero-section-placeholder"></div>
 });
 
 const OurSolutions = dynamic(() => import("@/components/pages/homepage/our-solutions/our-solutions"), {
-    ss: false,
+    ssr: false,
 });
 
 const TrustedBrandsContainer = dynamic(() => import("@/components/pages/homepage/trusted-brands/trusted-brands"), {
-    ss: false,
+    ssr: false,
 });
 
 const RecentWorks = dynamic(() => import("@/components/pages/homepage/recent-works/recent-works"), {ssr: false});

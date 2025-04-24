@@ -61,9 +61,13 @@ export default function ClientLayoutContent({children}) {
         }
     }, [transitionState, isMounted]);
 
+    if (!isMounted) {
+        return null;
+    }
+
     return (
         <>
-            {isMounted && <EarthVideoLayer/>}
+            <EarthVideoLayer/>
             <OptimizedSvgFilter/>
             <Navbar/>
             <div className="content-container page-exit">

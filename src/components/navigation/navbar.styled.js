@@ -10,7 +10,7 @@ export const StyledNavbar = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 24px 0 12px;
-    z-index: 10000;
+    z-index: 999;
     backdrop-filter: blur(8px);
 `;
 
@@ -29,7 +29,7 @@ export const Brand = styled.button`
         top: -25vh;
         left: -25vw;
         background: rgba(0, 0, 0, 0);
-        z-index: 9999999;
+        z-index: 1000;
         animation: 2000ms appearInOut ease-in-out;
         pointer-events: none;
     }
@@ -72,7 +72,7 @@ export const NavbarNavigation = styled.nav`
     align-items: center;
     justify-content: center;
     gap: calc((15vh - 5vw) * 1);
-    z-index: 10001;
+    z-index: 1001;
     opacity: ${({$visible}) => $visible ? '1' : '0'};
     transition: opacity 0.25s ease;
     will-change: opacity;
