@@ -2,6 +2,7 @@
 
 import {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
+import {usePageTransition} from "@/components/TransitionLink";
 
 const VideoContainer = styled.div`
     position: fixed;
@@ -82,6 +83,8 @@ const ParticlesWrapper = styled.div`
 const EarthVideoLayer = () => {
     const [videoSrc, setVideoSrc] = useState("");
     const backgroundVideoRef = useRef(null)
+    const [isMounted, setIsMounted] = useState(false);
+    const {isTransitioning} = usePageTransition();
 
     const selectVideoResolution = () => {
         const width = window.innerWidth;
@@ -94,6 +97,13 @@ const EarthVideoLayer = () => {
             return "/videos/earth/earth_540.mp4";
         }
     };
+
+    useEffect(() => {
+        setIsMounted(true);
+        return () => {
+            setIsMounted(false);
+        };
+    }, []);
 
     useEffect(() => {
         const handleVideoResize = () => {
@@ -113,16 +123,22 @@ const EarthVideoLayer = () => {
         }
     }, [backgroundVideoRef, videoSrc]);
 
+    if (!isMounted) {
+        return null;
+    }
+
     return (
-        <VideoContainer>
-            <BackgroundVideo ref={backgroundVideoRef}>
-                {videoSrc && (
-                    <video autoPlay loop muted playsInline style={{background: "black"}}>
-                        <source src={videoSrc} type="video/mp4"/>
-                    </video>
-                )}
-            </BackgroundVideo>
-        </VideoContainer>
+        <div className={`earth-video-layer ${isTransitioning ? 'transitioning' : ''}`}>
+            <VideoContainer>
+                <BackgroundVideo ref={backgroundVideoRef}>
+                    {videoSrc && (
+                        <video autoPlay loop muted playsInline style={{background: "black"}}>
+                            <source src={videoSrc} type="video/mp4"/>
+                        </video>
+                    )}
+                </BackgroundVideo>
+            </VideoContainer>
+        </div>
     );
 };
 
