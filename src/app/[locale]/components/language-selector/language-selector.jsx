@@ -14,7 +14,7 @@ import {
 import {usePathname, useRouter} from "@/i18n/navigation";
 
 const LANGUAGES = [
-    {locale: 'en', label: 'English', country: 'US'},
+    {locale: 'en', label: 'English', country: 'UK'},
     {locale: 'fr', label: 'Français', country: 'FR'},
     // Add more languages as needed
 ];
