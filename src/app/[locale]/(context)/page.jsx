@@ -22,7 +22,7 @@ const OurServices = dynamic(() => import("@/components/pages/homepage/services/o
 
 const AboutUs = dynamic(() => import("@/components/pages/homepage/about-us/about-us"), {ssr: false});
 
-const LatestInsights = dynamic(() => import("@/components/pages/homepage/latest-insights/latest-insights"), {ssr: false});
+// const LatestInsights = dynamic(() => import("@/components/pages/homepage/latest-insights/latest-insights"), {ssr: false});
 
 const DigitalAuditSection = dynamic(() => import("@/components/pages/homepage/digital-audit/digital-audit"), {ssr: false});
 
@@ -37,7 +37,7 @@ export default function HomePage() {
             <RecentWorks/>
             <OurServices/>
             <AboutUs/>
-            <LatestInsights/>
+            {/*<LatestInsights/>*/}
             <DigitalAuditSection/>
             <QuoteRequestForm/>
         </div>
