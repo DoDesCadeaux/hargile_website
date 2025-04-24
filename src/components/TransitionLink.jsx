@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 // Simple transition timing variables
 const TRANSITION_DURATION = 600; // milliseconds
-const BLACK_SCREEN_DURATION = 400; // milliseconds
+const BLACK_SCREEN_DURATION = 600; // milliseconds
 
 const PageTransitionContext = createContext({
     isTransitioning: false,
