@@ -82,7 +82,8 @@ const ParticlesWrapper = styled.div`
 
 const EarthVideoLayer = () => {
     const [videoSrc, setVideoSrc] = useState("");
-    const backgroundVideoRef = useRef(null)
+    const backgroundVideoRef = useRef(null);
+    const videoElementRef = useRef(null);
     const [isMounted, setIsMounted] = useState(false);
     const {transitionState} = usePageTransition();
 
@@ -119,10 +120,21 @@ const EarthVideoLayer = () => {
     }, []);
 
     useEffect(() => {
-        if (backgroundVideoRef && videoSrc !== '') {
-            backgroundVideoRef.current.classList.add('running')
+        if (backgroundVideoRef.current && videoSrc !== '') {
+            backgroundVideoRef.current.classList.add('running');
         }
     }, [backgroundVideoRef, videoSrc]);
+
+    // Synchronisation lors des transitions
+    useEffect(() => {
+        if (videoElementRef.current) {
+            if (transitionState === 'entering') {
+                // Réinitialise et joue la vidéo lors de l'entrée sur une nouvelle page
+                videoElementRef.current.currentTime = 0;
+                videoElementRef.current.play();
+            }
+        }
+    }, [transitionState]);
 
     if (!isMounted) {
         return null;
@@ -135,7 +147,14 @@ const EarthVideoLayer = () => {
             <VideoContainer>
                 <BackgroundVideo ref={backgroundVideoRef}>
                     {videoSrc && (
-                        <video autoPlay loop muted playsInline style={{background: "black"}}>
+                        <video
+                            ref={videoElementRef}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            style={{background: "black"}}
+                        >
                             <source src={videoSrc} type="video/mp4"/>
                         </video>
                     )}

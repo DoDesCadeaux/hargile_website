@@ -48,13 +48,6 @@ img {
   height: auto;
 }
 
-.earth-video-layer {
-  transition: opacity 1600ms ease;
-
-  &.exiting {
-    opacity: 0;
-  }
-}
 
 .content-container {
   opacity: 1;
