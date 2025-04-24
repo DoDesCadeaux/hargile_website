@@ -1,6 +1,7 @@
 import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
 import RootClientWrapper from "@/components/layout/RootClientWrapper";
+import {AuditButton} from "@/components/AuditButton";
 
 export const metadata = {
     title: "Create Next App",
@@ -11,6 +12,7 @@ export default function RootLayout({children}) {
     return (
         <html lang={routing.defaultLocale ?? 'en'}>
         <body style={{overflowX: 'hidden'}}>
+
         <RootClientWrapper>
             {children}
         </RootClientWrapper>

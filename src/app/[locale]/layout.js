@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {setRequestLocale} from "next-intl/server";
 import ClientLayoutContent from "@/components/layout/ClientLayoutContent";
+import {AuditButton} from "@/components/AuditButton";
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -21,6 +22,9 @@ export default async function LocaleLayout({children, params}) {
             <ClientLayoutContent>
                 {children}
             </ClientLayoutContent>
+
+            <AuditButton/>
+
         </NextIntlClientProvider>
     );
 }
