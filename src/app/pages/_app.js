@@ -15,7 +15,7 @@ export default function App({Component, pageProps}) {
     const loadingTimeout = useRef(null);
 
     useEffect(() => {
-        if (isLoading.current) {
+        if (isLoading.current && loadingTimeout.current === null) {
             loadingTimeout.current = setTimeout(() => {
                 isLoading.current = false;
             }, 1500)
