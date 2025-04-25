@@ -1,30 +1,13 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
-
-// Import components with proper section classes for animations
-
-const OurSolutions = dynamic(() => import("@/components/pages/homepage/our-solutions/our-solutions"), {
-    ssr: false,
-});
-
-const TrustedBrandsContainer = dynamic(() => import("@/components/pages/homepage/trusted-brands/trusted-brands"), {
-    ssr: false,
-});
-
-const RecentWorks = dynamic(() => import("@/components/pages/homepage/recent-works/recent-works"), {ssr: false});
-
-const OurServices = dynamic(() => import("@/components/pages/homepage/services/ourServices"), {ssr: false});
-
-const AboutUs = dynamic(() => import("@/components/pages/homepage/about-us/about-us"), {ssr: false});
-
-// const LatestInsights = dynamic(() => import("@/components/pages/homepage/latest-insights/latest-insights"), {ssr: false});
-
-const DigitalAuditSection = dynamic(() => import("@/components/pages/homepage/digital-audit/digital-audit"), {ssr: false});
-
-const QuoteRequestForm = dynamic(() => import("@/components/pages/homepage/quote-request/QuoteRequestForm"), {ssr: false});
-
+import OurSolutions from "@/components/pages/homepage/our-solutions/our-solutions";
+import {TrustedBrandsContainer} from "@/components/pages/homepage/trusted-brands/trusted-brands.styled";
+import RecentWorks from "@/components/pages/homepage/recent-works/recent-works";
+import OurServices from "@/components/pages/homepage/services/ourServices";
+import AboutUs from "@/components/pages/homepage/about-us/about-us";
+import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";
+import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
 
 export default function HomePage() {
     return (
