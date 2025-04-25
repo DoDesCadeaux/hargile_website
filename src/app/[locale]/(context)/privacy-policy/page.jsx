@@ -240,7 +240,7 @@ export default function PrivacyPolicyPage() {
               {t("lastUpdate")}: {t("lastUpdateDate")}
             </LastUpdate>
           </div>
-          <MenuButton onClick={toggleMenu}>
+          <MenuButton aria-label={'display menu'} onClick={toggleMenu}>
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </MenuButton>
         </Header>
@@ -481,7 +481,7 @@ export default function PrivacyPolicyPage() {
             </Section>
           )}
 
-          <ActionButtons>
+          <ActionButtons aria-label={'Action buttons'}>
             <ActionButton>
               <FileText size={18} />
               {t("downloadPDF")}

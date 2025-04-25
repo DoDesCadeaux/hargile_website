@@ -42,7 +42,7 @@ export const AuditButton = () => {
     const t = useTranslations('audit-button');
 
     return (
-        <AuditButtonStyled onClick={() => navigation.setIsAuditModalOpen(true)}>
+        <AuditButtonStyled onClick={() => navigation.setIsAuditModalOpen(true)} aria-label={'Open audit dialog'}>
             <div className="text-side">
                 <span style={{fontWeight: 550}}>{t('title')}</span>
                 <span>{t('description')}</span>

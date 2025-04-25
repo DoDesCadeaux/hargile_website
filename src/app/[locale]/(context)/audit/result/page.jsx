@@ -285,6 +285,7 @@ export default function AuditResultPage() {
                         </div>
                         <div className="flex space-x-4">
                             <button
+                                aria-label={t('audit-results.contact')}
                                 // onClick={() => setShowCalendar(true)}
                                 className="bg-white text-violet-900 hover:bg-gray-100 !px-6 !py-3 !mx-2 rounded-md font-medium transition-colors cursor-pointer"
                             >
@@ -302,8 +303,9 @@ export default function AuditResultPage() {
                         className="bg-violet-600/10 border border-violet-800/50 rounded-lg shadow-xl max-w-3xl w-full !mx-4 !p-4"
                         onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-center !mb-4">
-                            <h3 className="text-xl font-semibold text-violet-900">{t('audit-results.book')}</h3>
+                            <h3 id={'audit-result-title'} className="text-xl font-semibold text-violet-900">{t('audit-results.book')}</h3>
                             <button onClick={() => setShowCalendar(false)}
+                                    aria-labelledby={'audit-result-title'}
                                     className="text-gray-400 text-lg cursor-pointer">✕
                             </button>
                         </div>
