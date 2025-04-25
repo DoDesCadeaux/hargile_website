@@ -43,7 +43,7 @@ export default function AuditMultiModal({onClose}) {
             if (!res.ok || res.error) {
                 const errorMessage = res.error?.message || 'Erreur inconnue lors de l’audit.';
                 const errorCode = res.error?.code || res.status;
-                const errorPayload = { error: { message: errorMessage, code: errorCode } };
+                const errorPayload = {error: {message: errorMessage, code: errorCode}};
                 localStorage.setItem('auditResult', JSON.stringify(errorPayload));
                 setAuditError(errorPayload.error.message);
                 setLoading(false);
@@ -119,6 +119,7 @@ export default function AuditMultiModal({onClose}) {
 
                                 <div className="flex justify-end">
                                     <button
+                                        aria-label={t('start-audit')}
                                         onClick={handleStartAudit}
                                         disabled={!formData.url}
                                         className={`!px-6 !py-3 rounded-lg flex items-center font-medium transition-all duration-300 !mt-4 ${
@@ -140,7 +141,8 @@ export default function AuditMultiModal({onClose}) {
 
                         {step === 2 && (
                             <div className="space-y-6">
-                                <div className={`!p-4 rounded-lg !mb-6 flex items-center ${auditError ? 'bg-red-900/30' : loading ? 'bg-purple-900/30' : 'bg-green-900/30'}`}>
+                                <div
+                                    className={`!p-4 rounded-lg !mb-6 flex items-center ${auditError ? 'bg-red-900/30' : loading ? 'bg-purple-900/30' : 'bg-green-900/30'}`}>
                                     {loading ? (
                                         <>
                                             <div className="relative h-6 w-6 !mr-3">
@@ -153,8 +155,10 @@ export default function AuditMultiModal({onClose}) {
                                         </>
                                     ) : (
                                         <>
-                                            {auditError ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                               strokeWidth="1.5" stroke="currentColor" className="h-6 w-6 !mr-3 text-red-400">
+                                            {auditError ?
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                     strokeWidth="1.5" stroke="currentColor"
+                                                     className="h-6 w-6 !mr-3 text-red-400">
                                                     <path strokeLinecap="round" strokeLinejoin="round"
                                                           d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
                                                 </svg> :
@@ -235,7 +239,7 @@ export default function AuditMultiModal({onClose}) {
                                             onChange={handleChange}
                                             className="w-full !p-3 bg-gray-800/60 text-white border border-purple-500/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent appearance-none !pr-10"
                                         >
-                                            <option value="" >{t('select')}</option>
+                                            <option value="">{t('select')}</option>
                                             <option value={t('yes')}>{t('yes')}</option>
                                             <option value={t('no')}>{t('no')}</option>
                                         </select>
@@ -266,6 +270,7 @@ export default function AuditMultiModal({onClose}) {
                                 <div>
                                     {!auditError && (
                                         <button
+                                            aria-label={'Show audit result'}
                                             disabled={!isFormComplete || loading}
                                             onClick={() => {
                                                 if (!loading && isFormComplete) {
@@ -281,15 +286,18 @@ export default function AuditMultiModal({onClose}) {
                                         >
                                             {loading ? (
                                                 <>
-                                                    <div className="h-5 w-5 !mr-2 !my-2 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
+                                                    <div
+                                                        className="h-5 w-5 !mr-2 !my-2 rounded-full border-2 border-white/20 border-t-white animate-spin"></div>
                                                     {t('processing')}
                                                 </>
                                             ) : (
                                                 <>
                                                     <div className="cursor-pointer">{t('view-results')}</div>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2"
+                                                         fill="none"
                                                          viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/>
+                                                        <path strokeLinecap="round" strokeLinejoin="round"
+                                                              strokeWidth={2} d="M9 5l7 7-7 7"/>
                                                     </svg>
                                                 </>
                                             )}
@@ -299,6 +307,7 @@ export default function AuditMultiModal({onClose}) {
                                     {auditError && (
                                         <div className="text-center !mt-6">
                                             <button
+                                                aria-label={'Go to the previous page'}
                                                 onClick={() => {
                                                     setAuditError(null);
                                                     setStep(1);

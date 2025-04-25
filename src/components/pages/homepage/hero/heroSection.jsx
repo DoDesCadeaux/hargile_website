@@ -41,6 +41,7 @@ const HeroSection = () => {
                             {t("description")}
                         </p>
                         <button
+                            aria-label={'Open audit modal'}
                             onClick={() => navigation.setIsAuditModalOpen(true)}
                             className="flex items-center bg-transparent text-white font-bold no-underline cursor-pointer"
                         >
