@@ -7,13 +7,21 @@ import {useSiteNavigation} from "@/components/providers/site-navigation-provider
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
     const navigation = useSiteNavigation()
+    let isMobile = true
+
+    try {
+        isMobile = window.innerWidth <= 1024
+    } catch (e) {
+        isMobile = true
+    }
+
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
             <div className="container mx-auto px-4">
                 <div className="flex">
                     <div className="w-full md:w-4/6 lg:w-4/5">
-                        <h1 className={window.innerWidth >= 1024 ? 'fluid-type-4' : 'fluid-type-3'}>
+                        <h1 className={!isMobile ? 'fluid-type-4' : 'fluid-type-3'}>
                             {t("headline.line1") + ' '}
                             <br/>
                             {t("headline.line2")}
