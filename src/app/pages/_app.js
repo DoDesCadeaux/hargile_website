@@ -28,7 +28,7 @@ export default function App({Component, pageProps}) {
         <>
             <ThemeProvider>
 
-                {isLoading.current && <Loading/>}
+                {isLoading.current === true && <Loading/>}
 
                 <NextIntlClientProvider
                     locale={pageProps.locale}
