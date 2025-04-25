@@ -5,12 +5,10 @@ import Loading from "@/components/Loading/Loading";
 
 export default function RootClientWrapper({children}) {
     return (
-        <Suspense fallback={<Loading/>}>
             <PageTransitionProvider>
                 <SiteNavigationProvider>
                     {children}
                 </SiteNavigationProvider>
             </PageTransitionProvider>
-        </Suspense>
     );
 }

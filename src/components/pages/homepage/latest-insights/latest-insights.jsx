@@ -153,7 +153,7 @@ const LatestInsights = () => {
                 </InsightsGrid>
 
                 <ViewAllLink as={motion.a} variants={headerVariants} href="/insights">
-                    {t("view-all") || "View all insights"} <ArrowRight size={20}/>
+                    {t("view-all") || "View all insights"} <ArrowRight width={20} height={20} size={20}/>
                 </ViewAllLink>
             </ContentWrapper>
         </SectionContainer>
