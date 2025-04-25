@@ -4,10 +4,8 @@ import {NextIntlClientProvider} from "next-intl";
 import {SpeedInsights} from "@vercel/speed-insights/next"
 import {usePageTransition} from "@/components/TransitionLink";
 import {ThemeProvider} from "@/components/providers/theme-provider";
-import {useEffect, useRef} from "react";
+import {Suspense, useEffect, useRef} from "react";
 import Loading from "@/components/Loading";
-
-// Example of integrating the custom transition system with your app
 
 export default function App({Component, pageProps}) {
     const {isTransitioning} = usePageTransition();
@@ -24,11 +22,18 @@ export default function App({Component, pageProps}) {
         }
     }, [isLoading.current, loadingTimeout.current])
 
+    if (isLoading.current === true) {
+        return (
+            <ThemeProvider>
+                <Loading/>
+            </ThemeProvider>
+        )
+    }
+
     return (
         <>
             <ThemeProvider>
 
-                {isLoading.current === true && <Loading/>}
 
                 <NextIntlClientProvider
                     locale={pageProps.locale}
@@ -78,8 +83,9 @@ export default function App({Component, pageProps}) {
 
                     {/* Page content */}
                     <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
-                        <Component {...pageProps} />
-
+                        <Suspense fallback={<Loading/>}>
+                            <Component {...pageProps} />
+                        </Suspense>
                     </main>
                 </NextIntlClientProvider>
             </ThemeProvider>
