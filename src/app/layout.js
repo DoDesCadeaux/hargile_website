@@ -5,6 +5,7 @@ import RootClientWrapper from "@/components/layout/RootClientWrapper";
 import {useEffect, useState} from "react";
 import {ThemeProvider} from "@/components/providers/theme-provider";
 import {usePageTransition} from "@/components/TransitionLink";
+import {SpeedInsights} from "@vercel/speed-insights/next"
 
 export default function RootLayout({children}) {
     const {isTransitioning} = usePageTransition();
@@ -151,6 +152,7 @@ export default function RootLayout({children}) {
         </div>
     )}
 
+
     <ThemeProvider>
         <RootClientWrapper>
             {/* Black overlay element for transitions */}
@@ -162,6 +164,8 @@ export default function RootLayout({children}) {
             </main>
         </RootClientWrapper>
     </ThemeProvider>
+
+    <SpeedInsights/>
     </body>
     </html>);
 }
