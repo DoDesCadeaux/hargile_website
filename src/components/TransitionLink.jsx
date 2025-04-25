@@ -1,76 +1,90 @@
-"use client"
+"use client";
 
-import React from "react";
+import { useRouter } from 'next/navigation';
+import { createContext, useContext, useState, useEffect } from 'react';
+import Link from 'next/link';
 
-// Global transition state
-let isTransitioning = false;
-let transitionCallbacks = [];
+// Simple transition timing variables
+const TRANSITION_DURATION = 600; // milliseconds
+const BLACK_SCREEN_DURATION = 600; // milliseconds
 
-// Function to subscribe to transition events
-function subscribeToTransition(callback) {
-    transitionCallbacks.push(callback);
-    return () => {
-        transitionCallbacks = transitionCallbacks.filter(cb => cb !== callback);
-    };
-}
+const PageTransitionContext = createContext({
+    isTransitioning: false,
+    transitionState: 'idle', // 'idle', 'exiting', 'entering'
+    setIsTransitioning: () => {},
+    setTransitionState: () => {},
+});
 
-// Function to trigger transition manually
-export function triggerTransition(callback, delay = 600) {
-    if (isTransitioning) return;
+export const usePageTransition = () => {
+    return useContext(PageTransitionContext);
+};
 
-    isTransitioning = true;
+export const PageTransitionProvider = ({ children }) => {
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [transitionState, setTransitionState] = useState('idle');
 
-    // Notify all subscribers
-    transitionCallbacks.forEach(cb => cb(true));
+    return (
+        <PageTransitionContext.Provider value={{
+            isTransitioning,
+            transitionState,
+            setIsTransitioning,
+            setTransitionState
+        }}>
+            {children}
+        </PageTransitionContext.Provider>
+    );
+};
 
-    // Add class to prevent scrolling
-    document.documentElement.classList.add('page-transitioning');
+export const TransitionLink = ({ href, children, className, onClick, ...props }) => {
+    const router = useRouter();
+    const { setIsTransitioning, setTransitionState } = usePageTransition();
+    const [isMounted, setIsMounted] = useState(false);
 
-    // Execute callback after delay
-    setTimeout(() => {
-        if (callback) callback();
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
-        // Reset state after navigation
-        setTimeout(() => {
-            isTransitioning = false;
-            document.documentElement.classList.remove('page-transitioning');
-            transitionCallbacks.forEach(cb => cb(false));
-        }, 200); // Small delay after page load
-    }, delay);
-}
-
-// Custom Link component that triggers transition
-export function TransitionLink({href, children, className, onClick, delay = 600, ...props}) {
-    "use client"
     const handleClick = (e) => {
+        if (!isMounted) return;
+
         e.preventDefault();
 
-        // Call original onClick if provided
-        if (onClick) onClick(e);
+        if (onClick) {
+            onClick(e);
+        }
 
-        // Trigger transition
-        triggerTransition(() => {
-            window.location.href = href;
-        }, delay);
+        // Start exit animation
+        setIsTransitioning(true);
+        setTransitionState('exiting');
+
+        // Wait for exit animation to complete before navigation
+        setTimeout(() => {
+            router.push(href);
+
+            // Add a delay to show black screen
+            setTimeout(() => {
+                setTransitionState('entering');
+
+                // Reset states after entry completes
+                setTimeout(() => {
+                    setIsTransitioning(false);
+                    setTransitionState('idle');
+                }, TRANSITION_DURATION);
+            }, BLACK_SCREEN_DURATION);
+        }, TRANSITION_DURATION);
     };
+
+    if (!isMounted) {
+        return (
+            <Link href={href} className={className} {...props}>
+                {children}
+            </Link>
+        );
+    }
 
     return (
         <a href={href} onClick={handleClick} className={className} {...props}>
             {children}
         </a>
     );
-}
-
-export function usePageTransition() {
-    const [transitioning, setTransitioning] = React.useState(isTransitioning);
-
-    React.useEffect(() => {
-        return subscribeToTransition(setTransitioning);
-    }, []);
-
-    return {
-        isTransitioning: transitioning,
-        triggerTransition
-    };
-}
-
+};

@@ -17,7 +17,7 @@ import {
     StyledLink,
     StyledNavbar
 } from "@/components/navigation/navbar.styled";
-
+import {usePageTransition} from '@/components/TransitionLink';
 
 const menuItems = Array.from([
     {path: '/services', id: 'services'},
@@ -33,12 +33,16 @@ const Navbar = () => {
     const navbarRef = useRef(null);
     const brandRef = useRef(null);
     const [navbarHeight, setNavbarHeight] = useState(0);
-    const t = useTranslations('menu')
+    const t = useTranslations('menu');
+    const {setIsTransitioning, setTransitionState, timing} = usePageTransition();
+    const [isMounted, setIsMounted] = useState(false);
 
     useMenuItems(isOpen);
     const {menuItemDisplayed, navigationVisible} = useNavigationVisibility(isOpen);
 
     useEffect(() => {
+        setIsMounted(true);
+
         if (navbarRef.current) {
             setNavbarHeight(navbarRef.current.offsetHeight);
         }
@@ -53,28 +57,38 @@ const Navbar = () => {
 
         return () => {
             window.removeEventListener('resize', handleResize);
+            setIsMounted(false);
         };
     }, []);
 
-    const triggerHomeTransitionAnimation = () => {
+    const triggerHomeTransitionAnimation = (e) => {
+        e.preventDefault();
+
+        if (!isMounted) return;
+
         if (brandRef.current) {
             brandRef.current.classList.add('transition');
 
-            const navigationTimer = setTimeout(() => {
+            // Start exit animation
+            setIsTransitioning(true);
+            setTransitionState('exiting');
+
+            // Simplified timing using constants
+            setTimeout(() => {
                 router.push('/');
 
-                const cleanupTimer = setTimeout(() => {
-                    if (brandRef.current) {
-                        brandRef.current.classList.remove('transition');
-                    }
-                }, 150);
+                setTimeout(() => {
+                    setTransitionState('entering');
 
-                clearTimeout(cleanupTimer)
-            }, 150);
-
-            return () => {
-                clearTimeout(navigationTimer);
-            };
+                    setTimeout(() => {
+                        if (brandRef.current) {
+                            brandRef.current.classList.remove('transition');
+                        }
+                        setIsTransitioning(false);
+                        setTransitionState('idle');
+                    }, 600); // TRANSITION_DURATION
+                }, 400); // BLACK_SCREEN_DURATION
+            }, 600); // TRANSITION_DURATION
         }
     };
 
@@ -83,6 +97,8 @@ const Navbar = () => {
             <StyledNavbar ref={navbarRef}>
                 <Brand
                     ref={brandRef}
+                    as="a"
+                    href="/"
                     onClick={triggerHomeTransitionAnimation}
                 >
                     <OptimizedImage

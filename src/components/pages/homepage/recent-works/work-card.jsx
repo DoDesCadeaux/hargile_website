@@ -1,7 +1,6 @@
 // src/components/pages/homepage/recent-works/work-card.jsx
 import {useEffect, useRef} from "react";
-import {motion, useAnimation} from "framer-motion";
-import {useIntersectionObserver} from "@/hooks/useIntersectionObserver";
+import {motion, useAnimation, useInView} from "framer-motion";
 import {CardContainer, CardContent, CardDescription, CardImage, CardTitle, ImageContainer} from "./work-card.styled";
 
 const WorkCard = ({work, index, inView}) => {
@@ -9,9 +8,9 @@ const WorkCard = ({work, index, inView}) => {
     const cardControls = useAnimation();
     const imageRef = useRef(null);
 
-    const cardInView = useIntersectionObserver(cardRef, {
-        threshold: 1,
-        triggerOnce: false
+    const cardInView = useInView(cardRef, {
+        amount: 0.2,
+        once: false
     });
 
     useEffect(() => {

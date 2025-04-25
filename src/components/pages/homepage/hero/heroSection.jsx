@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {ReadMore} from "@/components/ReadMore";
-import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 
 const HeroSection = () => {
@@ -12,11 +10,12 @@ const HeroSection = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
-            <div className="container mx-auto px-4 xl:translate-y-1/6">
+            <div className="container mx-auto px-4">
                 <div className="flex">
-                    <div className="w-full md:w-1/2 lg:w-4/5">
-                        <h1 className="fluid-type-3">
+                    <div className="w-full md:w-4/6 lg:w-4/5">
+                        <h1 className={window.innerWidth >= 1024 ? 'fluid-type-4' : 'fluid-type-3'}>
                             {t("headline.line1") + ' '}
+                            <br/>
                             {t("headline.line2")}
                             <br/>
                             {t("headline.line3")}
@@ -47,6 +46,7 @@ const HeroSection = () => {
                             text={t('paragraph')}
                             amountOfWords={16}
                             classNames={"fluid-type-1"}
+                            style={{maxWidth: '65ch'}}
                         />
 
                     </div>

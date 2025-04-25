@@ -11,6 +11,30 @@ body {
   font-family: var(--font-primary), sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+
+  &::after {
+    //content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-background-dark);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease;
+    pointer-events: none;
+    will-change: opacity;
+  }
+
+  &.exiting::after {
+    opacity: 1;
+  }
+
+  &.entering::after {
+    opacity: 1;
+    transition-duration: var(--transition-duration);
+  }
 }
 
 * {
@@ -22,4 +46,35 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+
+.content-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) ease,
+  transform var(--transition-duration) ease;
+
+  &.exiting {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  &.entering {
+    opacity: 0;
+    /* No transform for entering state - prevents bad animation */
+    transform: none;
+  }
+}
+
+.hero-section,
+.our-solutions-section,
+.trusted-brands-section {
+  transition: opacity var(--transition-duration) ease,
+  transform var(--transition-duration) ease;
+
+  &.exiting {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
 }

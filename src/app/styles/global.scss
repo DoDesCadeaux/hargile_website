@@ -47,7 +47,9 @@
   --color-accent-i-go: #{theme.$accent-i-go};
   --color-accent-multipass: #{theme.$accent-multipass};
   --color-accent-mihai: #{theme.$accent-mihai};
-  --color-accent-blue-planet: #{theme.$accent-blue-planet}
+  --color-accent-blue-planet: #{theme.$accent-blue-planet};
+
+  --transition-duration: 600ms;
 }
 
 @media (prefers-color-scheme: dark) {
