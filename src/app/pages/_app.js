@@ -5,7 +5,9 @@ import {SpeedInsights} from "@vercel/speed-insights/next"
 import {usePageTransition} from "@/components/TransitionLink";
 import {ThemeProvider} from "@/components/providers/theme-provider";
 import {Suspense, useEffect, useRef} from "react";
-import Loading from "@/components/Loading";
+import dynamic from "next/dynamic";
+
+const Loading = () => dynamic(() => import('@/components/Loading'), {ssr: false});
 
 export default function App({Component, pageProps}) {
     const {isTransitioning} = usePageTransition();
