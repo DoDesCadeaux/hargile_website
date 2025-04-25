@@ -1,11 +1,12 @@
 "use client";
 
-import {useEffect} from 'react';
+import {Suspense, useEffect} from 'react';
 import dynamic from 'next/dynamic';
 import Footer from "@/components/footer/Footer";
 import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
 import Navbar from "@/components/navigation/navbar";
 import {usePageTransition} from '@/components/TransitionLink';
+import Loading from "@/components/Loading/Loading";
 
 // Dynamic imports in a client component where they're allowed
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
@@ -57,13 +58,15 @@ export default function ClientLayoutContent({children}) {
 
     return (
         <>
+            <Suspense fallback={<Loading/>}>
+                <EarthVideoLayer/>
+            </Suspense>
             <div className="content-container page-exit">
                 <OptimizedSvgFilter/>
                 <Navbar/>
                 {children}
                 <Footer/>
             </div>
-            <EarthVideoLayer/>
         </>
     );
 }
