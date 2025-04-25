@@ -10,17 +10,20 @@ import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digit
 import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
 
 export default function HomePage() {
+    const isClient = typeof window !== "undefined";
     return (
         <div className="homepage-container page-exit">
             <HeroSection/>
-            <OurSolutions/>
-            <TrustedBrandsContainer/>
-            <RecentWorks/>
-            <OurServices/>
-            <AboutUs/>
-            {/*<LatestInsights/>*/}
-            <DigitalAuditSection/>
-            <QuoteRequestForm/>
+            {isClient && <>
+                <OurSolutions/>
+                <TrustedBrandsContainer/>
+                <RecentWorks/>
+                <OurServices/>
+                <AboutUs/>
+                {/*<LatestInsights/>*/}
+                <DigitalAuditSection/>
+                <QuoteRequestForm/>
+            </>}
         </div>
     );
 }
