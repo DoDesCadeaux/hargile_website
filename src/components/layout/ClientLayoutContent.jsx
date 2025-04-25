@@ -9,7 +9,7 @@ import {usePageTransition} from '@/components/TransitionLink';
 
 // Dynamic imports in a client component where they're allowed
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
-    ssr: false
+    ssr: true
 });
 
 export default function ClientLayoutContent({children}) {
