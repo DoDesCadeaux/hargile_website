@@ -1,16 +1,11 @@
 // src/components/pages/about-us/our-team/our-team.jsx
 "use client";
 
-import { useRef } from "react";
-import { useTranslations } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import {useRef} from "react";
+import {useTranslations} from "next-intl";
+import {motion, useInView} from "framer-motion";
 import TeamMember from "./team-member";
-import {
-    SectionContainer,
-    SectionTitle,
-    TeamGrid,
-    TitleWrapper
-} from "./our-team.styled";
+import {SectionContainer, SectionTitle, TeamGrid, TitleWrapper} from "./our-team.styled";
 
 const OurTeam = () => {
     const t = useTranslations("pages.about-us.sections.our-team");
@@ -22,7 +17,7 @@ const OurTeam = () => {
     });
 
     const containerVariants = {
-        hidden: { opacity: 0 },
+        hidden: {opacity: 0},
         visible: {
             opacity: 1,
             transition: {
@@ -32,7 +27,7 @@ const OurTeam = () => {
     };
 
     const titleVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: {opacity: 0, y: 20},
         visible: {
             opacity: 1,
             y: 0,
@@ -44,7 +39,7 @@ const OurTeam = () => {
     };
 
     const cardVariants = {
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        hidden: {opacity: 0, y: 40, scale: 0.95},
         visible: (i) => ({
             opacity: 1,
             y: 0,
@@ -74,7 +69,9 @@ const OurTeam = () => {
             id: "alexis",
             name: "Alexis Van San",
             role: t("members.alexis.role"),
-            imageSrc: "/images/pages/our-story/our-team/alexis.png"
+            imageSrc: "/images/pages/our-story/our-team/alexis.jpg",
+            width: 800,
+            height: 800,
         }
     ];
 
@@ -100,6 +97,8 @@ const OurTeam = () => {
                                 name={member.name}
                                 role={member.role}
                                 imageSrc={member.imageSrc}
+                                width={member.width}
+                                height={member.height}
                             />
                         </motion.div>
                     ))}
