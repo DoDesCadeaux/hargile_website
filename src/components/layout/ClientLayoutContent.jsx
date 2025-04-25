@@ -17,7 +17,13 @@ export default function ClientLayoutContent({children}) {
     const {transitionState} = usePageTransition();
 
     useEffect(() => {
-        setIsMounted(true);
+        if (!isMounted) {
+            const mountInterval = setTimeout(() => {
+                setIsMounted(true);
+            }, 500)
+
+            return clearTimeout(mountInterval);
+        }
     }, []);
 
     // Apply transition classes based on state
