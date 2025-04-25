@@ -1,34 +1,29 @@
 "use client"
 import React from 'react';
-import styled from "styled-components";
-import {OptimizedImage} from "@/components/optimizedImage";
 
-const Container = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    z-index: 20000;
-`
-
-const Content = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    z-index: 20001;
-`
 
 export default function Loading() {
     return (
-        <Container>
-            <Content>
+        <div style={{
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            background: 'black',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100vw',
+            height: '100vh',
+            zIndex: '20000',
+        }}>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+                position: 'relative',
+                zIndex: '20001',
+            }}>
                 <svg
                     style={{
                         width: '30vh',
@@ -77,18 +72,19 @@ export default function Loading() {
                         />
                     </path>
                 </svg>
-                <OptimizedImage
-                    style={{
-                        width: '20vh',
-                        height: 'auto',
-                        mixBlendMode: "plus-lighter",
-                        position: 'absolute',
-                    }}
-                    width={'1754'}
-                    height={'815'}
-                    src={'/images/brand/brand_large.png'}
-                />
-            </Content>
-        </Container>
+                {/*<OptimizedImage*/}
+                {/*    style={{*/}
+                {/*        width: '20vh',*/}
+                {/*        height: 'auto',*/}
+                {/*        mixBlendMode: "plus-lighter",*/}
+                {/*        position: 'absolute',*/}
+                {/*    }}*/}
+                {/*    width={1754}*/}
+                {/*    height={815}*/}
+                {/*    alt={'Brand Logo'}*/}
+                {/*    src={'/images/brand/brand_large.png'}*/}
+                {/*/>*/}
+            </div>
+        </div>
     );
 }

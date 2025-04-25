@@ -4,7 +4,7 @@ import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import ClientLayoutContent from '@/components/layout/ClientLayoutContent';
 import {AuditButton} from '@/components/AuditButton';
-import Loading from "@/components/Loading";
+import Loading from "@/components/Loading/Loading";
 import {Suspense} from "react";
 
 export function generateStaticParams() {
@@ -12,8 +12,8 @@ export function generateStaticParams() {
 }
 
 export default async function LocaleLayout({children, params}) {
-    "use client"
     const {locale} = await params;
+
 
     setRequestLocale(locale);
     const messages = await getMessages()
@@ -22,21 +22,17 @@ export default async function LocaleLayout({children, params}) {
 
 
     return (
-        <Suspense fallback={<Loading/>}>
-            <NextIntlClientProvider
-                locale={locale}
-                timeZone="Europe/Bruxelles"
-                messages={messages}
-            >
-                <Suspense fallback={<Loading/>}>
-                    {locale && <>
-                        <ClientLayoutContent>
-                            {children}
-                        </ClientLayoutContent>
-                        <AuditButton/>
-                    </>}
-                </Suspense>
-            </NextIntlClientProvider>
-        </Suspense>
+        <NextIntlClientProvider
+            locale={locale}
+            timeZone="Europe/Bruxelles"
+            messages={messages}
+        >
+            <Suspense fallback={<Loading/>}>
+                <ClientLayoutContent>
+                    {children}
+                </ClientLayoutContent>
+                <AuditButton/>
+            </Suspense>
+        </NextIntlClientProvider>
     );
 }
