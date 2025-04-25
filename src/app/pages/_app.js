@@ -22,7 +22,8 @@ export default function App({Component, pageProps}) {
 
             return () => clearTimeout(loadingTimeout.current)
         }
-    })
+    }, [isLoading.current, loadingTimeout.current])
+
     return (
         <>
             <ThemeProvider>
