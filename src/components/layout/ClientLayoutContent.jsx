@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import dynamic from 'next/dynamic';
 import Footer from "@/components/footer/Footer";
 import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
@@ -15,14 +15,15 @@ const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
 export default function ClientLayoutContent({children}) {
     const [isMounted, setIsMounted] = useState(false);
     const {transitionState} = usePageTransition();
+    const timer = useRef(null);
 
     useEffect(() => {
-        if (!isMounted) {
-            const mountInterval = setTimeout(() => {
+        if (!timer.current) {
+            timer.current = setTimeout(() => {
                 setIsMounted(true);
             }, 500)
 
-            return clearTimeout(mountInterval);
+            return () => clearTimeout(timer.current)
         }
     }, []);
 
