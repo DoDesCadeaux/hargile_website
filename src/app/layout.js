@@ -2,59 +2,66 @@
 import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
 import RootClientWrapper from "@/components/layout/RootClientWrapper";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {ThemeProvider} from "@/components/providers/theme-provider";
 import {usePageTransition} from "@/components/TransitionLink";
 
 export default function RootLayout({children}) {
     const {isTransitioning} = usePageTransition();
     const [initialLoading, setInitialLoading] = useState(true);
+    const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
-        setInitialLoading(false);
+        // Set isBrowser to true once component mounts (client-side only)
+        setIsBrowser(true);
+
+        const timer = setTimeout(() => {
+            setInitialLoading(false);
+        }, 1500);
+
+        return () => clearTimeout(timer);
     }, []);
 
-    return (
-        <html lang={routing.defaultLocale ?? 'en'}>
-        <head>
-            <style jsx global>{`
-                .page-transitioning {
-                    overflow: hidden !important;
-                }
+    return (<html lang={routing.defaultLocale ?? 'en'}>
+    <head>
+        <style jsx global>{`
+            .page-transitioning {
+                overflow: hidden !important;
+            }
 
-                html, body {
-                    overscroll-behavior-y: none;
-                }
+            html, body {
+                overscroll-behavior-y: none;
+            }
 
-                .page-transition-overlay {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: black;
-                    z-index: 9999;
-                    pointer-events: none;
-                    opacity: 0;
-                    transition: opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1);
-                }
+            .page-transition-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: black;
+                z-index: 9999;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
 
-                .page-transition-overlay.active {
-                    opacity: 1;
-                }
+            .page-transition-overlay.active {
+                opacity: 1;
+            }
 
-                .page-content {
-                    min-height: 100vh;
-                    opacity: 0;
-                    transition: opacity 1200ms cubic-bezier(0.33, 1, 0.68, 1);
-                }
+            .page-content {
+                min-height: 100vh;
+                opacity: 0;
+                transition: opacity 1200ms cubic-bezier(0.33, 1, 0.68, 1);
+            }
 
-                .page-content.loaded {
-                    opacity: 1;
-                }
-            `}</style>
-            <style dangerouslySetInnerHTML={{
-                __html: `
+            .page-content.loaded {
+                opacity: 1;
+            }
+        `}</style>
+        <style dangerouslySetInnerHTML={{
+            __html: `
                 .loading-container {
                     position: fixed;
                     top: 0;
@@ -113,10 +120,11 @@ export default function RootLayout({children}) {
                     transform-origin: center;
                 }
             `
-            }}/>
-        </head>
-        <body style={{overflowX: 'hidden'}}>
-        {/* Initial loading animation */}
+        }}/>
+    </head>
+    <body style={{overflowX: 'hidden'}}>
+    {/* Only show loading animation in the browser */}
+    {isBrowser && (
         <div className={`loading-container ${!initialLoading ? 'fade-out' : ''}`}>
             <svg
                 className="loading-svg"
@@ -139,32 +147,20 @@ export default function RootLayout({children}) {
                     strokeDashoffset="0"
                 />
             </svg>
-            {/*<OptimizedImage*/}
-            {/*    style={{*/}
-            {/*        width: '20vh',*/}
-            {/*        height: 'auto',*/}
-            {/*        mixBlendMode: "plus-lighter",*/}
-            {/*        position: 'absolute',*/}
-            {/*    }}*/}
-            {/*    width={1754}*/}
-            {/*    height={815}*/}
-            {/*    alt={'Brand Logo'}*/}
-            {/*    src={BrandImage}*/}
-            {/*/>*/}
         </div>
+    )}
 
-        <ThemeProvider>
-            <RootClientWrapper>
-                {/* Black overlay element for transitions */}
-                <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
+    <ThemeProvider>
+        <RootClientWrapper>
+            {/* Black overlay element for transitions */}
+            <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
 
-                {/* Page content */}
-                <main className={`page-content ${!isTransitioning && !initialLoading ? 'loaded' : ''}`}>
-                    {children}
-                </main>
-            </RootClientWrapper>
-        </ThemeProvider>
-        </body>
-        </html>
-    );
+            {/* Page content */}
+            <main className={`page-content ${!isTransitioning && (!initialLoading || !isBrowser) ? 'loaded' : ''}`}>
+                {children}
+            </main>
+        </RootClientWrapper>
+    </ThemeProvider>
+    </body>
+    </html>);
 }
