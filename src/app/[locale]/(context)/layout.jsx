@@ -2,7 +2,8 @@
 import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {usePageTransition} from "@/components/TransitionLink";
-import {useEffect, useRef} from "react";
+import {Suspense, useEffect, useRef} from "react";
+import Loading from "@/app/loading";
 
 export default function ContextLayout({children}) {
     const navigation = useSiteNavigation()
@@ -52,11 +53,11 @@ export default function ContextLayout({children}) {
     }, [isTransitioning]);
 
     return (
-        <>
+        <Suspense fallback={<Loading/>}>
             {navigation.isAuditModalOpen && (
                 <AuditMultiModal onClose={() => navigation.setIsAuditModalOpen(false)}/>
             )}
             {children}
-        </>
+        </Suspense>
     );
 }

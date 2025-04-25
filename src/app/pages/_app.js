@@ -35,13 +35,6 @@ export default function App({Component, pageProps}) {
     return (
         <>
             <ThemeProvider>
-
-
-                <NextIntlClientProvider
-                    locale={pageProps.locale}
-                    timeZone="Europe/Bruxelles"
-                    messages={pageProps.messages}
-                >
                     <style jsx global>{`
                         .page-transitioning {
                             overflow: hidden !important;
@@ -89,7 +82,6 @@ export default function App({Component, pageProps}) {
                             <Component {...pageProps} />
                         </Suspense>
                     </main>
-                </NextIntlClientProvider>
             </ThemeProvider>
         </>
     );
