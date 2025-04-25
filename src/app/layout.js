@@ -24,6 +24,7 @@ export default function RootLayout({children}) {
 
     return (<html lang={routing.defaultLocale ?? 'en'}>
     <head>
+        <title>Hargile</title>
         <style jsx global>{`
             .page-transitioning {
                 overflow: hidden !important;
