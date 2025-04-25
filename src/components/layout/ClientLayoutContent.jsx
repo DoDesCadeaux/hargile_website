@@ -1,13 +1,12 @@
 "use client";
 
-import {Suspense, useEffect, useRef} from 'react';
+import {Suspense, useEffect} from 'react';
 import dynamic from 'next/dynamic';
 import Footer from "@/components/footer/Footer";
 import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
 import Navbar from "@/components/navigation/navbar";
 import {usePageTransition} from '@/components/TransitionLink';
-import {usePathname} from "@/i18n/navigation";
-import Loading from "@/components/Loading";
+import Loading from "@/components/Loading/Loading";
 
 // Dynamic imports in a client component where they're allowed
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
@@ -15,34 +14,11 @@ const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
 });
 
 export default function ClientLayoutContent({children}) {
+    "use client";
     const {transitionState} = usePageTransition();
-    const intlReady = useRef(null);
-    const timer = useRef(null);
-    const ready = useRef(false);
-
-    try {
-        intlReady.current = usePathname()
-    } catch (e) {
-        intlReady.current = null;
-    }
-
-    useEffect(() => {
-        if (intlReady.current === null) return;
-
-        if (timer.current === null) {
-            timer.current = setTimeout(() => {
-                ready.current = true;
-            }, 1000)
-            return () => clearTimeout(timer.current);
-        }
-
-    }, []);
-
 
     // Apply transition classes based on state
     useEffect(() => {
-        if (intlReady.current === false) return;
-
         const contentContainer = document.querySelector('.content-container');
         const pageExitElement = document.querySelector('.page-exit');
         const heroSection = document.querySelector('.hero-section');
@@ -78,23 +54,19 @@ export default function ClientLayoutContent({children}) {
             // Reset overflow when idle
             document.body.style.overflow = '';
         }
-    }, [transitionState, intlReady.current]);
-
-    if (intlReady.current === null) {
-        return <Loading/>;
-    }
+    }, [transitionState]);
 
     return (
         <>
             <Suspense fallback={<Loading/>}>
                 <EarthVideoLayer/>
-                <div className="content-container page-exit">
-                    <OptimizedSvgFilter/>
-                    <Navbar/>
-                    {children}
-                    <Footer/>
-                </div>
             </Suspense>
+            <div className="content-container page-exit">
+                <OptimizedSvgFilter/>
+                <Navbar/>
+                {children}
+                <Footer/>
+            </div>
         </>
     );
 }

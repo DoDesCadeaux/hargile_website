@@ -2,12 +2,10 @@
 
 import dynamic from 'next/dynamic';
 import {Suspense} from "react";
-import Loading from "@/components/Loading";
+import Loading from "@/components/Loading/Loading";
+import HeroSection from "@/components/pages/homepage/hero/heroSection";
 
 // Import components with proper section classes for animations
-const HeroSection = dynamic(() => import("@/components/pages/homepage/hero/heroSection"), {
-    ssr: false,
-});
 
 const OurSolutions = dynamic(() => import("@/components/pages/homepage/our-solutions/our-solutions"), {
     ssr: false,
@@ -30,12 +28,12 @@ const DigitalAuditSection = dynamic(() => import("@/components/pages/homepage/di
 const QuoteRequestForm = dynamic(() => import("@/components/pages/homepage/quote-request/QuoteRequestForm"), {ssr: false});
 
 
-
 export default function HomePage() {
     return (
-        <Suspense fallback={<Loading/>}>
-            <div className="homepage-container page-exit">
-                <HeroSection/>
+        <div className="homepage-container page-exit">
+            <HeroSection/>
+
+            <Suspense fallback={<Loading/>}>
                 <OurSolutions/>
                 <TrustedBrandsContainer/>
                 <RecentWorks/>
@@ -44,7 +42,7 @@ export default function HomePage() {
                 {/*<LatestInsights/>*/}
                 <DigitalAuditSection/>
                 <QuoteRequestForm/>
-            </div>
-        </Suspense>
+            </Suspense>
+        </div>
     );
 }
