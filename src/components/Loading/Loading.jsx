@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import {OptimizedImage} from "@/components/optimizedImage";
 
 
 export default function Loading() {
@@ -72,18 +73,18 @@ export default function Loading() {
                         />
                     </path>
                 </svg>
-                {/*<OptimizedImage*/}
-                {/*    style={{*/}
-                {/*        width: '20vh',*/}
-                {/*        height: 'auto',*/}
-                {/*        mixBlendMode: "plus-lighter",*/}
-                {/*        position: 'absolute',*/}
-                {/*    }}*/}
-                {/*    width={1754}*/}
-                {/*    height={815}*/}
-                {/*    alt={'Brand Logo'}*/}
-                {/*    src={'/images/brand/brand_large.png'}*/}
-                {/*/>*/}
+                <OptimizedImage
+                    style={{
+                        width: '20vh',
+                        height: 'auto',
+                        mixBlendMode: "plus-lighter",
+                        position: 'absolute',
+                    }}
+                    width={1754}
+                    height={815}
+                    alt={'Brand Logo'}
+                    src={'/images/brand/brand_large.png'}
+                />
             </div>
         </div>
     );

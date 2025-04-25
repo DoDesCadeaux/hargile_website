@@ -2,7 +2,7 @@
 import "./styles/global.scss";
 import {routing} from "@/i18n/routing";
 import RootClientWrapper from "@/components/layout/RootClientWrapper";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ThemeProvider} from "@/components/providers/theme-provider";
 import {usePageTransition} from "@/components/TransitionLink";
 
@@ -139,6 +139,18 @@ export default function RootLayout({children}) {
                     strokeDashoffset="0"
                 />
             </svg>
+            {/*<OptimizedImage*/}
+            {/*    style={{*/}
+            {/*        width: '20vh',*/}
+            {/*        height: 'auto',*/}
+            {/*        mixBlendMode: "plus-lighter",*/}
+            {/*        position: 'absolute',*/}
+            {/*    }}*/}
+            {/*    width={1754}*/}
+            {/*    height={815}*/}
+            {/*    alt={'Brand Logo'}*/}
+            {/*    src={BrandImage}*/}
+            {/*/>*/}
         </div>
 
         <ThemeProvider>
