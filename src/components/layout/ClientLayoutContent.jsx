@@ -1,11 +1,13 @@
 "use client";
 
-import {useEffect, useState} from 'react';
+import {Suspense, useEffect, useRef} from 'react';
 import dynamic from 'next/dynamic';
 import Footer from "@/components/footer/Footer";
 import OptimizedSvgFilter from "@/components/navigation/opitmized-svg-filter";
 import Navbar from "@/components/navigation/navbar";
 import {usePageTransition} from '@/components/TransitionLink';
+import {usePathname} from "@/i18n/navigation";
+import Loading from "@/components/Loading";
 
 // Dynamic imports in a client component where they're allowed
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
@@ -13,22 +15,33 @@ const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
 });
 
 export default function ClientLayoutContent({children}) {
-    const [isMounted, setIsMounted] = useState(false);
     const {transitionState} = usePageTransition();
+    const intlReady = useRef(null);
+    const timer = useRef(null);
+    const ready = useRef(false);
+
+    try {
+        intlReady.current = usePathname()
+    } catch (e) {
+        intlReady.current = null;
+    }
 
     useEffect(() => {
-        if (!isMounted) {
-            const mountInterval = setTimeout(() => {
-                setIsMounted(true);
-            }, 500)
+        if (intlReady.current === null) return;
 
-            return clearTimeout(mountInterval);
+        if (timer.current === null) {
+            timer.current = setTimeout(() => {
+                ready.current = true;
+            }, 1000)
+            return () => clearTimeout(timer.current);
         }
+
     }, []);
+
 
     // Apply transition classes based on state
     useEffect(() => {
-        if (!isMounted) return;
+        if (intlReady.current === false) return;
 
         const contentContainer = document.querySelector('.content-container');
         const pageExitElement = document.querySelector('.page-exit');
@@ -65,21 +78,23 @@ export default function ClientLayoutContent({children}) {
             // Reset overflow when idle
             document.body.style.overflow = '';
         }
-    }, [transitionState, isMounted]);
+    }, [transitionState, intlReady.current]);
 
-    if (!isMounted) {
-        return null;
+    if (intlReady.current === null) {
+        return <Loading/>;
     }
 
     return (
         <>
-            <EarthVideoLayer/>
-            <OptimizedSvgFilter/>
-            <Navbar/>
-            <div className="content-container page-exit">
-                {children}
-            </div>
-            <Footer/>
+            <Suspense fallback={<Loading/>}>
+                <EarthVideoLayer/>
+                <div className="content-container page-exit">
+                    <OptimizedSvgFilter/>
+                    <Navbar/>
+                    {children}
+                    <Footer/>
+                </div>
+            </Suspense>
         </>
     );
 }

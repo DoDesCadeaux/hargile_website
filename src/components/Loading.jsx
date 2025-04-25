@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import styled from "styled-components";
+import {OptimizedImage} from "@/components/optimizedImage";
 
 const Container = styled.div`
     position: fixed;
@@ -21,6 +22,7 @@ const Content = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
+    z-index: 20001;
 `
 
 export default function Loading() {
@@ -75,17 +77,17 @@ export default function Loading() {
                         />
                     </path>
                 </svg>
-                {/*<OptimizedImage*/}
-                {/*    style={{*/}
-                {/*        width: '20vh',*/}
-                {/*        height: 'auto',*/}
-                {/*        mixBlendMode: "plus-lighter",*/}
-                {/*        position: 'absolute',*/}
-                {/*    }}*/}
-                {/*    width={'1754'}*/}
-                {/*    height={'815'}*/}
-                {/*    src={'/images/brand/brand_large.png'}*/}
-                {/*/>*/}
+                <OptimizedImage
+                    style={{
+                        width: '20vh',
+                        height: 'auto',
+                        mixBlendMode: "plus-lighter",
+                        position: 'absolute',
+                    }}
+                    width={'1754'}
+                    height={'815'}
+                    src={'/images/brand/brand_large.png'}
+                />
             </Content>
         </Container>
     );

@@ -22,7 +22,6 @@ const AuditButtonStyled = styled.button.attrs({
     border-radius: 6px;
     border: 1px solid var(--color-accent-blue-planet);
     gap: 1rem;
-    z-index: 10000;
 
     .text-side {
         color: var(--color-accent-blue-planet);

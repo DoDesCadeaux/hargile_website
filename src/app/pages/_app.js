@@ -1,21 +1,39 @@
 "use client"
 
-import {NextIntlClientProvider} from "next-intl";
 import {SpeedInsights} from "@vercel/speed-insights/next"
 import {usePageTransition} from "@/components/TransitionLink";
 import {ThemeProvider} from "@/components/providers/theme-provider";
+import {Suspense, useEffect, useRef} from "react";
+import dynamic from "next/dynamic";
 
-// Example of integrating the custom transition system with your app
+const Loading = () => dynamic(() => import('@/components/Loading'), {ssr: false});
 
 export default function App({Component, pageProps}) {
     const {isTransitioning} = usePageTransition();
+    const isLoading = useRef(true);
+    const loadingTimeout = useRef(null);
+
+    useEffect(() => {
+        if (isLoading.current && loadingTimeout.current === null) {
+            loadingTimeout.current = setTimeout(() => {
+                isLoading.current = false;
+            }, 1500)
+
+            return () => clearTimeout(loadingTimeout.current)
+        }
+    }, [isLoading.current, loadingTimeout.current])
+
+    if (isLoading.current === true) {
+        return (
+            <ThemeProvider>
+                <Loading/>
+            </ThemeProvider>
+        )
+    }
+
     return (
-        <ThemeProvider>
-            <NextIntlClientProvider
-                locale={pageProps.locale}
-                timeZone="Europe/Bruxelles"
-                messages={pageProps.messages}
-            >
+        <>
+            <ThemeProvider>
                 <style jsx global>{`
                     .page-transitioning {
                         overflow: hidden !important;
@@ -52,17 +70,20 @@ export default function App({Component, pageProps}) {
                         opacity: 1;
                     }
                 `}</style>
-                <SpeedInsights/>
+                <Suspense fallback={<Loading/>}>
+                    <SpeedInsights/>
 
-                {/* Black overlay element for transitions */}
-                <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
+                    {/* Black overlay element for transitions */}
+                    <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
 
-                {/* Page content */}
-                <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
-                    <Component {...pageProps} />
-
-                </main>
-            </NextIntlClientProvider>
-        </ThemeProvider>
+                    {/* Page content */}
+                    <main className={`page-content ${!isTransitioning ? 'loaded' : ''}`}>
+                        <Suspense fallback={<Loading/>}>
+                            <Component {...pageProps} />
+                        </Suspense>
+                    </main>
+                </Suspense>
+            </ThemeProvider>
+        </>
     );
 }
