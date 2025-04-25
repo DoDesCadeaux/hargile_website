@@ -18,14 +18,14 @@ export default function ClientLayoutContent({children}) {
     const timer = useRef(null);
 
     useEffect(() => {
-        if (!timer.current) {
+        if (isMounted === false && timer.current === null) {
             timer.current = setTimeout(() => {
                 setIsMounted(true);
-            }, 500)
+            }, 1500)
 
             return () => clearTimeout(timer.current)
         }
-    }, []);
+    }, [isMounted]);
 
     // Apply transition classes based on state
     useEffect(() => {
