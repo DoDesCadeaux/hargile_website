@@ -5,9 +5,7 @@ import styled from "styled-components";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import AnimatedMenuCircle from "@/components/navigation/button/animated-menu-circle";
 import AnimatedMenuIcon from "@/components/navigation/button/animated-menu-icon";
-import AnimatedMenuIconCircle from "@/components/navigation/button/animated-menu-icon-circle";
 import {useMenuCrashState} from "@/hooks/useMenuCrashState";
-import {CrossRippleEffect} from "@/components/navigation/button/cross-ripple-effect";
 
 const BoxStyled = styled.button`
     position: relative;
@@ -27,7 +25,7 @@ const NavbarButton = ({width = '2vw'}) => {
     const {crashTriggered, handleCrashComplete} = useMenuCrashState(isOpen);
 
     return (
-        <BoxStyled onClick={toggleMenu}>
+        <BoxStyled onClick={toggleMenu} aria-label="Menu button">
             <AnimatedMenuCircle
                 width={width}
                 menuIconAnimationTime={menuIconAnimationTime}
