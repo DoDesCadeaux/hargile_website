@@ -3,11 +3,14 @@ import Image from "next/image";
 import {useTranslations} from "next-intl";
 import {ReadMore} from "@/components/ReadMore";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
+import {useEffect, useRef} from "react";
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
     const navigation = useSiteNavigation()
     let isMobile = true
+    const titleSize = useRef('fluid-type-3')
+
 
     try {
         isMobile = window.innerWidth <= 1024
@@ -15,13 +18,16 @@ const HeroSection = () => {
         isMobile = true
     }
 
+    useEffect(() => {
+        isMobile ? titleSize.current = 'fluid-type-3' : titleSize.current = 'fluid-type-4'
+    }, [isMobile])
 
     return (
         <div className="min-h-screen flex flex-col justify-center">
             <div className="container mx-auto px-4">
                 <div className="flex">
                     <div className="w-full md:w-4/6 lg:w-4/5">
-                        <h1 className={!isMobile ? 'fluid-type-4' : 'fluid-type-3'}>
+                        <h1 className={titleSize.current}>
                             {t("headline.line1") + ' '}
                             <br/>
                             {t("headline.line2")}
