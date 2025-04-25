@@ -1,8 +1,6 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import {Suspense} from "react";
-import Loading from "@/components/Loading/Loading";
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 
 // Import components with proper section classes for animations
@@ -32,17 +30,14 @@ export default function HomePage() {
     return (
         <div className="homepage-container page-exit">
             <HeroSection/>
-
-            <Suspense fallback={<Loading/>}>
-                <OurSolutions/>
-                <TrustedBrandsContainer/>
-                <RecentWorks/>
-                <OurServices/>
-                <AboutUs/>
-                {/*<LatestInsights/>*/}
-                <DigitalAuditSection/>
-                <QuoteRequestForm/>
-            </Suspense>
+            <OurSolutions/>
+            <TrustedBrandsContainer/>
+            <RecentWorks/>
+            <OurServices/>
+            <AboutUs/>
+            {/*<LatestInsights/>*/}
+            <DigitalAuditSection/>
+            <QuoteRequestForm/>
         </div>
     );
 }

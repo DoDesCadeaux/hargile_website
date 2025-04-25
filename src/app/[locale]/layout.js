@@ -14,12 +14,10 @@ export function generateStaticParams() {
 export default async function LocaleLayout({children, params}) {
     const {locale} = await params;
 
-
     setRequestLocale(locale);
     const messages = await getMessages()
 
     if (!hasLocale(routing.locales, locale)) notFound();
-
 
     return (
         <NextIntlClientProvider
@@ -27,12 +25,10 @@ export default async function LocaleLayout({children, params}) {
             timeZone="Europe/Bruxelles"
             messages={messages}
         >
-            <Suspense fallback={<Loading/>}>
                 <ClientLayoutContent>
                     {children}
                 </ClientLayoutContent>
                 <AuditButton/>
-            </Suspense>
         </NextIntlClientProvider>
     );
 }
