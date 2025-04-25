@@ -21,6 +21,7 @@ const Content = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
+    z-index: 20001;
 `
 
 export default function Loading() {
