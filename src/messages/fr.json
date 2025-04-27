@@ -311,7 +311,7 @@
         "services": {
           "ai": {
             "items": {
-              "agents": "Développement d'agents intelligents",
+              "agents": "Agents intelligents",
               "automation": "Automatisation des processus métier",
               "cloud": "Solutions Cloud",
               "consulting": "Conseil stratégique en IA",
@@ -330,22 +330,24 @@
           },
           "dev": {
             "items": {
-              "cms": "Développement CMS",
+              "cms": "CMS",
               "ecommerce": "E-Commerce",
-              "mobile": "Développement d'applications mobiles",
-              "web": "Conception, développement Web"
+              "mobile": "Applications mobiles",
+              "web": "Conception Web",
+              "e-payment": "Intégration de connecteurs bancaires"
             },
             "title": "Développement et conception de solutions"
           },
           "maintenance": {
             "items": {
               "migration": "Migration, modernisation d'applications",
-              "seo": "Optimisation performances SEO",
-              "support": "Maintenance suppot"
+              "seo": "SEO",
+              "performance": "Performance",
+              "support": "Maintenance support"
             },
             "title": "Maintenace et modernisation"
           },
-          "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+          "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
           "title": "Nos services"
         },
         "trusted-brands": {
@@ -636,7 +638,7 @@
           "title": "Web"
         }
       },
-      "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+      "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
       "subtitleBold": "pour votre transformation digitale",
       "subtitleItalic": "Solutions innovantes",
       "title": "Nos services"

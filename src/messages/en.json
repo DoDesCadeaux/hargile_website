@@ -310,7 +310,7 @@
         "services": {
           "ai": {
             "items": {
-              "agents": "Intelligent Agent Development",
+              "agents": "Intelligent Agent",
               "automation": "Business Process Automation",
               "cloud": "Cloud Solutions",
               "consulting": "Strategic AI Consulting",
@@ -329,17 +329,19 @@
           },
           "dev": {
             "items": {
-              "cms": "CMS Development",
+              "cms": "CMS",
               "ecommerce": "E-Commerce",
-              "mobile": "Mobile Application Development",
-              "web": "Web Design and Development"
+              "mobile": "Mobile Application",
+              "web": "Web Design and Development",
+              "e-payment": "Integration of banking connectors"
             },
             "title": "Development and Solution Design"
           },
           "maintenance": {
             "items": {
               "migration": "Application Migration and Modernization",
-              "seo": "SEO Performance Optimization",
+              "seo": "SEO",
+              "performance": "Performance",
               "support": "Maintenance Support"
             },
             "title": "Maintenance and Modernization"
