@@ -21,7 +21,7 @@ const AuditButtonStyled = styled.button.attrs({
     align-items: center;
     border-radius: 6px;
     border: 1px solid var(--color-accent-blue-planet);
-    gap: 1rem;&
+    gap: 1rem;
 
     .text-side {
         color: var(--color-accent-blue-planet);
@@ -40,6 +40,8 @@ const AuditButtonStyled = styled.button.attrs({
 export const AuditButton = () => {
     const navigation = useSiteNavigation()
     const t = useTranslations('audit-button');
+
+    if (navigation.isOpen) return null;
 
     return (
         <AuditButtonStyled onClick={() => navigation.setIsAuditModalOpen(true)} aria-label={'Open audit dialog'}>
