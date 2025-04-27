@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { createContext, useContext, useState, useEffect } from 'react';
-import Link from 'next/link';
+import {Link} from "@/i18n/navigation";
 
 // Simple transition timing variables
 const TRANSITION_DURATION = 600; // milliseconds
@@ -76,7 +76,7 @@ export const TransitionLink = ({ href, children, className, onClick, ...props })
 
     if (!isMounted) {
         return (
-            <Link href={href} className={className} {...props}>
+            <Link href={href} locale={} className={className} {...props}>
                 {children}
             </Link>
         );
