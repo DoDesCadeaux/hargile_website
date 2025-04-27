@@ -24,7 +24,10 @@ const menuItems = Array.from([
     // {path: '/solutions', id: 'solutions'},
     {path: '/about-us', id: 'our-dna'},
     {path: '/contact', id: 'contact'},
-    {path: '/portfolio', id: 'portfolio'}
+    {path: '/portfolio', id: 'portfolio'},
+    {path: '/solutions/agves', id: 'agves'},
+    {path: '/solutions/i-go', id: 'i-go'},
+    {path: '/solutions/multipass', id: 'multipass'},
 ]);
 
 const Navbar = () => {

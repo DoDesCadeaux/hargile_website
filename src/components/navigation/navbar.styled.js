@@ -69,7 +69,6 @@ export const NavbarNavigation = styled.nav`
     flex-direction: column;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: calc((13vh - 4.8vw) * 1);
     z-index: 1001;
     opacity: ${({$visible}) => $visible ? '1' : '0'};

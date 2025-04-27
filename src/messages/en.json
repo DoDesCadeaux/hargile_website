@@ -30,7 +30,10 @@
     "our-dna": "Our DNA",
     "portfolio": "Portfolio",
     "services": "Services",
-    "solutions": "Solutions"
+    "solutions": "Solutions",
+    "i-go": "I go",
+    "agves": "AGVES",
+    "multipass": "Multipass"
   },
   "pages": {
     "about-us": {
@@ -304,9 +307,9 @@
               "description": "Mobile development, AI",
               "title": "I GO"
             },
-            "leafy": {
-              "description": "E-commerce for plants, Full-stack",
-              "title": "Leafy"
+            "multipass": {
+              "description": "The future of CRM",
+              "title": "Multipass"
             }
           }
         },

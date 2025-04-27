@@ -22,8 +22,8 @@ export const CardContent = styled.div`
     display: grid;
     backdrop-filter: blur(8px);
     grid-template-areas:
-                        "icon title"
-                        "icon subtitle"
+                        "title title"
+                        "subtitle subtitle"
                         "body body"
                         "button button";
     grid-template-columns: max-content 1fr;
@@ -93,6 +93,7 @@ export const LearnMoreLink = styled(TransitionLink)`
     font-weight: 500;
     transition: color 0.2s ease;
     gap: 8px;
+    text-decoration: underline;
 
     svg {
         margin-left: 0.5rem;

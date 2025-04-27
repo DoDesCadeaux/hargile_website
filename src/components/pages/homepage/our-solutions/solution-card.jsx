@@ -27,7 +27,7 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
                 {link &&
                     <LearnMoreLink href={link}>
                         {t("learn-more")}
-                        <img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>
+                        {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
                     </LearnMoreLink>
                 }
             </CardContent>
