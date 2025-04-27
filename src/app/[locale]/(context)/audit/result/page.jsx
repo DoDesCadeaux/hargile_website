@@ -263,14 +263,16 @@ export default function AuditResultPage() {
                                 )}
                             </div>
 
-                            <div className="!mt-4 !p-3 rounded-md bg-red-900/20 border border-red-800">
-                                <p className="text-red-400 text-sm !my-2">
-                                    {t('audit-results.score-like')} {section.score}{t('audit-results.may-look')}
-                                    {section.title === "Performance" ? t('audit-results.may-look-performances') :
-                                        section.title === "SEO" ? t('audit-results.may-look-seo') :
-                                            section.title === "Accessibility" ? t('audit-results.may-look-access') : t('audit-results.may-look-best')}
-                                </p>
-                            </div>
+                            {section.score < 90 &&
+                                <div className="!mt-4 !p-3 rounded-md bg-red-900/20 border border-red-800">
+                                    <p className="text-red-400 text-sm !my-2">
+                                        {t('audit-results.score-like')} {section.score}{t('audit-results.may-look')}
+                                        {section.title === "Performance" ? t('audit-results.may-look-performances') :
+                                            section.title === "SEO" ? t('audit-results.may-look-seo') :
+                                                section.title === "Accessibility" ? t('audit-results.may-look-access') : t('audit-results.may-look-best')}
+                                    </p>
+                                </div>
+                            }
                         </div>
                     ))}
                 </div>

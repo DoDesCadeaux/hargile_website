@@ -59,11 +59,10 @@ export const NavbarMenuButtons = styled.div`
 
 export const NavbarNavigation = styled.nav`
     position: absolute;
-    top: 15vh;
+    top: 15dvh;
     left: 0;
     width: 100vw;
     height: 80vh;
-    max-height: 80vh;
     padding-top: 10vh;
     padding-bottom: 10vh;
     overflow-y: auto;
@@ -76,6 +75,7 @@ export const NavbarNavigation = styled.nav`
     opacity: ${({$visible}) => $visible ? '1' : '0'};
     transition: opacity 0.25s ease;
     will-change: opacity;
+    max-height: 85dvh;
 `;
 
 export const StyledLink = styled(TransitionLink)`
