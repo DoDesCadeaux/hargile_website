@@ -64,13 +64,13 @@ export const NavbarNavigation = styled.nav`
     width: 100vw;
     height: 80vh;
     padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-bottom: 20vh;
     overflow-y: auto;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc((15vh - 5vw) * 1);
+    gap: calc((13vh - 4.8vw) * 1);
     z-index: 1001;
     opacity: ${({$visible}) => $visible ? '1' : '0'};
     transition: opacity 0.25s ease;
