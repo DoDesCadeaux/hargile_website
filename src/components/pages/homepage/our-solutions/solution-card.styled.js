@@ -81,6 +81,7 @@ export const CardDescription = styled.p.attrs({
     color: var(--color-text-light);
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    text-align: justify;
 `;
 
 export const LearnMoreLink = styled(TransitionLink)`

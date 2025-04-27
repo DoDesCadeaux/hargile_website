@@ -27,7 +27,7 @@
   },
   "incomplete": "Please complete all required fields marked with *",
   "menu": {
-    "contact": "Contacte",
+    "contact": "Contact",
     "our-dna": "Notre ADN",
     "portfolio": "Portfolio",
     "services": "Services",
@@ -215,7 +215,7 @@
         },
         "our-solutions": {
           "coming-soon": "Bientôt disponible",
-          "description": "Notre expertise tech est votre levier —- créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
+          "description": "Notre expertise tech est votre levier — créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
           "learn-more": "En savoir plus",
           "paragraph": "HARGILE propose des solutions numériques personnalisées fondées sur le principe de la maîtrise technologique et l'innovation créative. Notre équipe associe expertise, ingéniosité et vision stratégique d’entreprise pour transformer vos défis en leviers de croissance.",
           "solutions": {
@@ -235,7 +235,7 @@
               "title": "Multipass"
             },
             "your-project": {
-              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre a participation à votre succès.",
+              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre participation à votre succès.",
               "subtitle": "Facteur de croissance.",
               "title": "Votre projet"
             }

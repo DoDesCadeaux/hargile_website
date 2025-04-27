@@ -8,6 +8,7 @@ import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";
 import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
 import TrustedBrands from "@/components/pages/homepage/trusted-brands/trusted-brands";
+import LatestInsights from "@/components/pages/homepage/latest-insights/latest-insights";
 
 export default function HomePage() {
     return (
