@@ -14,7 +14,7 @@ export default function HomePage() {
             <HeroSection/>
             <OurSolutions/>
             {/*<TrustedBrands/>*/}
-            <RecentWorks/>
+            {/*<RecentWorks/>*/}
             <OurServices/>
             <AboutUs/>
             {/*<LatestInsights/>*/}

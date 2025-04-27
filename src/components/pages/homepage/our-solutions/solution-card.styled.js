@@ -3,10 +3,11 @@ import {Link} from "@/i18n/navigation";
 import {TransitionLink} from "@/components/TransitionLink";
 
 export const CardContainer = styled.div`
-    background-color: var(--color-background-card);
+    position: relative;
+    backdrop-filter: blur(8px);
+    background-color: color-mix(in srgb, black 40%, var(--color-background-card));
     border-radius: 0.5rem;
     overflow: hidden;
-    position: relative;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
