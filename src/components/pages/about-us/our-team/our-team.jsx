@@ -12,7 +12,7 @@ const OurTeam = () => {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {
         once: true,
-        amount: 0.2,
+        amount: 0.01,
         margin: "0px 0px -200px 0px" // Trigger earlier
     });
 
