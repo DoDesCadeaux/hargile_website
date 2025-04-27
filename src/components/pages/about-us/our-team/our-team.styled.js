@@ -49,7 +49,8 @@ export const TeamGrid = styled.div`
     }
 
     @media (min-width: 1024px) {
-        grid-template-columns: repeat(auto-fit, minmax(295px, 15vw));
+        gap: calc(1vw + 1vh);
+        grid-template-columns: repeat(auto-fit, minmax(295px, 12vw));
         max-width: 80vw;
     }
 `;

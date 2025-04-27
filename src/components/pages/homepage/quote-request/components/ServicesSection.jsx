@@ -13,6 +13,12 @@ export function ServicesSection({ t, serviceTypes, toggleService }) {
   // Service configuration with colors
   const services = [
     {
+      id: 'advice',
+      color: "yellow",
+      bgColor: "rgba(255, 223, 8, 0.1)",
+      hoverColor: "rgba(255, 223, 8, 0.15)",
+    },
+    {
       id: "webDevelopment",
       color: "blue",
       bgColor: "rgba(59, 130, 246, 0.1)",

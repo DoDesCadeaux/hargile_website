@@ -319,6 +319,7 @@ export const Checkbox = styled.button.attrs((props) => {
 
   ${(props) => {
     const colors = {
+      yellow: "#FCD34DFF",
       blue: "#3B82F6",
       purple: "#8B5CF6",
       pink: "#EC4899",
@@ -347,6 +348,7 @@ export const CheckboxLabel = styled.label.attrs({
   color: white;
   cursor: pointer;
   padding-left: 0.25rem;
+  margin-bottom: 0;
 `;
 
 export const SubmitButton = styled.button.attrs({

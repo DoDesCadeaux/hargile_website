@@ -84,8 +84,8 @@ const GaugeChart = ({score = 0, label = 'Score'}) => {
                         data={data}
                         startAngle={180}
                         endAngle={0}
-                        innerRadius={72}
-                        outerRadius={80}
+                        innerRadius={80}
+                        outerRadius={86}
                         paddingAngle={3}
                         dataKey="value"
                     >

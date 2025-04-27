@@ -6,7 +6,7 @@
   "audit-modal": {
     "modal-title": "Website Audit",
     "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
-    "modal-url-placeholder": "https://yourwebiste.com",
+    "modal-url-placeholder": "yourwebiste.com",
     "start-audit": "Start Audit",
     "analyzing": "Analyzing your website... You can complete the form while we work.",
     "analysis-complete": "Analysis complete! Fill in your details to view the results.",
@@ -110,6 +110,7 @@
         "message": "Your message",
         "name": "First and Last Name",
         "phone": "Phone",
+        "object": "Object",
         "title": "Contact Information"
       },
       "contactInfo": {
@@ -256,7 +257,8 @@
             "message": "Your message",
             "name": "First and Last Name",
             "phone": "Phone",
-            "projectDescription": "Project Description",
+            "object": "Object",
+            "projectDescription": "Your message",
             "timeline": {
               "1To3months": "1 - 3 months",
               "3To6months": "3 - 6 months",
@@ -267,7 +269,7 @@
             },
             "title": "Contact Information"
           },
-          "description": "Complete the form below to receive a personalized estimate. Our team of experts will analyze your needs and contact you within 48 hours.",
+          "description": "Our team of experts will analyze your needs and contact you within 48 hours.",
           "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
           "privacy": {
             "link": "privacy policy",
@@ -280,7 +282,8 @@
             "description": "Select one or more options",
             "mobileApps": "Mobile Applications",
             "title": "Service Type",
-            "webDevelopment": "Web Development"
+            "webDevelopment": "Web Development",
+            "advice": "Advice"
           },
           "submit": "Submit",
           "subtitle": {
@@ -355,10 +358,10 @@
         "digital-audit": {
           "title": "A performing website is much more than ",
           "titleAccent": "beautiful design.",
-          "description": "Is your website generating enough traffic? Does it effectively convert visitors into customers? Is it optimized for Google?<br/><br/><strong>HARGILE has developed an online performance analysis tool. By simply entering a website URL, you get a precise diagnosis in seconds</strong>:",
+          "description": "Is your website generating enough traffic? Does it effectively convert visitors into customers? Is your visibility optimized?<br/><br/><strong>HARGILE has developed an online performance analysis tool. By simply entering a website URL, you get a precise diagnosis in seconds</strong>:",
           "features": {
             "speed": "✅ <strong>Loading Speed</strong> – A slow site drives visitors away!",
-            "seo": "✅ <strong>SEO Ranking</strong> – Are you visible on Google?",
+            "seo": "✅ <strong>SEO Ranking</strong> – Are you visible ?",
             "ux": "✅ <strong>User Experience (UX)</strong> – Smooth and responsive navigation?",
             "security": "✅ <strong>Security & Reliability</strong> – Is your site well protected?"
           },
@@ -367,7 +370,7 @@
             "text": "because good performance indicators create more traffic, more engagement, and more conversions."
           },
           "form": {
-            "placeholder": "https://yourwebsite.com",
+            "placeholder": "yourwebsite.com",
             "submit": "Start Audit",
             "loading": "Analyzing..."
           },
@@ -399,7 +402,7 @@
             },
             "seo": {
               "title": "Visibility (SEO)",
-              "text": "A well-optimized site structure makes it easier for search engines to crawl and index your content. The result: better positioning on Google and an increase in qualified traffic to your site."
+              "text": "A well-optimized site structure makes it easier for search engines to crawl and index your content. The result: better positioning and increased traffic to your site."
             },
             "security": {
               "title": "Security",
@@ -415,7 +418,7 @@
             },
             "bestPractices": {
               "title": "Technical Best Practices",
-              "text": "Following the best technical practices recommended by Google ensures that your site is robust, performant, and secure. The audit identifies common errors such as obsolete resources, poorly optimized JavaScript or CSS, insecure libraries, and misconfigurations that can affect user experience and organic ranking. A good Best Practices score guarantees an up-to-date, reliable site that complies with modern web standards."
+              "text": "Following the best technical practices ensures that your site is robust, performant, and secure. The audit identifies common errors such as obsolete resources, poorly optimized JavaScript or CSS, insecure libraries, and misconfigurations that can affect user experience and organic ranking. A good Best Practices score guarantees an up-to-date, reliable site that complies with modern web standards."
             }
           }
         }

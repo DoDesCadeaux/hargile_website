@@ -6,7 +6,7 @@
   "audit-modal": {
     "modal-title": "Audit de votre site",
     "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
-    "modal-url-placeholder": "https://votresite.com",
+    "modal-url-placeholder": "votresite.com",
     "start-audit": "Lancer l’audit",
     "analyzing": "Analyse de votre site en cours... Vous pouvez remplir le formulaire pendant ce temps.",
     "analysis-complete": "Analyse terminée ! Remplissez vos informations pour consulter les résultats.",
@@ -82,7 +82,7 @@
           }
         },
         "our-story": {
-          "getInTouch": "Nous Contacter",
+          "getInTouch": "Nous contacter",
           "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
           "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
           "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
@@ -111,6 +111,7 @@
         "message": "Votre message",
         "name": "Nom et prénom",
         "phone": "Téléphone",
+        "object": "Objet",
         "title": "Informations de contact"
       },
       "contactInfo": {
@@ -257,7 +258,8 @@
             "message": "Votre message",
             "name": "Nom et prénom",
             "phone": "Téléphone",
-            "projectDescription": "Description du projet",
+            "object": "Objet",
+            "projectDescription": "Votre message",
             "timeline": {
               "1To3months": "1 - 3 mois",
               "3To6months": "3 - 6 mois",
@@ -268,7 +270,7 @@
             },
             "title": "Informations de contact"
           },
-          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+          "description": "Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
           "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
           "privacy": {
             "link": "politique de confidentialité",
@@ -281,7 +283,8 @@
             "description": "Sélectionnez une ou plusieurs options",
             "mobileApps": "Applications Mobiles",
             "title": "Type de service",
-            "webDevelopment": "Développement Web"
+            "webDevelopment": "Développement Web",
+            "advice": "Conseil"
           },
           "submit": "Soumettre",
           "subtitle": {
@@ -356,10 +359,10 @@
         "digital-audit": {
           "title": "Un site web performant, c'est bien plus qu'un ",
           "titleAccent": "beau design.",
-          "description": "Votre site génère-t-il assez de trafic ? Convertit-il bien vos visiteurs en clients ? Est-il optimisé pour Google ?<br/><br/><strong>HARGILE a développé un outil d'analyse de performance en ligne. En entrant simplement l'URL d'un site web, vous obtenez en quelques secondes un diagnostic précis</strong> :",
+          "description": "Votre site génère-t-il assez de trafic ? Convertit-il bien vos visiteurs en clients ? Votre visibilité est-elle optimisée ?<br/><br/><strong>HARGILE a développé un outil d'analyse de performance en ligne. En entrant simplement l'URL d'un site web, vous obtenez en quelques secondes un diagnostic précis</strong> :",
           "features": {
             "speed": "✅ <strong>Vitesse de chargement</strong> – Un site lent fait fuir les visiteurs !",
-            "seo": "✅ <strong>Référencement SEO</strong> – Êtes-vous visible sur Google ?",
+            "seo": "✅ <strong>Référencement SEO</strong> – Êtes-vous visible ?",
             "ux": "✅ <strong>Expérience utilisateur (UX)</strong> – Navigation fluide et responsive ?",
             "security": "✅ <strong>Sécurité et fiabilité</strong> – Votre site est-il bien protégé ?"
           },
@@ -368,7 +371,7 @@
             "text": "parce que de bons indices de performances créent plus de trafic, plus d'engagement et plus de conversions."
           },
           "form": {
-            "placeholder": "https://votresite.com",
+            "placeholder": "votresite.com",
             "submit": "Lancer l'audit",
             "loading": "Analyse en cours..."
           },
@@ -400,7 +403,7 @@
             },
             "seo": {
               "title": "Visibilité (SEO)",
-              "text": "Une structure de site bien optimisée facilite le travail des moteurs de recherche pour explorer et indexer votre contenu. Résultat : un meilleur positionnement sur Google et une augmentation du trafic qualifié vers votre site."
+              "text": "Une structure de site bien optimisée facilite le travail des moteurs de recherche pour explorer et indexer votre contenu. Résultat : un meilleur positionnement et une augmentation du trafic qualifié vers votre site."
             },
             "security": {
               "title": "Sécurité",
@@ -416,7 +419,7 @@
             },
             "bestPractices": {
               "title": "Bonnes pratiques techniques (Best Practices)",
-              "text": "Respecter les meilleures pratiques techniques recommandées par Google assure que votre site est robuste, performant et sécurisé. L'audit identifie les erreurs courantes telles que des ressources obsolètes, du JavaScript ou CSS mal optimisé, des bibliothèques non sécurisées, ainsi que les mauvaises configurations qui peuvent affecter l'expérience utilisateur et le référencement naturel. Un bon score en Best Practices garantit un site à jour, fiable et conforme aux standards modernes du web."
+              "text": "Respecter les meilleures pratiques techniques recommandées assure que votre site est robuste, performant et sécurisé. L'audit identifie les erreurs courantes telles que des ressources obsolètes, du JavaScript ou CSS mal optimisé, des bibliothèques non sécurisées, ainsi que les mauvaises configurations qui peuvent affecter l'expérience utilisateur et le référencement naturel. Un bon score en Best Practices garantit un site à jour, fiable et conforme aux standards modernes du web."
             }
           }
         }

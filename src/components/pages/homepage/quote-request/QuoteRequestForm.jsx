@@ -56,8 +56,6 @@ export default function QuoteRequestForm() {
       <FormContainer>
         <Header
           title={t("title")}
-          subtitleRegular={t("subtitle.part1")}
-          subtitleHighlight={t("subtitle.part2")}
           description={t("description")}
           showUnderline={true}
           showBackgroundBlur={false}
