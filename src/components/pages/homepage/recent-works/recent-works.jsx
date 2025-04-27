@@ -146,11 +146,11 @@ const RecentWorks = () => {
                     ))}
                 </WorksGrid>
 
-                <OurWorksLink>
-                    <SectionLink href="/works">
-                        {t("view-all") || "All our works"} →
-                    </SectionLink>
-                </OurWorksLink>
+                {/*<OurWorksLink>*/}
+                {/*    <SectionLink href="/works">*/}
+                {/*        {t("view-all") || "All our works"} →*/}
+                {/*    </SectionLink>*/}
+                {/*</OurWorksLink>*/}
             </motion.div>
         </SectionContainer>
     );
