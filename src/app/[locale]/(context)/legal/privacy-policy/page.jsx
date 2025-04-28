@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
-import { useTranslations } from "next-intl";
-import { Menu, X, FileText, Printer } from "lucide-react";
+import {useTranslations} from "next-intl";
+import {FileText, Menu, Printer, X} from "lucide-react";
 
 const PageContainer = styled.div`
   min-height: 100vh;

@@ -2,7 +2,6 @@
 
 import HeroSection from "@/components/pages/homepage/hero/heroSection";
 import OurSolutions from "@/components/pages/homepage/our-solutions/our-solutions";
-import RecentWorks from "@/components/pages/homepage/recent-works/recent-works";
 import OurServices from "@/components/pages/homepage/services/ourServices";
 import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";

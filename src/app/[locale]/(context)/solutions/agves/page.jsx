@@ -1,13 +1,18 @@
 "use client";
 
-import {useTranslations} from "next-intl";
 import {useRef} from "react";
 import {motion, useInView} from "framer-motion";
 import {Header} from "@/components/header/mainHeader";
 import {
-    AvailabilityBadge,
     ContentSection,
-    ContentWrapper, CTAButton, CTASection, Description, FeatureCard, FeatureDescription, FeaturesGrid, FeatureTitle,
+    ContentWrapper,
+    CTAButton,
+    CTASection,
+    Description,
+    FeatureCard,
+    FeatureDescription,
+    FeaturesGrid,
+    FeatureTitle,
     MainContent,
     SolutionContainer
 } from "@/app/[locale]/(context)/solutions/agves/page.styled";

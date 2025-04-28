@@ -1,6 +1,5 @@
 "use client";
 
-import {useTranslations} from "next-intl";
 import {useRef} from "react";
 import {motion, useInView} from "framer-motion";
 import {Header} from "@/components/header/mainHeader";
