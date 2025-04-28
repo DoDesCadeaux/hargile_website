@@ -44,6 +44,10 @@ export function ContactSection({ t, register, errors }) {
         <InputLabel htmlFor="phone">{t("contact.phone")}</InputLabel>
         <Input id="phone" type="tel" {...register("phone")} />
       </FormGroup>
+        <FormGroup>
+            <InputLabel htmlFor="object">{t("contact.object")}</InputLabel>
+            <Input id="object" type="tel" {...register("object")} />
+        </FormGroup>
       <FormGroup>
         <InputLabel htmlFor="message">
           {t("contact.message")} <RequiredMark>*</RequiredMark>

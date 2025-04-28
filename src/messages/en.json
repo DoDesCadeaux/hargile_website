@@ -1,36 +1,81 @@
 {
-  "audit-button": {
-    "description": "",
-    "title": "Audit your website"
-  },
-  "audit-modal": {
-    "modal-title": "Website Audit",
-    "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
-    "modal-url-placeholder": "https://yourwebiste.com",
-    "start-audit": "Start Audit",
-    "analyzing": "Analyzing your website... You can complete the form while we work.",
-    "analysis-complete": "Analysis complete! Fill in your details to view the results.",
-    "contact": "Contact Information",
-    "error": "Error during the audit. The URL you entered might be incorrect. Please try again.",
-    "first-name": "First Name",
-    "last-name": "Last Name",
-    "company": "Is this for your company?",
-    "select": "Please Select",
-    "yes": "Yes",
-    "no": "No",
-    "industry": "Industry",
-    "processing": "Processing...",
-    "view-results": "View Audit Results",
-    "wait": "Please wait for the audit to complete before accessing results.",
-    "back-url": "Go back",
-    "incomplete": "Please complete all required fields marked with *"
-  },
-  "menu": {
-    "contact": "Contact",
-    "our-dna": "Our DNA",
-    "portfolio": "Portfolio",
-    "services": "Services",
-    "solutions": "Solutions"
+  "components": {
+    "contact-form": {
+      "contact": {
+        "email": "Email",
+        "message": "Your message",
+        "name": "First and Last Name",
+        "phone": "Phone",
+        "object": "Object",
+        "projectDescription": "Your message",
+        "timeline": {
+          "1To3months": "1 - 3 months",
+          "3To6months": "3 - 6 months",
+          "label": "Desired Timeline",
+          "less1month": "Less than a month",
+          "more6months": "More than 6 months",
+          "select": "Select"
+        },
+        "title": "Contact Information"
+      },
+      "description": "Our team of experts will analyze your needs and contact you within 48 hours.",
+      "privacy": {
+        "link": "privacy policy",
+        "requiredFields": "Required fields",
+        "text": "By submitting this form, you accept our"
+      },
+      "services": {
+        "ai": "Artificial Intelligence",
+        "cloud": "Cloud Solutions",
+        "description": "Select one or more options",
+        "mobileApps": "Mobile Applications",
+        "title": "Service Type",
+        "webDevelopment": "Web Development",
+        "advice": "Advice"
+      },
+      "submit": "Submit",
+      "title": "Contact us"
+    },
+    "audit-button": {
+      "description": "",
+      "title": "Audit your website"
+    },
+    "audit-modal": {
+      "modal-title": "Website Audit",
+      "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
+      "modal-url-placeholder": "yourwebiste.com",
+      "start-audit": "Start Audit",
+      "analyzing": "Analyzing your website... You can complete the form while we work.",
+      "analysis-complete": "Analysis complete! Fill in your details to view the results.",
+      "contact": "Contact Information",
+      "error": "Error during the audit. The URL you entered might be incorrect. Please try again.",
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "company": "Is this for your company?",
+      "select": "Please Select",
+      "yes": "Yes",
+      "no": "No",
+      "industry": "Industry",
+      "processing": "Processing...",
+      "view-results": "View Audit Results",
+      "wait": "Please wait for the audit to complete before accessing results.",
+      "back-url": "Go back",
+      "incomplete": "Please complete all required fields marked with *"
+    },
+    "read-more": {
+      "less": "Show less",
+      "more": "Show more"
+    },
+    "menu": {
+      "contact": "Contact",
+      "our-dna": "Our DNA",
+      "portfolio": "Portfolio",
+      "services": "Services",
+      "solutions": "Solutions",
+      "i-go": "I go",
+      "agves": "AGVES",
+      "multipass": "Multipass"
+    }
   },
   "pages": {
     "about-us": {
@@ -104,53 +149,6 @@
         }
       }
     },
-    "contact": {
-      "contact": {
-        "email": "Email",
-        "message": "Your message",
-        "name": "First and Last Name",
-        "phone": "Phone",
-        "title": "Contact Information"
-      },
-      "contactInfo": {
-        "address": {
-          "title": "Address",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        },
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Telephone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "title": "Our Contact Details"
-      },
-      "description": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-      "privacy": {
-        "link": "privacy policy",
-        "requiredFields": "Required fields",
-        "text": "By submitting this form, you accept our"
-      },
-      "services": {
-        "ai": "Artificial Intelligence",
-        "cloud": "Cloud Solutions",
-        "description": "Select one or more options",
-        "mobileApps": "Mobile Applications",
-        "title": "Service Type",
-        "webDevelopment": "Web Development"
-      },
-      "social": {
-        "title": "Follow Us"
-      },
-      "submit": "Send Message",
-      "subtitle": {
-        "part1": "Get in touch",
-        "part2": "with our team"
-      },
-      "title": "Contact Us"
-    },
     "homepage": {
       "sections": {
         "about-us": {
@@ -214,7 +212,7 @@
         },
         "our-solutions": {
           "coming-soon": "Coming soon",
-          "description": "Our tech expertise is your lever —- creating human solutions, tailored to your objectives and boosting your development.",
+          "description": "Our tech expertise is your lever — creating human solutions, tailored to your objectives and boosting your development.",
           "learn-more": "Learn More",
           "paragraph": "HARGILE offers customized digital solutions based on the principle of technological mastery and creative innovation. Our team combines expertise, ingenuity, and strategic business vision to transform your challenges into growth levers.",
           "solutions": {
@@ -241,54 +239,6 @@
           },
           "title": "Web, mobile, cloud, AI"
         },
-        "quote-request": {
-          "contact": {
-            "budget": {
-              "10kTo25k": "€10,000 - €25,000",
-              "25kTo50k": "€25,000 - €50,000",
-              "5kTo10k": "€5,000 - €10,000",
-              "label": "Estimated Budget",
-              "less5k": "Less than €5,000",
-              "more50k": "More than €50,000",
-              "select": "Select"
-            },
-            "email": "Email",
-            "message": "Your message",
-            "name": "First and Last Name",
-            "phone": "Phone",
-            "projectDescription": "Project Description",
-            "timeline": {
-              "1To3months": "1 - 3 months",
-              "3To6months": "3 - 6 months",
-              "label": "Desired Timeline",
-              "less1month": "Less than a month",
-              "more6months": "More than 6 months",
-              "select": "Select"
-            },
-            "title": "Contact Information"
-          },
-          "description": "Complete the form below to receive a personalized estimate. Our team of experts will analyze your needs and contact you within 48 hours.",
-          "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-          "privacy": {
-            "link": "privacy policy",
-            "requiredFields": "Required fields",
-            "text": "By submitting this form, you accept our"
-          },
-          "services": {
-            "ai": "Artificial Intelligence",
-            "cloud": "Cloud Solutions",
-            "description": "Select one or more options",
-            "mobileApps": "Mobile Applications",
-            "title": "Service Type",
-            "webDevelopment": "Web Development"
-          },
-          "submit": "Submit",
-          "subtitle": {
-            "part1": "Get a free estimate",
-            "part2": "for your project"
-          },
-          "title": "Contact us"
-        },
         "recent-works": {
           "title": "Our recent works",
           "view-all": "All our works",
@@ -301,16 +251,16 @@
               "description": "Mobile development, AI",
               "title": "I GO"
             },
-            "leafy": {
-              "description": "E-commerce for plants, Full-stack",
-              "title": "Leafy"
+            "multipass": {
+              "description": "The future of CRM",
+              "title": "Multipass"
             }
           }
         },
         "services": {
           "ai": {
             "items": {
-              "agents": "Intelligent Agent Development",
+              "agents": "Intelligent Agent",
               "automation": "Business Process Automation",
               "cloud": "Cloud Solutions",
               "consulting": "Strategic AI Consulting",
@@ -329,17 +279,19 @@
           },
           "dev": {
             "items": {
-              "cms": "CMS Development",
+              "cms": "CMS",
               "ecommerce": "E-Commerce",
-              "mobile": "Mobile Application Development",
-              "web": "Web Design and Development"
+              "mobile": "Mobile Application",
+              "web": "Web Design and Development",
+              "e-payment": "Integration of banking connectors"
             },
             "title": "Development and Solution Design"
           },
           "maintenance": {
             "items": {
               "migration": "Application Migration and Modernization",
-              "seo": "SEO Performance Optimization",
+              "seo": "SEO",
+              "performance": "Performance",
               "support": "Maintenance Support"
             },
             "title": "Maintenance and Modernization"
@@ -353,10 +305,10 @@
         "digital-audit": {
           "title": "A performing website is much more than ",
           "titleAccent": "beautiful design.",
-          "description": "Is your website generating enough traffic? Does it effectively convert visitors into customers? Is it optimized for Google?<br/><br/><strong>HARGILE has developed an online performance analysis tool. By simply entering a website URL, you get a precise diagnosis in seconds</strong>:",
+          "description": "Is your website generating enough traffic? Does it effectively convert visitors into customers? Is your visibility optimized?<br/><br/><strong>HARGILE has developed an online performance analysis tool. By simply entering a website URL, you get a precise diagnosis in seconds</strong>:",
           "features": {
             "speed": "✅ <strong>Loading Speed</strong> – A slow site drives visitors away!",
-            "seo": "✅ <strong>SEO Ranking</strong> – Are you visible on Google?",
+            "seo": "✅ <strong>SEO Ranking</strong> – Are you visible ?",
             "ux": "✅ <strong>User Experience (UX)</strong> – Smooth and responsive navigation?",
             "security": "✅ <strong>Security & Reliability</strong> – Is your site well protected?"
           },
@@ -365,7 +317,7 @@
             "text": "because good performance indicators create more traffic, more engagement, and more conversions."
           },
           "form": {
-            "placeholder": "https://yourwebsite.com",
+            "placeholder": "yourwebsite.com",
             "submit": "Start Audit",
             "loading": "Analyzing..."
           },
@@ -397,7 +349,7 @@
             },
             "seo": {
               "title": "Visibility (SEO)",
-              "text": "A well-optimized site structure makes it easier for search engines to crawl and index your content. The result: better positioning on Google and an increase in qualified traffic to your site."
+              "text": "A well-optimized site structure makes it easier for search engines to crawl and index your content. The result: better positioning and increased traffic to your site."
             },
             "security": {
               "title": "Security",
@@ -413,7 +365,7 @@
             },
             "bestPractices": {
               "title": "Technical Best Practices",
-              "text": "Following the best technical practices recommended by Google ensures that your site is robust, performant, and secure. The audit identifies common errors such as obsolete resources, poorly optimized JavaScript or CSS, insecure libraries, and misconfigurations that can affect user experience and organic ranking. A good Best Practices score guarantees an up-to-date, reliable site that complies with modern web standards."
+              "text": "Following the best technical practices ensures that your site is robust, performant, and secure. The audit identifies common errors such as obsolete resources, poorly optimized JavaScript or CSS, insecure libraries, and misconfigurations that can affect user experience and organic ranking. A good Best Practices score guarantees an up-to-date, reliable site that complies with modern web standards."
             }
           }
         }
@@ -683,17 +635,12 @@
           "may-look-seo": " fewer pages indexed and lost traffic to competitors.",
           "may-look-access": " your site isn't accessible to everyone. This could be excluding part of your audience and pose compliance risks.",
           "may-look-best": " a lack of secure and modern web development standards, which can expose your site to vulnerabilities and harm user trust.",
-          "improve": "Want to improve your scores?",
-          "experts": "Our team of experts can help optimize your website for better performance, SEO, and accessibility.",
+          "improve": "Want to improve your performance :",
+          "experts": "Our experts can help you optimize your digital impact",
           "book": "Book a meeting with our team",
-          "contact": "Contact Us"
+          "contact": "Make an appointment"
         }
       }
     }
-  },
-  "read-more": {
-    "less": "Show less",
-    "more": "Show more"
-  },
-  "test": "lorem en"
+  }
 }

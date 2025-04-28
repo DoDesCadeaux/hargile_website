@@ -12,7 +12,7 @@ const OurTeam = () => {
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {
         once: true,
-        amount: 0.2,
+        amount: 0.01,
         margin: "0px 0px -200px 0px" // Trigger earlier
     });
 
@@ -63,13 +63,29 @@ const OurTeam = () => {
             id: "pascal",
             name: "Pascal Laye",
             role: t("members.pascal.role"),
-            imageSrc: "/images/pages/our-story/our-team/pascal.png"
+            imageSrc: "/images/pages/our-story/our-team/charles.png",
         },
         {
             id: "alexis",
             name: "Alexis Van San",
             role: t("members.alexis.role"),
-            imageSrc: "/images/pages/our-story/our-team/alexis.jpg",
+            imageSrc: "/images/pages/our-story/our-team/charles.png",
+            width: 800,
+            height: 800,
+        },
+        {
+            id: "dorian",
+            name: "Dorian Durakou",
+            role: t("members.alexis.role"),
+            imageSrc: "/images/pages/our-story/our-team/charles.png",
+            width: 800,
+            height: 800,
+        },
+        {
+            id: "mihai",
+            name: "Mihai Patap",
+            role: t("members.alexis.role"),
+            imageSrc: "/images/pages/our-story/our-team/charles.png",
             width: 800,
             height: 800,
         }

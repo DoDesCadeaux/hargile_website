@@ -5,7 +5,7 @@ import {Dialog, DialogPanel, DialogTitle} from '@headlessui/react'
 import {useTranslations} from "next-intl";
 
 export default function AuditMultiModal({onClose}) {
-    const t = useTranslations('audit-modal');
+    const t = useTranslations('components.audit-modal');
     const [step, setStep] = useState(1)
     const [formData, setFormData] = useState({
         firstName: '',
@@ -26,6 +26,7 @@ export default function AuditMultiModal({onClose}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target
+
         setFormData((prev) => ({...prev, [name]: value}))
     }
 
@@ -33,21 +34,25 @@ export default function AuditMultiModal({onClose}) {
         setLoading(true);
         setStep(2);
 
+        const parsedUrl = (url) => url.startsWith('http://') || url.startsWith('https://')
+            ? new URL(url).href
+            : new URL(`https://${url}`).href;
+
+
         try {
             const res = await fetch('/api/audit', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({url: formData.url}),
+                body: JSON.stringify({url: parsedUrl(formData.url)}),
             });
 
             if (!res.ok || res.error) {
-                const errorMessage = res.error?.message || 'Erreur inconnue lors de l’audit.';
+                const errorMessage = res.error?.message || 'Unknown error during audit.';
                 const errorCode = res.error?.code || res.status;
                 const errorPayload = {error: {message: errorMessage, code: errorCode}};
                 localStorage.setItem('auditResult', JSON.stringify(errorPayload));
                 setAuditError(errorPayload.error.message);
                 setLoading(false);
-                console.log("RES: ", res);
                 return;
             }
 
@@ -55,7 +60,6 @@ export default function AuditMultiModal({onClose}) {
             localStorage.setItem('auditResult', JSON.stringify(result));
             setLoading(false);
         } catch (err) {
-            console.error('Erreur Audit', err);
             setLoading(false);
         }
     }

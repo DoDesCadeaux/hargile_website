@@ -58,9 +58,9 @@ export default function ClientLayoutContent({children}) {
     return (
         <>
             <EarthVideoLayer/>
+            <Navbar/>
             <div className="content-container page-exit">
                 <OptimizedSvgFilter/>
-                <Navbar/>
                 {children}
                 <Footer/>
             </div>

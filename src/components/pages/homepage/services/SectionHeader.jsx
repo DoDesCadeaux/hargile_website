@@ -49,7 +49,7 @@ const SectionHeader = ({ title, subtitle }) => {
   return (
     <motion.div
       className="container mx-auto px-4 text-center"
-      style={{ margin: "0 auto", marginBottom: "2rem" }}
+      style={{ margin: "0 auto", marginBottom: "6rem" }}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"

@@ -1,37 +1,73 @@
 {
-  "audit-button": {
-    "description": "",
-    "title": "Auditer votre site web"
-  },
-  "audit-modal": {
-    "modal-title": "Audit de votre site",
-    "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
-    "modal-url-placeholder": "https://votresite.com",
-    "start-audit": "Lancer l’audit",
-    "analyzing": "Analyse de votre site en cours... Vous pouvez remplir le formulaire pendant ce temps.",
-    "analysis-complete": "Analyse terminée ! Remplissez vos informations pour consulter les résultats.",
-    "contact": "Formulaire de Contact",
-    "error": "Erreur lors de l'audit. Il se pourrait que l'URL que vous avez indiquée soit mauvaise. Veuillez réessayer.",
-    "first-name": "Prénom",
-    "last-name": "Nom",
-    "company": "Est-ce pour votre entreprise ?",
-    "select": "Veuillez sélectionner",
-    "yes": "Oui",
-    "no": "Non",
-    "industry": "Secteur d’activité",
-    "processing": "Traitement en cours...",
-    "view-results": "Voir les résultats de l’audit",
-    "wait": "Veuillez patienter jusqu’à la fin de l’audit avant d’accéder aux résultats.",
-    "back-url": "Retour à l’audit",
-    "incomplete": "Veuillez remplir tous les champs obligatoires marqués d’un *"
-  },
-  "incomplete": "Please complete all required fields marked with *",
-  "menu": {
-    "contact": "Contacte",
-    "our-dna": "Notre ADN",
-    "portfolio": "Portfolio",
-    "services": "Services",
-    "solutions": "Solutions"
+  "components": {
+    "contact-form": {
+      "contact": {
+        "email": "Email",
+        "message": "Votre message",
+        "name": "Nom et prénom",
+        "phone": "Téléphone",
+        "object": "Objet",
+        "projectDescription": "Votre message",
+        "title": "Informations de contact"
+      },
+      "description": "Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+      "privacy": {
+        "link": "politique de confidentialité",
+        "requiredFields": "Champs obligatoires",
+        "text": "En soumettant ce formulaire, vous acceptez notre"
+      },
+      "services": {
+        "ai": "Intelligence Artificielle",
+        "cloud": "Solutions Cloud",
+        "description": "Sélectionnez une ou plusieurs options",
+        "mobileApps": "Applications Mobiles",
+        "title": "Type de service",
+        "webDevelopment": "Développement Web",
+        "advice": "Conseil"
+      },
+      "submit": "Soumettre",
+      "title": "Contacter-nous"
+    },
+    "audit-button": {
+      "description": "",
+      "title": "Auditer votre site web"
+    },
+    "audit-modal": {
+      "modal-title": "Audit de votre site",
+      "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
+      "modal-url-placeholder": "votresite.com",
+      "start-audit": "Lancer l’audit",
+      "analyzing": "Analyse de votre site en cours... Vous pouvez remplir le formulaire pendant ce temps.",
+      "analysis-complete": "Analyse terminée ! Remplissez vos informations pour consulter les résultats.",
+      "contact": "Formulaire de Contact",
+      "error": "Erreur lors de l'audit. Il se pourrait que l'URL que vous avez indiquée soit mauvaise. Veuillez réessayer.",
+      "first-name": "Prénom",
+      "last-name": "Nom",
+      "company": "Est-ce pour votre entreprise ?",
+      "select": "Veuillez sélectionner",
+      "yes": "Oui",
+      "no": "Non",
+      "industry": "Secteur d’activité",
+      "processing": "Traitement en cours...",
+      "view-results": "Voir les résultats de l’audit",
+      "wait": "Veuillez patienter jusqu’à la fin de l’audit avant d’accéder aux résultats.",
+      "back-url": "Retour à l’audit",
+      "incomplete": "Veuillez remplir tous les champs obligatoires marqués d’un *"
+    },
+    "read-more": {
+      "less": "Réduire",
+      "more": "Voir plus"
+    },
+    "menu": {
+      "contact": "Contact",
+      "our-dna": "Notre ADN",
+      "portfolio": "Portfolio",
+      "services": "Services",
+      "solutions": "Solutions",
+      "i-go": "I go",
+      "agves": "AGVES",
+      "multipass": "Multipass"
+    }
   },
   "pages": {
     "about-us": {
@@ -82,7 +118,7 @@
           }
         },
         "our-story": {
-          "getInTouch": "Nous Contacter",
+          "getInTouch": "Nous contacter",
           "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
           "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
           "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
@@ -104,53 +140,6 @@
           "title": "Notre Équipe"
         }
       }
-    },
-    "contact": {
-      "contact": {
-        "email": "Email",
-        "message": "Votre message",
-        "name": "Nom et prénom",
-        "phone": "Téléphone",
-        "title": "Informations de contact"
-      },
-      "contactInfo": {
-        "address": {
-          "title": "Adresse",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        },
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Téléphone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "title": "Nos coordonnées"
-      },
-      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-      "privacy": {
-        "link": "politique de confidentialité",
-        "requiredFields": "Champs obligatoires",
-        "text": "En soumettant ce formulaire, vous acceptez notre"
-      },
-      "services": {
-        "ai": "Intelligence Artificielle",
-        "cloud": "Solutions Cloud",
-        "description": "Sélectionnez une ou plusieurs options",
-        "mobileApps": "Applications Mobiles",
-        "title": "Type de service",
-        "webDevelopment": "Développement Web"
-      },
-      "social": {
-        "title": "Suivez-nous"
-      },
-      "submit": "Envoyer le message",
-      "subtitle": {
-        "part1": "Entrez en contact",
-        "part2": "avec notre équipe"
-      },
-      "title": "Contactez-nous"
     },
     "homepage": {
       "sections": {
@@ -215,7 +204,7 @@
         },
         "our-solutions": {
           "coming-soon": "Bientôt disponible",
-          "description": "Notre expertise tech est votre levier —- créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
+          "description": "Notre expertise tech est votre levier — créer des solutions humaines, taillées pour vos objectifs et booster votre développement.",
           "learn-more": "En savoir plus",
           "paragraph": "HARGILE propose des solutions numériques personnalisées fondées sur le principe de la maîtrise technologique et l'innovation créative. Notre équipe associe expertise, ingéniosité et vision stratégique d’entreprise pour transformer vos défis en leviers de croissance.",
           "solutions": {
@@ -231,64 +220,16 @@
             },
             "multipass": {
               "description": "Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre une plateforme modulable et évolutive. Conçue pour s’adapter à tous les secteurs d’activité, notre solution vous permet de centraliser, gérer et optimiser vos relations clients avec une flexibilité inégalée.",
-              "subtitle": "la solution agile qui s’adapte à votre entreprise.",
+              "subtitle": "La solution agile qui s’adapte à votre entreprise.",
               "title": "Multipass"
             },
             "your-project": {
-              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre a participation à votre succès.",
+              "description": "Derrière chaque projet, chaque personne, il y a une rencontre unique. Nous mettons la technologie au service d’une vision : la vôtre. Créer des expériences qui touchent, qui rassemblent, qui font grandir, durables et porteuses de sens est notre participation à votre succès.",
               "subtitle": "Facteur de croissance.",
               "title": "Votre projet"
             }
           },
           "title": "Web, mobile, cloud, IA"
-        },
-        "quote-request": {
-          "contact": {
-            "budget": {
-              "10kTo25k": "10 000 € - 25 000 €",
-              "25kTo50k": "25 000 € - 50 000 €",
-              "5kTo10k": "5 000 € - 10 000 €",
-              "label": "Budget estimé",
-              "less5k": "Moins de 5 000 €",
-              "more50k": "Plus de 50 000 €",
-              "select": "Sélectionner"
-            },
-            "email": "Email",
-            "message": "Votre message",
-            "name": "Nom et prénom",
-            "phone": "Téléphone",
-            "projectDescription": "Description du projet",
-            "timeline": {
-              "1To3months": "1 - 3 mois",
-              "3To6months": "3 - 6 mois",
-              "label": "Échéance souhaitée",
-              "less1month": "Moins d'un mois",
-              "more6months": "Plus de 6 mois",
-              "select": "Sélectionner"
-            },
-            "title": "Informations de contact"
-          },
-          "description": "Complétez le formulaire ci-dessous pour recevoir une estimation personnalisée. Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
-          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-          "privacy": {
-            "link": "politique de confidentialité",
-            "requiredFields": "Champs obligatoires",
-            "text": "En soumettant ce formulaire, vous acceptez notre"
-          },
-          "services": {
-            "ai": "Intelligence Artificielle",
-            "cloud": "Solutions Cloud",
-            "description": "Sélectionnez une ou plusieurs options",
-            "mobileApps": "Applications Mobiles",
-            "title": "Type de service",
-            "webDevelopment": "Développement Web"
-          },
-          "submit": "Soumettre",
-          "subtitle": {
-            "part1": "Obtenez une estimation",
-            "part2": "gratuite pour votre projet"
-          },
-          "title": "Contacter-nous"
         },
         "recent-works": {
           "title": "Nos réalisations récentes",
@@ -302,16 +243,16 @@
               "description": "Développement mobile, IA",
               "title": "I GO"
             },
-            "leafy": {
-              "description": "E-commerce pour plantes, Full-stack",
-              "title": "Leafy"
+            "multipass": {
+              "description": "L'avenir du CRM",
+              "title": "Multipass"
             }
           }
         },
         "services": {
           "ai": {
             "items": {
-              "agents": "Développement d'agents intelligents",
+              "agents": "Agents intelligents",
               "automation": "Automatisation des processus métier",
               "cloud": "Solutions Cloud",
               "consulting": "Conseil stratégique en IA",
@@ -330,22 +271,24 @@
           },
           "dev": {
             "items": {
-              "cms": "Développement CMS",
+              "cms": "CMS",
               "ecommerce": "E-Commerce",
-              "mobile": "Développement d'applications mobiles",
-              "web": "Conception, développement Web"
+              "mobile": "Applications mobiles",
+              "web": "Conception Web",
+              "e-payment": "Intégration de connecteurs bancaires"
             },
             "title": "Développement et conception de solutions"
           },
           "maintenance": {
             "items": {
               "migration": "Migration, modernisation d'applications",
-              "seo": "Optimisation performances SEO",
-              "support": "Maintenance suppot"
+              "seo": "SEO",
+              "performance": "Performance",
+              "support": "Maintenance support"
             },
             "title": "Maintenace et modernisation"
           },
-          "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+          "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
           "title": "Nos services"
         },
         "trusted-brands": {
@@ -354,10 +297,10 @@
         "digital-audit": {
           "title": "Un site web performant, c'est bien plus qu'un ",
           "titleAccent": "beau design.",
-          "description": "Votre site génère-t-il assez de trafic ? Convertit-il bien vos visiteurs en clients ? Est-il optimisé pour Google ?<br/><br/><strong>HARGILE a développé un outil d'analyse de performance en ligne. En entrant simplement l'URL d'un site web, vous obtenez en quelques secondes un diagnostic précis</strong> :",
+          "description": "Votre site génère-t-il assez de trafic ? Convertit-il bien vos visiteurs en clients ? Votre visibilité est-elle optimisée ?<br/><br/><strong>HARGILE a développé un outil d'analyse de performance en ligne. En entrant simplement l'URL d'un site web, vous obtenez en quelques secondes un diagnostic précis</strong> :",
           "features": {
             "speed": "✅ <strong>Vitesse de chargement</strong> – Un site lent fait fuir les visiteurs !",
-            "seo": "✅ <strong>Référencement SEO</strong> – Êtes-vous visible sur Google ?",
+            "seo": "✅ <strong>Référencement SEO</strong> – Êtes-vous visible ?",
             "ux": "✅ <strong>Expérience utilisateur (UX)</strong> – Navigation fluide et responsive ?",
             "security": "✅ <strong>Sécurité et fiabilité</strong> – Votre site est-il bien protégé ?"
           },
@@ -366,7 +309,7 @@
             "text": "parce que de bons indices de performances créent plus de trafic, plus d'engagement et plus de conversions."
           },
           "form": {
-            "placeholder": "https://votresite.com",
+            "placeholder": "votresite.com",
             "submit": "Lancer l'audit",
             "loading": "Analyse en cours..."
           },
@@ -398,7 +341,7 @@
             },
             "seo": {
               "title": "Visibilité (SEO)",
-              "text": "Une structure de site bien optimisée facilite le travail des moteurs de recherche pour explorer et indexer votre contenu. Résultat : un meilleur positionnement sur Google et une augmentation du trafic qualifié vers votre site."
+              "text": "Une structure de site bien optimisée facilite le travail des moteurs de recherche pour explorer et indexer votre contenu. Résultat : un meilleur positionnement et une augmentation du trafic qualifié vers votre site."
             },
             "security": {
               "title": "Sécurité",
@@ -414,7 +357,7 @@
             },
             "bestPractices": {
               "title": "Bonnes pratiques techniques (Best Practices)",
-              "text": "Respecter les meilleures pratiques techniques recommandées par Google assure que votre site est robuste, performant et sécurisé. L'audit identifie les erreurs courantes telles que des ressources obsolètes, du JavaScript ou CSS mal optimisé, des bibliothèques non sécurisées, ainsi que les mauvaises configurations qui peuvent affecter l'expérience utilisateur et le référencement naturel. Un bon score en Best Practices garantit un site à jour, fiable et conforme aux standards modernes du web."
+              "text": "Respecter les meilleures pratiques techniques recommandées assure que votre site est robuste, performant et sécurisé. L'audit identifie les erreurs courantes telles que des ressources obsolètes, du JavaScript ou CSS mal optimisé, des bibliothèques non sécurisées, ainsi que les mauvaises configurations qui peuvent affecter l'expérience utilisateur et le référencement naturel. Un bon score en Best Practices garantit un site à jour, fiable et conforme aux standards modernes du web."
             }
           }
         }
@@ -596,7 +539,7 @@
           "title": "Conseil stratégique en IA"
         },
         "ecommerce": {
-          "description": "Solutions de commerce en ligne électronique performantes et sécurisées",
+          "description": "Solutions de commerce en ligne performantes et sécurisées",
           "title": "E-Commerce"
         },
         "migration": {
@@ -636,7 +579,7 @@
           "title": "Web"
         }
       },
-      "subtitle": "Nous avons tous les outils pour élever votre entreprise",
+      "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
       "subtitleBold": "pour votre transformation digitale",
       "subtitleItalic": "Solutions innovantes",
       "title": "Nos services"
@@ -684,17 +627,12 @@
           "may-look-seo": " moins de pages indexées et une perte de trafic face à vos concurrents.",
           "may-look-access": " que votre site n’est pas accessible à tous. Cela pourrait exclure une partie de votre audience et poser des problèmes de conformité.",
           "may-look-best": " un manque de standards modernes et sécurisés en développement web, ce qui peut exposer votre site à des vulnérabilités et nuire à la confiance des utilisateurs.",
-          "improve": "Vous souhaitez améliorer vos scores ?",
-          "experts": "Notre équipe d’experts peut vous aider à optimiser votre site pour de meilleures performances, SEO et accessibilité.",
+          "improve": "Vous souhaitez améliorer vos performances :",
+          "experts": "Nos experts peuvent vous aider à optimiser votre impact digital",
           "book": "Réservez un rendez-vous avec notre équipe",
-          "contact": "Contactez-nous"
+          "contact": "Prendre rendez-vous"
         }
       }
     }
-  },
-  "read-more": {
-    "less": "Réduire",
-    "more": "Voir plus"
-  },
-  "test": "lorem en"
+  }
 }

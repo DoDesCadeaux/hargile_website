@@ -80,7 +80,6 @@ export const FormGrid = styled.form`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  padding: 0 1rem;
 
   @media (min-width: 1024px) {
     grid-template-columns: 2fr 1fr;
@@ -89,7 +88,6 @@ export const FormGrid = styled.form`
 
 export const ContactInfoColumn = styled.div`
   background-color: rgba(17, 12, 41, 0.6);
-  margin: 10px;
   border: 1px solid rgba(147, 51, 234, 0.2);
   border-radius: 0.5rem;
   padding: 2.5rem;
@@ -124,7 +122,6 @@ export const ServiceTypesColumn = styled.div`
   border: 1px solid rgba(147, 51, 234, 0.1);
   border-radius: 0.5rem;
   padding: 2.5rem;
-  margin: 10px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   display: flex;
@@ -319,6 +316,7 @@ export const Checkbox = styled.button.attrs((props) => {
 
   ${(props) => {
     const colors = {
+      yellow: "#FCD34DFF",
       blue: "#3B82F6",
       purple: "#8B5CF6",
       pink: "#EC4899",
@@ -347,6 +345,7 @@ export const CheckboxLabel = styled.label.attrs({
   color: white;
   cursor: pointer;
   padding-left: 0.25rem;
+  margin-bottom: 0;
 `;
 
 export const SubmitButton = styled.button.attrs({

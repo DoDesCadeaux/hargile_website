@@ -3,10 +3,11 @@ import {Link} from "@/i18n/navigation";
 import {TransitionLink} from "@/components/TransitionLink";
 
 export const CardContainer = styled.div`
-    background-color: var(--color-background-card);
+    position: relative;
+    backdrop-filter: blur(8px);
+    background-color: color-mix(in srgb, black 40%, var(--color-background-card));
     border-radius: 0.5rem;
     overflow: hidden;
-    position: relative;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -22,8 +23,8 @@ export const CardContent = styled.div`
     display: grid;
     backdrop-filter: blur(8px);
     grid-template-areas:
-                        "icon title"
-                        "icon subtitle"
+                        "title title"
+                        "subtitle subtitle"
                         "body body"
                         "button button";
     grid-template-columns: max-content 1fr;
@@ -81,6 +82,7 @@ export const CardDescription = styled.p.attrs({
     color: var(--color-text-light);
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    text-align: justify;
 `;
 
 export const LearnMoreLink = styled(TransitionLink)`
@@ -92,6 +94,7 @@ export const LearnMoreLink = styled(TransitionLink)`
     font-weight: 500;
     transition: color 0.2s ease;
     gap: 8px;
+    text-decoration: underline;
 
     svg {
         margin-left: 0.5rem;

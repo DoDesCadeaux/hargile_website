@@ -100,19 +100,9 @@ export const MainTitle = styled.h2.attrs({
     className: 'fluid-type-4'
 })`
     color: var(--color-text-light);
-    margin-bottom: 1.5rem;
+    margin-bottom: 5rem;
     font-weight: 600;
-    align-self: center;
-
-    @media screen and (min-width: 1024px) {
-        position: relative;
-        align-self: flex-end;
-        left: -4.5vw;
-    }
-
-    @media (min-width: 1600px) {
-        left: 1vw;
-    }
+    align-self: flex-start;
 `;
 
 export const HighlightedText = styled.h3.attrs({
@@ -191,7 +181,8 @@ export const InfoBubble = styled.div`
     border-radius: 1rem;
     padding: 0.75rem 1rem;
     max-width: 110px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: ${({$color}) => `0 0 8px color-mix(in srgb, transparent 50%, ${$color})`};
+    border: 1px solid ${({$color}) => `${$color}`};
 
     @media (min-width: 768px) {
         max-width: 120px;
@@ -224,7 +215,7 @@ export const InfoBubble = styled.div`
 export const BubblePercentage = styled.div.attrs({
     className: 'fluid-type-3'
 })`
-    color: var(--color-text-light);
+    color: ${({$color}) => `${$color}`};
     font-weight: 700;
     margin-bottom: 0.25rem;
 `;

@@ -20,7 +20,7 @@ const BackgroundBlur = styled.div`
     opacity: 0.4;
     filter: blur(40px);
     transform: scale(6);
-    z-index: -1;
+    z-index: -10;
 `;
 
 const TitleWrapper = styled.div`
@@ -75,12 +75,13 @@ const SubtitleHighlight = styled.span.attrs({
 })``;
 
 const Description = styled.p.attrs({
-    className: "fluid-type-1",
+    className: "fluid-type-1-5",
 })`
     color: var(--color-text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
-    max-width: 600px;
+    max-width: 65ch;
+    mix-blend-mode: plus-lighter;
 `;
 
 /**

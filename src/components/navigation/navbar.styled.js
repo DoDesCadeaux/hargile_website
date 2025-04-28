@@ -59,23 +59,21 @@ export const NavbarMenuButtons = styled.div`
 
 export const NavbarNavigation = styled.nav`
     position: absolute;
-    top: 15vh;
+    top: 15dvh;
     left: 0;
     width: 100vw;
     height: 80vh;
-    max-height: 80vh;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-bottom: 20vh;
     overflow-y: auto;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc((15vh - 5vw) * 1);
+    gap: calc((13vh - 4.8vw) * 1);
     z-index: 1001;
-    opacity: ${({$visible}) => $visible ? '1' : '0'};
-    transition: opacity 0.25s ease;
-    will-change: opacity;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    justify-content: center;
+    transition: opacity 0.25s ease, visibility 0.25s ease, pointer-events 0.25s ease;
+    opacity: ${({$visible}) => ($visible ? '1' : '0')};
+    visibility: ${({$visible}) => ($visible ? 'visible' : 'hidden')};
+    pointer-events: ${({$visible}) => ($visible ? 'auto' : 'none')};
 `;
 
 export const StyledLink = styled(TransitionLink)`
@@ -89,6 +87,7 @@ export const StyledLink = styled(TransitionLink)`
     opacity: 0;
     transform: translateX(80px);
     will-change: transform, opacity;
+    width: 100%;
 `;
 
 export const Spacer = styled.div`

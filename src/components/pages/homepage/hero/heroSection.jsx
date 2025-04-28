@@ -1,9 +1,16 @@
 "use client";
 import Image from "next/image";
 import {useTranslations} from "next-intl";
-import {ReadMore} from "@/components/ReadMore";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {useEffect, useRef} from "react";
+import styled from "styled-components";
+
+
+export const AuditLink = styled.button`
+    &:hover {
+        color: var(--color-accent-blue-planet);
+    }
+`
 
 const HeroSection = () => {
     const t = useTranslations("pages.homepage.sections.hero");
@@ -40,12 +47,15 @@ const HeroSection = () => {
                         >
                             {t("description")}
                         </p>
-                        <button
+                        <AuditLink
                             aria-label={'Open audit modal'}
                             onClick={() => navigation.setIsAuditModalOpen(true)}
                             className="flex items-center bg-transparent text-white font-bold no-underline cursor-pointer"
                         >
-                            <p className="fluid-type-2">{t("ctaButton")}</p>
+                            <p className="fluid-type-2" style={{
+                                textDecoration: 'underline',
+
+                            }}>{t("ctaButton")}</p>
                             <Image
                                 src="/icons/arrows/maximize 01.svg"
                                 alt={t("arrowAlt")}
@@ -54,15 +64,13 @@ const HeroSection = () => {
                                 className="ml-2 mb-3"
                                 style={{marginBottom: "3rem", marginLeft: "1rem"}}
                             />
-                        </button>
+                        </AuditLink>
 
-                        <ReadMore
-                            id={'home-hero-paragraph'}
-                            text={t('paragraph')}
-                            amountOfWords={16}
-                            classNames={"fluid-type-1"}
-                            style={{maxWidth: '65ch'}}
-                        />
+                        <p style={{
+                            maxWidth: '65ch',
+                            textAlign: 'justify',
+                            fontWeight: '200',
+                        }} className={'fluid-type-1'}>{t('paragraph')}</p>
 
                     </div>
                 </div>

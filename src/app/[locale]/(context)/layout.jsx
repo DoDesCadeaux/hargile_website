@@ -1,62 +1,33 @@
-"use client"
+"use client";
+
 import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {usePageTransition} from "@/components/TransitionLink";
-import {useEffect, useRef} from "react";
+import {useEffect} from "react";
+import SmoothScroll, {lockScroll, unlockScroll} from "@/components/smooth-scroll";
 
 export default function ContextLayout({children}) {
-    const navigation = useSiteNavigation()
+    const navigation = useSiteNavigation();
     const {isTransitioning} = usePageTransition();
-    const lenisRef = useRef(null);
 
+    // Handle menu opening/closing
     useEffect(() => {
-        // Only import and initialize Lenis in the browser
-        const initLenis = async () => {
-            const Lenis = (await import('lenis')).default;
+        console.log(`[ContextLayout] Menu/modal state change: isOpen=${navigation.isOpen}, isAuditModalOpen=${navigation.isAuditModalOpen}`);
 
-            lenisRef.current = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: "vertical",
-                gestureDirection: "vertical",
-                smooth: true,
-                smoothTouch: false,
-                touchMultiplier: 2,
-            });
-
-            function raf(time) {
-                lenisRef.current.raf(time);
-                requestAnimationFrame(raf);
-            }
-
-            requestAnimationFrame(raf);
-        };
-
-        initLenis();
-
-        return () => {
-            if (lenisRef.current) {
-                lenisRef.current.destroy();
-            }
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!lenisRef.current) return;
-
-        if (isTransitioning) {
-            lenisRef.current.stop();
+        // Lock/unlock scrolling based on menu/modal state
+        if (navigation.isOpen || navigation.isAuditModalOpen || isTransitioning) {
+            lockScroll();
         } else {
-            lenisRef.current.start();
+            unlockScroll();
         }
-    }, [isTransitioning]);
+    }, [navigation.isOpen, navigation.isAuditModalOpen, isTransitioning]);
 
     return (
-        <>
+        <SmoothScroll>
             {navigation.isAuditModalOpen && (
                 <AuditMultiModal onClose={() => navigation.setIsAuditModalOpen(false)}/>
             )}
             {children}
-        </>
+        </SmoothScroll>
     );
 }

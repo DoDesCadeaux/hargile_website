@@ -19,7 +19,7 @@ import {
     ValuesContainer,
     ValueTitle
 } from "./about-us.styled";
-import React, { useRef, useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {motion, useInView} from "framer-motion";
 import {Plus} from "lucide-react";
 
@@ -83,7 +83,12 @@ const AboutUs = () => {
             >
                 <SectionWrapper as={motion.div} variants={itemVariants}>
                     <SectionTitle>{t("who_title")}</SectionTitle>
-                    <Description>{t("who_description")}</Description>
+                    <Description>{t("who_description").split('\n').map((line, i) => (
+                        <React.Fragment key={i}>
+                            {line === '' && <br/>}
+                            <span>{line}</span>
+                        </React.Fragment>
+                    ))}</Description>
                     {windowWidth !== null && windowWidth < 1600 && ourValues()}
                     <SubtitleContainer href="/about-us">
                         <Subtitle className={isInView ? "animate-underline" : ""}>

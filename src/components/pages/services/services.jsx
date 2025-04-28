@@ -40,7 +40,7 @@ import {OptimizedImage} from "@/components/optimizedImage";
 const Services = () => {
     const t = useTranslations("pages.services");
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, {once: true, amount: 0.2});
+    const isInView = useInView(sectionRef, {once: true, amount: 0.01});
 
     // Animation variants
     const containerVariants = {

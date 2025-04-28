@@ -105,7 +105,7 @@ export default function AuditResultPage() {
                                     {formData.url}
                                 </a>
                             </div>
-                        {/*TODO : ADD LANDING PAGE PREVIEW OF THE AUDITED URL*/}
+                            {/*TODO : ADD LANDING PAGE PREVIEW OF THE AUDITED URL*/}
                         </div>
                     </div>
                 </div>
@@ -263,14 +263,16 @@ export default function AuditResultPage() {
                                 )}
                             </div>
 
-                            <div className="!mt-4 !p-3 rounded-md bg-red-900/20 border border-red-800">
-                                <p className="text-red-400 text-sm !my-2">
-                                    {t('audit-results.score-like')} {section.score < 90 ? section.score : 82}{t('audit-results.may-look')}
-                                    {section.title === "Performance" ? t('audit-results.may-look-performances') :
-                                        section.title === "SEO" ? t('audit-results.may-look-seo') :
-                                            section.title === "Accessibility" ? t('audit-results.may-look-access') : t('audit-results.may-look-best')}
-                                </p>
-                            </div>
+                            {section.score < 90 &&
+                                <div className="!mt-4 !p-3 rounded-md bg-red-900/20 border border-red-800">
+                                    <p className="text-red-400 text-sm !my-2">
+                                        {t('audit-results.score-like')} {section.score}{t('audit-results.may-look')}
+                                        {section.title === "Performance" ? t('audit-results.may-look-performances') :
+                                            section.title === "SEO" ? t('audit-results.may-look-seo') :
+                                                section.title === "Accessibility" ? t('audit-results.may-look-access') : t('audit-results.may-look-best')}
+                                    </p>
+                                </div>
+                            }
                         </div>
                     ))}
                 </div>
@@ -303,7 +305,8 @@ export default function AuditResultPage() {
                         className="bg-violet-600/10 border border-violet-800/50 rounded-lg shadow-xl max-w-3xl w-full !mx-4 !p-4"
                         onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-center !mb-4">
-                            <h3 id={'audit-result-title'} className="text-xl font-semibold text-violet-900">{t('audit-results.book')}</h3>
+                            <h3 id={'audit-result-title'}
+                                className="text-xl font-semibold text-violet-900">{t('audit-results.book')}</h3>
                             <button onClick={() => setShowCalendar(false)}
                                     aria-labelledby={'audit-result-title'}
                                     className="text-gray-400 text-lg cursor-pointer">✕

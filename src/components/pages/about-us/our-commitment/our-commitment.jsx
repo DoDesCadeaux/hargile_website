@@ -72,46 +72,6 @@ const OurCommitment = () => {
             </MainTitle>
 
             <ContentWrapper>
-                <PlanetWrapper>
-                    <InfoBubbleContainer>
-
-                        <InfoBubble
-                            className="bubble-1"
-                            as={motion.div}
-                            custom={0}
-                            initial="hidden"
-                            animate={isInView ? "visible" : "hidden"}
-                            variants={bubbleVariants}
-                        >
-                            <BubblePercentage>1%</BubblePercentage>
-                            <BubbleText>{t("bubbles.goodplanet", "Of our profits go to GoodPlanet")}</BubbleText>
-                        </InfoBubble>
-
-                        <InfoBubble
-                            className="bubble-85"
-                            as={motion.div}
-                            custom={1}
-                            initial="hidden"
-                            animate={isInView ? "visible" : "hidden"}
-                            variants={bubbleVariants}
-                        >
-                            <BubblePercentage>85%</BubblePercentage>
-                            <BubbleText>{t("bubbles.carbon", "Carbon footprint reduction")}</BubbleText>
-                        </InfoBubble>
-
-                        <InfoBubble
-                            className="bubble-100"
-                            as={motion.div}
-                            custom={2}
-                            initial="hidden"
-                            animate={isInView ? "visible" : "hidden"}
-                            variants={bubbleVariants}
-                        >
-                            <BubblePercentage>100%</BubblePercentage>
-                            <BubbleText>{t("bubbles.renewable", "Renewable energy powered")}</BubbleText>
-                        </InfoBubble>
-                    </InfoBubbleContainer>
-                </PlanetWrapper>
 
                 <TextWrapper
                     as={motion.div}
@@ -162,6 +122,51 @@ const OurCommitment = () => {
                         </PillarItem>
                     </PillarsContainer>
                 </TextWrapper>
+
+                <PlanetWrapper>
+                    <InfoBubbleContainer>
+
+                        <InfoBubble
+                            className="bubble-1"
+                            as={motion.div}
+                            custom={0}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            variants={bubbleVariants}
+                            $color={'rgb(24, 149, 211)'}
+                        >
+                            <BubblePercentage $color={'rgb(24, 149, 211)'}>1%</BubblePercentage>
+                            <BubbleText>{t("bubbles.goodplanet", "Of our profits go to GoodPlanet")}</BubbleText>
+                        </InfoBubble>
+
+                        <InfoBubble
+                            className="bubble-85"
+                            as={motion.div}
+                            custom={1}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            variants={bubbleVariants}
+                            $color={'rgb(32,193,103)'}
+                        >
+                            <BubblePercentage $color={'rgb(32,193,103)'}>85%</BubblePercentage>
+                            <BubbleText>{t("bubbles.carbon", "Carbon footprint reduction")}</BubbleText>
+                        </InfoBubble>
+
+                        <InfoBubble
+                            className="bubble-100"
+                            as={motion.div}
+                            custom={2}
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            variants={bubbleVariants}
+                            $color={'rgb(252, 197, 19)'}
+                        >
+                            <BubblePercentage $color={'rgb(252, 197, 19)'}>100%</BubblePercentage>
+                            <BubbleText>{t("bubbles.renewable", "Renewable energy powered")}</BubbleText>
+                        </InfoBubble>
+                    </InfoBubbleContainer>
+                </PlanetWrapper>
+
             </ContentWrapper>
         </SectionContainer>
     );

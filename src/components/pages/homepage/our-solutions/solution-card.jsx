@@ -7,7 +7,6 @@ import {
     CardDescription,
     CardSubtitle,
     CardTitle,
-    IconContainer,
     LearnMoreLink
 } from "./solution-card.styled";
 
@@ -17,17 +16,20 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
     return (
         <CardContainer className={`our-solutions__card our-solutions__card--${id}`}>
             <CardContent>
-                <IconContainer className="our-solutions__card-icon">
-                    {/* Using a placeholder SVG since we don't have the actual icons */}
-                    <img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>
-                </IconContainer>
+                {/*<IconContainer className="our-solutions__card-icon">*/}
+                {/*    /!* Using a placeholder SVG since we don't have the actual icons *!/*/}
+                {/*    <img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
+                {/*</IconContainer>*/}
                 <CardTitle>{title}</CardTitle>
                 <CardSubtitle>{subtitle}</CardSubtitle>
                 <CardDescription>{description}</CardDescription>
-                <LearnMoreLink href={link}>
-                    {t("learn-more")}
-                    <img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>
-                </LearnMoreLink>
+
+                {link &&
+                    <LearnMoreLink href={link}>
+                        {t("learn-more")}
+                        {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
+                    </LearnMoreLink>
+                }
             </CardContent>
         </CardContainer>
     );

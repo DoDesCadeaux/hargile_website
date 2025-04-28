@@ -3,7 +3,7 @@
 import {useEffect, useRef, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion, useAnimation, useInView} from "framer-motion";
-import {OurWorksLink, SectionContainer, SectionLink, SectionTitle, WorksGrid} from "./recent-works.styled";
+import {SectionContainer, SectionTitle, WorksGrid} from "./recent-works.styled";
 import WorkCard from "./work-card";
 
 const RecentWorks = () => {
@@ -52,7 +52,7 @@ const RecentWorks = () => {
             title: t("works.agves.title") || "AGVES",
             description: t("works.agves.description") || "Platform for schools",
             image: "/images/pages/homepage/crayons.jpg",
-            link: "/works/agves",
+            link: "/solutions/agves",
             parallaxFactor: 0.055   // AGVES moves down a lot
         },
         {
@@ -60,15 +60,15 @@ const RecentWorks = () => {
             title: t("works.i-go.title") || "I GO",
             description: t("works.i-go.description") || "Mobile development, AI",
             image: "/images/pages/homepage/crayons.jpg",
-            link: "/works/i-go",
+            link: "/solutions/i-go",
             parallaxFactor: 0.0255 // I GO moves down slightly
         },
         {
-            id: "leafy",
-            title: t("works.leafy.title") || "Leafy",
-            description: t("works.leafy.description") || "E-commerce for plants, Full-stack",
+            id: "multipass",
+            title: t("works.multipass.title") || "Leafy",
+            description: t("works.multipass.description"),
             image: "/images/pages/homepage/crayons.jpg",
-            link: "/works/leafy",
+            link: "/solutions/multipass",
             parallaxFactor: -0.055 // Leafy moves up
         }
     ];
@@ -146,11 +146,11 @@ const RecentWorks = () => {
                     ))}
                 </WorksGrid>
 
-                <OurWorksLink>
-                    <SectionLink href="/works">
-                        {t("view-all") || "All our works"} →
-                    </SectionLink>
-                </OurWorksLink>
+                {/*<OurWorksLink>*/}
+                {/*    <SectionLink href="/works">*/}
+                {/*        {t("view-all") || "All our works"} →*/}
+                {/*    </SectionLink>*/}
+                {/*</OurWorksLink>*/}
             </motion.div>
         </SectionContainer>
     );

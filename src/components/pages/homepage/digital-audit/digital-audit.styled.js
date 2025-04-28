@@ -44,7 +44,7 @@ export const FeaturesList = styled.ul`
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin: 3rem 0;
-    width: max-content;
+    max-width: max-content;
     padding-left: 0;
 
     @media (min-width: 768px) {
@@ -89,12 +89,12 @@ export const DetailsList = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    
-    @media screen and (min-width: 1200px){
+
+    @media screen and (min-width: 1200px) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (min-width: 1920px){
+    @media screen and (min-width: 1920px) {
         grid-template-columns: repeat(3, 1fr);
     }
 `;
@@ -107,6 +107,7 @@ export const DetailItem = styled.div`
     backdrop-filter: blur(6px);
     padding: 1.8rem 2rem;
     max-width: 800px;
+
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -130,6 +131,6 @@ export const DetailText = styled.p.attrs({
 })`
     color: var(--color-text-light);
     text-align: justify;
-text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 0;
 `;

@@ -1,25 +1,30 @@
 "use client";
 
-import { useRouter } from 'next/navigation';
-import { createContext, useContext, useState, useEffect } from 'react';
-import Link from 'next/link';
+import {createContext, useContext, useEffect, useState} from 'react';
+import {Link, useRouter} from "@/i18n/navigation";
 
 // Simple transition timing variables
-const TRANSITION_DURATION = 600; // milliseconds
-const BLACK_SCREEN_DURATION = 600; // milliseconds
+export const TRANSITION_DURATION = 600; // milliseconds
+export const BLACK_SCREEN_DURATION = 600; // milliseconds
 
 const PageTransitionContext = createContext({
     isTransitioning: false,
     transitionState: 'idle', // 'idle', 'exiting', 'entering'
-    setIsTransitioning: () => {},
-    setTransitionState: () => {},
+    setIsTransitioning: () => {
+    },
+    setTransitionState: () => {
+    },
+    timing: {
+        TRANSITION_DURATION,
+        BLACK_SCREEN_DURATION,
+    }
 });
 
 export const usePageTransition = () => {
     return useContext(PageTransitionContext);
 };
 
-export const PageTransitionProvider = ({ children }) => {
+export const PageTransitionProvider = ({children}) => {
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [transitionState, setTransitionState] = useState('idle');
 
@@ -35,9 +40,9 @@ export const PageTransitionProvider = ({ children }) => {
     );
 };
 
-export const TransitionLink = ({ href, children, className, onClick, ...props }) => {
+export const TransitionLink = ({href, children, className, onClick, ...props}) => {
     const router = useRouter();
-    const { setIsTransitioning, setTransitionState } = usePageTransition();
+    const {setIsTransitioning, setTransitionState} = usePageTransition();
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {

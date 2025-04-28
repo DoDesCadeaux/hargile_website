@@ -141,6 +141,7 @@ export const Conclusion = styled.p.attrs({
     line-height: 1.6;
     margin-bottom: 3rem;
     max-width: 600px;
+    text-align: justify;
 `;
 
 export const StyledLi = styled.li.attrs({
@@ -221,7 +222,7 @@ export const ValueDescription = styled.dd.attrs({
     className: 'fluid-type-0-5'
 })`
     transition: color 0.3s ease;
-    width: 60ch;
+    max-width: 60ch;
 `;
 
 export const DefinitionList = styled.dl`
