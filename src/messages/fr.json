@@ -1,40 +1,73 @@
 {
-  "audit-button": {
-    "description": "",
-    "title": "Auditer votre site web"
-  },
-  "audit-modal": {
-    "modal-title": "Audit de votre site",
-    "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
-    "modal-url-placeholder": "votresite.com",
-    "start-audit": "Lancer l’audit",
-    "analyzing": "Analyse de votre site en cours... Vous pouvez remplir le formulaire pendant ce temps.",
-    "analysis-complete": "Analyse terminée ! Remplissez vos informations pour consulter les résultats.",
-    "contact": "Formulaire de Contact",
-    "error": "Erreur lors de l'audit. Il se pourrait que l'URL que vous avez indiquée soit mauvaise. Veuillez réessayer.",
-    "first-name": "Prénom",
-    "last-name": "Nom",
-    "company": "Est-ce pour votre entreprise ?",
-    "select": "Veuillez sélectionner",
-    "yes": "Oui",
-    "no": "Non",
-    "industry": "Secteur d’activité",
-    "processing": "Traitement en cours...",
-    "view-results": "Voir les résultats de l’audit",
-    "wait": "Veuillez patienter jusqu’à la fin de l’audit avant d’accéder aux résultats.",
-    "back-url": "Retour à l’audit",
-    "incomplete": "Veuillez remplir tous les champs obligatoires marqués d’un *"
-  },
-  "incomplete": "Please complete all required fields marked with *",
-  "menu": {
-    "contact": "Contact",
-    "our-dna": "Notre ADN",
-    "portfolio": "Portfolio",
-    "services": "Services",
-    "solutions": "Solutions",
-    "i-go": "I go",
-    "agves": "AGVES",
-    "multipass": "Multipass"
+  "components": {
+    "contact-form": {
+      "contact": {
+        "email": "Email",
+        "message": "Votre message",
+        "name": "Nom et prénom",
+        "phone": "Téléphone",
+        "object": "Objet",
+        "projectDescription": "Votre message",
+        "title": "Informations de contact"
+      },
+      "description": "Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
+      "privacy": {
+        "link": "politique de confidentialité",
+        "requiredFields": "Champs obligatoires",
+        "text": "En soumettant ce formulaire, vous acceptez notre"
+      },
+      "services": {
+        "ai": "Intelligence Artificielle",
+        "cloud": "Solutions Cloud",
+        "description": "Sélectionnez une ou plusieurs options",
+        "mobileApps": "Applications Mobiles",
+        "title": "Type de service",
+        "webDevelopment": "Développement Web",
+        "advice": "Conseil"
+      },
+      "submit": "Soumettre",
+      "title": "Contacter-nous"
+    },
+    "audit-button": {
+      "description": "",
+      "title": "Auditer votre site web"
+    },
+    "audit-modal": {
+      "modal-title": "Audit de votre site",
+      "modal-description": "Entrez l’URL de votre site ci-dessous pour lancer un audit complet de ses performances.",
+      "modal-url-placeholder": "votresite.com",
+      "start-audit": "Lancer l’audit",
+      "analyzing": "Analyse de votre site en cours... Vous pouvez remplir le formulaire pendant ce temps.",
+      "analysis-complete": "Analyse terminée ! Remplissez vos informations pour consulter les résultats.",
+      "contact": "Formulaire de Contact",
+      "error": "Erreur lors de l'audit. Il se pourrait que l'URL que vous avez indiquée soit mauvaise. Veuillez réessayer.",
+      "first-name": "Prénom",
+      "last-name": "Nom",
+      "company": "Est-ce pour votre entreprise ?",
+      "select": "Veuillez sélectionner",
+      "yes": "Oui",
+      "no": "Non",
+      "industry": "Secteur d’activité",
+      "processing": "Traitement en cours...",
+      "view-results": "Voir les résultats de l’audit",
+      "wait": "Veuillez patienter jusqu’à la fin de l’audit avant d’accéder aux résultats.",
+      "back-url": "Retour à l’audit",
+      "incomplete": "Veuillez remplir tous les champs obligatoires marqués d’un *"
+    },
+    "read-more": {
+      "less": "Réduire",
+      "more": "Voir plus"
+    },
+    "menu": {
+      "contact": "Contact",
+      "our-dna": "Notre ADN",
+      "portfolio": "Portfolio",
+      "services": "Services",
+      "solutions": "Solutions",
+      "i-go": "I go",
+      "agves": "AGVES",
+      "multipass": "Multipass"
+    }
   },
   "pages": {
     "about-us": {
@@ -107,54 +140,6 @@
           "title": "Notre Équipe"
         }
       }
-    },
-    "contact": {
-      "contact": {
-        "email": "Email",
-        "message": "Votre message",
-        "name": "Nom et prénom",
-        "phone": "Téléphone",
-        "object": "Objet",
-        "title": "Informations de contact"
-      },
-      "contactInfo": {
-        "address": {
-          "title": "Adresse",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        },
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Téléphone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "title": "Nos coordonnées"
-      },
-      "description": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-      "privacy": {
-        "link": "politique de confidentialité",
-        "requiredFields": "Champs obligatoires",
-        "text": "En soumettant ce formulaire, vous acceptez notre"
-      },
-      "services": {
-        "ai": "Intelligence Artificielle",
-        "cloud": "Solutions Cloud",
-        "description": "Sélectionnez une ou plusieurs options",
-        "mobileApps": "Applications Mobiles",
-        "title": "Type de service",
-        "webDevelopment": "Développement Web"
-      },
-      "social": {
-        "title": "Suivez-nous"
-      },
-      "submit": "Envoyer le message",
-      "subtitle": {
-        "part1": "Entrez en contact",
-        "part2": "avec notre équipe"
-      },
-      "title": "Contactez-nous"
     },
     "homepage": {
       "sections": {
@@ -245,56 +230,6 @@
             }
           },
           "title": "Web, mobile, cloud, IA"
-        },
-        "quote-request": {
-          "contact": {
-            "budget": {
-              "10kTo25k": "10 000 € - 25 000 €",
-              "25kTo50k": "25 000 € - 50 000 €",
-              "5kTo10k": "5 000 € - 10 000 €",
-              "label": "Budget estimé",
-              "less5k": "Moins de 5 000 €",
-              "more50k": "Plus de 50 000 €",
-              "select": "Sélectionner"
-            },
-            "email": "Email",
-            "message": "Votre message",
-            "name": "Nom et prénom",
-            "phone": "Téléphone",
-            "object": "Objet",
-            "projectDescription": "Votre message",
-            "timeline": {
-              "1To3months": "1 - 3 mois",
-              "3To6months": "3 - 6 mois",
-              "label": "Échéance souhaitée",
-              "less1month": "Moins d'un mois",
-              "more6months": "Plus de 6 mois",
-              "select": "Sélectionner"
-            },
-            "title": "Informations de contact"
-          },
-          "description": "Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
-          "descriptionPageContact": "Notre équipe d'experts est à votre disposition pour vous accompagner dans vos projets numériques et répondre à toutes vos questions.",
-          "privacy": {
-            "link": "politique de confidentialité",
-            "requiredFields": "Champs obligatoires",
-            "text": "En soumettant ce formulaire, vous acceptez notre"
-          },
-          "services": {
-            "ai": "Intelligence Artificielle",
-            "cloud": "Solutions Cloud",
-            "description": "Sélectionnez une ou plusieurs options",
-            "mobileApps": "Applications Mobiles",
-            "title": "Type de service",
-            "webDevelopment": "Développement Web",
-            "advice": "Conseil"
-          },
-          "submit": "Soumettre",
-          "subtitle": {
-            "part1": "Obtenez une estimation",
-            "part2": "gratuite pour votre projet"
-          },
-          "title": "Contacter-nous"
         },
         "recent-works": {
           "title": "Nos réalisations récentes",
@@ -699,10 +634,5 @@
         }
       }
     }
-  },
-  "read-more": {
-    "less": "Réduire",
-    "more": "Voir plus"
-  },
-  "test": "lorem en"
+  }
 }

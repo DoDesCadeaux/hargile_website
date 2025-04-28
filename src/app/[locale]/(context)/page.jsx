@@ -5,7 +5,7 @@ import OurSolutions from "@/components/pages/homepage/our-solutions/our-solution
 import OurServices from "@/components/pages/homepage/services/ourServices";
 import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";
-import QuoteRequestForm from "@/components/pages/homepage/quote-request/QuoteRequestForm";
+import ContactForm from "@/components/form/contact-form";
 
 export default function HomePage() {
     return (
@@ -18,7 +18,7 @@ export default function HomePage() {
             <AboutUs/>
             {/*<LatestInsights/>*/}
             <DigitalAuditSection/>
-            <QuoteRequestForm/>
+            <ContactForm/>
         </div>
     );
 }

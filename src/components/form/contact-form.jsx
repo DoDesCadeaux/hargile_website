@@ -1,7 +1,12 @@
 import {useTranslations} from "next-intl";
 import {useState} from "react";
 import {Header} from "@/components/header/mainHeader";
-import {FormContainer, FormGrid} from "@/components/pages/homepage/quote-request/quote-request-form.styled";
+import {
+    BackgroundBlur,
+    FormContainer,
+    FormGrid,
+    PageWrapper
+} from "@/components/pages/homepage/quote-request/quote-request-form.styled";
 import {ContactSection} from "@/components/pages/homepage/quote-request/components/ContactSection";
 import {ServicesSection} from "@/components/pages/homepage/quote-request/components/ServicesSection";
 import {PrivacyFooter} from "@/components/pages/homepage/quote-request/components/PrivacyFooter";
@@ -17,7 +22,7 @@ export default function ContactForm() {
     } = useForm();
 
 // Get translations
-    const t = useTranslations("pages.homepage.sections.quote-request");
+    const t = useTranslations("components.contact-form");
 
     const [serviceTypes, setServiceTypes] = useState({
         webDevelopment: false,
@@ -44,31 +49,35 @@ export default function ContactForm() {
     };
 
     return (
-        <FormContainer>
-            <Header
-                title={t("title")}
-                description={t("description")}
-                showUnderline={true}
-                showBackgroundBlur={false}
-            />
+        <PageWrapper>
+            <BackgroundBlur/>
 
-            <FormGrid onSubmit={handleSubmit(onSubmit)}>
-                <ContactSection
-                    t={t}
-                    register={register}
-                    errors={errors}
-                    setValue={setValue}
-                    watch={watch}
+            <FormContainer>
+                <Header
+                    title={t("title")}
+                    description={t("description")}
+                    showUnderline={true}
+                    showBackgroundBlur={false}
                 />
 
-                <ServicesSection
-                    t={t}
-                    serviceTypes={serviceTypes}
-                    toggleService={toggleService}
-                />
-            </FormGrid>
+                <FormGrid onSubmit={handleSubmit(onSubmit)}>
+                    <ContactSection
+                        t={t}
+                        register={register}
+                        errors={errors}
+                        setValue={setValue}
+                        watch={watch}
+                    />
 
-            <PrivacyFooter t={t}/>
-        </FormContainer>
+                    <ServicesSection
+                        t={t}
+                        serviceTypes={serviceTypes}
+                        toggleService={toggleService}
+                    />
+                </FormGrid>
+
+                <PrivacyFooter t={t}/>
+            </FormContainer>
+        </PageWrapper>
     )
 }

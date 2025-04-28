@@ -15,7 +15,7 @@ export const ReadMore = ({id, text, amountOfWords = 36, classNames, style}: Read
     const [fullHeight, setFullHeight] = useState<number | null>(null)
     const shortTextRef = useRef<HTMLDivElement>(null)
     const fullTextRef = useRef<HTMLDivElement>(null)
-    const t = useTranslations('read-more')
+    const t = useTranslations('components.read-more')
 
     const splittedText = text.replace('/\n/gi', '').split(' ').map((e: string) => e + ' ')
     const itCanOverflow = splittedText.length > amountOfWords

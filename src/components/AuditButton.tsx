@@ -39,7 +39,7 @@ const AuditButtonStyled = styled.button.attrs({
 
 export const AuditButton = () => {
     const navigation = useSiteNavigation()
-    const t = useTranslations('audit-button');
+    const t = useTranslations('components.audit-button');
 
     if (navigation.isOpen) return null;
 

@@ -5,7 +5,7 @@ import {Dialog, DialogPanel, DialogTitle} from '@headlessui/react'
 import {useTranslations} from "next-intl";
 
 export default function AuditMultiModal({onClose}) {
-    const t = useTranslations('audit-modal');
+    const t = useTranslations('components.audit-modal');
     const [step, setStep] = useState(1)
     const [formData, setFormData] = useState({
         firstName: '',

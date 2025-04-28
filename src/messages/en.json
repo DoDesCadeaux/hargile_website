@@ -1,39 +1,81 @@
 {
-  "audit-button": {
-    "description": "",
-    "title": "Audit your website"
-  },
-  "audit-modal": {
-    "modal-title": "Website Audit",
-    "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
-    "modal-url-placeholder": "yourwebiste.com",
-    "start-audit": "Start Audit",
-    "analyzing": "Analyzing your website... You can complete the form while we work.",
-    "analysis-complete": "Analysis complete! Fill in your details to view the results.",
-    "contact": "Contact Information",
-    "error": "Error during the audit. The URL you entered might be incorrect. Please try again.",
-    "first-name": "First Name",
-    "last-name": "Last Name",
-    "company": "Is this for your company?",
-    "select": "Please Select",
-    "yes": "Yes",
-    "no": "No",
-    "industry": "Industry",
-    "processing": "Processing...",
-    "view-results": "View Audit Results",
-    "wait": "Please wait for the audit to complete before accessing results.",
-    "back-url": "Go back",
-    "incomplete": "Please complete all required fields marked with *"
-  },
-  "menu": {
-    "contact": "Contact",
-    "our-dna": "Our DNA",
-    "portfolio": "Portfolio",
-    "services": "Services",
-    "solutions": "Solutions",
-    "i-go": "I go",
-    "agves": "AGVES",
-    "multipass": "Multipass"
+  "components": {
+    "contact-form": {
+      "contact": {
+        "email": "Email",
+        "message": "Your message",
+        "name": "First and Last Name",
+        "phone": "Phone",
+        "object": "Object",
+        "projectDescription": "Your message",
+        "timeline": {
+          "1To3months": "1 - 3 months",
+          "3To6months": "3 - 6 months",
+          "label": "Desired Timeline",
+          "less1month": "Less than a month",
+          "more6months": "More than 6 months",
+          "select": "Select"
+        },
+        "title": "Contact Information"
+      },
+      "description": "Our team of experts will analyze your needs and contact you within 48 hours.",
+      "privacy": {
+        "link": "privacy policy",
+        "requiredFields": "Required fields",
+        "text": "By submitting this form, you accept our"
+      },
+      "services": {
+        "ai": "Artificial Intelligence",
+        "cloud": "Cloud Solutions",
+        "description": "Select one or more options",
+        "mobileApps": "Mobile Applications",
+        "title": "Service Type",
+        "webDevelopment": "Web Development",
+        "advice": "Advice"
+      },
+      "submit": "Submit",
+      "title": "Contact us"
+    },
+    "audit-button": {
+      "description": "",
+      "title": "Audit your website"
+    },
+    "audit-modal": {
+      "modal-title": "Website Audit",
+      "modal-description": "Enter your website URL below to start a comprehensive performance audit of your site.",
+      "modal-url-placeholder": "yourwebiste.com",
+      "start-audit": "Start Audit",
+      "analyzing": "Analyzing your website... You can complete the form while we work.",
+      "analysis-complete": "Analysis complete! Fill in your details to view the results.",
+      "contact": "Contact Information",
+      "error": "Error during the audit. The URL you entered might be incorrect. Please try again.",
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "company": "Is this for your company?",
+      "select": "Please Select",
+      "yes": "Yes",
+      "no": "No",
+      "industry": "Industry",
+      "processing": "Processing...",
+      "view-results": "View Audit Results",
+      "wait": "Please wait for the audit to complete before accessing results.",
+      "back-url": "Go back",
+      "incomplete": "Please complete all required fields marked with *"
+    },
+    "read-more": {
+      "less": "Show less",
+      "more": "Show more"
+    },
+    "menu": {
+      "contact": "Contact",
+      "our-dna": "Our DNA",
+      "portfolio": "Portfolio",
+      "services": "Services",
+      "solutions": "Solutions",
+      "i-go": "I go",
+      "agves": "AGVES",
+      "multipass": "Multipass"
+    }
   },
   "pages": {
     "about-us": {
@@ -106,54 +148,6 @@
           "title": "Our Team"
         }
       }
-    },
-    "contact": {
-      "contact": {
-        "email": "Email",
-        "message": "Your message",
-        "name": "First and Last Name",
-        "phone": "Phone",
-        "object": "Object",
-        "title": "Contact Information"
-      },
-      "contactInfo": {
-        "address": {
-          "title": "Address",
-          "value": "123 rue de l'Innovation, 1000 BXL"
-        },
-        "email": {
-          "title": "Email",
-          "value": "contact@hargile.com"
-        },
-        "phone": {
-          "title": "Telephone",
-          "value": "+32 (0)1 23 45 67 89"
-        },
-        "title": "Our Contact Details"
-      },
-      "description": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-      "privacy": {
-        "link": "privacy policy",
-        "requiredFields": "Required fields",
-        "text": "By submitting this form, you accept our"
-      },
-      "services": {
-        "ai": "Artificial Intelligence",
-        "cloud": "Cloud Solutions",
-        "description": "Select one or more options",
-        "mobileApps": "Mobile Applications",
-        "title": "Service Type",
-        "webDevelopment": "Web Development"
-      },
-      "social": {
-        "title": "Follow Us"
-      },
-      "submit": "Send Message",
-      "subtitle": {
-        "part1": "Get in touch",
-        "part2": "with our team"
-      },
-      "title": "Contact Us"
     },
     "homepage": {
       "sections": {
@@ -244,56 +238,6 @@
             }
           },
           "title": "Web, mobile, cloud, AI"
-        },
-        "quote-request": {
-          "contact": {
-            "budget": {
-              "10kTo25k": "€10,000 - €25,000",
-              "25kTo50k": "€25,000 - €50,000",
-              "5kTo10k": "€5,000 - €10,000",
-              "label": "Estimated Budget",
-              "less5k": "Less than €5,000",
-              "more50k": "More than €50,000",
-              "select": "Select"
-            },
-            "email": "Email",
-            "message": "Your message",
-            "name": "First and Last Name",
-            "phone": "Phone",
-            "object": "Object",
-            "projectDescription": "Your message",
-            "timeline": {
-              "1To3months": "1 - 3 months",
-              "3To6months": "3 - 6 months",
-              "label": "Desired Timeline",
-              "less1month": "Less than a month",
-              "more6months": "More than 6 months",
-              "select": "Select"
-            },
-            "title": "Contact Information"
-          },
-          "description": "Our team of experts will analyze your needs and contact you within 48 hours.",
-          "descriptionPageContact": "Our team of experts is at your disposal to support you in your digital projects and answer all your questions.",
-          "privacy": {
-            "link": "privacy policy",
-            "requiredFields": "Required fields",
-            "text": "By submitting this form, you accept our"
-          },
-          "services": {
-            "ai": "Artificial Intelligence",
-            "cloud": "Cloud Solutions",
-            "description": "Select one or more options",
-            "mobileApps": "Mobile Applications",
-            "title": "Service Type",
-            "webDevelopment": "Web Development",
-            "advice": "Advice"
-          },
-          "submit": "Submit",
-          "subtitle": {
-            "part1": "Get a free estimate",
-            "part2": "for your project"
-          },
-          "title": "Contact us"
         },
         "recent-works": {
           "title": "Our recent works",
@@ -698,10 +642,5 @@
         }
       }
     }
-  },
-  "read-more": {
-    "less": "Show less",
-    "more": "Show more"
-  },
-  "test": "lorem en"
+  }
 }

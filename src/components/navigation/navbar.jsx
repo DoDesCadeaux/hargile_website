@@ -30,17 +30,17 @@ const menuItems = [
 ];
 
 const Navbar = () => {
-    const {isOpen, closeMenu, toggleMenu} = useSiteNavigation();
+    const {isOpen, closeMenu} = useSiteNavigation();
     const router = useRouter();
     const navbarRef = useRef(null);
     const brandRef = useRef(null);
     const [navbarHeight, setNavbarHeight] = useState(0);
-    const t = useTranslations('menu');
+    const t = useTranslations('components.menu');
     const {setIsTransitioning, setTransitionState} = usePageTransition();
     const [isMounted, setIsMounted] = useState(false);
 
     useMenuItems(isOpen);
-    const {menuItemDisplayed, navigationVisible} = useNavigationVisibility(isOpen);
+    const {navigationVisible} = useNavigationVisibility(isOpen);
 
     useEffect(() => {
         setIsMounted(true);
