@@ -1,6 +1,6 @@
 "use client";
 
-import React, {memo, useEffect, useRef, useState} from "react";
+import React, {memo, useCallback, useEffect, useRef, useState} from "react";
 import NavbarButton from "@/components/navigation/button/navbar-button";
 import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {useRouter} from "@/i18n/navigation";
@@ -17,27 +17,26 @@ import {
     StyledLink,
     StyledNavbar
 } from "@/components/navigation/navbar.styled";
-import {usePageTransition} from '@/components/TransitionLink';
+import {BLACK_SCREEN_DURATION, TRANSITION_DURATION, usePageTransition} from '@/components/TransitionLink';
 
-const menuItems = Array.from([
+const menuItems = [
     {path: '/services', id: 'services'},
-    // {path: '/solutions', id: 'solutions'},
     {path: '/about-us', id: 'our-dna'},
     {path: '/contact', id: 'contact'},
     {path: '/portfolio', id: 'portfolio'},
     {path: '/solutions/agves', id: 'agves'},
     {path: '/solutions/i-go', id: 'i-go'},
     {path: '/solutions/multipass', id: 'multipass'},
-]);
+];
 
 const Navbar = () => {
-    const {isOpen, toggleMenu} = useSiteNavigation();
+    const {isOpen, closeMenu, toggleMenu} = useSiteNavigation();
     const router = useRouter();
     const navbarRef = useRef(null);
     const brandRef = useRef(null);
     const [navbarHeight, setNavbarHeight] = useState(0);
     const t = useTranslations('menu');
-    const {setIsTransitioning, setTransitionState, timing} = usePageTransition();
+    const {setIsTransitioning, setTransitionState} = usePageTransition();
     const [isMounted, setIsMounted] = useState(false);
 
     useMenuItems(isOpen);
@@ -46,25 +45,24 @@ const Navbar = () => {
     useEffect(() => {
         setIsMounted(true);
 
-        if (navbarRef.current) {
-            setNavbarHeight(navbarRef.current.offsetHeight);
-        }
-
-        const handleResize = () => {
+        const updateNavbarHeight = () => {
             if (navbarRef.current) {
-                setNavbarHeight(navbarRef.current.offsetHeight);
+                const height = navbarRef.current.offsetHeight;
+                setNavbarHeight(height);
+                document.documentElement.style.setProperty('--navbar-height', `${height}px`);
             }
         };
 
-        window.addEventListener('resize', handleResize);
+        updateNavbarHeight();
+        window.addEventListener('resize', updateNavbarHeight);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', updateNavbarHeight);
             setIsMounted(false);
         };
     }, []);
 
-    const triggerHomeTransitionAnimation = (e) => {
+    const triggerHomeTransitionAnimation = useCallback((e) => {
         e.preventDefault();
 
         if (!isMounted) return;
@@ -72,11 +70,13 @@ const Navbar = () => {
         if (brandRef.current) {
             brandRef.current.classList.add('transition');
 
-            // Start exit animation
             setIsTransitioning(true);
             setTransitionState('exiting');
 
-            // Simplified timing using constants
+            if (isOpen) {
+                closeMenu();
+            }
+
             setTimeout(() => {
                 router.push('/');
 
@@ -89,11 +89,15 @@ const Navbar = () => {
                         }
                         setIsTransitioning(false);
                         setTransitionState('idle');
-                    }, 600); // TRANSITION_DURATION
-                }, 400); // BLACK_SCREEN_DURATION
-            }, 600); // TRANSITION_DURATION
+                    }, TRANSITION_DURATION || 600);
+                }, BLACK_SCREEN_DURATION || 400);
+            }, TRANSITION_DURATION || 600);
         }
-    };
+    }, [isMounted, isOpen, closeMenu, router, setIsTransitioning, setTransitionState]);
+
+    const handleMenuItemClick = useCallback(() => {
+        closeMenu();
+    }, [closeMenu]);
 
     return (
         <>
@@ -122,13 +126,13 @@ const Navbar = () => {
 
                 <NavbarNavigation
                     className="navbar-navigation"
-                    style={{display: menuItemDisplayed ? 'flex' : 'none'}}
                     $active={isOpen}
                     $visible={navigationVisible}
+                    data-lenis-prevent
                 >
                     {menuItems.map((item, index) => (
                         <StyledLink
-                            onClick={toggleMenu}
+                            onClick={handleMenuItemClick}
                             key={index}
                             className="navbar__navigation__item"
                             href={item.path}

@@ -1,6 +1,6 @@
 "use client";
 
-import {createContext, useContext, useState} from "react";
+import {createContext, useCallback, useContext, useState} from "react";
 
 const SiteNavigationContext = createContext(null);
 
@@ -9,9 +9,17 @@ export const SiteNavigationProvider = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
 
-    const toggleAuditModal = () => setIsAuditModalOpen(!isAuditModalOpen);
+    const toggleAuditModal = useCallback(() => {
+        setIsAuditModalOpen(prevState => !prevState);
+    }, []);
 
-    const toggleMenu = () => setIsOpen((prev) => !prev);
+    const toggleMenu = useCallback(() => {
+        setIsOpen(prevState => !prevState);
+    }, []);
+
+    const closeMenu = useCallback(() => {
+        setIsOpen(false);
+    }, []);
 
     return (
         <SiteNavigationContext.Provider
@@ -19,7 +27,9 @@ export const SiteNavigationProvider = ({children}) => {
                 currentSection,
                 setCurrentSection,
                 isOpen,
+                setIsOpen,
                 toggleMenu,
+                closeMenu,
                 isAuditModalOpen,
                 setIsAuditModalOpen,
                 toggleAuditModal

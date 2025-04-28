@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {useEffect, useRef, useState} from 'react';
 
@@ -19,7 +19,8 @@ export const useNavigationVisibility = (isOpen) => {
     useEffect(() => {
         clearTimers();
 
-        document.body.style.overflow = isOpen ? "hidden" : "auto";
+        // REMOVED: document.body.style.overflow = isOpen ? "hidden" : "auto";
+        // Let the ScrollManager handle this instead
 
         if (isOpen) {
             setMenuItemDisplayed(true);

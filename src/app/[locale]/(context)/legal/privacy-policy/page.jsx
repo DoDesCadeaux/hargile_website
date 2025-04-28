@@ -6,7 +6,6 @@ import {FileText, Menu, Printer, X} from "lucide-react";
 
 const PageContainer = styled.div`
   min-height: 100vh;
-  background-color: #0a051a;
   color: white;
   position: relative;
   overflow: hidden;

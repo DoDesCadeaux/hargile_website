@@ -13,7 +13,6 @@ export default function RootLayout({children}) {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
-        // Set isBrowser to true once component mounts (client-side only)
         setIsBrowser(true);
 
         const timer = setTimeout(() => {
