@@ -1,8 +1,7 @@
 "use client";
 
-import {useRouter} from 'next/navigation';
 import {createContext, useContext, useEffect, useState} from 'react';
-import {Link} from "@/i18n/navigation";
+import {Link, useRouter} from "@/i18n/navigation";
 
 // Simple transition timing variables
 const TRANSITION_DURATION = 600; // milliseconds
