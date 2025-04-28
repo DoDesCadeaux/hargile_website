@@ -7,8 +7,6 @@ import {ColumnStyled} from "@/components/footer/column.styled";
 import {HeadingStyled} from "@/components/footer/heading.styled";
 import {FooterContainerStyled} from "@/components/footer/footer-container.styled";
 import {FooterContentStyled} from "@/components/footer/footer-content.styled";
-import {NewsletterSectionStyled} from "@/components/footer/newsletter-section.styled";
-import {EmailInputStyled} from "@/components/footer/email-input.styled";
 import {BottomBarStyled} from "@/components/footer/bottom-bar.styled";
 import {BottomLinksStyled} from "@/components/footer/bottom-links.styled";
 import {TransitionLink} from "@/components/TransitionLink";
@@ -40,18 +38,23 @@ const Footer = () => {
                     <dl>
                         <dd>Général</dd>
                         <dt>
-                            <FooterLinkStyled href="mailto:info@hargile.com">info@hargile.com</FooterLinkStyled>
+                            <FooterLinkStyled target={'_blank'} href="mailto:info@hargile.com">
+                                info@hargile.com
+                            </FooterLinkStyled>
                         </dt>
 
                         <dd>Contact clients</dd>
                         <dt>
-                            <FooterLinkStyled
-                                href="mailto:charles.dl@hargile.com">charles.dl@hargile.com</FooterLinkStyled>
+                            <FooterLinkStyled target={'_blank'} href="mailto:charles.dl@hargile.com">
+                                charles.dl@hargile.com
+                            </FooterLinkStyled>
                         </dt>
 
                         <dd>Administration</dd>
                         <dt>
-                            <FooterLinkStyled href="mailto:pascal.l@hargile.com">pascal.l@hargile.com</FooterLinkStyled>
+                            <FooterLinkStyled target={'_blank'} href="mailto:pascal.l@hargile.com">
+                                pascal.l@hargile.com
+                            </FooterLinkStyled>
                         </dt>
                     </dl>
                     {/*<Text>Numéro de téléphone</Text>*/}
