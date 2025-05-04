@@ -289,7 +289,8 @@
             "title": "Maintenace et modernisation"
           },
           "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
-          "title": "Nos services"
+          "title": "Nos services",
+          "discover-link": "Découvrer <br/> nos services"
         },
         "trusted-brands": {
           "title": "Ils nous font confiance"
@@ -632,6 +633,106 @@
           "book": "Réservez un rendez-vous avec notre équipe",
           "contact": "Prendre rendez-vous"
         }
+      }
+    },
+    "solutions": {
+      "agves": {
+        "title": "AGVES",
+        "subtitleRegular": "Transforme la gestion",
+        "subtitleHighlight": "scolaire",
+        "description": "Application de gestion des ventes spécialisée pour le secteur de l'éducation.",
+        "paragraph1": "AGVES révolutionne la communication de la vie scolaire et extrascolaire par la mise en place d'un interface simplificateur. Il améliore toutes opérations liées aux transactions financières comme les process de sécurité.",
+        "paragraph2": "AGVES garantit aux élèves l'accès aux ressources dont ils ont besoin tout en fournissant aux administrateurs des outils de gestion puissants et performants.",
+        "features": {
+          "wallet": {
+            "title": "Portefeuille électronique intégré",
+            "description": "solution de paiement sécurisée pour la gestion des frais scolaires, repas, activités et autres transactions, avec suivi en temps réel."
+          },
+          "access": {
+            "title": "Clés d'accès numériques",
+            "description": "authentification sécurisée via identifiants cryptés ou badges NFC pour un contrôle renforcé des accès physiques et numériques."
+          },
+          "communication": {
+            "title": "Portail de communication parents-école",
+            "description": "messagerie intégrée, notifications en temps réel, diffusion d'annonces et gestion des autorisations."
+          },
+          "finance": {
+            "title": "Module de gestion financière",
+            "description": "suivi budgétaire, facturation automatisée, gestion des subventions et export comptable."
+          },
+          "dashboard": {
+            "title": "Tableau de bord administrateur ergonomique",
+            "description": "interface centralisée pour la supervision des données scolaires, avec indicateurs personnalisables et accès multi-profil."
+          }
+        },
+        "cta": "Contactez-nous pour une démonstration"
+      },
+      "i-go": {
+        "title": "I GO",
+        "subtitleRegular": "Réinventer la",
+        "subtitleHighlight": "mobilité urbaine",
+        "description": "Une application mobile dédiée conçue pour les utilisateurs d'engins de déplacement personnel motorisés (EDPM) et de vélos à assistance électrique (VAE).",
+        "paragraph1": "I GO est une application mobile innovante dédiée à la mobilité électrique, conçue pour répondre aux besoins croissants des utilisateurs d'Engins de Déplacement Personnel Motorisés (EDPM) et de Vélo à Assistance Électrique (VAE).",
+        "paragraph2": "Né du constat lié à la difficulté croissante pour ces utilisateurs de trouver des bornes de recharge, I GO propose un enrichissement de l'expérience utilisateur par une solution complète de référencement et de localisation de ces points de recharge à travers son moteur de recherche intuitif.",
+        "features": {
+          "database": {
+            "title": "Base de données enrichie des points de recharge",
+            "description": "référencement exhaustif des bornes de recharge, avec classification par type, puissance, compatibilité et opérateur."
+          },
+          "realtime": {
+            "title": "Mises à jour en temps réel",
+            "description": "actualisation dynamique de la disponibilité des bornes grâce à la synchronisation avec les opérateurs et les retours utilisateurs."
+          },
+          "collaborative": {
+            "title": "Système collaboratif de contribution",
+            "description": "ajout de nouveaux points de recharge par la communauté, modération intégrée et validation participative."
+          },
+          "navigation": {
+            "title": "Navigation intelligente intégrée",
+            "description": "calcul d'itinéraires optimisés tenant compte de l'autonomie, du trafic et de la localisation des bornes."
+          },
+          "community": {
+            "title": "Fonctionnalités communautaires avancées",
+            "description": "partages d'itinéraires, avis, notations et échanges entre utilisateurs autour de la mobilité électrique."
+          }
+        },
+        "cta": "Rejoignez la révolution de la mobilité électrique"
+      },
+      "multipass": {
+        "title": "Multipass",
+        "subtitleRegular": "L'avenir du",
+        "subtitleHighlight": "CRM",
+        "description": "Une solution numérique CRM polyvalente avec des options modulaires adaptables à tous les segments de marché.",
+        "paragraph1": "Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre une plateforme CRM modulable et évolutive. Conçue pour s'adapter à tous les secteurs d'activité, notre solution vous permet de centraliser, gérer et optimiser vos relations clients avec une flexibilité inégalée.",
+        "highlights": [
+          "Modulaire : activez uniquement les fonctionnalités dont vous avez besoin",
+          "Polyvalente : convient à tous les types d'entreprises, de tous secteurs",
+          "Scalable : grandit avec vous, à votre rythme"
+        ],
+        "paragraph2": "Passez à une gestion client intelligente !",
+        "features": {
+          "modules": {
+            "title": "Modules personnalisables",
+            "description": "architecture modulaire permettant d'activer uniquement les fonctionnalités pertinentes selon les besoins métiers spécifiques."
+          },
+          "integration": {
+            "title": "Intégration transparente",
+            "description": "interopérabilité native avec les systèmes d'information existants (ERP, outils de messagerie, bases de données, etc.)."
+          },
+          "scalable": {
+            "title": "Architecture évolutive (scalable)",
+            "description": "infrastructure pensée pour accompagner la montée en charge et les évolutions organisationnelles."
+          },
+          "reporting": {
+            "title": "Reporting & analytics avancés",
+            "description": "tableaux de bord dynamiques, indicateurs personnalisés, export et automatisation des rapports."
+          },
+          "ui": {
+            "title": "Interface utilisateur optimisée",
+            "description": "UX/UI conçue pour maximiser la productivité et réduire le temps de prise en main."
+          }
+        },
+        "cta": "Découvrez Multipass en action"
       }
     }
   }

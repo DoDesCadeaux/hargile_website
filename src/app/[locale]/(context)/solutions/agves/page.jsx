@@ -2,6 +2,7 @@
 
 import {useRef} from "react";
 import {motion, useInView} from "framer-motion";
+import {useTranslations} from "next-intl";
 import {Header} from "@/components/header/mainHeader";
 import {
     ContentSection,
@@ -19,7 +20,7 @@ import {
 
 
 export default function AgvesPage() {
-    // const t = useTranslations("pages.solutions.agves");
+    const t = useTranslations("pages.solutions.agves");
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {once: true, amount: 0.2});
 
@@ -45,28 +46,28 @@ export default function AgvesPage() {
     const features = [
         {
             id: "wallet",
-            title: "Portefeuille électronique intégré",
-            description: "solution de paiement sécurisée pour la gestion des frais scolaires, repas, activités et autres transactions, avec suivi en temps réel.",
+            title: t("features.wallet.title"),
+            description: t("features.wallet.description"),
         },
         {
             id: "access",
-            title: "Clés d'accès numériques",
-            description: "authentification sécurisée via identifiants cryptés ou badges NFC pour un contrôle renforcé des accès physiques et numériques.",
+            title: t("features.access.title"),
+            description: t("features.access.description"),
         },
         {
             id: "communication",
-            title: "Portail de communication parents-école",
-            description: "messagerie intégrée, notifications en temps réel, diffusion d'annonces et gestion des autorisations.",
+            title: t("features.communication.title"),
+            description: t("features.communication.description"),
         },
         {
             id: "finance",
-            title: "Module de gestion financière",
-            description: "suivi budgétaire, facturation automatisée, gestion des subventions et export comptable.",
+            title: t("features.finance.title"),
+            description: t("features.finance.description"),
         },
         {
             id: "dashboard",
-            title: "Tableau de bord administrateur ergonomique",
-            description: "interface centralisée pour la supervision des données scolaires, avec indicateurs personnalisables et accès multi-profil.",
+            title: t("features.dashboard.title"),
+            description: t("features.dashboard.description"),
         },
     ];
 
@@ -74,10 +75,10 @@ export default function AgvesPage() {
         <SolutionContainer ref={sectionRef}>
             <ContentWrapper>
                 <Header
-                    title="AGVES"
-                    subtitleRegular="Transforme la gestion"
-                    subtitleHighlight="scolaire"
-                    description="Application de gestion des ventes spécialisée pour le secteur de l'éducation."
+                    title={t("title")}
+                    subtitleRegular={t("subtitleRegular")}
+                    subtitleHighlight={t("subtitleHighlight")}
+                    description={t("description")}
                     showBackgroundBlur={true}
                 />
 
@@ -89,13 +90,10 @@ export default function AgvesPage() {
                         variants={containerVariants}
                     >
                         <Description variants={itemVariants}>
-                            AGVES révolutionne la communication de la vie scolaire et extrascolaire par la mise en place
-                            d'un interface simplificateur. Il améliore toutes opérations liées aux transactions
-                            financières comme les process de sécurité.
+                            {t("paragraph1")}
                         </Description>
                         <Description variants={itemVariants}>
-                            AGVES garantit aux élèves l'accès aux ressources dont ils ont besoin tout en fournissant aux
-                            administrateurs des outils de gestion puissants et performants.
+                            {t("paragraph2")}
                         </Description>
                     </ContentSection>
 
@@ -117,7 +115,7 @@ export default function AgvesPage() {
 
                 <CTASection>
                     <CTAButton href="/contact">
-                        Contactez-nous pour une démonstration
+                        {t("cta")}
                     </CTAButton>
                 </CTASection>
             </ContentWrapper>

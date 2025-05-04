@@ -297,7 +297,8 @@
             "title": "Maintenance and Modernization"
           },
           "subtitle": "We have all the tools to elevate your business",
-          "title": "Our services"
+          "title": "Our services",
+          "discover-link": "Discover <br/> our services"
         },
         "trusted-brands": {
           "title": "They trust us"
@@ -640,6 +641,106 @@
           "book": "Book a meeting with our team",
           "contact": "Make an appointment"
         }
+      }
+    },
+    "solutions": {
+      "agves": {
+        "title": "AGVES",
+        "subtitleRegular": "Transforming school",
+        "subtitleHighlight": "management",
+        "description": "Specialized sales management application for the education sector.",
+        "paragraph1": "AGVES revolutionizes school and extracurricular communication through the implementation of a simplifying interface. It improves all operations related to financial transactions and security processes.",
+        "paragraph2": "AGVES ensures students have access to the resources they need while providing administrators with powerful and efficient management tools.",
+        "features": {
+          "wallet": {
+            "title": "Integrated Electronic Wallet",
+            "description": "Secure payment solution for managing school fees, meals, activities, and other transactions, with real-time tracking."
+          },
+          "access": {
+            "title": "Digital Access Keys",
+            "description": "Secure authentication via encrypted credentials or NFC badges for enhanced control of physical and digital access."
+          },
+          "communication": {
+            "title": "Parent-School Communication Portal",
+            "description": "Integrated messaging, real-time notifications, announcement broadcasting, and permission management."
+          },
+          "finance": {
+            "title": "Financial Management Module",
+            "description": "Budget tracking, automated billing, grant management, and accounting exports."
+          },
+          "dashboard": {
+            "title": "Ergonomic Administrator Dashboard",
+            "description": "Centralized interface for school data supervision, with customizable indicators and multi-profile access."
+          }
+        },
+        "cta": "Contact us for a demonstration"
+      },
+      "i-go": {
+        "title": "I GO",
+        "subtitleRegular": "Reinventing",
+        "subtitleHighlight": "urban mobility",
+        "description": "A dedicated mobile application designed for users of personal mobility devices (PMDs) and electric-assisted bicycles (EABs).",
+        "paragraph1": "I GO is an innovative mobile application dedicated to electric mobility, designed to meet the growing needs of users of Personal Mobility Devices (PMDs) and Electric-Assisted Bicycles (EABs).",
+        "paragraph2": "Born from the observation of the increasing difficulty for these users to find charging stations, I GO offers an enhanced user experience through a comprehensive solution for referencing and locating these charging points through its intuitive search engine.",
+        "features": {
+          "database": {
+            "title": "Enhanced Charging Points Database",
+            "description": "Comprehensive indexing of charging stations, with classification by type, power, compatibility, and operator."
+          },
+          "realtime": {
+            "title": "Real-time Updates",
+            "description": "Dynamic availability updates of charging stations through synchronization with operators and user feedback."
+          },
+          "collaborative": {
+            "title": "Collaborative Contribution System",
+            "description": "Addition of new charging points by the community, integrated moderation, and participatory validation."
+          },
+          "navigation": {
+            "title": "Integrated Intelligent Navigation",
+            "description": "Optimized route calculation taking into account autonomy, traffic, and charging station locations."
+          },
+          "community": {
+            "title": "Advanced Community Features",
+            "description": "Route sharing, reviews, ratings, and exchanges between users around electric mobility."
+          }
+        },
+        "cta": "Join the electric mobility revolution"
+      },
+      "multipass": {
+        "title": "Multipass",
+        "subtitleRegular": "The future of",
+        "subtitleHighlight": "CRM",
+        "description": "A versatile CRM digital solution with modular options adaptable to all market segments.",
+        "paragraph1": "Whether you're an ambitious startup or an established company, Multipass offers you a scalable and evolving CRM platform. Designed to adapt to all business sectors, our solution allows you to centralize, manage, and optimize your customer relationships with unmatched flexibility.",
+        "highlights": [
+          "Modular: activate only the features you need",
+          "Versatile: suitable for all types of businesses, across all sectors",
+          "Scalable: grows with you, at your own pace"
+        ],
+        "paragraph2": "Switch to intelligent customer management!",
+        "features": {
+          "modules": {
+            "title": "Customizable Modules",
+            "description": "Modular architecture allowing activation of only relevant features according to specific business needs."
+          },
+          "integration": {
+            "title": "Seamless Integration",
+            "description": "Native interoperability with existing information systems (ERP, messaging tools, databases, etc.)."
+          },
+          "scalable": {
+            "title": "Scalable Architecture",
+            "description": "Infrastructure designed to support increased load and organizational changes."
+          },
+          "reporting": {
+            "title": "Advanced Reporting & Analytics",
+            "description": "Dynamic dashboards, customized indicators, export, and report automation."
+          },
+          "ui": {
+            "title": "Optimized User Interface",
+            "description": "UX/UI designed to maximize productivity and reduce learning time."
+          }
+        },
+        "cta": "Discover Multipass in action"
       }
     }
   }
