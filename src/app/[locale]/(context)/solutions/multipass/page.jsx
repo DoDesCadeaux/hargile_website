@@ -2,6 +2,7 @@
 
 import {useRef} from "react";
 import {motion, useInView} from "framer-motion";
+import {useTranslations} from "next-intl";
 import {Header} from "@/components/header/mainHeader";
 import {
     ContentSection,
@@ -21,7 +22,7 @@ import {
 
 
 export default function MultipassPage() {
-    // const t = useTranslations("pages.solutions.multipass");
+    const t = useTranslations("pages.solutions.multipass");
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {once: true, amount: 0.2});
 
@@ -47,45 +48,42 @@ export default function MultipassPage() {
     const features = [
         {
             id: "modules",
-            title: "Modules personnalisables",
-            description: "architecture modulaire permettant d'activer uniquement les fonctionnalités pertinentes selon les besoins métiers spécifiques.",
+            title: t("features.modules.title"),
+            description: t("features.modules.description"),
         },
         {
             id: "integration",
-            title: "Intégration transparente",
-            description: "interopérabilité native avec les systèmes d'information existants (ERP, outils de messagerie, bases de données, etc.).",
+            title: t("features.integration.title"),
+            description: t("features.integration.description"),
         },
         {
             id: "scalable",
-            title: "Architecture évolutive (scalable)",
-            description: "infrastructure pensée pour accompagner la montée en charge et les évolutions organisationnelles.",
+            title: t("features.scalable.title"),
+            description: t("features.scalable.description"),
         },
         {
             id: "reporting",
-            title: "Reporting & analytics avancés",
-            description: "tableaux de bord dynamiques, indicateurs personnalisés, export et automatisation des rapports.",
+            title: t("features.reporting.title"),
+            description: t("features.reporting.description"),
         },
         {
             id: "ui",
-            title: "Interface utilisateur optimisée",
-            description: "UX/UI conçue pour maximiser la productivité et réduire le temps de prise en main.",
+            title: t("features.ui.title"),
+            description: t("features.ui.description"),
         },
     ];
 
-    const highlights = [
-        "Modulaire : activez uniquement les fonctionnalités dont vous avez besoin",
-        "Polyvalente : convient à tous les types d'entreprises, de tous secteurs",
-        "Scalable : grandit avec vous, à votre rythme",
-    ];
+    // Use highlights from translations with array mapping
+    const highlights = t.raw("highlights");
 
     return (
         <SolutionContainer ref={sectionRef}>
             <ContentWrapper>
                 <Header
-                    title="Multipass"
-                    subtitleRegular="L'avenir du"
-                    subtitleHighlight="CRM"
-                    description="Une solution numérique CRM polyvalente avec des options modulaires adaptables à tous les segments de marché."
+                    title={t("title")}
+                    subtitleRegular={t("subtitleRegular")}
+                    subtitleHighlight={t("subtitleHighlight")}
+                    description={t("description")}
                     showBackgroundBlur={true}
                 />
 
@@ -97,10 +95,7 @@ export default function MultipassPage() {
                         variants={containerVariants}
                     >
                         <Description variants={itemVariants}>
-                            Que vous soyez une startup ambitieuse ou une entreprise bien établie, Multipass vous offre
-                            une plateforme CRM modulable et évolutive. Conçue pour s'adapter à tous les secteurs
-                            d'activité, notre solution vous permet de centraliser, gérer et optimiser vos relations
-                            clients avec une flexibilité inégalée.
+                            {t("paragraph1")}
                         </Description>
 
                         <HighlightList>
@@ -116,7 +111,7 @@ export default function MultipassPage() {
                         </HighlightList>
 
                         <Description variants={itemVariants}>
-                            Passez à une gestion client intelligente !
+                            {t("paragraph2")}
                         </Description>
                     </ContentSection>
 
@@ -138,7 +133,7 @@ export default function MultipassPage() {
 
                 <CTASection>
                     <CTAButton href="/contact">
-                        Découvrez Multipass en action
+                        {t("cta")}
                     </CTAButton>
                 </CTASection>
             </ContentWrapper>

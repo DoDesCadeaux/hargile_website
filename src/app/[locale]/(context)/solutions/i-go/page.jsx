@@ -2,6 +2,7 @@
 
 import {useRef} from "react";
 import {motion, useInView} from "framer-motion";
+import {useTranslations} from "next-intl";
 import {Header} from "@/components/header/mainHeader";
 import {
     ContentSection,
@@ -19,7 +20,7 @@ import {
 
 
 export default function IGoPage() {
-    // const t = useTranslations("pages.solutions.igo");
+    const t = useTranslations("pages.solutions.i-go");
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, {once: true, amount: 0.2});
 
@@ -45,28 +46,28 @@ export default function IGoPage() {
     const features = [
         {
             id: "database",
-            title: "Base de données enrichie des points de recharge",
-            description: "référencement exhaustif des bornes de recharge, avec classification par type, puissance, compatibilité et opérateur.",
+            title: t("features.database.title"),
+            description: t("features.database.description"),
         },
         {
             id: "realtime",
-            title: "Mises à jour en temps réel",
-            description: "actualisation dynamique de la disponibilité des bornes grâce à la synchronisation avec les opérateurs et les retours utilisateurs.",
+            title: t("features.realtime.title"),
+            description: t("features.realtime.description"),
         },
         {
             id: "collaborative",
-            title: "Système collaboratif de contribution",
-            description: "ajout de nouveaux points de recharge par la communauté, modération intégrée et validation participative.",
+            title: t("features.collaborative.title"),
+            description: t("features.collaborative.description"),
         },
         {
             id: "navigation",
-            title: "Navigation intelligente intégrée",
-            description: "calcul d'itinéraires optimisés tenant compte de l'autonomie, du trafic et de la localisation des bornes.",
+            title: t("features.navigation.title"),
+            description: t("features.navigation.description"),
         },
         {
             id: "community",
-            title: "Fonctionnalités communautaires avancées",
-            description: "partages d'itinéraires, avis, notations et échanges entre utilisateurs autour de la mobilité électrique.",
+            title: t("features.community.title"),
+            description: t("features.community.description"),
         },
     ];
 
@@ -74,10 +75,10 @@ export default function IGoPage() {
         <SolutionContainer ref={sectionRef}>
             <ContentWrapper>
                 <Header
-                    title="I GO"
-                    subtitleRegular="Réinventer la"
-                    subtitleHighlight="mobilité urbaine"
-                    description="Une application mobile dédiée conçue pour les utilisateurs d'engins de déplacement personnel motorisés (EDPM) et de vélos à assistance électrique (VAE)."
+                    title={t("title")}
+                    subtitleRegular={t("subtitleRegular")}
+                    subtitleHighlight={t("subtitleHighlight")}
+                    description={t("description")}
                     showBackgroundBlur={true}
                 />
 
@@ -89,15 +90,10 @@ export default function IGoPage() {
                         variants={containerVariants}
                     >
                         <Description variants={itemVariants}>
-                            I GO est une application mobile innovante dédiée à la mobilité électrique, conçue pour
-                            répondre aux besoins croissants des utilisateurs d'Engins de Déplacement Personnel Motorisés
-                            (EDPM) et de Vélo à Assistance Électrique (VAE).
+                            {t("paragraph1")}
                         </Description>
                         <Description variants={itemVariants}>
-                            Né du constat lié à la difficulté croissante pour ces utilisateurs de trouver des bornes de
-                            recharge, I GO propose un enrichissement de l'expérience utilisateur par une solution
-                            complète de référencement et de localisation de ces points de recharge à travers son moteur
-                            de recherche intuitif.
+                            {t("paragraph2")}
                         </Description>
                     </ContentSection>
 
@@ -115,12 +111,11 @@ export default function IGoPage() {
                             </FeatureCard>
                         ))}
                     </FeaturesGrid>
-
                 </MainContent>
 
                 <CTASection>
                     <CTAButton href="/contact">
-                        Rejoignez la révolution de la mobilité électrique
+                        {t("cta")}
                     </CTAButton>
                 </CTASection>
             </ContentWrapper>
