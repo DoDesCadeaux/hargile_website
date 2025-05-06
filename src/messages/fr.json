@@ -818,38 +818,38 @@
             "imageAlt": "HARGILE Audit"
           },
           "schemaType": "WebPage"
-        },
-        "solutions": {
-          "agves": {
+        }
+      },
+      "solutions": {
+        "agves": {
+          "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
+          "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
+          "og": {
             "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
             "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
-            "og": {
-              "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
-              "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
-              "imageAlt": "AGVES par HARGILE"
-            },
-            "schemaType": "SoftwareApplication"
+            "imageAlt": "AGVES par HARGILE"
           },
-          "i-go": {
+          "schemaType": "SoftwareApplication"
+        },
+        "i-go": {
+          "title": "I GO - Application de Mobilité Électrique - HARGILE",
+          "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
+          "og": {
             "title": "I GO - Application de Mobilité Électrique - HARGILE",
             "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
-            "og": {
-              "title": "I GO - Application de Mobilité Électrique - HARGILE",
-              "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
-              "imageAlt": "I GO par HARGILE"
-            },
-            "schemaType": "MobileApplication"
+            "imageAlt": "I GO par HARGILE"
           },
-          "multipass": {
+          "schemaType": "MobileApplication"
+        },
+        "multipass": {
+          "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
+          "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
+          "og": {
             "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
             "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
-            "og": {
-              "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
-              "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
-              "imageAlt": "Multipass par HARGILE"
-            },
-            "schemaType": "SoftwareApplication"
-          }
+            "imageAlt": "Multipass par HARGILE"
+          },
+          "schemaType": "SoftwareApplication"
         }
       }
     }
