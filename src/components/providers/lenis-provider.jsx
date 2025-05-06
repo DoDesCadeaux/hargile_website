@@ -6,7 +6,15 @@ import {ReactLenis} from "lenis/react";
 const LenisProvider = ({children}) => {
     const lenisRef = useRef(null);
 
-    return <ReactLenis root ref={lenisRef} options={{lerp: 0.1, duration: 1.5, smoothWheel: true}}>
+    return <ReactLenis root ref={lenisRef} options={{
+        lerp: 0.1,
+        duration: 1.5,
+        smoothWheel: true,
+        smooth: true,
+        wheelMultiplier: 1,
+        gestureOrientation: 'vertical',
+        normalizeWheel: true,
+    }}>
         {children}
     </ReactLenis>;
 };
