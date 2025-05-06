@@ -98,6 +98,7 @@ const Description = styled.p.attrs({
  */
 export function Header({
                            title,
+                           titleAs = 'h3',
                            subtitleRegular = "",
                            subtitleHighlight = "",
                            description = "",
@@ -105,7 +106,7 @@ export function Header({
                            showBackgroundBlur = false,
                        }) {
     return (
-        <HeaderSection>
+        <HeaderSection as={titleAs}>
             {showBackgroundBlur && <BackgroundBlur/>}
 
             <TitleWrapper>

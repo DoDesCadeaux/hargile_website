@@ -55,6 +55,7 @@ export default function ContactForm() {
             <FormContainer>
                 <Header
                     title={t("title")}
+                    titleAs={'h2'}
                     description={t("description")}
                     showUnderline={true}
                     showBackgroundBlur={false}
