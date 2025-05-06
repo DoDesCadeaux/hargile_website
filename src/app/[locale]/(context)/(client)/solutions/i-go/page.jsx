@@ -16,7 +16,7 @@ import {
     FeatureTitle,
     MainContent,
     SolutionContainer
-} from "@/app/[locale]/(context)/solutions/i-go/page.styled";
+} from "@/app/[locale]/(context)/(client)/solutions/i-go/page.styled";
 
 
 export default function IGoPage() {

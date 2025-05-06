@@ -84,6 +84,7 @@ export default function Loading() {
                     height={815}
                     alt={'Brand Logo'}
                     src={'/images/brand/brand_large.png'}
+                    priority={true}
                 />
             </div>
         </div>

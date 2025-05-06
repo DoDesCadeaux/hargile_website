@@ -16,7 +16,7 @@ import {
     FeatureTitle,
     MainContent,
     SolutionContainer
-} from "@/app/[locale]/(context)/solutions/agves/page.styled";
+} from "@/app/[locale]/(context)/(client)/solutions/agves/page.styled";
 
 
 export default function AgvesPage() {

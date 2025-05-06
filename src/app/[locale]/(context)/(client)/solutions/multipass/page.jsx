@@ -18,7 +18,7 @@ import {
     HighlightList,
     MainContent,
     SolutionContainer
-} from "@/app/[locale]/(context)/solutions/multipass/page.styled";
+} from "@/app/[locale]/(context)/(client)/solutions/multipass/page.styled";
 
 
 export default function MultipassPage() {
