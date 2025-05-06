@@ -1,7 +1,7 @@
 import {getTranslations} from 'next-intl/server';
 
 export async function generatePageMetadata({params, pagePath}) {
-    const {locale} = params;
+    const {locale} = await params;
 
     try {
         const globalT = await getTranslations({

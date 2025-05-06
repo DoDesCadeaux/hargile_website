@@ -1,13 +1,10 @@
-"use client";
+import ContactPageClient from "@/app/[locale]/(context)/(client)/contact/ContactPageClient";
+import {generatePageMetadata} from "@/seo/generate-page-metadata";
 
-import {BackgroundBlur, PageWrapper} from "@/components/pages/homepage/quote-request/quote-request-form.styled";
-import ContactForm from "@/components/form/contact-form";
+export async function generateMetadata({params}) {
+    return generatePageMetadata({params, pagePath: 'contact'});
+}
 
-export default function ContactPage() {
-    return (
-        <PageWrapper>
-            <BackgroundBlur/>
-            <ContactForm/>
-        </PageWrapper>
-    );
+export default async function ContactPage() {
+    return (<ContactPageClient/>);
 }
