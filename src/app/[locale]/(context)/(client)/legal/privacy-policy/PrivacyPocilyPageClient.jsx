@@ -16,6 +16,7 @@ import {
     NavItem,
     PageContainer,
     Paragraph,
+    Section,
     SectionTitle,
     Sidebar,
     SidebarTitle,
