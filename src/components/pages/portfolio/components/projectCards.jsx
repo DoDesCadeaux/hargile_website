@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-// We'll use a regular div for the outer container and put motion on an inner wrapper
+
 const CardOuterContainer = styled.div`
   height: 100%;
 `;
@@ -37,12 +37,13 @@ const PurpleAccent = styled.div`
 
 const CardImage = styled.div`
   width: 100%;
-  height: 280px; /* Increased from 220px to 280px */
+  height: 28rem;
   overflow: hidden;
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
     transition: transform 0.5s ease;
   }
   ${CardContainer}:hover & img {

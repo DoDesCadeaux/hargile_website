@@ -373,9 +373,9 @@
       "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
       "featuredProjects": "Projets en Vedette",
       "projects": {
-        "agves": {
-          "description": "Une solution numérique complète pour les établissements d'enseignement avec des analyses avancées et gestion des étudiants.",
-          "subtitle": "Plateforme de Gestion Scolaire"
+        "eren": {
+          "description": "EREN fournit des solutions clés en main de batteries industrielles – incluant le financement, l'installation et la gestion intelligente – pour aider les entreprises à réduire leurs coûts énergétiques et à optimiser leur consommation d'énergie.",
+          "subtitle": "Solutions rentables de batteries industrielles"
         },
         "datasense": {
           "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées.",

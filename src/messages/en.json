@@ -381,9 +381,9 @@
       "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
       "featuredProjects": "Featured Projects",
       "projects": {
-        "agves": {
-          "description": "A comprehensive digital solution for educational institutions with advanced analytics and student management.",
-          "subtitle": "School Management Platform"
+        "eren": {
+          "description": "Industrial battery solutions for business energy optimization and cost savings.",
+          "subtitle": "Profitable Industrial Battery Solutions"
         },
         "datasense": {
           "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities.",
@@ -393,13 +393,13 @@
           "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations.",
           "subtitle": "Sustainability Monitoring"
         },
-        "igo": {
-          "description": "Intelligent transportation platform with real-time route optimization and sustainable mobility solutions.",
-          "subtitle": "Mobility Management System"
+        "aluvi": {
+          "description": "ALUVI-immo offers trusted real estate services including property management (syndic & private), sales, and rentals in Brussels & Walloon Brabant.",
+          "subtitle": "Management of real estate property."
         },
-        "leafy": {
-          "description": "Feature-rich online marketplace for sustainable plant shopping with personalized care recommendations.",
-          "subtitle": "E-commerce for Plants"
+        "artaban": {
+          "description": "Feature-rich online art marketplace.",
+          "subtitle": "Gallery for emerging artists"
         },
         "multipass": {
           "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols.",
