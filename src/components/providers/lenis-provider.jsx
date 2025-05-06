@@ -8,7 +8,7 @@ const LenisProvider = ({children}) => {
 
     return <ReactLenis root ref={lenisRef} options={{
         lerp: 0.1,
-        duration: 1.5,
+        duration: 1.2,
         smoothWheel: true,
         smooth: true,
         wheelMultiplier: 1,
