@@ -3,10 +3,24 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {SpeedInsights} from "@vercel/speed-insights/next";
+import {generateSharedMetadata} from './shared-metadata';
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
 }
+
+
+export async function generateMetadata({params}) {
+    // You would typically get translations here
+    // const translations = await getTranslations(params.locale, 'homepage');
+
+    // Get the base metadata
+    const sharedMetadata = generateSharedMetadata(params);
+
+    // Return the metadata (we don't need to override anything for layout)
+    return sharedMetadata;
+}
+
 
 export default async function LocaleLayout({children, params}) {
     const {locale} = await params;

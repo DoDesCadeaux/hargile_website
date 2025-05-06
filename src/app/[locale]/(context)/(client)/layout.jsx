@@ -5,6 +5,7 @@ import React from "react";
 import ClientLayoutContent from "@/components/layout/ClientLayoutContent";
 import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
 
+
 export default function ClientLayout({children}) {
     const navigation = useSiteNavigation();
 
