@@ -756,7 +756,7 @@
         },
         "schemaType": "WebSite"
       },
-      "about": {
+      "about-us": {
         "title": "Notre ADN - HARGILE",
         "description": "Découvrez notre histoire, notre équipe et notre mission chez HARGILE",
         "og": {
@@ -796,25 +796,29 @@
         },
         "schemaType": "ContactPage"
       },
-      "privacy": {
-        "title": "Mentions Légales - HARGILE",
-        "description": "Consultez notre politique de confidentialité et nos mentions légales",
-        "og": {
+      "legal": {
+        "privacy": {
           "title": "Mentions Légales - HARGILE",
           "description": "Consultez notre politique de confidentialité et nos mentions légales",
-          "imageAlt": "HARGILE Mentions Légales"
-        },
-        "schemaType": "WebPage"
+          "og": {
+            "title": "Mentions Légales - HARGILE",
+            "description": "Consultez notre politique de confidentialité et nos mentions légales",
+            "imageAlt": "HARGILE Mentions Légales"
+          },
+          "schemaType": "WebPage"
+        }
       },
       "audit": {
-        "title": "Résultats d'Audit - HARGILE",
-        "description": "Consultez les résultats de l'audit de performance de votre site web",
-        "og": {
+        "result": {
           "title": "Résultats d'Audit - HARGILE",
           "description": "Consultez les résultats de l'audit de performance de votre site web",
-          "imageAlt": "HARGILE Audit"
-        },
-        "schemaType": "WebPage"
+          "og": {
+            "title": "Résultats d'Audit - HARGILE",
+            "description": "Consultez les résultats de l'audit de performance de votre site web",
+            "imageAlt": "HARGILE Audit"
+          },
+          "schemaType": "WebPage"
+        }
       },
       "solutions": {
         "agves": {
@@ -827,7 +831,7 @@
           },
           "schemaType": "SoftwareApplication"
         },
-        "igo": {
+        "i-go": {
           "title": "I GO - Application de Mobilité Électrique - HARGILE",
           "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
           "og": {

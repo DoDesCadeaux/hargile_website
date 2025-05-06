@@ -94,7 +94,6 @@ export const LearnMoreLink = styled(TransitionLink)`
     font-weight: 500;
     transition: color 0.2s ease;
     gap: 8px;
-    text-decoration: underline;
 
     svg {
         margin-left: 0.5rem;

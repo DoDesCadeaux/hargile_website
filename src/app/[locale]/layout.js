@@ -9,18 +9,9 @@ export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
 }
 
-
 export async function generateMetadata({params}) {
-    // You would typically get translations here
-    // const translations = await getTranslations(params.locale, 'homepage');
-
-    // Get the base metadata
-    const sharedMetadata = generateSharedMetadata(params);
-
-    // Return the metadata (we don't need to override anything for layout)
-    return sharedMetadata;
+    return generateSharedMetadata(await params);
 }
-
 
 export default async function LocaleLayout({children, params}) {
     const {locale} = await params;

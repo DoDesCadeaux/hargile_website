@@ -764,7 +764,7 @@
         },
         "schemaType": "WebSite"
       },
-      "about": {
+      "about-us": {
         "title": "Our DNA - HARGILE",
         "description": "Discover our story, our team and our mission at HARGILE",
         "og": {
@@ -804,25 +804,29 @@
         },
         "schemaType": "ContactPage"
       },
-      "privacy": {
-        "title": "Legal Notices - HARGILE",
-        "description": "View our privacy policy and legal notices",
-        "og": {
+      "legal": {
+        "privacy": {
           "title": "Legal Notices - HARGILE",
           "description": "View our privacy policy and legal notices",
-          "imageAlt": "HARGILE Legal Notices"
-        },
-        "schemaType": "WebPage"
+          "og": {
+            "title": "Legal Notices - HARGILE",
+            "description": "View our privacy policy and legal notices",
+            "imageAlt": "HARGILE Legal Notices"
+          },
+          "schemaType": "WebPage"
+        }
       },
       "audit": {
-        "title": "Audit Results - HARGILE",
-        "description": "View the performance audit results of your website",
-        "og": {
+        "result": {
           "title": "Audit Results - HARGILE",
           "description": "View the performance audit results of your website",
-          "imageAlt": "HARGILE Audit"
-        },
-        "schemaType": "WebPage"
+          "og": {
+            "title": "Audit Results - HARGILE",
+            "description": "View the performance audit results of your website",
+            "imageAlt": "HARGILE Audit"
+          },
+          "schemaType": "WebPage"
+        }
       },
       "solutions": {
         "agves": {
@@ -835,7 +839,7 @@
           },
           "schemaType": "SoftwareApplication"
         },
-        "igo": {
+        "i-go": {
           "title": "I GO - Electric Mobility Application - HARGILE",
           "description": "I GO offers a comprehensive solution to locate and reference charging points for urban electric mobility",
           "og": {

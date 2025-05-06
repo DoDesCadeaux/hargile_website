@@ -1,17 +1,10 @@
-"use client";
+import AboutUsPageClient from "@/app/[locale]/(context)/(client)/about-us/AboutUsPageClient";
+import {generatePageMetadata} from "@/seo/generate-page-metadata";
 
-import OurStory from '@/components/pages/about-us/our-story/our-story';
-import OurTeam from "@/components/pages/about-us/our-team/our-team";
-import OurMission from "@/components/pages/about-us/our-mission/our-mission";
-import OurCommitment from "@/components/pages/about-us/our-commitment/our-commitment";
+export async function generateMetadata({params}) {
+    return generatePageMetadata({params, pagePath: 'about-us'});
+}
 
-export default function AboutUsPage() {
-    return (
-        <>
-            <OurStory/>
-            <OurTeam/>
-            <OurMission/>
-            <OurCommitment/>
-        </>
-    );
+export default async function AboutUsPage() {
+    return (<AboutUsPageClient/>);
 }

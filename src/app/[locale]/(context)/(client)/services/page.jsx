@@ -1,16 +1,11 @@
-"use client";
+import ServicesPageClient from "@/app/[locale]/(context)/(client)/services/ServicePAgeClient";
+import {generatePageMetadata} from "@/seo/generate-page-metadata";
 
-import Services from "@/components/pages/services/services";
-import {useTranslations} from "next-intl";
-import ServicesHeader from "@/components/pages/services/service-header";
+export async function generateMetadata({params}) {
+    return generatePageMetadata({params, pagePath: 'services'});
+}
 
-export default function ServicesPage() {
-    const t = useTranslations("pages.services");
 
-    return (
-        <>
-            <ServicesHeader/>
-            <Services/>
-        </>
-    );
+export default async function ServicesPage() {
+    return (<ServicesPageClient/>);
 }
