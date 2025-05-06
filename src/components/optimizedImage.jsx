@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 
-export const OptimizedImage = ({style, src, alt, width = 1200, height = 800}) => {
+export const OptimizedImage = ({style, src, alt, width = 1200, height = 800, priority = false}) => {
     return (
         <Image
             style={style}
@@ -13,6 +13,7 @@ export const OptimizedImage = ({style, src, alt, width = 1200, height = 800}) =>
             height={height}
             sizes="(max-width: 768px) 100vw, 50vw"
             className="rounded-lg"
+            priority={priority}
         />
     );
 };

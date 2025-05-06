@@ -735,5 +735,119 @@
         "cta": "Découvrez Multipass en action"
       }
     }
+  },
+  "seo": {
+    "global": {
+      "siteName": "HARGILE",
+      "defaultTitle": "HARGILE - Innovation digitale au service de votre entreprise",
+      "defaultDescription": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
+      "defaultImageAlt": "HARGILE Digital Agency",
+      "twitterHandle": "@hargile_agency",
+      "domain": "hargile-website.vercel.app"
+    },
+    "pages": {
+      "home": {
+        "title": "HARGILE - Innovation digitale au service de votre entreprise",
+        "description": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
+        "og": {
+          "title": "HARGILE - Innovation digitale au service de votre entreprise",
+          "description": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
+          "imageAlt": "HARGILE - Agence digitale"
+        },
+        "schemaType": "WebSite"
+      },
+      "about": {
+        "title": "Notre ADN - HARGILE",
+        "description": "Découvrez notre histoire, notre équipe et notre mission chez HARGILE",
+        "og": {
+          "title": "Notre ADN - HARGILE",
+          "description": "Découvrez notre histoire, notre équipe et notre mission chez HARGILE",
+          "imageAlt": "L'équipe HARGILE"
+        },
+        "schemaType": "AboutPage"
+      },
+      "services": {
+        "title": "Nos Services - HARGILE",
+        "description": "Développement web, intelligence artificielle, applications mobiles, et plus - découvrez nos services digitaux",
+        "og": {
+          "title": "Nos Services - HARGILE",
+          "description": "Développement web, intelligence artificielle, applications mobiles, et plus - découvrez nos services digitaux",
+          "imageAlt": "Services HARGILE"
+        },
+        "schemaType": "ServicePage"
+      },
+      "portfolio": {
+        "title": "Notre Portfolio - HARGILE",
+        "description": "Découvrez nos projets récents et comment nous aidons nos clients à réussir dans le monde digital",
+        "og": {
+          "title": "Notre Portfolio - HARGILE",
+          "description": "Découvrez nos projets récents et comment nous aidons nos clients à réussir dans le monde digital",
+          "imageAlt": "Portfolio HARGILE"
+        },
+        "schemaType": "CollectionPage"
+      },
+      "contact": {
+        "title": "Contactez-nous - HARGILE",
+        "description": "Prenez contact avec notre équipe pour discuter de votre projet digital",
+        "og": {
+          "title": "Contactez-nous - HARGILE",
+          "description": "Prenez contact avec notre équipe pour discuter de votre projet digital",
+          "imageAlt": "HARGILE Contact"
+        },
+        "schemaType": "ContactPage"
+      },
+      "privacy": {
+        "title": "Mentions Légales - HARGILE",
+        "description": "Consultez notre politique de confidentialité et nos mentions légales",
+        "og": {
+          "title": "Mentions Légales - HARGILE",
+          "description": "Consultez notre politique de confidentialité et nos mentions légales",
+          "imageAlt": "HARGILE Mentions Légales"
+        },
+        "schemaType": "WebPage"
+      },
+      "audit": {
+        "title": "Résultats d'Audit - HARGILE",
+        "description": "Consultez les résultats de l'audit de performance de votre site web",
+        "og": {
+          "title": "Résultats d'Audit - HARGILE",
+          "description": "Consultez les résultats de l'audit de performance de votre site web",
+          "imageAlt": "HARGILE Audit"
+        },
+        "schemaType": "WebPage"
+      },
+      "solutions": {
+        "agves": {
+          "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
+          "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
+          "og": {
+            "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
+            "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
+            "imageAlt": "AGVES par HARGILE"
+          },
+          "schemaType": "SoftwareApplication"
+        },
+        "igo": {
+          "title": "I GO - Application de Mobilité Électrique - HARGILE",
+          "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
+          "og": {
+            "title": "I GO - Application de Mobilité Électrique - HARGILE",
+            "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
+            "imageAlt": "I GO par HARGILE"
+          },
+          "schemaType": "MobileApplication"
+        },
+        "multipass": {
+          "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
+          "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
+          "og": {
+            "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
+            "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
+            "imageAlt": "Multipass par HARGILE"
+          },
+          "schemaType": "SoftwareApplication"
+        }
+      }
+    }
   }
 }

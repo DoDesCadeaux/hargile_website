@@ -46,7 +46,7 @@ export default function LanguageSelector() {
     const changeLanguage = (locale) => {
         if (locale !== currentLocale) {
             // Use the basic setRequestLocale function
-            router.push(pathname,{
+            router.push(pathname, {
                 locale: locale,
             });
         }

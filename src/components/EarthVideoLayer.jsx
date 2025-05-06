@@ -143,7 +143,7 @@ const EarthVideoLayer = () => {
     const isExiting = transitionState === 'exiting';
 
     return (
-        <div className={`earth-video-layer ${isExiting ? 'exiting' : ''}`}>
+        <div className={`earth-video-layer ${isExiting ? 'exiting' : ''}`} style={{position: 'fixed', top: 0}}>
             <VideoContainer>
                 <BackgroundVideo ref={backgroundVideoRef}>
                     {videoSrc && (

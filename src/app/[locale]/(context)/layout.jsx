@@ -1,33 +1,88 @@
 "use client";
 
-import AuditMultiModal from "@/components/pages/homepage/hero/AuditMultiModal";
-import {useSiteNavigation} from "@/components/providers/site-navigation-provider";
 import {usePageTransition} from "@/components/TransitionLink";
-import {useEffect} from "react";
-import SmoothScroll, {lockScroll, unlockScroll} from "@/components/smooth-scroll";
+import React, {useEffect, useState} from "react";
+import RootClientWrapper from "@/components/layout/RootClientWrapper";
+import {ThemeProvider} from "@/components/providers/theme-provider";
+import {OptimizedImage} from "@/components/optimizedImage";
+import dynamic from "next/dynamic";
+import {AuditButton} from "@/components/AuditButton";
+import Navbar from "@/components/navigation/navbar";
+import LenisProvider from "@/components/providers/lenis-provider";
+
+const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
+    ssr: true
+});
 
 export default function ContextLayout({children}) {
-    const navigation = useSiteNavigation();
+    "use client"
+
     const {isTransitioning} = usePageTransition();
+    const [initialLoading, setInitialLoading] = useState(true);
 
-    // Handle menu opening/closing
     useEffect(() => {
-        console.log(`[ContextLayout] Menu/modal state change: isOpen=${navigation.isOpen}, isAuditModalOpen=${navigation.isAuditModalOpen}`);
+        const timer = setTimeout(() => {
+            setInitialLoading(false);
+        }, 1500);
 
-        // Lock/unlock scrolling based on menu/modal state
-        if (navigation.isOpen || navigation.isAuditModalOpen || isTransitioning) {
-            lockScroll();
-        } else {
-            unlockScroll();
-        }
-    }, [navigation.isOpen, navigation.isAuditModalOpen, isTransitioning]);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
-        <SmoothScroll>
-            {navigation.isAuditModalOpen && (
-                <AuditMultiModal onClose={() => navigation.setIsAuditModalOpen(false)}/>
-            )}
-            {children}
-        </SmoothScroll>
+        <>
+            <LenisProvider>
+                <div className={`loading-container ${!initialLoading ? 'fade-out' : ''}`}>
+                    <svg
+                        className="loading-svg"
+                        viewBox="0 0 100 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            fill="none"
+                            stroke="transparent"
+                            strokeWidth="1"
+                        />
+                        <path
+                            className="loading-path"
+                            d="M 50,50 m 0,-45 a 45,45 0 1,1 0,90 a 45,45 0 1,1 0,-90"
+                            pathLength="100"
+                            strokeDasharray="20 80"
+                            strokeDashoffset="0"
+                        />
+                    </svg>
+                    <OptimizedImage
+                        style={{
+                            width: '20vh',
+                            height: 'auto',
+                            mixBlendMode: "plus-lighter",
+                            position: 'absolute',
+                        }}
+                        width={1754}
+                        height={815}
+                        src="/images/brand/brand_large.png"
+                        alt="Brand Logo"
+                        priority={true}
+                    />
+                </div>
+
+                <EarthVideoLayer/>
+
+                <ThemeProvider>
+                    <RootClientWrapper>
+                        <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}/>
+
+                        <Navbar/>
+
+                        <div className={`page-content ${!isTransitioning && !initialLoading ? 'loaded' : ''}`}>
+                            {children}
+                        </div>
+                        <AuditButton/>
+                    </RootClientWrapper>
+                </ThemeProvider>
+            </LenisProvider>
+        </>
     );
 }

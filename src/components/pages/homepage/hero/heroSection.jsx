@@ -30,8 +30,8 @@ const HeroSection = () => {
     }, [isMobile])
 
     return (
-        <div className="min-h-screen flex flex-col justify-center">
-            <div className="container mx-auto px-4">
+        <section className="min-h-screen flex flex-col justify-center">
+            <div className="container">
                 <div className="flex">
                     <div className="w-full md:w-4/6 lg:w-4/5">
                         <h1 className={titleSize.current}>
@@ -81,7 +81,7 @@ const HeroSection = () => {
                 mixBlendMode: "plus-lighter",
                 color: 'var(--color-accent-blue-planet)',
             }} className={'w-full text-center fluid-type-2 italic'}>{t('quote')}</blockquote>
-        </div>
+        </section>
     );
 };
 

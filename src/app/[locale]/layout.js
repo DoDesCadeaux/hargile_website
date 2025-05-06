@@ -2,31 +2,77 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
-import ClientLayoutContent from '@/components/layout/ClientLayoutContent';
-import {AuditButton} from '@/components/AuditButton';
+import {SpeedInsights} from "@vercel/speed-insights/next";
+import {generateSharedMetadata} from './shared-metadata';
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
 }
 
+
+export async function generateMetadata({params}) {
+    // You would typically get translations here
+    // const translations = await getTranslations(params.locale, 'homepage');
+
+    // Get the base metadata
+    const sharedMetadata = generateSharedMetadata(params);
+
+    // Return the metadata (we don't need to override anything for layout)
+    return sharedMetadata;
+}
+
+
 export default async function LocaleLayout({children, params}) {
     const {locale} = await params;
 
     setRequestLocale(locale);
-    const messages = await getMessages()
 
-    if (!hasLocale(routing.locales, locale)) notFound();
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+    }
+
+    const messages = await getMessages();
+
+    const jsonLdData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "HARGILE",
+        "url": `https://hargile-website.vercel.app/${locale}`,
+        "logo": "https://hargile-website.vercel.app/images/brand/brand_large.png",
+        "description": locale === 'fr'
+            ? "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing"
+            : "Digital agency specializing in web development, AI solutions, and marketing strategies"
+    };
 
     return (
-        <NextIntlClientProvider
-            locale={locale}
-            timeZone="Europe/Bruxelles"
-            messages={messages}
-        >
-            <ClientLayoutContent>
-                {children}
-            </ClientLayoutContent>
-            <AuditButton/>
+
+        <html lang={locale || null}>
+        <head>
+            <meta charSet="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="theme-color" content="#000000"/>
+            <link rel="icon" href="/favicon.ico"/>
+            <link rel="apple-touch-icon" href="/logo192.png"/>
+            <meta name="robots" content="index, follow"/>
+            <link rel="alternate" hrefLang="x-default" href="https://hargile-website.vercel.app/fr"/>
+            <link rel="alternate" hrefLang="fr" href="https://hargile-website.vercel.app/fr"/>
+            <link rel="alternate" hrefLang="en" href="https://hargile-website.vercel.app/en"/>
+
+            {/*<Script*/}
+            {/*    id="schema-org-data"*/}
+            {/*    type="application/ld+json"*/}
+            {/*    dangerouslySetInnerHTML={{*/}
+            {/*        __html: JSON.stringify(jsonLdData)*/}
+            {/*    }}*/}
+            {/*    strategy="beforeInteractive"*/}
+            {/*/>*/}
+        </head>
+        <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+            <SpeedInsights/>
         </NextIntlClientProvider>
+        </body>
+        </html>
     );
 }

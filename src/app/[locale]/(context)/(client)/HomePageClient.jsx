@@ -6,8 +6,9 @@ import OurServices from "@/components/pages/homepage/services/ourServices";
 import AboutUs from "@/components/pages/homepage/about-us/about-us";
 import DigitalAuditSection from "@/components/pages/homepage/digital-audit/digital-audit";
 import ContactForm from "@/components/form/contact-form";
+import {use} from "react";
 
-export default function HomePage() {
+export default function HomePageClient() {
     return (
         <div className="homepage-container page-exit">
             <HeroSection/>

@@ -62,6 +62,7 @@ const Navbar = () => {
         };
     }, []);
 
+
     const triggerHomeTransitionAnimation = useCallback((e) => {
         e.preventDefault();
 
@@ -116,6 +117,7 @@ const Navbar = () => {
                         style={{
                             width: "calc(100px + 6vw)",
                         }}
+                        priority={true}
                     />
                 </Brand>
 

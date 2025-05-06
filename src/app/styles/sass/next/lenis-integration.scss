@@ -1,0 +1,71 @@
+//// Create a new file: src/app/styles/sass/next/lenis-integration.scss
+//
+//html.lenis {
+//  height: auto;
+//}
+//
+//.lenis.lenis-smooth {
+//  scroll-behavior: auto;
+//}
+//
+//.lenis.lenis-smooth [data-lenis-prevent] {
+//  overscroll-behavior: contain;
+//}
+//
+//.lenis.lenis-stopped {
+//  overflow: hidden;
+//}
+//
+//.lenis-scroll-container {
+//  display: flex;
+//  flex-direction: column;
+//  min-height: 100vh;
+//}
+//
+//// Body styles when scroll is locked
+//body.scroll-locked {
+//  overflow: hidden !important;
+//}
+//
+//// Fix for fixed elements during smooth scrolling
+//.lenis-active .fixed-element,
+//.lenis-active [data-fixed] {
+//  transform: translateZ(0);
+//  will-change: transform;
+//}
+//
+//// Fix for page transitions
+//.page-transitioning .lenis {
+//  transform: none !important;
+//  position: fixed;
+//  width: 100%;
+//  height: 100%;
+//}
+//
+//// Fix for loading screen issues
+//.loading-container {
+//  position: fixed !important;
+//  top: 0;
+//  left: 0;
+//}
+//
+//// Fix for navbar navigation
+//.navbar-navigation {
+//  position: fixed;
+//}
+//
+//
+///* Fix for loading container issues */
+//.loading-container {
+//  z-index: 10000;
+//}
+//
+///* Fix for fixed elements */
+//.lenis body .page-transition-overlay {
+//  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+//}
+//
+///* Make sure content has height */
+//.content-container {
+//  min-height: 100vh;
+//}

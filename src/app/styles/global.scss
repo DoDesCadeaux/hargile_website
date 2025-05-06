@@ -2,10 +2,12 @@
 @use "./sass/fluid-typography/_config" as config;
 @use "./sass/fluid-typography/mixins/fluid-typography";
 @use "./sass/_font-family";
-@use "./sass/_base";
 @use "./sass/_typography";
 @use "sass/_theme" as theme;
 @use "./sass/_print";
+@use "./sass/next/next-transition";
+@use "./sass/next/loading";
+@use "./sass/next/lenis-integration";
 
 @use 'tailwindcss';
 

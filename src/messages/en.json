@@ -743,5 +743,119 @@
         "cta": "Discover Multipass in action"
       }
     }
+  },
+  "seo": {
+    "global": {
+      "siteName": "HARGILE",
+      "defaultTitle": "HARGILE - Digital Innovation for Your Business",
+      "defaultDescription": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+      "defaultImageAlt": "HARGILE Digital Agency",
+      "twitterHandle": "@hargile_agency",
+      "domain": "hargile-website.vercel.app"
+    },
+    "pages": {
+      "home": {
+        "title": "HARGILE - Digital Innovation for Your Business",
+        "description": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+        "og": {
+          "title": "HARGILE - Digital Innovation for Your Business",
+          "description": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+          "imageAlt": "HARGILE - Digital Agency"
+        },
+        "schemaType": "WebSite"
+      },
+      "about": {
+        "title": "Our DNA - HARGILE",
+        "description": "Discover our story, our team and our mission at HARGILE",
+        "og": {
+          "title": "Our DNA - HARGILE",
+          "description": "Discover our story, our team and our mission at HARGILE",
+          "imageAlt": "HARGILE Team"
+        },
+        "schemaType": "AboutPage"
+      },
+      "services": {
+        "title": "Our Services - HARGILE",
+        "description": "Web development, artificial intelligence, mobile applications, and more - discover our digital services",
+        "og": {
+          "title": "Our Services - HARGILE",
+          "description": "Web development, artificial intelligence, mobile applications, and more - discover our digital services",
+          "imageAlt": "HARGILE Services"
+        },
+        "schemaType": "ServicePage"
+      },
+      "portfolio": {
+        "title": "Our Portfolio - HARGILE",
+        "description": "Discover our recent projects and how we help our clients succeed in the digital world",
+        "og": {
+          "title": "Our Portfolio - HARGILE",
+          "description": "Discover our recent projects and how we help our clients succeed in the digital world",
+          "imageAlt": "HARGILE Portfolio"
+        },
+        "schemaType": "CollectionPage"
+      },
+      "contact": {
+        "title": "Contact Us - HARGILE",
+        "description": "Get in touch with our team to discuss your digital project",
+        "og": {
+          "title": "Contact Us - HARGILE",
+          "description": "Get in touch with our team to discuss your digital project",
+          "imageAlt": "HARGILE Contact"
+        },
+        "schemaType": "ContactPage"
+      },
+      "privacy": {
+        "title": "Legal Notices - HARGILE",
+        "description": "View our privacy policy and legal notices",
+        "og": {
+          "title": "Legal Notices - HARGILE",
+          "description": "View our privacy policy and legal notices",
+          "imageAlt": "HARGILE Legal Notices"
+        },
+        "schemaType": "WebPage"
+      },
+      "audit": {
+        "title": "Audit Results - HARGILE",
+        "description": "View the performance audit results of your website",
+        "og": {
+          "title": "Audit Results - HARGILE",
+          "description": "View the performance audit results of your website",
+          "imageAlt": "HARGILE Audit"
+        },
+        "schemaType": "WebPage"
+      },
+      "solutions": {
+        "agves": {
+          "title": "AGVES - School Management Solution - HARGILE",
+          "description": "AGVES revolutionizes school communication and optimizes financial transactions with a simplified interface",
+          "og": {
+            "title": "AGVES - School Management Solution - HARGILE",
+            "description": "AGVES revolutionizes school communication and optimizes financial transactions with a simplified interface",
+            "imageAlt": "AGVES by HARGILE"
+          },
+          "schemaType": "SoftwareApplication"
+        },
+        "igo": {
+          "title": "I GO - Electric Mobility Application - HARGILE",
+          "description": "I GO offers a comprehensive solution to locate and reference charging points for urban electric mobility",
+          "og": {
+            "title": "I GO - Electric Mobility Application - HARGILE",
+            "description": "I GO offers a comprehensive solution to locate and reference charging points for urban electric mobility",
+            "imageAlt": "I GO by HARGILE"
+          },
+          "schemaType": "MobileApplication"
+        },
+        "multipass": {
+          "title": "Multipass - Modular CRM Platform - HARGILE",
+          "description": "Multipass offers a flexible and scalable CRM solution adapted to all business sectors",
+          "og": {
+            "title": "Multipass - Modular CRM Platform - HARGILE",
+            "description": "Multipass offers a flexible and scalable CRM solution adapted to all business sectors",
+            "imageAlt": "Multipass by HARGILE"
+          },
+          "schemaType": "SoftwareApplication"
+        }
+      }
+    }
   }
 }
