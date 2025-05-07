@@ -65,6 +65,7 @@ export default function ContextLayout({children}) {
                         src="/images/brand/brand_large.png"
                         alt="Brand Logo"
                         priority={true}
+                        fetchpriority={'high'}
                     />
                 </div>
 
