@@ -16,65 +16,155 @@ import {
     SectionTitle
 } from "@/app/[locale]/(context)/(client)/portfolio/page.styled";
 
-
-export default function PortfolioPageClient() {
+export default function PortfolioPage() {
     const t = useTranslations("pages.portfolio");
 
     const projects = [
-        {
-            id: 1,
-            title: "AGVES",
-            subtitle: t("projects.agves.subtitle"),
-            description: t("projects.agves.description"),
-            image: "/images/portfolio/agves.jpeg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/agves",
-        },
-        {
-            id: 2,
-            title: "I GO",
-            subtitle: t("projects.igo.subtitle"),
-            description: t("projects.igo.description"),
-            image: "/images/portfolio/igo.jpg",
-            actionText: t("viewProject"),
-            actionUrl: "/portfolio/igo",
-        },
-        {
-            id: 3,
-            title: "Leafy",
-            subtitle: t("projects.leafy.subtitle"),
-            description: t("projects.leafy.description"),
-            image: "/images/portfolio/leafy.jpg",
-            actionText: t("readCaseStudy"),
-            actionUrl: "/portfolio/leafy",
-        },
-        {
-            id: 4,
-            title: "Multipass",
-            subtitle: t("projects.multipass.subtitle"),
-            description: t("projects.multipass.description"),
-            image: "/images/portfolio/multipass.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/multipass",
-        },
-        {
-            id: 5,
-            title: "DataSense",
-            subtitle: t("projects.datasense.subtitle"),
-            description: t("projects.datasense.description"),
-            image: "/images/portfolio/datasense.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/datasense",
-        },
-        {
-            id: 6,
-            title: "EcoTrack",
-            subtitle: t("projects.ecotrack.subtitle"),
-            description: t("projects.ecotrack.description"),
-            image: "/images/portfolio/ecotrack.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/ecotrack",
-        },
+      {
+        id: 1,
+        title: "EREN",
+        subtitle: t("projects.eren.subtitle"),
+        description: t("projects.eren.description"),
+        image: "/images/portfolio/eren2.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://erenenergystorage.be/",
+      },
+      {
+        id: 2,
+        title: "ALUVI",
+        subtitle: t("projects.aluvi.subtitle"),
+        description: t("projects.aluvi.description"),
+        image: "/images/portfolio/aluviPortofolio.webp",
+        actionText: t("viewProject"),
+        actionUrl: "https://aluvi.be/",
+      },
+      {
+        id: 3,
+        title: "Artaban",
+        subtitle: t("projects.artaban.subtitle"),
+        description: t("projects.artaban.description"),
+        image: "/images/portfolio/artaban.webp",
+        actionText: t("readCaseStudy"),
+        actionUrl: "https://artabanstudio.com/",
+      },
+      {
+        id: 4,
+        title: "Drip Drops",
+        subtitle: t("projects.dripdrops.subtitle"),
+        description: t("projects.dripdrops.description"),
+        image: "/images/portfolio/dripDrops.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.dripdrops.eu/",
+      },
+      {
+        id: 5,
+        title: "Ferme de Basseilles",
+        subtitle: t("projects.ferme_de_basseilles.subtitle"),
+        description: t("projects.ferme_de_basseilles.description"),
+        image: "/images/portfolio/fdb.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://fermedebasseilles.be/",
+      },
+      {
+        id: 6,
+        title: "Azza Izzy",
+        subtitle: t("projects.azza.subtitle"),
+        description: t("projects.azza.description"),
+        image: "/images/portfolio/azza.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.azzaworld.com/",
+      },
+      {
+        id: 7,
+        title: "GVE Group",
+        subtitle: t("projects.gve.subtitle"),
+        description: t("projects.gve.description"),
+        image: "/images/portfolio/gve.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.gv-e.com/",
+      },
+      {
+        id: 8,
+        title: "Foorn",
+        subtitle: t("projects.foorn.subtitle"),
+        description: t("projects.foorn.description"),
+        image: "/images/portfolio/foorn.webp",
+        actionText: t("viewMore"),
+        actionUrl:
+          "https://www.order.store/be/store/foorn/I3Y1G6SoTV6qXb_mSIMXWw",
+      },
+      {
+        id: 9,
+        title: "I N S P I R I T E Coaching",
+        subtitle: t("projects.inspirite.subtitle"),
+        description: t("projects.inspirite.description"),
+        image: "/images/portfolio/inspirite.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://inspiritecoaching.com/",
+      },
+      {
+        id: 10,
+        title: "Alia Nature",
+        subtitle: t("projects.alianature.subtitle"),
+        description: t("projects.alianature.description"),
+        image: "/images/portfolio/aliaNature.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://alianature.com/",
+      },
+      {
+        id: 11,
+        title: "Maya Global",
+        subtitle: t("projects.mayaglobal.subtitle"),
+        description: t("projects.mayaglobal.description"),
+        image: "/images/portfolio/mayaglobal.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://mayaglobal.io/",
+      },
+      {
+        id: 12,
+        title: "Creative ID",
+        subtitle: t("projects.creativeid.subtitle"),
+        description: t("projects.creativeid.description"),
+        image: "/images/portfolio/creativeid.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.creativeid.eu/",
+      },
+      {
+        id: 13,
+        title: "Hexi Designs",
+        subtitle: t("projects.hexidesigns.subtitle"),
+        description: t("projects.hexidesigns.description"),
+        image: "/images/portfolio/hexidesigns.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://hexidesigns.com/",
+      },
+      {
+        id: 14,
+        title: "Mardi Editions",
+        subtitle: t("projects.mardieditions.subtitle"),
+        description: t("projects.mardieditions.description"),
+        image: "/images/portfolio/mardieditions.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://mardi-editions.com/",
+      },
+      {
+        id: 15,
+        title: "Locafût",
+        subtitle: t("projects.locafut.subtitle"),
+        description: t("projects.locafut.description"),
+        image: "/images/portfolio/locafut.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://locafut.be",
+      },
+      {
+        id: 16,
+        title: "Cristophe de Fierlant",
+        subtitle: t("projects.defierlant.subtitle"),
+        description: t("projects.defierlant.description"),
+        image: "/images/portfolio/defierlant.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://christophedefierlant.com",
+      },
     ];
 
     return (
@@ -90,57 +180,57 @@ export default function PortfolioPageClient() {
                     showBackgroundBlur={true}
                 />
 
-                <ProjectsSection>
-                    <SectionTitle
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                            transition: {duration: 0.6, ease: "easeOut"},
-                        }}
-                        viewport={{once: true, amount: 0.2}}
-                    >
-                        {t("featuredProjects")}
-                    </SectionTitle>
+          <ProjectsSection>
+            <SectionTitle
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: "easeOut" },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {t("featuredProjects")}
+            </SectionTitle>
 
-                    <ProjectsGrid>
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                title={project.title}
-                                subtitle={project.subtitle}
-                                description={project.description}
-                                image={project.image}
-                                actionText={project.actionText}
-                                actionUrl={project.actionUrl}
-                                index={index}
-                            />
-                        ))}
-                    </ProjectsGrid>
-                </ProjectsSection>
+            <ProjectsGrid>
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  subtitle={project.subtitle}
+                  description={project.description}
+                  image={project.image}
+                  actionText={project.actionText}
+                  actionUrl={project.actionUrl}
+                  index={index}
+                />
+              ))}
+            </ProjectsGrid>
+          </ProjectsSection>
 
-                <CallToActionSection
-                    initial={{opacity: 0, y: 40}}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                        transition: {duration: 0.8, ease: "easeOut", delay: 0.2},
-                    }}
-                    viewport={{once: true, amount: 0.2}}
-                >
-                    <CTATitle>{t("cta.title")}</CTATitle>
-                    <CTADescription>{t("cta.description")}</CTADescription>
-                    <CTAButton
-                        href="/contact"
-                        whileHover={{
-                            scale: 1.05,
-                            transition: {duration: 0.2},
-                        }}
-                    >
-                        {t("cta.button")}
-                    </CTAButton>
-                </CallToActionSection>
-            </ContentContainer>
-        </PageWrapper>
+          <CallToActionSection
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <CTATitle>{t("cta.title")}</CTATitle>
+            <CTADescription>{t("cta.description")}</CTADescription>
+            <CTAButton
+              href="/contact"
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.2 },
+              }}
+            >
+              {t("cta.button")}
+            </CTAButton>
+          </CallToActionSection>
+        </ContentContainer>
+      </PageWrapper>
     );
 }
