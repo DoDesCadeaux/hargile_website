@@ -26,13 +26,13 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
                 <CardDescription>{description}</CardDescription>
 
                 {link &&
-                    <LearnMoreLink title={title} href={link} aria-label={title}>
+                    <LearnMoreLink href={link}>
                         {
                             id !== 'your-project'
                                 ? (
                                     t("learn-more") + title
                                 ) : (
-                                    <span style={{textTransform: 'capitalize'}}>{title}</span>
+                                    <span style={{textTransform: 'capitalize'}}>{t('explain') + title}</span>
                                 )
                         }
                         {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
