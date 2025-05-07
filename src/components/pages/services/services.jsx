@@ -254,7 +254,7 @@ const Services = () => {
                                 >
                                     <CardIcon $bgColor={section.bgColor}>{service.icon}</CardIcon>
                                     <CardContent>
-                                        <CardTitle as={h3}>{service.title}</CardTitle>
+                                        <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
                                         {service.id === 'banking-connector' && (
                                             <div style={{
