@@ -25,7 +25,7 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
                 <CardDescription>{description}</CardDescription>
 
                 {link &&
-                    <LearnMoreLink title={title} href={link}>
+                    <LearnMoreLink title={title} href={link} aria-label={title}>
                         {t("learn-more")}
                         {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
                     </LearnMoreLink>
