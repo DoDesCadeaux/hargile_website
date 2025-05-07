@@ -2,6 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
+import {motion} from "framer-motion";
 
 // Styled components for the header
 const HeaderSection = styled.header`
@@ -89,7 +90,7 @@ const Description = styled.p.attrs({
  *
  * @param {Object} props - Component props
  * @param {string} props.title - Main title text
- * @param {string} props.titleAs - markup
+ * @param props.titleAs - markup
  * @param {string} props.subtitleRegular - Regular text portion of subtitle
  * @param {string} props.subtitleHighlight - Highlighted text portion of subtitle
  * @param {string} props.description - Description text
@@ -100,7 +101,7 @@ const Description = styled.p.attrs({
 export function Header(
     {
         title,
-        titleAs = 'h3',
+        titleAs = motion.h1,
         subtitleRegular = "",
         subtitleHighlight = "",
         description = "",
@@ -108,11 +109,11 @@ export function Header(
         showBackgroundBlur = false,
     }) {
     return (
-        <HeaderSection as={titleAs}>
+        <HeaderSection>
             {showBackgroundBlur && <BackgroundBlur/>}
 
             <TitleWrapper>
-                <PageTitle>{title}</PageTitle>
+                <PageTitle as={titleAs}>{title}</PageTitle>
                 {showUnderline && <TitleUnderline/>}
             </TitleWrapper>
 
