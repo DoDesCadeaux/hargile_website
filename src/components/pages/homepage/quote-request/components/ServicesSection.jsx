@@ -89,6 +89,7 @@ function ServiceCheckbox(
             onClick={onClick}
         >
             <Checkbox
+                aria-label={label}
                 type="button"
                 checked={isChecked}
                 color={color}
