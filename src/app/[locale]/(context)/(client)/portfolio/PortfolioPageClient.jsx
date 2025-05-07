@@ -168,15 +168,17 @@ export default function PortfolioPage() {
     ];
 
     return (
-      <PageWrapper>
-        <ContentContainer>
-          <Header
-            title={t("title")}
-            subtitleRegular={t("subtitle.line1")}
-            subtitleHighlight={t("subtitle.line2")}
-            description={t("description")}
-            showBackgroundBlur={true}
-          />
+        <PageWrapper>
+
+            <ContentContainer>
+                <Header
+                    titleAs={'h1'}
+                    title={t("title")}
+                    subtitleRegular={t("subtitle.line1")}
+                    subtitleHighlight={t("subtitle.line2")}
+                    description={t("description")}
+                    showBackgroundBlur={true}
+                />
 
           <ProjectsSection>
             <SectionTitle

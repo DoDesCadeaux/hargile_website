@@ -118,6 +118,7 @@ const Navbar = () => {
                             width: "calc(100px + 6vw)",
                         }}
                         priority={true}
+                        fetchpriority={'high'}
                     />
                 </Brand>
 

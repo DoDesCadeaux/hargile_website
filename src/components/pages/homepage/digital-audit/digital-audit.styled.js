@@ -118,7 +118,7 @@ export const DetailItem = styled.div`
     }
 `;
 
-export const DetailTitle = styled.h4.attrs({
+export const DetailTitle = styled.h3.attrs({
     className: 'fluid-type-1-5'
 })`
     color: var(--color-accent-mihai);

@@ -11,6 +11,7 @@ import {ContactSection} from "@/components/pages/homepage/quote-request/componen
 import {ServicesSection} from "@/components/pages/homepage/quote-request/components/ServicesSection";
 import {PrivacyFooter} from "@/components/pages/homepage/quote-request/components/PrivacyFooter";
 import {useForm} from "react-hook-form";
+import {motion} from "framer-motion";
 
 export default function ContactForm() {
     const {
@@ -55,7 +56,7 @@ export default function ContactForm() {
             <FormContainer>
                 <Header
                     title={t("title")}
-                    titleAs={'h2'}
+                    titleAs={motion.h2}
                     description={t("description")}
                     showUnderline={true}
                     showBackgroundBlur={false}
