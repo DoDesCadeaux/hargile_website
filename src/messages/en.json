@@ -381,29 +381,67 @@
       "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
       "featuredProjects": "Featured Projects",
       "projects": {
-        "agves": {
-          "description": "A comprehensive digital solution for educational institutions with advanced analytics and student management.",
-          "subtitle": "School Management Platform"
+        "eren": {
+          "description": "Industrial battery solutions for business energy optimization and cost savings.",
+          "subtitle": "Profitable Industrial Battery Solutions"
         },
-        "datasense": {
-          "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities.",
-          "subtitle": "Analytics Dashboard"
+        "aluvi": {
+          "description": "ALUVI-immo offers trusted real estate services including property management (syndic & private), sales, and rentals in Brussels & Walloon Brabant.",
+          "subtitle": "Management of real estate property."
         },
-        "ecotrack": {
-          "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations.",
-          "subtitle": "Sustainability Monitoring"
+        "artaban": {
+          "description": "Feature-rich online art marketplace.",
+          "subtitle": "Gallery for emerging artists"
         },
-        "igo": {
-          "description": "Intelligent transportation platform with real-time route optimization and sustainable mobility solutions.",
-          "subtitle": "Mobility Management System"
+        "dripdrops": {
+          "description": "Your destination for hyped sneakers, streetwear, and accessories.",
+          "subtitle": "That Good Good"
         },
-        "leafy": {
-          "description": "Feature-rich online marketplace for sustainable plant shopping with personalized care recommendations.",
-          "subtitle": "E-commerce for Plants"
+        "ferme_de_basseilles": {
+          "description": "Discover unique glamping (domes, bubbles, treehouses) and traditional guesthouses (gîtes & B&Bs) at a historic farm in Mozet, perfect for a memorable nature escape.",
+          "subtitle": "Unique Stays & Guesthouses in Nature"
         },
-        "multipass": {
-          "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols.",
-          "subtitle": "Swiss knife application"
+        "gve": {
+          "description": "Offering businesses cutting-edge, customized solutions and impactful partnerships for transformative progress.",
+          "subtitle": "Innovation meets sustainability"
+        },
+        "foorn": {
+          "description": "Foor'n brings authentic Lebanese flavors to Brussels, specializing in unique kaak (sesame bread handbags) in savory & sweet versions, alongside traditional dishes.",
+          "subtitle": "Brussels - Beirut : Immediate Boarding"
+        },
+        "inspirite": {
+          "description": "Corporate coaching and well-being solutions to transform company culture, enhance performance, and nurture team development for lasting success.",
+          "subtitle": "Coaching excellence"
+        },
+        "alianature": {
+          "description": "Discover natural & locally-made beauty, jewelry, wellness, and home products.",
+          "subtitle": "Natural Well-being & Beauty"
+        },
+        "mayaglobal": {
+          "description": "Intelligent software for sustainable land management. Get real-time insights & predictive alerts to optimize golf courses, vineyards, parks, and sports turf.",
+          "subtitle": "Intelligent Sustainable Land Management"
+        },
+        "creativeid": {
+          "description": "Your source for European scrapbooking and cardmaking supplies.",
+          "subtitle": "Inspiring Your Creative Paper Crafts"
+        },
+        "hexidesigns": {
+          "description": "HEXI DESIGNS features the works of Hector Ducoux, a fashion design student at Parsons, NYC.",
+          "subtitle": "Emergig artist"
+        },"locafut": {
+          "description": "Flexible and cost-effective stainless steel keg rental and maintenance services for breweries and HORECA, helping optimize production, reduce investment, and promote ecological practices.",
+          "subtitle": "Smart Keg Rental Solutions"
+        },
+        "mardieditions": {
+          "description": "Fashion brand offering a curated selection of women's clothing and accessories, including knitwear, tops, trousers, dresses.",
+          "subtitle": "Chic Contemporary Womenswear"
+        },"defierlant": {
+          "description": "Belgian abstract expressionist painter and poet who creates a bridge between his large-scale paintings and his poems, which serve as their backbone. Discover his gallery, books, and events.",
+          "subtitle": "Belgian Painter & Poet"
+        },
+        "azza": {
+          "description": "A leader in European scrapbooking and creative hobbies, offering unique products (Azza & Izzy styles), tools, and inspiration for creating beautiful photo albums",
+          "subtitle": "Scrapbooking & Creative Inspiration"
         }
       },
       "readCaseStudy": "Read case study",
