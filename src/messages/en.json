@@ -742,6 +742,48 @@
         },
         "cta": "Discover Multipass in action"
       }
+    },
+    "sitemap": {
+      "title": "Site Map",
+      "description": "Find all the pages and resources on our website organized in a structured way. This sitemap will help you navigate our site and find the information you're looking for quickly.",
+      "sections": {
+        "main": {
+          "title": "Main Navigation",
+          "home": "Home",
+          "services": "Services",
+          "aboutUs": "About Us",
+          "contact": "Contact Us"
+        },
+        "services": {
+          "title": "Our Services",
+          "webDesign": "Web Design & Development",
+          "mobileDev": "Mobile App Development",
+          "seo": "SEO Optimization",
+          "marketing": "Digital Marketing"
+        },
+        "tools": {
+          "title": "Tools & Resources",
+          "seoAudit": "SEO Audit Tool",
+          "performanceCheck": "Website Performance Check"
+        },
+        "company": {
+          "title": "Company Information",
+          "aboutUs": "About Our Company",
+          "team": "Our Team",
+          "mission": "Our Mission",
+          "values": "Company Values"
+        },
+        "legal": {
+          "title": "Legal Information",
+          "terms": "Terms of Service",
+          "privacy": "Privacy Policy",
+          "cookies": "Cookie Policy"
+        },
+        "support": {
+          "title": "Support",
+          "contact": "Contact Support"
+        }
+      }
     }
   },
   "seo": {
@@ -859,6 +901,16 @@
           },
           "schemaType": "SoftwareApplication"
         }
+      },
+      "sitemap": {
+        "title": "Sitemap - Complete Navigation Guide | HARGILE",
+        "description": "Browse our comprehensive sitemap to easily navigate all sections and pages of the HARGILE digital agency website.",
+        "og": {
+          "title": "Sitemap - Find All Our Pages Easily | HARGILE",
+          "description": "Quickly access all our services, resources, and information through our structured and comprehensive sitemap.",
+          "imageAlt": "HARGILE sitemap"
+        },
+        "schemaType": "WebPage"
       }
     }
   }

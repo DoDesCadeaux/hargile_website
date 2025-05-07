@@ -734,6 +734,52 @@
         },
         "cta": "Découvrez Multipass en action"
       }
+    },
+    "sitemap": {
+      "title": "Plan du Site",
+      "description": "Retrouvez toutes les pages et ressources de notre site web organisées de manière structurée. Ce plan du site vous aidera à naviguer et à trouver rapidement les informations que vous recherchez.",
+      "searchPlaceholder": "Rechercher des pages...",
+      "noResults": "Aucune page correspondant à votre recherche.",
+      "lastUpdated": "Plan du site mis à jour le :",
+      "sections": {
+        "main": {
+          "title": "Navigation Principale",
+          "home": "Accueil",
+          "services": "Services",
+          "aboutUs": "À Propos",
+          "contact": "Contact"
+        },
+        "services": {
+          "title": "Nos Services",
+          "webDesign": "Conception & Développement Web",
+          "mobileDev": "Développement d'Applications Mobiles",
+          "seo": "Optimisation SEO",
+          "marketing": "Marketing Digital"
+        },
+        "tools": {
+          "title": "Outils & Ressources",
+          "seoAudit": "Outil d'Audit SEO",
+          "performanceCheck": "Vérification de Performance Web"
+        },
+        "company": {
+          "title": "Informations sur l'Entreprise",
+          "aboutUs": "À Propos de Notre Entreprise",
+          "team": "Notre Équipe",
+          "mission": "Notre Mission",
+          "values": "Nos Valeurs"
+        },
+        "legal": {
+          "title": "Informations Légales",
+          "terms": "Conditions d'Utilisation",
+          "privacy": "Politique de Confidentialité",
+          "cookies": "Politique des Cookies"
+        },
+        "support": {
+          "title": "Support",
+          "contact": "Contacter le Support",
+          "faq": "FAQ"
+        }
+      }
     }
   },
   "seo": {
@@ -851,6 +897,16 @@
           },
           "schemaType": "SoftwareApplication"
         }
+      },
+      "sitemap": {
+        "title": "Plan du Site - Navigation Complète | HARGILE",
+        "description": "Consultez notre plan du site complet pour naviguer facilement à travers toutes les sections et pages de l'agence digitale HARGILE.",
+        "og": {
+          "title": "Plan du Site - Trouvez Facilement Toutes Nos Pages | HARGILE",
+          "description": "Accédez rapidement à tous nos services, ressources et informations grâce à notre plan du site structuré et complet.",
+          "imageAlt": "Plan du site HARGILE"
+        },
+        "schemaType": "WebPage"
       }
     }
   }
