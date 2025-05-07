@@ -373,31 +373,71 @@
       "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
       "featuredProjects": "Projets en Vedette",
       "projects": {
-        "eren": {
-          "description": "EREN fournit des solutions clés en main de batteries industrielles – incluant le financement, l'installation et la gestion intelligente – pour aider les entreprises à réduire leurs coûts énergétiques et à optimiser leur consommation d'énergie.",
-          "subtitle": "Solutions rentables de batteries industrielles"
-        },
-        "datasense": {
-          "description": "Plateforme intuitive de visualisation de données avec des informations en temps réel et des capacités de reporting personnalisées.",
-          "subtitle": "Tableau de Bord Analytique"
-        },
-        "ecotrack": {
-          "description": "Outil d'évaluation d'impact environnemental avec suivi de l'empreinte carbone et recommandations de pratiques durables.",
-          "subtitle": "Surveillance de Durabilité"
-        },
-        "igo": {
-          "description": "Plateforme de transport intelligent avec optimisation d'itinéraire en temps réel et solutions de mobilité durables.",
-          "subtitle": "Système de Gestion de Mobilité"
-        },
-        "leafy": {
-          "description": "Marketplace en ligne riche en fonctionnalités pour l'achat de plantes durables avec des recommandations de soins personnalisées.",
-          "subtitle": "E-commerce pour Plantes"
-        },
-        "multipass": {
-          "description": "Solution de vérification d'identité sécurisée avec authentification multi-facteurs et protocoles de sécurité avancés.",
-          "subtitle": "Application couteau suisse"
-        }
-      },
+    "eren": {
+      "description": "Solutions de batteries industrielles pour l'optimisation énergétique et la réduction des coûts des entreprises.",
+      "subtitle": "Solutions Rentables de Batteries Industrielles"
+    },
+    "aluvi": {
+      "description": "ALUVI-immo propose des services immobiliers de confiance incluant la gestion immobilière (syndic & privative), la vente et la location à Bruxelles & en Brabant Wallon.",
+      "subtitle": "Gestion de biens immobiliers."
+    },
+    "artaban": {
+      "description": "Place de marché d'art en ligne riche en fonctionnalités.",
+      "subtitle": "Galerie pour artistes émergents"
+    },
+    "dripdrops": {
+      "description": "Votre destination pour les baskets, le streetwear et les accessoires tendance.",
+      "subtitle": "Les Tendances Sneakers & Streetwear"
+    },
+    "ferme_de_basseilles": {
+      "description": "Découvrez des hébergements insolites (dômes, bulles, cabanes) et traditionnels (gîtes & chambres d'hôtes) dans une ferme historique à Mozet, parfaits pour une escapade nature mémorable.",
+      "subtitle": "Séjours Uniques & Chambres d'Hôtes en Pleine Nature"
+    },
+    "gve": {
+      "description": "Offrant aux entreprises des solutions de pointe personnalisées et des partenariats impactants pour un progrès transformateur.",
+      "subtitle": "L'innovation rencontre la durabilité"
+    },
+    "foorn": {
+      "description": "Foor'n apporte les saveurs libanaises authentiques à Bruxelles, spécialisé dans le kaak unique (pain au sésame en forme de sac à main) en versions salées et sucrées, ainsi que des plats traditionnels.",
+      "subtitle": "Bruxelles - Beyrouth : Embarquement Immédiat"
+    },
+    "inspirite": {
+      "description": "Solutions de coaching d'entreprise et de bien-être pour transformer la culture d'entreprise, améliorer la performance et favoriser le développement d'équipe pour un succès durable.",
+      "subtitle": "L'excellence en coaching"
+    },
+    "alianature": {
+      "description": "Découvrez des produits de beauté, bijoux, bien-être et maison naturels & fabriqués localement.",
+      "subtitle": "Bien-être & Beauté au Naturel"
+    },
+    "mayaglobal": {
+      "description": "Logiciel intelligent pour la gestion durable des terrains. Obtenez des informations en temps réel et des alertes prédictives pour optimiser golfs, vignobles, parcs et terrains de sport.",
+      "subtitle": "Gestion Intelligente et Durable des Terrains"
+    },
+    "creativeid": {
+      "description": "Votre source pour les fournitures européennes de scrapbooking et de carterie.",
+      "subtitle": "Inspirer Vos Loisirs Créatifs Papier"
+    },
+    "hexidesigns": {
+      "description": "HEXI DESIGNS présente les œuvres d'Hector Ducoux, étudiant en design de mode à Parsons, NYC.",
+      "subtitle": "Artiste émergent"
+    },
+    "locafut": {
+      "description": "Services flexibles et économiques de location et d'entretien de fûts en acier inoxydable pour brasseries et HORECA, aidant à optimiser la production, réduire les investissements et promouvoir des pratiques écologiques.",
+      "subtitle": "Solutions Intelligentes de Location de Fûts"
+    },
+    "mardieditions": {
+      "description": "Marque de mode proposant une sélection de vêtements et accessoires pour femmes, incluant maille, hauts, pantalons, robes.",
+      "subtitle": "Mode Féminine Chic et Contemporaine"
+    },
+    "defierlant": {
+      "description": "Peintre expressionniste abstrait et poète belge qui crée un pont entre ses peintures grand format et ses poèmes. Découvrez sa galerie, ses livres et ses événements.",
+      "subtitle": "Peintre & Poète Belge"
+    },
+    "azza": {
+      "description": "Leader du scrapbooking européen et des loisirs créatifs, proposant des produits uniques (styles Azza & Izzy), outils et inspiration pour la création de beaux albums photos.",
+      "subtitle": "Scrapbooking & Inspiration Créative"
+    }
+  },
       "readCaseStudy": "Lire l'étude de cas",
       "subtitle": {
         "line1": "Transformer des idées en",
