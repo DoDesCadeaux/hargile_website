@@ -786,69 +786,69 @@
     "global": {
       "siteName": "HARGILE",
       "defaultTitle": "HARGILE - Innovation digitale au service de votre entreprise",
-      "defaultDescription": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
-      "defaultImageAlt": "HARGILE Digital Agency",
+      "defaultDescription": "Transformez votre présence numérique avec les solutions web innovantes, l'IA et le marketing stratégique d'HARGILE. Élevez votre entreprise dans le paysage concurrentiel actuel.",
+      "defaultImageAlt": "HARGILE Agence Digitale",
       "twitterHandle": "@hargile_agency",
       "domain": "hargile-website.vercel.app"
     },
     "pages": {
       "home": {
-        "title": "HARGILE - Innovation digitale au service de votre entreprise",
-        "description": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
+        "title": "HARGILE - Innovation digitale pour le succès de votre entreprise",
+        "description": "Collaborez avec HARGILE pour des solutions numériques transformatives. Nous proposons du développement web sur mesure, de l'intégration IA et du marketing stratégique qui stimule votre croissance.",
         "og": {
-          "title": "HARGILE - Innovation digitale au service de votre entreprise",
-          "description": "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing",
+          "title": "HARGILE - Innovation digitale pour le succès de votre entreprise",
+          "description": "Libérez le potentiel de votre entreprise avec les solutions numériques personnalisées d'HARGILE. Du développement web à l'intégration IA, nous délivrons des stratégies efficaces.",
           "imageAlt": "HARGILE - Agence digitale"
         },
         "schemaType": "WebSite"
       },
       "about-us": {
-        "title": "Notre ADN - HARGILE",
-        "description": "Découvrez notre histoire, notre équipe et notre mission chez HARGILE",
+        "title": "À Propos d'HARGILE - Notre Histoire & Mission | Agence d'Innovation Digitale",
+        "description": "Découvrez le parcours, les valeurs et la mission d'HARGILE. Rencontrez notre équipe d'experts dédiée à créer des expériences numériques significatives qui amplifient votre croissance.",
         "og": {
-          "title": "Notre ADN - HARGILE",
-          "description": "Découvrez notre histoire, notre équipe et notre mission chez HARGILE",
+          "title": "À Propos d'HARGILE - Notre Histoire & Mission | Agence d'Innovation Digitale",
+          "description": "Découvrez les esprits derrière l'innovation digitale d'HARGILE. Apprenez comment nos valeurs et notre expertise créent des partenariats durables qui délivrent des résultats exceptionnels.",
           "imageAlt": "L'équipe HARGILE"
         },
         "schemaType": "AboutPage"
       },
       "services": {
-        "title": "Nos Services - HARGILE",
-        "description": "Développement web, intelligence artificielle, applications mobiles, et plus - découvrez nos services digitaux",
+        "title": "Nos Services Digitaux | Solutions Web, Mobile & IA | HARGILE",
+        "description": "Explorez les services numériques complets d'HARGILE adaptés aux besoins de votre entreprise. Du développement web personnalisé aux applications mobiles et solutions d'IA.",
         "og": {
-          "title": "Nos Services - HARGILE",
-          "description": "Développement web, intelligence artificielle, applications mobiles, et plus - découvrez nos services digitaux",
+          "title": "Nos Services Digitaux | Solutions Web, Mobile & IA | HARGILE",
+          "description": "Transformez votre entreprise avec les services numériques complets d'HARGILE. Développement web sur mesure, applications mobiles, intégration IA et optimisation pour des résultats mesurables.",
           "imageAlt": "Services HARGILE"
         },
         "schemaType": "ServicePage"
       },
       "portfolio": {
-        "title": "Notre Portfolio - HARGILE",
-        "description": "Découvrez nos projets récents et comment nous aidons nos clients à réussir dans le monde digital",
+        "title": "Notre Portfolio | Projets Digitaux Innovants | HARGILE",
+        "description": "Explorez la vitrine des projets numériques réussis d'HARGILE. Découvrez comment nous avons aidé nos clients à transformer leurs entreprises par le développement web, mobile et l'IA.",
         "og": {
-          "title": "Notre Portfolio - HARGILE",
-          "description": "Découvrez nos projets récents et comment nous aidons nos clients à réussir dans le monde digital",
+          "title": "Notre Portfolio | Projets Digitaux Innovants | HARGILE",
+          "description": "Découvrez comment HARGILE livre l'excellence numérique à travers notre portfolio de projets transformateurs. Des études de cas qui démontrent notre expertise à travers les industries.",
           "imageAlt": "Portfolio HARGILE"
         },
         "schemaType": "CollectionPage"
       },
       "contact": {
-        "title": "Contactez-nous - HARGILE",
-        "description": "Prenez contact avec notre équipe pour discuter de votre projet digital",
+        "title": "Contactez HARGILE | Équipe d'Experts en Solutions Digitales",
+        "description": "Prêt à élever votre présence numérique ? Connectez-vous avec l'équipe d'experts d'HARGILE aujourd'hui. Obtenez une consultation personnalisée pour transformer votre entreprise.",
         "og": {
-          "title": "Contactez-nous - HARGILE",
-          "description": "Prenez contact avec notre équipe pour discuter de votre projet digital",
-          "imageAlt": "HARGILE Contact"
+          "title": "Contactez HARGILE | Équipe d'Experts en Solutions Digitales",
+          "description": "Commencez votre parcours de transformation numérique avec HARGILE. Contactez notre équipe pour une consultation personnalisée et découvrez des solutions adaptées à vos besoins uniques.",
+          "imageAlt": "Contact HARGILE"
         },
         "schemaType": "ContactPage"
       },
       "legal": {
         "privacy": {
-          "title": "Mentions Légales - HARGILE",
-          "description": "Consultez notre politique de confidentialité et nos mentions légales",
+          "title": "Politique de Confidentialité & Mentions Légales | HARGILE",
+          "description": "Consultez la politique de confidentialité et les informations légales d'HARGILE. Découvrez comment nous protégeons vos données et notre engagement envers votre sécurité.",
           "og": {
-            "title": "Mentions Légales - HARGILE",
-            "description": "Consultez notre politique de confidentialité et nos mentions légales",
+            "title": "Politique de Confidentialité & Mentions Légales | HARGILE",
+            "description": "Comprenez comment HARGILE gère vos informations avec notre politique de confidentialité complète. Découvrez nos mesures de protection des données et vos droits en tant qu'utilisateur.",
             "imageAlt": "HARGILE Mentions Légales"
           },
           "schemaType": "WebPage"
@@ -856,54 +856,54 @@
       },
       "audit": {
         "result": {
-          "title": "Résultats d'Audit - HARGILE",
-          "description": "Consultez les résultats de l'audit de performance de votre site web",
+          "title": "Résultats d'Audit de Site Web | Analyse de Performance | HARGILE",
+          "description": "Consultez les résultats complets de l'audit de votre site web par HARGILE. Obtenez des insights pratiques sur les performances, le SEO, l'accessibilité et les meilleures pratiques.",
           "og": {
-            "title": "Résultats d'Audit - HARGILE",
-            "description": "Consultez les résultats de l'audit de performance de votre site web",
-            "imageAlt": "HARGILE Audit"
+            "title": "Résultats d'Audit de Site Web | Analyse de Performance | HARGILE",
+            "description": "Libérez tout le potentiel de votre site web avec l'audit détaillé d'HARGILE. Découvrez des opportunités d'amélioration de la vitesse, du SEO, de l'accessibilité et de l'expérience utilisateur.",
+            "imageAlt": "Audit de Site Web HARGILE"
           },
           "schemaType": "WebPage"
         }
       },
       "solutions": {
         "agves": {
-          "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
-          "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
+          "title": "AGVES | Solution de Gestion Scolaire | HARGILE",
+          "description": "Découvrez AGVES, la plateforme révolutionnaire de gestion scolaire qui simplifie la communication et optimise les transactions financières avec une interface intuitive et sécurisée.",
           "og": {
-            "title": "AGVES - Solution de Gestion Scolaire - HARGILE",
-            "description": "AGVES révolutionne la communication scolaire et optimise les transactions financières avec une interface simplifiée",
+            "title": "AGVES | Solution de Gestion Scolaire | HARGILE",
+            "description": "Transformez la gestion éducative avec AGVES. Notre plateforme complète améliore la communication scolaire, simplifie les transactions financières et fournit des outils administratifs puissants.",
             "imageAlt": "AGVES par HARGILE"
           },
           "schemaType": "SoftwareApplication"
         },
         "i-go": {
-          "title": "I GO - Application de Mobilité Électrique - HARGILE",
-          "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
+          "title": "I GO | Application de Navigation pour Mobilité Électrique | HARGILE",
+          "description": "Découvrez I GO, l'application innovante qui révolutionne la mobilité urbaine électrique. Trouvez des bornes de recharge, optimisez vos itinéraires et rejoignez une communauté passionnée.",
           "og": {
-            "title": "I GO - Application de Mobilité Électrique - HARGILE",
-            "description": "I GO offre une solution complète pour localiser et référencer les points de recharge pour la mobilité électrique urbaine",
+            "title": "I GO | Application de Navigation pour Mobilité Électrique | HARGILE",
+            "description": "Naviguez dans l'univers de la mobilité électrique avec I GO. Notre application fournit une cartographie complète des bornes de recharge, une planification d'itinéraire intelligente et des mises à jour en temps réel.",
             "imageAlt": "I GO par HARGILE"
           },
           "schemaType": "MobileApplication"
         },
         "multipass": {
-          "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
-          "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
+          "title": "Multipass | Plateforme CRM Flexible | HARGILE",
+          "description": "Découvrez Multipass, la solution CRM adaptable conçue pour les entreprises de toutes tailles. Personnalisez votre gestion de relation client avec des fonctionnalités modulaires évolutives.",
           "og": {
-            "title": "Multipass - Plateforme CRM Modulaire - HARGILE",
-            "description": "Multipass offre une solution CRM flexible et évolutive adaptée à tous les secteurs d'activité",
+            "title": "Multipass | Plateforme CRM Flexible | HARGILE",
+            "description": "Révolutionnez vos relations clients avec Multipass. Notre CRM modulaire et évolutif s'adapte aux besoins de votre entreprise avec des interfaces intuitives et des analyses puissantes.",
             "imageAlt": "Multipass par HARGILE"
           },
           "schemaType": "SoftwareApplication"
         }
       },
       "sitemap": {
-        "title": "Plan du Site - Navigation Complète | HARGILE",
-        "description": "Consultez notre plan du site complet pour naviguer facilement à travers toutes les sections et pages de l'agence digitale HARGILE.",
+        "title": "Plan du Site | Navigation Complète | HARGILE",
+        "description": "Naviguez facilement sur le site d'HARGILE avec notre plan du site complet. Trouvez tous nos services, ressources et informations organisés dans un format structuré et convivial.",
         "og": {
-          "title": "Plan du Site - Trouvez Facilement Toutes Nos Pages | HARGILE",
-          "description": "Accédez rapidement à tous nos services, ressources et informations grâce à notre plan du site structuré et complet.",
+          "title": "Plan du Site | Navigation Complète | HARGILE",
+          "description": "Trouvez exactement ce que vous cherchez avec le plan du site d'HARGILE. Notre répertoire organisé vous aide à naviguer efficacement à travers toutes les sections de notre site web.",
           "imageAlt": "Plan du site HARGILE"
         },
         "schemaType": "WebPage"

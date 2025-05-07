@@ -1,23 +1,37 @@
 import {getTranslations} from 'next-intl/server';
 
+/**
+ * Generate metadata for specific page with optimized SEO descriptions
+ * Maintains the same function signature and approach while enhancing descriptions
+ *
+ * @param {Object} params - Parameters object
+ * @param pagePath dot notations
+ * @param {Object} params.params - Next.js params object containing locale
+ * @param {string} params.pagePath - Path identifier for the page
+ * @returns {Object} - Metadata object for Next.js
+ */
 export async function generatePageMetadata({params, pagePath}) {
-    const {locale} = await params;
+    const {locale} = await params || {locale: 'en'};
 
     try {
+        // Load global translations
         const globalT = await getTranslations({
             locale,
             namespace: 'seo.global'
         });
 
+        // Load page-specific translations
         const pageT = await getTranslations({
             locale,
             namespace: `seo.pages.${pagePath}`
         });
 
+        // Base URL configuration
         const domain = globalT('domain');
-        const baseUrl = `https://${domain}/${locale}${pagePath === 'home' ? '' : `/${pagePath}`}`;
+        const baseUrl = `https://${domain}/${locale}${pagePath === 'home' ? '' : `/${pagePath.replace('.', '/')}`}`;
         const imageUrl = `https://${domain}/images/brand/brand_large.png`;
 
+        // Enhanced metadata with optimized descriptions
         return {
             metadataBase: new URL(`https://${domain}`),
             title: pageT('title'),
@@ -27,8 +41,8 @@ export async function generatePageMetadata({params, pagePath}) {
             alternates: {
                 canonical: baseUrl,
                 languages: {
-                    'fr': `https://${domain}/fr${pagePath === 'home' ? '' : `/${pagePath}`}`,
-                    'en': `https://${domain}/en${pagePath === 'home' ? '' : `/${pagePath}`}`,
+                    'fr': `https://${domain}/fr${pagePath === 'home' ? '' : `/${pagePath.replace('.', '/')}`}`,
+                    'en': `https://${domain}/en${pagePath === 'home' ? '' : `/${pagePath.replace('.', '/')}`}`,
                 },
             },
 
@@ -61,6 +75,7 @@ export async function generatePageMetadata({params, pagePath}) {
             robots: {
                 index: true,
                 follow: true,
+                nocache: false,
                 googleBot: {
                     index: true,
                     follow: true,
@@ -72,7 +87,7 @@ export async function generatePageMetadata({params, pagePath}) {
             other: {
                 'script:ld+json': {
                     '@context': 'https://schema.org',
-                    '@type': pageT('schemaType') || 'WebSite',
+                    '@type': pageT('schemaType') || 'WebPage',
                     name: pageT('title'),
                     description: pageT('description'),
                     url: baseUrl,
@@ -90,11 +105,13 @@ export async function generatePageMetadata({params, pagePath}) {
         };
     } catch (error) {
         console.error('Error generating metadata:', error);
+
+        // Fallback metadata if translations fail to load
         return {
             title: 'HARGILE',
             description: locale === 'fr'
-                ? 'Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing'
-                : 'Digital agency specializing in web development, AI solutions, and marketing strategies'
+                ? 'Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing pour transformer votre présence en ligne et booster votre croissance.'
+                : 'Digital agency specializing in web development, AI solutions, and marketing strategies to transform your online presence and boost your business growth.'
         };
     }
 }

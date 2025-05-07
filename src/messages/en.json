@@ -790,69 +790,69 @@
     "global": {
       "siteName": "HARGILE",
       "defaultTitle": "HARGILE - Digital Innovation for Your Business",
-      "defaultDescription": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+      "defaultDescription": "Transform your digital presence with HARGILE's innovative web development, AI solutions, and strategic marketing. Elevate your business in today's competitive landscape.",
       "defaultImageAlt": "HARGILE Digital Agency",
       "twitterHandle": "@hargile_agency",
       "domain": "hargile-website.vercel.app"
     },
     "pages": {
       "home": {
-        "title": "HARGILE - Digital Innovation for Your Business",
-        "description": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+        "title": "HARGILE - Digital Innovation for Your Business Success",
+        "description": "Partner with HARGILE for transformative digital solutions. We deliver custom web development, AI integration, and strategic marketing that drives growth and maximizes your online potential.",
         "og": {
-          "title": "HARGILE - Digital Innovation for Your Business",
-          "description": "Digital agency specializing in web development, AI solutions, and marketing strategies",
+          "title": "HARGILE - Digital Innovation for Your Business Success",
+          "description": "Unlock your business potential with HARGILE's custom digital solutions. From web development to AI integration, we deliver results-driven strategies for today's digital marketplace.",
           "imageAlt": "HARGILE - Digital Agency"
         },
         "schemaType": "WebSite"
       },
       "about-us": {
-        "title": "Our DNA - HARGILE",
-        "description": "Discover our story, our team and our mission at HARGILE",
+        "title": "About HARGILE - Our Story & Mission | Digital Innovation Agency",
+        "description": "Discover HARGILE's journey, values, and mission. Meet our expert team dedicated to creating meaningful digital experiences that amplify your business growth through ethical innovation.",
         "og": {
-          "title": "Our DNA - HARGILE",
-          "description": "Discover our story, our team and our mission at HARGILE",
+          "title": "About HARGILE - Our Story & Mission | Digital Innovation Agency",
+          "description": "Meet the minds behind HARGILE's digital innovation. Learn how our values and expertise create lasting partnerships that deliver exceptional results for businesses worldwide.",
           "imageAlt": "HARGILE Team"
         },
         "schemaType": "AboutPage"
       },
       "services": {
-        "title": "Our Services - HARGILE",
-        "description": "Web development, artificial intelligence, mobile applications, and more - discover our digital services",
+        "title": "Our Digital Services | Web, Mobile & AI Solutions | HARGILE",
+        "description": "Explore HARGILE's comprehensive digital services tailored to your business needs. From custom web development and mobile apps to AI solutions and performance optimization.",
         "og": {
-          "title": "Our Services - HARGILE",
-          "description": "Web development, artificial intelligence, mobile applications, and more - discover our digital services",
+          "title": "Our Digital Services | Web, Mobile & AI Solutions | HARGILE",
+          "description": "Transform your business with HARGILE's full-spectrum digital services. Custom web development, mobile applications, AI integration, and performance optimization for measurable results.",
           "imageAlt": "HARGILE Services"
         },
         "schemaType": "ServicePage"
       },
       "portfolio": {
-        "title": "Our Portfolio - HARGILE",
-        "description": "Discover our recent projects and how we help our clients succeed in the digital world",
+        "title": "Our Portfolio | Innovative Digital Projects | HARGILE",
+        "description": "Explore HARGILE's showcase of successful digital projects. Discover how we've helped clients transform their businesses through custom web development, mobile apps and AI solutions.",
         "og": {
-          "title": "Our Portfolio - HARGILE",
-          "description": "Discover our recent projects and how we help our clients succeed in the digital world",
+          "title": "Our Portfolio | Innovative Digital Projects | HARGILE",
+          "description": "See how HARGILE delivers digital excellence through our portfolio of transformative projects. Case studies that demonstrate our expertise across industries and technologies.",
           "imageAlt": "HARGILE Portfolio"
         },
         "schemaType": "CollectionPage"
       },
       "contact": {
-        "title": "Contact Us - HARGILE",
-        "description": "Get in touch with our team to discuss your digital project",
+        "title": "Contact HARGILE | Expert Digital Solutions Team",
+        "description": "Ready to elevate your digital presence? Connect with HARGILE's team of experts today. Get a personalized consultation and discover how our solutions can transform your business.",
         "og": {
-          "title": "Contact Us - HARGILE",
-          "description": "Get in touch with our team to discuss your digital project",
+          "title": "Contact HARGILE | Expert Digital Solutions Team",
+          "description": "Start your digital transformation journey with HARGILE. Reach out to our team for a personalized consultation and discover tailored solutions for your unique business needs.",
           "imageAlt": "HARGILE Contact"
         },
         "schemaType": "ContactPage"
       },
       "legal": {
         "privacy": {
-          "title": "Legal Notices - HARGILE",
-          "description": "View our privacy policy and legal notices",
+          "title": "Privacy Policy & Legal Notices | HARGILE",
+          "description": "Review HARGILE's privacy policy and legal information. Learn how we protect your data, our terms of service, and our commitment to maintaining your privacy and security.",
           "og": {
-            "title": "Legal Notices - HARGILE",
-            "description": "View our privacy policy and legal notices",
+            "title": "Privacy Policy & Legal Notices | HARGILE",
+            "description": "Understand how HARGILE handles your information with our comprehensive privacy policy. Learn about our data protection measures and your rights as a user.",
             "imageAlt": "HARGILE Legal Notices"
           },
           "schemaType": "WebPage"
@@ -860,55 +860,55 @@
       },
       "audit": {
         "result": {
-          "title": "Audit Results - HARGILE",
-          "description": "View the performance audit results of your website",
+          "title": "Website Audit Results | Performance Analysis | HARGILE",
+          "description": "Review your comprehensive website audit results from HARGILE. Get actionable insights on performance, SEO, accessibility, and best practices to improve your digital presence.",
           "og": {
-            "title": "Audit Results - HARGILE",
-            "description": "View the performance audit results of your website",
-            "imageAlt": "HARGILE Audit"
+            "title": "Website Audit Results | Performance Analysis | HARGILE",
+            "description": "Unlock your website's full potential with HARGILE's detailed performance audit. Discover opportunities to enhance speed, SEO, accessibility, and user experience.",
+            "imageAlt": "HARGILE Website Audit"
           },
           "schemaType": "WebPage"
         }
       },
       "solutions": {
         "agves": {
-          "title": "AGVES - School Management Solution - HARGILE",
-          "description": "AGVES revolutionizes school communication and optimizes financial transactions with a simplified interface",
+          "title": "AGVES | School Management Solution | HARGILE",
+          "description": "Discover AGVES, the revolutionary school management platform that streamlines communication and optimizes financial transactions with an intuitive, secure interface.",
           "og": {
-            "title": "AGVES - School Management Solution - HARGILE",
-            "description": "AGVES revolutionizes school communication and optimizes financial transactions with a simplified interface",
+            "title": "AGVES | School Management Solution | HARGILE",
+            "description": "Transform educational management with AGVES. Our comprehensive platform enhances school communication, simplifies financial transactions, and provides powerful admin tools.",
             "imageAlt": "AGVES by HARGILE"
           },
           "schemaType": "SoftwareApplication"
         },
         "i-go": {
-          "title": "I GO - Electric Mobility Application - HARGILE",
-          "description": "I GO offers a comprehensive solution to locate and reference charging points for urban electric mobility",
+          "title": "I GO | Electric Mobility Navigation App | HARGILE",
+          "description": "Experience I GO, the innovative electric mobility app that revolutionizes urban navigation. Find charging stations, optimize routes, and connect with a community of EV enthusiasts.",
           "og": {
-            "title": "I GO - Electric Mobility Application - HARGILE",
-            "description": "I GO offers a comprehensive solution to locate and reference charging points for urban electric mobility",
+            "title": "I GO | Electric Mobility Navigation App | HARGILE",
+            "description": "Navigate the electric mobility landscape with I GO. Our app provides comprehensive charging station mapping, intelligent route planning, and real-time updates for EV users.",
             "imageAlt": "I GO by HARGILE"
           },
           "schemaType": "MobileApplication"
         },
         "multipass": {
-          "title": "Multipass - Modular CRM Platform - HARGILE",
-          "description": "Multipass offers a flexible and scalable CRM solution adapted to all business sectors",
+          "title": "Multipass | Flexible CRM Platform | HARGILE",
+          "description": "Meet Multipass, the adaptable CRM solution designed for businesses of all sizes. Tailor your customer relationship management with modular features that grow with your needs.",
           "og": {
-            "title": "Multipass - Modular CRM Platform - HARGILE",
-            "description": "Multipass offers a flexible and scalable CRM solution adapted to all business sectors",
+            "title": "Multipass | Flexible CRM Platform | HARGILE",
+            "description": "Revolutionize your customer relationships with Multipass. Our scalable, modular CRM adapts to your business needs with intuitive interfaces and powerful analytics.",
             "imageAlt": "Multipass by HARGILE"
           },
           "schemaType": "SoftwareApplication"
         }
       },
       "sitemap": {
-        "title": "Sitemap - Complete Navigation Guide | HARGILE",
-        "description": "Browse our comprehensive sitemap to easily navigate all sections and pages of the HARGILE digital agency website.",
+        "title": "Sitemap | Complete Website Navigation | HARGILE",
+        "description": "Navigate HARGILE's website easily with our comprehensive sitemap. Find all our services, resources, and information organized in a structured, user-friendly format.",
         "og": {
-          "title": "Sitemap - Find All Our Pages Easily | HARGILE",
-          "description": "Quickly access all our services, resources, and information through our structured and comprehensive sitemap.",
-          "imageAlt": "HARGILE sitemap"
+          "title": "Sitemap | Complete Website Navigation | HARGILE",
+          "description": "Find exactly what you're looking for with HARGILE's sitemap. Our organized directory helps you navigate through all sections of our website efficiently.",
+          "imageAlt": "HARGILE Sitemap"
         },
         "schemaType": "WebPage"
       }
