@@ -89,6 +89,7 @@ const Description = styled.p.attrs({
  *
  * @param {Object} props - Component props
  * @param {string} props.title - Main title text
+ * @param {string} props.titleAs - markup
  * @param {string} props.subtitleRegular - Regular text portion of subtitle
  * @param {string} props.subtitleHighlight - Highlighted text portion of subtitle
  * @param {string} props.description - Description text
@@ -96,15 +97,16 @@ const Description = styled.p.attrs({
  * @param {boolean} props.showBackgroundBlur - Whether to show the background blur effect (default: false)
  * @returns {JSX.Element} Header component
  */
-export function Header({
-                           title,
-                           titleAs = 'h3',
-                           subtitleRegular = "",
-                           subtitleHighlight = "",
-                           description = "",
-                           showUnderline = true,
-                           showBackgroundBlur = false,
-                       }) {
+export function Header(
+    {
+        title,
+        titleAs = 'h3',
+        subtitleRegular = "",
+        subtitleHighlight = "",
+        description = "",
+        showUnderline = true,
+        showBackgroundBlur = false,
+    }) {
     return (
         <HeaderSection as={titleAs}>
             {showBackgroundBlur && <BackgroundBlur/>}

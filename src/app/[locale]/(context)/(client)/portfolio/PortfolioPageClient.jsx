@@ -82,6 +82,7 @@ export default function PortfolioPageClient() {
 
             <ContentContainer>
                 <Header
+                    titleAs={'h1'}
                     title={t("title")}
                     subtitleRegular={t("subtitle.line1")}
                     subtitleHighlight={t("subtitle.line2")}

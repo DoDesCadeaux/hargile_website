@@ -37,14 +37,14 @@ export const HeadingContainer = styled.div`
     margin-bottom: 2.5rem;
 `;
 
-export const StoryHeading = styled.h1.attrs({
+export const StoryHeading = styled.h2.attrs({
     className: 'fluid-type-4'
 })`
     color: var(--color-text-light);
     margin-bottom: 1rem;
 `;
 
-export const StorySubHeading = styled.h2.attrs({
+export const StorySubHeading = styled.h3.attrs({
     className: 'fluid-type-2-5'
 })`
     color: var(--color-text-light);
