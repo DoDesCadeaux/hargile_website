@@ -385,14 +385,6 @@
           "description": "Industrial battery solutions for business energy optimization and cost savings.",
           "subtitle": "Profitable Industrial Battery Solutions"
         },
-        "datasense": {
-          "description": "Intuitive data visualization platform with real-time insights and customized reporting capabilities.",
-          "subtitle": "Analytics Dashboard"
-        },
-        "ecotrack": {
-          "description": "Environmental impact assessment tool with carbon footprint tracking and sustainable practice recommendations.",
-          "subtitle": "Sustainability Monitoring"
-        },
         "aluvi": {
           "description": "ALUVI-immo offers trusted real estate services including property management (syndic & private), sales, and rentals in Brussels & Walloon Brabant.",
           "subtitle": "Management of real estate property."
@@ -401,9 +393,29 @@
           "description": "Feature-rich online art marketplace.",
           "subtitle": "Gallery for emerging artists"
         },
-        "multipass": {
-          "description": "Secure identity verification solution with multi-factor authentication and advanced security protocols.",
-          "subtitle": "Swiss knife application"
+        "dripdrops": {
+          "description": "Your destination for hyped sneakers, streetwear, and accessories.",
+          "subtitle": "That Good Good"
+        },
+        "ferme_de_basseilles": {
+          "description": "Discover unique glamping (domes, bubbles, treehouses) and traditional guesthouses (gîtes & B&Bs) at a historic farm in Mozet, perfect for a memorable nature escape.",
+          "subtitle": "Unique Stays & Guesthouses in Nature"
+        },
+        "gve": {
+          "description": "Discover unique glamping (domes, bubbles, treehouses) and traditional guesthouses (gîtes & B&Bs) at a historic farm in Mozet, perfect for a memorable nature escape.",
+          "subtitle": "Unique Stays & Guesthouses in Nature"
+        },
+        "foorn": {
+          "description": "Foor'n brings authentic Lebanese flavors to Brussels, specializing in unique kaak (sesame bread handbags) in savory & sweet versions, alongside traditional dishes.",
+          "subtitle": "Brussels - Beirut : Immediate Boarding"
+        },
+        "inspirite": {
+          "description": "Corporate coaching and well-being solutions to transform company culture, enhance performance, and nurture team development for lasting success.",
+          "subtitle": "Coaching excellence"
+        },
+        "azza": {
+          "description": "A leader in European scrapbooking and creative hobbies, offering unique products (Azza & Izzy styles), tools, and inspiration for creating beautiful photo albums",
+          "subtitle": "Scrapbooking & Creative Inspiration"
         }
       },
       "readCaseStudy": "Read case study",

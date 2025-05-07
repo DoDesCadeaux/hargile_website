@@ -20,6 +20,14 @@ const PageWrapper = styled.div`
     }
 `;
 
+const BackgroundLayer = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: transparent; // or an image
+  pointer-events: none; // prevent it from blocking interactions
+`;
+
 const ContentContainer = styled.div`
     max-width: 1400px;
     margin: 0 auto;
@@ -98,60 +106,88 @@ export default function PortfolioPage() {
 
     // Project data
     const projects = [
-        {
-            id: 1,
-            title: "EREN",
-            subtitle: t("projects.eren.subtitle"),
-            description: t("projects.eren.description"),
-            image: "/images/portfolio/eren2.png",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/eren",
-        },
-        {
-            id: 2,
-            title: "ALUVI",
-            subtitle: t("projects.aluvi.subtitle"),
-            description: t("projects.aluvi.description"),
-            image: "/images/portfolio/aluviPortofolio.png",
-            actionText: t("viewProject"),
-            actionUrl: "/portfolio/aluvi",
-        },
-        {
-            id: 3,
-            title: "Artaban",
-            subtitle: t("projects.artaban.subtitle"),
-            description: t("projects.artaban.description"),
-            image: "/images/portfolio/artaban.png",
-            actionText: t("readCaseStudy"),
-            actionUrl: "/portfolio/artaban",
-        },
-        {
-            id: 4,
-            title: "Multipass",
-            subtitle: t("projects.multipass.subtitle"),
-            description: t("projects.multipass.description"),
-            image: "/images/portfolio/multipass.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/multipass",
-        },
-        {
-            id: 5,
-            title: "DataSense",
-            subtitle: t("projects.datasense.subtitle"),
-            description: t("projects.datasense.description"),
-            image: "/images/portfolio/datasense.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/datasense",
-        },
-        {
-            id: 6,
-            title: "EcoTrack",
-            subtitle: t("projects.ecotrack.subtitle"),
-            description: t("projects.ecotrack.description"),
-            image: "/images/portfolio/ecotrack.jpg",
-            actionText: t("viewMore"),
-            actionUrl: "/portfolio/ecotrack",
-        },
+      {
+        id: 1,
+        title: "EREN",
+        subtitle: t("projects.eren.subtitle"),
+        description: t("projects.eren.description"),
+        image: "/images/portfolio/eren2.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://erenenergystorage.be/",
+      },
+      {
+        id: 2,
+        title: "ALUVI",
+        subtitle: t("projects.aluvi.subtitle"),
+        description: t("projects.aluvi.description"),
+        image: "/images/portfolio/aluviPortofolio.webp",
+        actionText: t("viewProject"),
+        actionUrl: "https://aluvi.be/",
+      },
+      {
+        id: 3,
+        title: "Artaban",
+        subtitle: t("projects.artaban.subtitle"),
+        description: t("projects.artaban.description"),
+        image: "/images/portfolio/artaban.webp",
+        actionText: t("readCaseStudy"),
+        actionUrl: "https://artabanstudio.com/",
+      },
+      {
+        id: 4,
+        title: "Drip Drops",
+        subtitle: t("projects.dripdrops.subtitle"),
+        description: t("projects.dripdrops.description"),
+        image: "/images/portfolio/dripDrops.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.dripdrops.eu/",
+      },
+      {
+        id: 5,
+        title: "Ferme de Basseilles",
+        subtitle: t("projects.ferme_de_basseilles.subtitle"),
+        description: t("projects.ferme_de_basseilles.description"),
+        image: "/images/portfolio/fdb.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://fermedebasseilles.be/",
+      },
+      {
+        id: 6,
+        title: "Azza Izzy",
+        subtitle: t("projects.azza.subtitle"),
+        description: t("projects.azza.description"),
+        image: "/images/portfolio/azza.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.azzaworld.com/",
+      },
+      {
+        id: 7,
+        title: "GVE Group",
+        subtitle: t("projects.gve.subtitle"),
+        description: t("projects.gve.description"),
+        image: "/images/portfolio/gve.webp",
+        actionText: t("viewMore"),
+        actionUrl: "https://www.gv-e.com/",
+      },
+      {
+        id: 8,
+        title: "Foorn",
+        subtitle: t("projects.foorn.subtitle"),
+        description: t("projects.foorn.description"),
+        image: "/images/portfolio/foorn.webp",
+        actionText: t("viewMore"),
+        actionUrl:
+          "https://www.order.store/be/store/foorn/I3Y1G6SoTV6qXb_mSIMXWw",
+      },    {
+        id: 9,
+        title: "Inspirite",
+        subtitle: t("projects.inspirite.subtitle"),
+        description: t("projects.inspirite.description"),
+        image: "/images/portfolio/inspirite.webp",
+        actionText: t("viewMore"),
+        actionUrl:
+          "https://www.order.store/be/store/foorn/I3Y1G6SoTV6qXb_mSIMXWw",
+      },
     ];
 
     // Initialize Lenis smooth scrolling
@@ -182,68 +218,68 @@ export default function PortfolioPage() {
     }, []);
 
     return (
-        <PageWrapper>
+      <PageWrapper>
+        <BackgroundLayer />
+        <ContentContainer>
+          <Header
+            title={t("title")}
+            subtitleRegular={t("subtitle.line1")}
+            subtitleHighlight={t("subtitle.line2")}
+            description={t("description")}
+            showBackgroundBlur={true}
+          />
 
-            <ContentContainer>
-                <Header
-                    title={t("title")}
-                    subtitleRegular={t("subtitle.line1")}
-                    subtitleHighlight={t("subtitle.line2")}
-                    description={t("description")}
-                    showBackgroundBlur={true}
+          <ProjectsSection>
+            <SectionTitle
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: "easeOut" },
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {t("featuredProjects")}
+            </SectionTitle>
+
+            <ProjectsGrid>
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  title={project.title}
+                  subtitle={project.subtitle}
+                  description={project.description}
+                  image={project.image}
+                  actionText={project.actionText}
+                  actionUrl={project.actionUrl}
+                  index={index}
                 />
+              ))}
+            </ProjectsGrid>
+          </ProjectsSection>
 
-                <ProjectsSection>
-                    <SectionTitle
-                        initial={{opacity: 0, y: 20}}
-                        whileInView={{
-                            opacity: 1,
-                            y: 0,
-                            transition: {duration: 0.6, ease: "easeOut"},
-                        }}
-                        viewport={{once: true, amount: 0.2}}
-                    >
-                        {t("featuredProjects")}
-                    </SectionTitle>
-
-                    <ProjectsGrid>
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                title={project.title}
-                                subtitle={project.subtitle}
-                                description={project.description}
-                                image={project.image}
-                                actionText={project.actionText}
-                                actionUrl={project.actionUrl}
-                                index={index}
-                            />
-                        ))}
-                    </ProjectsGrid>
-                </ProjectsSection>
-
-                <CallToActionSection
-                    initial={{opacity: 0, y: 40}}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                        transition: {duration: 0.8, ease: "easeOut", delay: 0.2},
-                    }}
-                    viewport={{once: true, amount: 0.2}}
-                >
-                    <CTATitle>{t("cta.title")}</CTATitle>
-                    <CTADescription>{t("cta.description")}</CTADescription>
-                    <CTAButton
-                        href="/contact"
-                        whileHover={{
-                            scale: 1.05,
-                            transition: {duration: 0.2},
-                        }}
-                    >
-                        {t("cta.button")}
-                    </CTAButton>
-                </CallToActionSection>
-            </ContentContainer>
-        </PageWrapper>
+          <CallToActionSection
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+            }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <CTATitle>{t("cta.title")}</CTATitle>
+            <CTADescription>{t("cta.description")}</CTADescription>
+            <CTAButton
+              href="/contact"
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.2 },
+              }}
+            >
+              {t("cta.button")}
+            </CTAButton>
+          </CallToActionSection>
+        </ContentContainer>
+      </PageWrapper>
     );
 }
