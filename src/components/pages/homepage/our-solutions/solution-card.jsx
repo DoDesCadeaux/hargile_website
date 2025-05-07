@@ -1,6 +1,6 @@
 // src/components/sections/OurSolutions/SolutionCard/index.jsx
 import React from "react";
-import {useTranslations} from "next-intl";
+import {useLocale, useTranslations} from "next-intl";
 import {
     CardContainer,
     CardContent,
@@ -12,6 +12,7 @@ import {
 
 const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
     const t = useTranslations("pages.homepage.sections.our-solutions");
+    const locale = useLocale();
 
     return (
         <CardContainer className={`our-solutions__card our-solutions__card--${id}`}>
@@ -26,6 +27,17 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
 
                 {link &&
                     <LearnMoreLink title={title} href={link} aria-label={title}>
+                        {id !== 'your-project'
+                            ? (
+                                <span style={{display: 'none'}}>
+                                    {(locale === 'fr' ? 'Venez découvrir ' : 'Discover ') + title}
+                                </span>
+                            ) : (
+                                <span style={{display: 'none'}}>
+                                    {(locale === 'fr' ? 'Lancer ' : 'Launch ') + title}
+                                </span>
+                            )
+                        }
                         {t("learn-more")}
                         {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
                     </LearnMoreLink>
