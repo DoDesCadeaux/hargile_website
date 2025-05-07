@@ -27,18 +27,7 @@ const SolutionCard = ({title, subtitle, description, iconSrc, link, id}) => {
 
                 {link &&
                     <LearnMoreLink title={title} href={link} aria-label={title}>
-                        {id !== 'your-project'
-                            ? (
-                                <span style={{display: 'none'}}>
-                                    {(locale === 'fr' ? 'Venez découvrir ' : 'Discover ') + title}
-                                </span>
-                            ) : (
-                                <span style={{display: 'none'}}>
-                                    {(locale === 'fr' ? 'Lancer ' : 'Launch ') + title}
-                                </span>
-                            )
-                        }
-                        {t("learn-more")}
+                        {t("learn-more") + title}
                         {/*<img src="/icons/circle_arrow.svg" width={30} height={30} alt="Circle arrow"/>*/}
                     </LearnMoreLink>
                 }
