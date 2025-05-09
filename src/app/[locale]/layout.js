@@ -58,7 +58,7 @@ export default async function LocaleLayout({children, params}) {
             {/*    strategy="beforeInteractive"*/}
             {/*/>*/}
         </head>
-        <body>
+        <body style={{overflowX: 'hidden', minHeight: '100vh'}}>
         <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
             <SpeedInsights/>
