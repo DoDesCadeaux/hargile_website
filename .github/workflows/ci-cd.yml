@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
-    environment: Production  # Utilisez l'environnement où vos secrets sont configurés
+    environment: Production
     steps:
       - uses: actions/checkout@v4
 
@@ -20,17 +20,8 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          name: id_ed25519  # Changement: utilisez id_ed25519 car vous avez une clé ED25519
+          name: id_ed25519
           if_key_exists: replace
-
-      - name: Debug directory state
-        run: |
-          echo "=== Current directory contents ==="
-          ls -la
-          echo "=== SSH key info ==="
-          ls -la ~/.ssh/
-          echo "=== Free disk space ==="
-          df -h
 
       - name: Generate deployment ID
         id: deployment-id
@@ -41,25 +32,25 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
-      - name: Create deployment package with ZIP
+      - name: Create deployment package with TAR
         run: |
-          echo "=== Creating deployment package with ZIP ==="
-          # Approche alternative avec zip
-          zip -r deploy-src.zip . -x "node_modules/*" -x ".next/*" -x ".git/*"
-          ls -la deploy-src.zip
+          echo "=== Creating deployment package with TAR ==="
+          # Approche simplifiée avec tar
+          tar -czf deploy-src.tar.gz --exclude="node_modules" --exclude=".next" --exclude=".git" .
+          ls -la deploy-src.tar.gz
 
       - name: Test basic SSH connection
         run: |
           echo "=== Testing basic SSH connection ==="
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo Connection successful; id; pwd"
 
-      - name: Transfer ZIP package and deploy
+      - name: Transfer TAR package and deploy
         id: deploy
         run: |
           echo "=== Transferring and deploying ==="
           # Transfert du package
-          echo "Copying ZIP package to server..."
-          scp -o "StrictHostKeyChecking=no" deploy-src.zip ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+          echo "Copying TAR package to server..."
+          scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
           
           # Déploiement
           echo "Executing deployment script on server..."
@@ -75,7 +66,7 @@ jobs:
             mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
           
             echo "Extracting package..."
-            unzip -q /tmp/deploy-src.zip -d $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+            tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
           
             echo "Creating symlink..."
             if [ -L $DEPLOYMENTS_DIR/current ]; then
@@ -100,7 +91,11 @@ jobs:
             echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
           
             echo "Cleanup..."
-            rm /tmp/deploy-src.zip
+            rm /tmp/deploy-src.tar.gz
+          
+            # Keep only the 5 most recent deployments
+            cd $DEPLOYMENTS_DIR/versions
+            ls -t | tail -n +6 | xargs rm -rf
           
             echo "Deployment $DEPLOY_ID successful"
           EOF
