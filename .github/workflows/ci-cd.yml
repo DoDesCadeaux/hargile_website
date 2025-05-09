@@ -39,27 +39,32 @@ jobs:
           name: id_ed25519
           if_key_exists: replace
 
+      - name: Get GitHub repository archive
+        run: |
+          # Utiliser l'archive GitHub directement
+          curl -L -o repository.zip https://github.com/${{ github.repository }}/archive/${{ github.sha }}.zip
+          echo "Archive téléchargée avec succès"
+
       - name: Deploy to server
         run: |
-          # Utiliser l'archive GitHub directement au lieu de créer un tar
+          # Transférer l'archive GitHub
+          scp -o "StrictHostKeyChecking=no" repository.zip ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+          
+          # Exécuter le déploiement avec l'archive GitHub
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            # Télécharger l'archive directement sur le serveur
-            cd /tmp && \
-            curl -sL https://github.com/${{ github.repository }}/archive/${{ github.sha }}.tar.gz -o deploy-package.tar.gz && \
-            # Exécuter le déploiement
-            cd /home/hargile.eu/ && \
-            bash .docker/scripts/deploy.sh ${{ env.DEPLOY_ID }}"
+            cd /home/hargile.eu/ && 
+            bash .docker/scripts/deploy.sh ${{ env.DEPLOY_ID }} /tmp/repository.zip"
 
       - name: Verify deployment
         if: success()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            cd /home/hargile.eu/ && \
+            cd /home/hargile.eu/ && 
             bash .docker/scripts/healthcheck.sh"
 
       - name: Rollback if verification fails
         if: failure()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            cd /home/hargile.eu/ && \
+            cd /home/hargile.eu/ && 
             bash .docker/scripts/rollback.sh auto 'Déploiement échoué - Rollback automatique'"

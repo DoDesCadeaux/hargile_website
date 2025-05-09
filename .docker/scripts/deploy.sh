@@ -3,6 +3,8 @@ set -e
 
 # Récupérer l'ID de déploiement depuis les arguments
 DEPLOY_ID=$1
+ARCHIVE_PATH=${2:-"/tmp/repository.zip"}
+
 [ -z "$DEPLOY_ID" ] && DEPLOY_ID=$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")
 
 # Configuration des chemins
@@ -33,33 +35,30 @@ fi
 # Créer le répertoire pour la nouvelle version
 mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
 
-# Extraire le package de déploiement
-if [ -f "/tmp/deploy-package.tar.gz" ]; then
-  echo "Extraction de l'archive GitHub..."
-
-  # Extraction temporaire dans un répertoire pour obtenir le nom du dossier
-  TEMP_DIR=$(mktemp -d)
-  tar -xzf /tmp/deploy-package.tar.gz -C $TEMP_DIR
-
-  # Trouver le nom du répertoire créé par l'archive GitHub (généralement repo-SHA)
-  EXTRACTED_DIR=$(ls -1 $TEMP_DIR)
-
-  # Déplacer le contenu vers le répertoire de déploiement
-  cp -r $TEMP_DIR/$EXTRACTED_DIR/* $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/
-
-  # Nettoyer
-  rm -rf $TEMP_DIR
-  rm /tmp/deploy-package.tar.gz
-
-  echo "Package extrait dans $DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
-else
-  echo "ERREUR: Package de déploiement non trouvé!"
+# Vérifier si l'archive existe
+if [ ! -f "$ARCHIVE_PATH" ]; then
+  echo "ERREUR: Archive $ARCHIVE_PATH non trouvée!"
   exit 1
 fi
 
+# Extraire l'archive GitHub
+echo "Extraction de l'archive GitHub..."
+EXTRACT_DIR=$(mktemp -d)
+unzip -q "$ARCHIVE_PATH" -d "$EXTRACT_DIR"
+REPO_DIR=$(find "$EXTRACT_DIR" -type d -maxdepth 1 | tail -n 1)
+
+# Copier le contenu dans le répertoire de déploiement
+cp -r "$REPO_DIR/"* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/"
+cp -r "$REPO_DIR/".* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
+
+# Nettoyage
+rm -rf "$EXTRACT_DIR"
+rm "$ARCHIVE_PATH"
+echo "Archive extraite et nettoyée"
+
 # S'assurer que le répertoire .docker existe
 if [ ! -d "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker" ]; then
-  echo "ERREUR: Structure de répertoire incorrecte dans le package!"
+  echo "ERREUR: Structure de répertoire incorrecte dans l'archive!"
   exit 1
 fi
 
