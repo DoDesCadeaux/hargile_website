@@ -1,14 +1,26 @@
 #!/bin/bash
 
+# Débogage
+echo "=== DEBUG INFO ==="
+echo "PWD: $(pwd)"
+echo "DOMAIN: $DOMAIN"
+echo "Environment variables:"
+env
+echo "=== END DEBUG ==="
+
+# Définir explicitement le domaine
+DOMAIN=${DOMAIN:-hargile.eu}
+echo "Using domain: $DOMAIN"
+
 # Installer acme.sh
 curl https://get.acme.sh | sh
 
-# Obtenir les certificats SSL (utilisez le chemin complet)
-/root/.acme.sh/acme.sh --issue --domain $DOMAIN --domain www.$DOMAIN --webroot /usr/local/lsws/Example/html/ --force
+# Obtenir les certificats SSL
+/root/.acme.sh/acme.sh --issue --domain "$DOMAIN" --domain "www.$DOMAIN" --webroot /usr/local/lsws/Example/html/ --force
 
 # Créer la configuration du virtual host
-mkdir -p /usr/local/lsws/conf/vhosts/$DOMAIN
-cat > /usr/local/lsws/conf/vhosts/$DOMAIN/vhconf.conf << VHCONF
+mkdir -p /usr/local/lsws/conf/vhosts/"$DOMAIN"
+cat > /usr/local/lsws/conf/vhosts/"$DOMAIN"/vhconf.conf << VHCONF
 docRoot                   \$VH_ROOT/html
 enableGzip                1
 enableBr                  1
