@@ -18,8 +18,8 @@ echo "Waiting for containers to start..."
 sleep 10
 
 # Obtain and configure SSL certificate
-./ssl/scripts/initial-cert.sh
-./ssl/scripts/configure-ssl.sh
+$BASE_DIR/ssl/scripts/initial-cert.sh
+$BASE_DIR/ssl/scripts/configure-ssl.sh
 
 # Restart OpenLiteSpeed to apply configurations
 docker compose restart openlitespeed
@@ -27,5 +27,5 @@ docker compose restart openlitespeed
 echo "=====================================================
           Deployment complete!
 =====================================================
-Access your site at: https://$(grep DOMAIN .env | cut -d= -f2)
+Access your site at: https://$(grep DOMAIN $BASE_DIR/.env | cut -d= -f2)
 Access OpenLiteSpeed admin at: https://your-server-ip:7080"
