@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   openlitespeed:
     image: litespeedtech/openlitespeed:latest
@@ -8,13 +10,14 @@ services:
       - "7080:7080"
     volumes:
       - ./custom-conf:/usr/src/lsws-config
+      - ./static:/usr/local/lsws/Example/html/static
     environment:
       - TZ=Europe/Brussels
       - DOMAIN=hargile.eu
       - EMAIL=gogolus2000@gmail.com
     restart: always
-    entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
-    command: [ "/entrypoint.sh" ]
+    entrypoint: ["/usr/src/lsws-config/entrypoint.sh"]
+    command: ["/entrypoint.sh"]
     networks:
       - app-network
 

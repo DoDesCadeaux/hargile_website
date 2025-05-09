@@ -4,14 +4,20 @@ DOMAIN=${DOMAIN:-hargile.eu}
 EMAIL=${EMAIL:-gogolus2000@gmail.com}
 echo "Using domain: $DOMAIN"
 
-# Installer des outils de diagnostic
+# Installer acme.sh
+curl https://get.acme.sh | sh
+
+# Enregistrer le compte
+/root/.acme.sh/acme.sh --register-account -m "$EMAIL"
+
+# Installer les outils de diagnostic
 apt-get update && apt-get install -y curl iputils-ping dnsutils net-tools
 
-# Créer un fichier HTML de test
-mkdir -p /usr/local/lsws/Example/html/test
-echo "<h1>Test Page</h1><p>This is a test page to verify OpenLiteSpeed is working.</p>" > /usr/local/lsws/Example/html/test/index.html
+# Créer une structure de base pour le site
+mkdir -p /usr/local/lsws/Example/html
+echo "<h1>Test Page</h1><p>This is a test page at root to verify OpenLiteSpeed is working.</p>" > /usr/local/lsws/Example/html/index.html
 
-# Créer une configuration simple
+# Créer une configuration simple pour OpenLiteSpeed
 cat > /usr/local/lsws/conf/httpd_config.conf << HTTPD
 serverName                $DOMAIN
 user                      nobody
@@ -79,25 +85,15 @@ accessControl  {
   allow                   ALL
 }
 
-extprocessor lsphp {
-  type                    lsapi
-  address                 uds://tmp/lshttpd/lsphp.sock
-  maxConns                10
-  env                     PHP_LSAPI_CHILDREN=10
-  env                     LSAPI_AVOID_FORK=200M
+# Configuration pour le proxy Next.js
+extprocessor nextjs {
+  type                    proxy
+  address                 nextjs:3000
+  maxConns                100
+  pcKeepAliveTimeout      60
   initTimeout             60
   retryTimeout            0
-  persistConn             1
   respBuffer              0
-  autoStart               1
-  path                    fcgi-bin/lsphp5
-  backlog                 100
-  instances               1
-  priority                0
-  memSoftLimit            2047M
-  memHardLimit            2047M
-  procSoftLimit           400
-  procHardLimit           500
 }
 
 virtualHost Example {
@@ -105,8 +101,7 @@ virtualHost Example {
   configFile              conf/vhosts/Example/vhconf.conf
   allowSymbolLink         1
   enableScript            1
-  restrained              1
-  setUIDMode              0
+  restrained              0
 }
 
 listener Default {
@@ -114,51 +109,57 @@ listener Default {
   secure                  0
   map                     Example *
 }
+
+listener SSL {
+  address                 *:443
+  secure                  1
+  keyFile                 /usr/local/lsws/conf/example.key
+  certFile                /usr/local/lsws/conf/example.crt
+  map                     Example *
+}
 HTTPD
+
+# Créer un certificat auto-signé temporaire pour le SSL
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /usr/local/lsws/conf/example.key \
+  -out /usr/local/lsws/conf/example.crt \
+  -subj "/CN=$DOMAIN"
 
 # Configuration du virtual host
 cat > /usr/local/lsws/conf/vhosts/Example/vhconf.conf << VHCONF
 docRoot                   \$VH_ROOT/html/
 enableGzip                1
 
-scripthandler  {
-  add                     lsapi:lsphp php
+# Pour le proxy Next.js
+context / {
+  type                    proxy
+  handler                 nextjs
+  addDefaultCharset       off
 }
 
-extprocessor lsphp {
-  type                    lsapi
-  address                 uds://tmp/lshttpd/lsphp.sock
-  maxConns                35
-  env                     LSAPI_CHILDREN=35
-  initTimeout             600
-  retryTimeout            0
-  persistConn             1
-  respBuffer              0
-}
-
-context /test {
-  location                \$VH_ROOT/html/test/
+# Pour les fichiers statiques
+context /static/ {
+  location                \$VH_ROOT/html/static/
   allowBrowse             1
   enableExpires           1
 }
 
 rewrite  {
-  enable                  1
-  autoLoadHtaccess        1
+  enable                  0
 }
 VHCONF
 
 # Redémarrer OpenLiteSpeed
 /usr/local/lsws/bin/lswsctrl restart
 
-# Attendre le démarrage du serveur
-sleep 5
+# Test de la configuration
+echo "==== TESTING LOCAL SERVER ===="
+curl -v http://localhost/
 
-# Exécuter le diagnostic
-chmod +x /usr/src/lsws-config/diagnose.sh
-/usr/src/lsws-config/diagnose.sh > /tmp/diagnosis.log 2>&1
-
-echo "==== BASIC TEST ===="
-echo "Testing basic HTTP functionality..."
-curl -v http://localhost/test/
-echo "Diagnosis completed - check logs for details"
+# Ajouter un message de diagnostic
+echo "==============================================="
+echo "Configuration completed!"
+echo "- HTTP should be working at http://$DOMAIN"
+echo "- Admin interface at https://[server-ip]:7080"
+echo "- Next.js content should be proxied from port 3000"
+echo "==============================================="
