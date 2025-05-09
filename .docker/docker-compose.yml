@@ -1,0 +1,34 @@
+services:
+  openlitespeed:
+    image: litespeedtech/openlitespeed:latest
+    container_name: ols-server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7080:7080"
+    volumes:
+      - ./openlitespeed/conf:/usr/local/lsws/conf
+      - ./openlitespeed/admin-conf:/usr/local/lsws/admin/conf
+      - ./openlitespeed/vhosts:/usr/local/lsws/conf/vhosts
+      - ./ssl/acme:/root/.acme.sh
+      - ./logs:/usr/local/lsws/logs
+    environment:
+      - TZ=${TZ}
+    restart: always
+    networks:
+      - app-network
+
+  nextjs:
+    build:
+      context: ..
+      dockerfile: .docker/nextjs.Dockerfile
+    container_name: nextjs-app
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
