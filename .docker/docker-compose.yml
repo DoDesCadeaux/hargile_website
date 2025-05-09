@@ -11,13 +11,14 @@ services:
     volumes:
       - ./custom-conf:/usr/src/lsws-config
       - ./static:/usr/local/lsws/Example/html/static
+      - ./letsencrypt:/etc/letsencrypt
     environment:
       - TZ=Europe/Brussels
       - DOMAIN=hargile.eu
       - EMAIL=gogolus2000@gmail.com
+      - SSL=true
+      - LETSENCRYPT=true
     restart: always
-    entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
-    command: [ "/entrypoint.sh" ]
     networks:
       - app-network
 
