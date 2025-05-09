@@ -4,16 +4,20 @@
 echo "=== DEBUG INFO ==="
 echo "PWD: $(pwd)"
 echo "DOMAIN: $DOMAIN"
-echo "Environment variables:"
-env
+echo "EMAIL: $EMAIL"
 echo "=== END DEBUG ==="
 
-# Définir explicitement le domaine
+# Définir explicitement le domaine et l'email
 DOMAIN=${DOMAIN:-hargile.eu}
+EMAIL=${EMAIL:-gogolus2000@gmail.com}
 echo "Using domain: $DOMAIN"
+echo "Using email: $EMAIL"
 
 # Installer acme.sh
 curl https://get.acme.sh | sh
+
+# IMPORTANT: Enregistrer le compte avec l'email avant d'obtenir des certificats
+/root/.acme.sh/acme.sh --register-account -m "$EMAIL"
 
 # Obtenir les certificats SSL
 /root/.acme.sh/acme.sh --issue --domain "$DOMAIN" --domain "www.$DOMAIN" --webroot /usr/local/lsws/Example/html/ --force
