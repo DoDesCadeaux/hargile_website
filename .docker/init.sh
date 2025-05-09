@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Create project directories
-mkdir -p .docker/logs
-mkdir -p .docker/openlitespeed/{conf,admin-conf,vhosts}
-mkdir -p .docker/ssl/acme
+mkdir -p logs
+mkdir -p openlitespeed/{conf,admin-conf,vhosts}
+mkdir -p ssl/acme
 
 # Set up environment
-if [ ! -f .docker/.env ]; then
+if [ ! -f .env ]; then
   read -p "Domain (e.g. example.com): " DOMAIN
   read -p "Email for SSL certificates: " EMAIL
 
   # Create .env file
-  cat > .docker/.env << EOF
+  cat > .env << ENVFILE
 # Domain Configuration
 DOMAIN=$DOMAIN
 ADDITIONAL_DOMAINS=www.$DOMAIN
@@ -41,12 +41,13 @@ OLS_WORKER_PROCESSES=1
 NODE_ENV=production
 NEXTJS_PORT=3000
 NEXT_DEBUG=false
-EOF
+ENVFILE
 fi
 
 # Make scripts executable
-chmod +x .docker/ssl/scripts/*.sh
+chmod +x ssl/scripts/*.sh
 
-./.docker/ssl/scripts/setup-cron.sh
+# Configure cron for certificate renewal
+./ssl/scripts/setup-cron.sh
 
-echo "Initialization complete! Run .docker/ssl/scripts/deploy.sh to deploy your application."
+echo "Initialization complete! Run ./ssl/scripts/deploy.sh to deploy your application."
