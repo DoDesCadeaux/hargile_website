@@ -50,7 +50,6 @@ jobs:
           chmod +x .github/startup.sh
 
       - name:
-          Deploy - Step 1: Transfer files
         run: |
           # Transférer l'archive et les scripts de déploiement
           echo "Transfert des fichiers vers le serveur..."
@@ -61,7 +60,6 @@ jobs:
           echo "Fichiers transférés avec succès"
 
       - name:
-          Deploy - Step 2: Prepare deployment
         run: |
           # Exécuter le script de préparation
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
@@ -70,7 +68,6 @@ jobs:
           "
 
       - name:
-          Deploy - Step 3: Start application
         run: |
           # Exécuter le script de démarrage
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
