@@ -5,7 +5,7 @@ set -x  # Enable debug output
 # Initialize logging
 LOG_DIR="/home/hargile.eu/deployments"
 LOG_FILE="$LOG_DIR/deploy.log"
-mkdir -p "$LOG_DIR"  # Create log directory if it doesn't exist
+mkdir -p "$LOG_DIR"
 echo "=== Deployment $(date) ===" >> "$LOG_FILE"
 
 # Récupérer l'ID de déploiement depuis les arguments
@@ -29,26 +29,23 @@ if [ -z "$ARCHIVE_PATH" ] || [ ! -f "$ARCHIVE_PATH" ]; then
   exit 1
 fi
 
-# Sauvegarder la version actuelle
-if [ -L "$DEPLOYMENTS_DIR/current" ]; then
-  PREVIOUS_VERSION=$(readlink "$DEPLOYMENTS_DIR/current" | xargs basename)
-  echo "$PREVIOUS_VERSION" > "$DEPLOYMENTS_DIR/previous_version"
-  echo "Version précédente: $PREVIOUS_VERSION" | tee -a "$LOG_FILE"
-
-  BACKUP_NAME="backup-$(date +%Y%m%d%H%M%S)"
-  cp -r "$(readlink -f "$DEPLOYMENTS_DIR/current")" "$DEPLOYMENTS_DIR/backups/$BACKUP_NAME"
-  echo "Sauvegarde créée: $BACKUP_NAME" | tee -a "$LOG_FILE"
+# Vérifier la taille de l'archive (limite à 500MB)
+ARCHIVE_SIZE=$(stat -c %s "$ARCHIVE_PATH" 2>/dev/null || echo 0)
+MAX_SIZE=$((500*1024*1024))  # 500MB
+if [ "$ARCHIVE_SIZE" -gt "$MAX_SIZE" ]; then
+  echo "ERREUR: L'archive est trop grande ($ARCHIVE_SIZE bytes, max $MAX_SIZE bytes)!" | tee -a "$LOG_FILE"
+  exit 1
 fi
 
-# Créer le répertoire pour la nouvelle version
-DEPLOY_DIR="$DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
-mkdir -p "$DEPLOY_DIR"
-
-# Installer unzip si nécessaire
-command -v unzip &>/dev/null || {
-  echo "Installation de unzip..." | tee -a "$LOG_FILE"
-  apt-get update && apt-get install -y unzip
+# Vérifier la validité de l'archive
+unzip -t "$ARCHIVE_PATH" >/dev/null 2>&1 || {
+  echo "ERREUR: L'archive est corrompue ou invalide!" | tee -a "$LOG_FILE"
+  exit 1
 }
+
+# Log memory usage before extraction
+echo "Mémoire avant extraction:" | tee -a "$LOG_FILE"
+free -m >> "$LOG_FILE"
 
 # Extraire l'archive
 echo "Extraction de l'archive..." | tee -a "$LOG_FILE"
@@ -56,6 +53,10 @@ unzip -q "$ARCHIVE_PATH" -d "$DEPLOY_DIR" || {
   echo "ERREUR: Échec de l'extraction de l'archive!" | tee -a "$LOG_FILE"
   exit 1
 }
+
+# Log memory usage after extraction
+echo "Mémoire après extraction:" | tee -a "$LOG_FILE"
+free -m >> "$LOG_FILE"
 
 # Vérifier la structure du répertoire
 if [ ! -d "$DEPLOY_DIR/.docker" ]; then
