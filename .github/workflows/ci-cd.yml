@@ -1,9 +1,5 @@
 name: CI/CD Pipeline
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   push:
     branches: [ main, master ]
@@ -15,7 +11,6 @@ jobs:
     name: Deploy
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
-    environment: Production
     steps:
       - uses: actions/checkout@v4
 
@@ -24,88 +19,186 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          name: id_ed25519
-          if_key_exists: replace
 
-      - name: Generate deployment ID
+      - name: Generate deployment version
+        id: deployment-version
         run: |
-          DEPLOY_ID=$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD)
+          VERSION=$(date +%Y%m%d%H%M%S)
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          DEPLOY_ID="${VERSION}-${COMMIT_HASH}"
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
-
-      - name: Create deployment package
-        run: |
-          git archive --format=tar.gz -o deploy-src.tar.gz HEAD
-          ls -la deploy-src.tar.gz
-
-
       - name: Deploy to server
+        id: deploy
         run: |
-          # Transfer package
-          scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-          
-          # Deploy
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            set -e
-            export DEPLOY_ID=${{ env.DEPLOY_ID }}
-            export APP_DIR=/home/hargile.eu
-            export DEPLOYMENTS_DIR=\$APP_DIR/deployments
-          
-            # Create directories
-            mkdir -p \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
-          
-            # Extract files
-            tar -xzf /tmp/deploy-src.tar.gz -C \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
-          
-            # Update symlink
+          # Create source package (exclude node_modules, .next, etc.)
+          tar --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
+
+          # Transfer package to the server
+          scp deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+
+          # Execute deployment commands
+                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
+          # Source deployment vars
+          export DEPLOY_ID="${{ env.DEPLOY_ID }}"
+          export NODE_ENV="production"
+          export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
+          export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
+          export APP_DIR="/home/hargile.eu"
+          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+
+          EOF
+
+            # Create deployments directory structure
+            mkdir -p \$DEPLOYMENTS_DIR/versions
+
+            # Record the current version before deploying
             if [ -L \$DEPLOYMENTS_DIR/current ]; then
               PREVIOUS_VERSION=\$(readlink \$DEPLOYMENTS_DIR/current | xargs basename)
               echo \$PREVIOUS_VERSION > \$DEPLOYMENTS_DIR/previous_version
             fi
+
+            # Extract source to new version directory
+            mkdir -p \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
+            tar -xzf /tmp/deploy-src.tar.gz -C \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
+
+            # Create symlink to new version
             rm -f \$DEPLOYMENTS_DIR/current
             ln -s \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID \$DEPLOYMENTS_DIR/current
-          
+
+            # Build and deploy the application
+            cd \$DEPLOYMENTS_DIR/current
+            npm ci
+            npm run build
+
             # Deploy with Docker
             cd \$DEPLOYMENTS_DIR/current/.docker
             docker compose down
-            DEPLOY_ID=\$DEPLOY_ID docker compose up -d --build
-          
-            # Cleanup
+            docker compose up -d
+
+            # Record deployment
             echo \$DEPLOY_ID > \$DEPLOYMENTS_DIR/current_version
+            echo "\$DEPLOY_ID deployed at \$(date)" >> \$DEPLOYMENTS_DIR/deploy_history
+
+            # Clean up
             rm /tmp/deploy-src.tar.gz
-          
-            # Keep only 5 recent deployments
+
+            # Keep only the 5 most recent deployments
             cd \$DEPLOYMENTS_DIR/versions
             ls -t | tail -n +6 | xargs rm -rf
-          
-            echo 'Deployment completed'
-          "
+
+            echo "Deployment \$DEPLOY_ID completed successfully."
+          EOF
 
 
-      - name: Configure SSL Certificate
+      - name: Configure SSL with Certbot Standalone
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            set -e
-
-            # Se placer dans le répertoire du conteneur OpenLiteSpeed
+            # Arrêter temporairement les conteneurs qui utilisent le port 80
             cd /home/hargile.eu/deployments/current/.docker
+            docker compose down
 
-            # Exécuter la commande de configuration Let's Encrypt dans le conteneur
-            docker exec ols-server bash -c '/usr/local/lsws/bin/lswsctrl restart'
-            docker exec ols-server bash -c 'certbot --non-interactive --agree-tos --email gogolus2000@gmail.com --webroot -w /var/www/html -d hargile.eu -d www.hargile.eu'
+            # Utiliser Certbot en mode standalone (sans Apache)
+            certbot certonly --standalone --non-interactive --agree-tos --email info@hargile.com -d hargile.eu -d www.hargile.eu
 
-            # Redémarrer pour appliquer les changements
-            docker exec ols-server bash -c '/usr/local/lsws/bin/lswsctrl restart'
+            # Créer le répertoire des certificats pour Docker
+            mkdir -p ./letsencrypt/live/hargile.eu
+
+            # Copier les certificats
+            cp -L /etc/letsencrypt/live/hargile.eu/fullchain.pem /home/hargile.eu/deployments/current/.docker/letsencrypt/live/hargile.eu/
+            cp -L /etc/letsencrypt/live/hargile.eu/privkey.pem /home/hargile.eu/deployments/current/.docker/letsencrypt/live/hargile.eu/
+
+            # Ajuster les permissions
+            chmod -R 755 /home/hargile.eu/deployments/current/.docker/letsencrypt
+
+            # Modifier docker-compose.yml pour monter les certificats
+            sed -i 's#- ./custom-conf:/usr/src/lsws-config#- ./custom-conf:/usr/src/lsws-config\\n      - ./letsencrypt:/etc/letsencrypt#' docker-compose.yml
+
+            # Ajouter les variables d'environnement pour SSL
+            sed -i '/EMAIL=/a\\      - SSL=true\\n      - LETSENCRYPT=true' docker-compose.yml
+
+            # Redémarrer les services
+            docker compose up -d
+
+            # Configurer un renouvellement automatique
+            echo '0 3 * * * root certbot renew --quiet --standalone --pre-hook \"docker stop ols-server\" --post-hook \"docker start ols-server\"' > /etc/cron.d/certbot-renewal
+            chmod 644 /etc/cron.d/certbot-renewal
 
             echo 'SSL Certificate configured successfully'
           "
 
-      - name: Notify status
+            - name: Check deployment health
+              id: health-check
+              run: |
+                # Wait for services to start
+                sleep 30
+
+                # Perform health check
+                HEALTH_CHECK_URL="https://hargile.eu/api/health"
+                MAX_RETRIES=5
+                RETRY_DELAY=10
+
+                for i in $(seq 1 $MAX_RETRIES); do
+                  echo "Health check attempt $i of $MAX_RETRIES..."
+                  HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL || echo "000")
+
+                  if [ "$HTTP_STATUS" = "200" ]; then
+                    echo "Health check passed! Site is up and running."
+                    exit 0
+                  else
+                    echo "Health check failed with status $HTTP_STATUS. Retrying in $RETRY_DELAY seconds..."
+                    sleep $RETRY_DELAY
+                  fi
+                done
+
+                echo "Health check failed after $MAX_RETRIES attempts"
+                exit 1
+              continue-on-error: true
+
+      - name: Rollback if deployment failed
+        if: steps.health-check.outcome == 'failure'
+        run: |
+          echo "Deployment health check failed. Initiating rollback..."
+
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
+          export APP_DIR="/home/hargile.eu"
+          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+          export DEPLOY_ID="\$(cat \$DEPLOYMENTS_DIR/previous_version)"
+
+            # Check if we have a previous version
+            if [ -f "\$DEPLOYMENTS_DIR/previous_version" ]; then
+              PREVIOUS_VERSION=\$(cat \$DEPLOYMENTS_DIR/previous_version)
+              CURRENT_VERSION=\$(cat \$DEPLOYMENTS_DIR/current_version)
+
+              echo "Rolling back from \$CURRENT_VERSION to \$PREVIOUS_VERSION"
+
+              # Update the current symlink to point to the previous version
+              rm -f \$DEPLOYMENTS_DIR/current
+              ln -s \$DEPLOYMENTS_DIR/versions/\$PREVIOUS_VERSION \$DEPLOYMENTS_DIR/current
+
+              # Redeploy the previous version
+              cd \$DEPLOYMENTS_DIR/current/.docker
+              DEPLOY_ID=\$DEPLOY_ID docker compose down
+              DEPLOY_ID=\$DEPLOY_ID docker compose up -d
+
+              # Record the rollback
+              echo \$PREVIOUS_VERSION > \$DEPLOYMENTS_DIR/current_version
+              echo "ROLLBACK: from \$CURRENT_VERSION to \$PREVIOUS_VERSION at \$(date)" >> \$DEPLOYMENTS_DIR/rollback_history
+
+              echo "Rollback to version \$PREVIOUS_VERSION completed."
+            else
+              echo "No previous version found for rollback!"
+            fi
+          EOF
+
+          exit 1
+
+      - name: Notify deployment status
         if: always()
         run: |
-          if [ "${{ job.status }}" = "success" ]; then
+          if [ "${{ steps.health-check.outcome }}" = "success" ]; then
             echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
           else
-            echo "❌ Deployment failed!"
+            echo "❌ Deployment failed and rollback initiated!"
           fi
