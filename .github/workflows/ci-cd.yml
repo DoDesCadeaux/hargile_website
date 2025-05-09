@@ -39,12 +39,16 @@ jobs:
           scp deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
           
           # Execute deployment commands
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
-            # Source deployment vars
-            export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-            export NODE_ENV="production"
-            export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
-            export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
+                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
+          # Source deployment vars
+          export DEPLOY_ID="${{ env.DEPLOY_ID }}"
+          export NODE_ENV="production"
+          export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
+          export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
+          export APP_DIR="/home/hargile.eu"
+          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+          
+          EOF
           
             # Create deployments directory structure
             mkdir -p \$DEPLOYMENTS_DIR/versions
@@ -121,9 +125,9 @@ jobs:
           echo "Deployment health check failed. Initiating rollback..."
           
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
-            export DEPLOY_ID="\$(cat \$DEPLOYMENTS_DIR/previous_version)"
-            export APP_DIR="/home/hargile.eu"
-            export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+          export APP_DIR="/home/hargile.eu"
+          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+          export DEPLOY_ID="\$(cat \$DEPLOYMENTS_DIR/previous_version)"
           
             # Check if we have a previous version
             if [ -f "\$DEPLOYMENTS_DIR/previous_version" ]; then
