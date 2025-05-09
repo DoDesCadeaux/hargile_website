@@ -3,19 +3,10 @@ version: '3'
 services:
   openlitespeed:
     image: litespeedtech/openlitespeed:latest
-    container_name: ols-server
-    ports:
-      - "80:80"
-      - "443:443"
-      - "7080:7080"
     volumes:
       - ./custom-conf:/usr/src/lsws-config
-    environment:
-      - TZ=Europe/Brussels
-      - DOMAIN=hargile.eu
-    restart: always
-    entrypoint: ["/usr/src/lsws-config/entrypoint.sh"]
-    command: ["/entrypoint.sh"]
+    entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
+    command: [ "/entrypoint.sh" ]
     networks:
       - app-network
 
