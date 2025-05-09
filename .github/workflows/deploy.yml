@@ -32,23 +32,23 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
-          SERVER_USER: ${{ secrets.SSH_USER }}
+          SSH_USER: ${{ secrets.SSH_USER }}
         run: |
           echo "$SSH_PRIVATE_KEY" > ssh_key
           chmod 600 ssh_key
-          scp -i ssh_key /tmp/app.zip $SERVER_USER@$SERVER_IP:/tmp/app.zip
+          scp -i ssh_key /tmp/app.zip $SSH_USER@$SERVER_IP:/tmp/app.zip
           rm ssh_key
 
       - name: Deploy on server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
-          SERVER_USER: ${{ secrets.SSH_USER }}
+          SSH_USER: ${{ secrets.SSH_USER }}
           DEPLOY_ID: ${{ github.run_id }}-${{ github.sha }}
         run: |
           echo "$SSH_PRIVATE_KEY" > ssh_key
           chmod 600 ssh_key
-          ssh -i ssh_key -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+          ssh -i ssh_key -o StrictHostKeyChecking=no $SSH_USER@$SERVER_IP "
             docker cp /tmp/app.zip ols-server:/tmp/app.zip &&
             docker exec ols-server bash -c 'chmod +x /var/www/html/.docker/scripts/deploy.sh && /var/www/html/.docker/scripts/deploy.sh $DEPLOY_ID /tmp/app.zip'
           "
