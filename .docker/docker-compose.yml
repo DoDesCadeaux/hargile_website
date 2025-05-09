@@ -12,9 +12,11 @@ services:
       - ./openlitespeed/vhosts:/usr/local/lsws/conf/vhosts
       - ./ssl/acme:/root/.acme.sh
       - ./logs:/usr/local/lsws/logs
+      - ./setup-ols.sh:/setup-ols.sh
     environment:
       - TZ=${TZ}
     restart: always
+    command: ["/bin/bash", "/setup-ols.sh"]
     networks:
       - app-network
 
