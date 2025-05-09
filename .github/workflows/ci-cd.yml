@@ -50,113 +50,114 @@ jobs:
           # Transfert du package
           echo "Copying TAR package to server..."
           scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-          
+
           # Déploiement
           echo "Executing deployment script on server..."
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            set -ex  # Affiche les commandes + exit en cas d'erreur
-          
-            # Variables d'environnement
-            export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-            export APP_DIR="/home/hargile.eu"
-            export DEPLOYMENTS_DIR="$APP_DIR/deployments"
-          
-            echo "Creating directory structure..."
-            mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-          
-            echo "Extracting package..."
-            tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-          
-            echo "Creating symlink..."
-            if [ -L $DEPLOYMENTS_DIR/current ]; then
-              PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
-              echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
-            fi
-            rm -f $DEPLOYMENTS_DIR/current
-            ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
-          
-            echo "Deploying with Docker..."
-            cd $DEPLOYMENTS_DIR/current/.docker
-          
-            # Modifier le Dockerfile pour inclure le build
-            cat > nextjs.Dockerfile << 'DOCKERFILE'
-              FROM node:20-alpine AS builder
-              WORKDIR /app
-              COPY . .
-              RUN npm ci
-              RUN npm run build
-          
-              FROM node:20-alpine
-              WORKDIR /app
-              COPY --from=builder /app/node_modules ./node_modules
-              COPY --from=builder /app/.next ./.next
-              COPY --from=builder /app/public ./public
-              COPY --from=builder /app/next.config.js ./next.config.js
-              COPY --from=builder /app/package.json ./package.json
-          
-              ENV NODE_ENV=production
-              EXPOSE 3000
-              CMD ["npm", "start"]
-            DOCKERFILE
-          
-            # Mise à jour de docker-compose.yml pour inclure les variables d'environnement
-            cat > docker-compose.yml << 'COMPOSE'
-          
-              services:
-                openlitespeed:
-                  image: litespeedtech/openlitespeed:latest
-                  container_name: ols-server
-                  ports:
-                    - "80:80"
-                    - "443:443"
-                    - "7080:7080"
-                  volumes:
-                    - ./custom-conf:/usr/src/lsws-config
-                    - ./static:/usr/local/lsws/Example/html/static
-                  environment:
-                    - TZ=Europe/Brussels
-                    - DOMAIN=hargile.eu
-                    - EMAIL=gogolus2000@gmail.com
-                  restart: always
-                  entrypoint: ["/usr/src/lsws-config/entrypoint.sh"]
-                  command: ["/entrypoint.sh"]
-                  networks:
-                    - app-network
-          
-                nextjs:
-                  build:
-                    context: ..
-                    dockerfile: .docker/nextjs.Dockerfile
-                  container_name: nextjs-app
-                  environment:
-                    - NODE_ENV=production
-                    - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
-                  restart: always
-                  networks:
-                    - app-network
-          
-              networks:
-                app-network:
-                  driver: bridge
-            COMPOSE
-          
-            # Déployer avec Docker
-            docker compose down
-            DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
-          
-            echo "Finalizing deployment..."
-            echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
-            echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
-          
-            echo "Cleanup..."
-            rm /tmp/deploy-src.tar.gz
-          
-            # Keep only the 5 most recent deployments
-            cd $DEPLOYMENTS_DIR/versions
-            ls -t | tail -n +6 | xargs rm -rf
-          
-            echo "Deployment $DEPLOY_ID successful"
-          EOF
+      set -ex
+
+      # Variables d'environnement
+      export DEPLOY_ID="${{ env.DEPLOY_ID }}"
+      export APP_DIR="/home/hargile.eu"
+      export DEPLOYMENTS_DIR="$APP_DIR/deployments"
+
+      echo "Creating directory structure..."
+      mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+
+      echo "Extracting package..."
+      tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+
+      echo "Creating symlink..."
+      if [ -L $DEPLOYMENTS_DIR/current ]; then
+      PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
+      echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
+      fi
+      rm -f $DEPLOYMENTS_DIR/current
+      ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
+
+      echo "Deploying with Docker..."
+      cd $DEPLOYMENTS_DIR/current/.docker
+
+      # Modifier le Dockerfile pour inclure le build
+      cat > nextjs.Dockerfile << 'DOCKERFILE'
+      FROM node:20-alpine AS builder
+      WORKDIR /app
+      COPY . .
+      RUN npm ci
+      RUN npm run build
+
+      FROM node:20-alpine
+      WORKDIR /app
+      COPY --from=builder /app/node_modules ./node_modules
+      COPY --from=builder /app/.next ./.next
+      COPY --from=builder /app/public ./public
+      COPY --from=builder /app/next.config.js ./next.config.js
+      COPY --from=builder /app/package.json ./package.json
+
+      ENV NODE_ENV=production
+      EXPOSE 3000
+      CMD ["npm", "start"]
+      DOCKERFILE
+
+      # Mise à jour de docker-compose.yml pour inclure les variables d'environnement
+      cat > docker-compose.yml << 'COMPOSE'
+      version: '3'
+
+      services:
+        openlitespeed:
+          image: litespeedtech/openlitespeed:latest
+          container_name: ols-server
+          ports:
+            - "80:80"
+            - "443:443"
+            - "7080:7080"
+          volumes:
+            - ./custom-conf:/usr/src/lsws-config
+            - ./static:/usr/local/lsws/Example/html/static
+          environment:
+            - TZ=Europe/Brussels
+            - DOMAIN=hargile.eu
+            - EMAIL=gogolus2000@gmail.com
+          restart: always
+          entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
+          command: [ "/entrypoint.sh" ]
+          networks:
+            - app-network
+
+        nextjs:
+          build:
+            context: ..
+            dockerfile: .docker/nextjs.Dockerfile
+          container_name: nextjs-app
+          environment:
+            - NODE_ENV=production
+            - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
+          restart: always
+          networks:
+            - app-network
+
+      networks:
+        app-network:
+          driver: bridge
+      COMPOSE
+
+      # Déployer avec Docker
+      docker compose down
+      DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
+
+      echo "Finalizing deployment..."
+      echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
+      echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+
+      echo "Cleanup..."
+      rm /tmp/deploy-src.tar.gz
+
+      # Keep only the 5 most recent deployments
+      cd $DEPLOYMENTS_DIR/versions
+      ls -t | tail -n +6 | xargs rm -rf
+
+      echo "Deployment $DEPLOY_ID successful"
+      EOF
 
       - name: Check deployment health
         id: health-check
