@@ -11,7 +11,7 @@ cd $BASE_DIR
 mkdir -p ssl/acme openlitespeed/{conf,admin-conf,vhosts} logs
 
 # Start containers
-docker-compose up -d
+docker compose up -d
 
 # Wait for containers to start
 echo "Waiting for containers to start..."
@@ -22,7 +22,7 @@ sleep 10
 ./ssl/scripts/configure-ssl.sh
 
 # Restart OpenLiteSpeed to apply configurations
-docker-compose restart openlitespeed
+docker compose restart openlitespeed
 
 echo "=====================================================
           Deployment complete!
