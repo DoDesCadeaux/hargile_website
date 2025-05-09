@@ -16,8 +16,8 @@ services:
       - DOMAIN=hargile.eu
       - EMAIL=gogolus2000@gmail.com
     restart: always
-    entrypoint: ["/usr/src/lsws-config/entrypoint.sh"]
-    command: ["/entrypoint.sh"]
+    entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
+    command: [ "/entrypoint.sh" ]
     networks:
       - app-network
 
@@ -29,6 +29,9 @@ services:
     restart: always
     environment:
       - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://hargile.eu/api
+      - NEXT_PUBLIC_SITE_URL=https://hargile.eu
+      - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
     networks:
       - app-network
 

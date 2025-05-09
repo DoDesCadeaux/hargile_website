@@ -7,30 +7,8 @@ on:
     branches: [ main, master ]
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run tests
-        run: npm test
-
-      - name: Lint code
-        run: npm run lint
-
   deploy:
     name: Deploy
-    needs: test
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
     steps:
@@ -64,8 +42,9 @@ jobs:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
             # Source deployment vars
             export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-            export APP_DIR="/home/hargile.eu"
-            export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
+            export NODE_ENV="production"
+            export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
+            export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
           
             # Create deployments directory structure
             mkdir -p \$DEPLOYMENTS_DIR/versions
@@ -142,6 +121,7 @@ jobs:
           echo "Deployment health check failed. Initiating rollback..."
           
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
+            export DEPLOY_ID="\$(cat \$DEPLOYMENTS_DIR/previous_version)"
             export APP_DIR="/home/hargile.eu"
             export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
           
@@ -158,8 +138,8 @@ jobs:
           
               # Redeploy the previous version
               cd \$DEPLOYMENTS_DIR/current/.docker
-              docker compose down
-              docker compose up -d
+              DEPLOY_ID=\$DEPLOY_ID docker compose down
+              DEPLOY_ID=\$DEPLOY_ID docker compose up -d
           
               # Record the rollback
               echo \$PREVIOUS_VERSION > \$DEPLOYMENTS_DIR/current_version

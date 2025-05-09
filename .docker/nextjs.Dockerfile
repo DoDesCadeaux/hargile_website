@@ -1,6 +1,10 @@
+# .docker/nextjs.Dockerfile
 FROM node:22-alpine
 
 WORKDIR /app
+
+# Copy environment variables first
+COPY .env.production ./
 
 # Copy dependency files
 COPY package*.json ./
