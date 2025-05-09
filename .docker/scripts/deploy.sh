@@ -3,8 +3,10 @@ set -e
 set -x  # Enable debug output
 
 # Initialize logging
-LOG_FILE="/home/hargile.eu/deployments/deploy.log"
-echo "=== Déploiement $(date) ===" >> "$LOG_FILE"
+LOG_DIR="/home/hargile.eu/deployments"
+LOG_FILE="$LOG_DIR/deploy.log"
+mkdir -p "$LOG_DIR"  # Create log directory if it doesn't exist
+echo "=== Deployment $(date) ===" >> "$LOG_FILE"
 
 # Récupérer l'ID de déploiement depuis les arguments
 DEPLOY_ID=${1:-$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")}
@@ -59,7 +61,7 @@ unzip -q "$ARCHIVE_PATH" -d "$DEPLOY_DIR" || {
 if [ ! -d "$DEPLOY_DIR/.docker" ]; then
   echo "ERREUR: Répertoire .docker non trouvé dans le déploiement!" | tee -a "$LOG_FILE"
   exit 1
-}
+fi
 
 # Mettre à jour le lien symbolique
 rm -f "$DEPLOYMENTS_DIR/current"
