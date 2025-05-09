@@ -14,6 +14,8 @@ jobs:
     environment: Production
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Important pour git archive
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -32,17 +34,12 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
-      - name: Create deployment package with TAR
+      - name: Create deployment package with git archive
         run: |
-          echo "=== Creating deployment package with TAR ==="
-          # Approche simplifiée avec tar
-          tar -czf deploy-src.tar.gz --exclude="node_modules" --exclude=".next" --exclude=".git" .
+          echo "=== Creating deployment package with git archive ==="
+          # Utiliser git archive qui est plus stable dans un environnement CI
+          git archive --format=tar.gz -o deploy-src.tar.gz HEAD
           ls -la deploy-src.tar.gz
-
-      - name: Test basic SSH connection
-        run: |
-          echo "=== Testing basic SSH connection ==="
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo Connection successful; id; pwd"
 
       - name: Transfer TAR package and deploy
         id: deploy
