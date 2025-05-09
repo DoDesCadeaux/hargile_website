@@ -34,64 +34,61 @@ jobs:
         id: deploy
         run: |
           # Create source package (exclude node_modules, .next, etc.)
-          tar --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
-          
+          tar --warning=no-file-changed --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
+
           # Transfer package to the server
           scp deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-          
+
           # Execute deployment commands
-                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
-          # Source deployment vars
-          export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-          export NODE_ENV="production"
-          export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
-          export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
-          export APP_DIR="/home/hargile.eu"
-          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
-          
-          EOF
-          
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            # Source deployment vars
+            export DEPLOY_ID="${{ env.DEPLOY_ID }}"
+            export NODE_ENV="production"
+            export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
+            export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
+            export APP_DIR="/home/hargile.eu"
+            export DEPLOYMENTS_DIR="$APP_DIR/deployments"
+
             # Create deployments directory structure
-            mkdir -p \$DEPLOYMENTS_DIR/versions
-          
+            mkdir -p $DEPLOYMENTS_DIR/versions
+
             # Record the current version before deploying
-            if [ -L \$DEPLOYMENTS_DIR/current ]; then
-              PREVIOUS_VERSION=\$(readlink \$DEPLOYMENTS_DIR/current | xargs basename)
-              echo \$PREVIOUS_VERSION > \$DEPLOYMENTS_DIR/previous_version
+            if [ -L $DEPLOYMENTS_DIR/current ]; then
+              PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
+              echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
             fi
-          
+
             # Extract source to new version directory
-            mkdir -p \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
-            tar -xzf /tmp/deploy-src.tar.gz -C \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID
-          
+            mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+            tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+
             # Create symlink to new version
-            rm -f \$DEPLOYMENTS_DIR/current
-            ln -s \$DEPLOYMENTS_DIR/versions/\$DEPLOY_ID \$DEPLOYMENTS_DIR/current
-          
+            rm -f $DEPLOYMENTS_DIR/current
+            ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
+
             # Build and deploy the application
-            cd \$DEPLOYMENTS_DIR/current
+            cd $DEPLOYMENTS_DIR/current
             npm ci
             npm run build
-          
+
             # Deploy with Docker
-            cd \$DEPLOYMENTS_DIR/current/.docker
+            cd $DEPLOYMENTS_DIR/current/.docker
             docker compose down
             docker compose up -d
-          
+
             # Record deployment
-            echo \$DEPLOY_ID > \$DEPLOYMENTS_DIR/current_version
-            echo "\$DEPLOY_ID deployed at \$(date)" >> \$DEPLOYMENTS_DIR/deploy_history
-          
+            echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
+            echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+
             # Clean up
             rm /tmp/deploy-src.tar.gz
-          
-            # Keep only the 5 most recent deployments
-            cd \$DEPLOYMENTS_DIR/versions
-            ls -t | tail -n +6 | xargs rm -rf
-          
-            echo "Deployment \$DEPLOY_ID completed successfully."
-          EOF
 
+            # Keep only the 5 most recent deployments
+            cd $DEPLOYMENTS_DIR/versions
+            ls -t | tail -n +6 | xargs rm -rf
+
+            echo "Deployment $DEPLOY_ID completed successfully."
+          EOF
       - name: Check deployment health
         id: health-check
         run: |
