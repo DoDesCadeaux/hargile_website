@@ -29,10 +29,12 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
+
       - name: Create deployment package
         run: |
           git archive --format=tar.gz -o deploy-src.tar.gz HEAD
           ls -la deploy-src.tar.gz
+
 
       - name: Deploy to server
         run: |
@@ -74,6 +76,25 @@ jobs:
             ls -t | tail -n +6 | xargs rm -rf
           
             echo 'Deployment completed'
+          "
+
+
+      - name: Configure SSL Certificate
+        run: |
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
+            set -e
+
+            # Se placer dans le répertoire du conteneur OpenLiteSpeed
+            cd /home/hargile.eu/deployments/current/.docker
+
+            # Exécuter la commande de configuration Let's Encrypt dans le conteneur
+            docker exec ols-server bash -c '/usr/local/lsws/bin/lswsctrl restart'
+            docker exec ols-server bash -c 'certbot --non-interactive --agree-tos --email gogolus2000@gmail.com --webroot -w /var/www/html -d hargile.eu -d www.hargile.eu'
+
+            # Redémarrer pour appliquer les changements
+            docker exec ols-server bash -c '/usr/local/lsws/bin/lswsctrl restart'
+
+            echo 'SSL Certificate configured successfully'
           "
 
       - name: Notify status
