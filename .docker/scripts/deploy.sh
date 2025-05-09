@@ -35,12 +35,23 @@ mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
 
 # Extraire le package de déploiement
 if [ -f "/tmp/deploy-package.tar.gz" ]; then
-  tar -xzf /tmp/deploy-package.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-  echo "Package extrait dans $DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
+  echo "Extraction de l'archive GitHub..."
 
-  # Nettoyer le package
+  # Extraction temporaire dans un répertoire pour obtenir le nom du dossier
+  TEMP_DIR=$(mktemp -d)
+  tar -xzf /tmp/deploy-package.tar.gz -C $TEMP_DIR
+
+  # Trouver le nom du répertoire créé par l'archive GitHub (généralement repo-SHA)
+  EXTRACTED_DIR=$(ls -1 $TEMP_DIR)
+
+  # Déplacer le contenu vers le répertoire de déploiement
+  cp -r $TEMP_DIR/$EXTRACTED_DIR/* $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/
+
+  # Nettoyer
+  rm -rf $TEMP_DIR
   rm /tmp/deploy-package.tar.gz
-  echo "Package nettoyé"
+
+  echo "Package extrait dans $DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
 else
   echo "ERREUR: Package de déploiement non trouvé!"
   exit 1
