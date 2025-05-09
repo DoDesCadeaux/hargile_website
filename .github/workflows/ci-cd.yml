@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Important pour git archive
+          fetch-depth: 0
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -34,205 +34,139 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
-
-      - name: Create deployment package with git archive
+      - name: Create deployment package
         run: |
-          echo "=== Creating deployment package with git archive ==="
-          # Utiliser git archive qui est plus stable dans un environnement CI
+          echo "=== Creating deployment package ==="
           git archive --format=tar.gz -o deploy-src.tar.gz HEAD
           ls -la deploy-src.tar.gz
 
-
-      - name: Transfer TAR package and deploy
-        id: deploy
+      # Création des fichiers Docker dans le dépôt
+      - name: Create deployment script
         run: |
-          echo "=== Transferring and deploying ==="
-          # Transfert du package
-          echo "Copying TAR package to server..."
-          scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+          cat > deploy.sh << 'EOF'
+  #!/bin/bash
+  set -ex
+  
+  # Variables d'environnement
+  DEPLOY_ID=$1
+  APP_DIR="/home/hargile.eu"
+  DEPLOYMENTS_DIR="$APP_DIR/deployments"
+  
+  # Structure des répertoires
+  mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+  
+  # Extraction
+  tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+  
+  # Symlink
+  if [ -L $DEPLOYMENTS_DIR/current ]; then
+  PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
+  echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
+  fi
+  rm -f $DEPLOYMENTS_DIR/current
+  ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
+  
+  # Déploiement Docker
+  cd $DEPLOYMENTS_DIR/current
+  cp .docker/nextjs.Dockerfile .docker/docker-compose.yml $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/
+  
+  cd $DEPLOYMENTS_DIR/current/.docker
+  docker compose down
+  DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
+  
+  # Finalisation
+  echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
+  echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+  
+  # Nettoyage
+  rm /tmp/deploy-src.tar.gz
+  cd $DEPLOYMENTS_DIR/versions
+  ls -t | tail -n +6 | xargs rm -rf
+  
+  echo "Deployment $DEPLOY_ID successful"
+  EOF
+  chmod +x deploy.sh
+  
+  mkdir -p .docker
+  
+  # Création du Dockerfile
+  cat > .docker/nextjs.Dockerfile << 'EOF'
+  FROM node:20-alpine AS builder
+  WORKDIR /app
+  COPY . .
+  RUN npm ci
+  RUN npm run build
+  
+  FROM node:20-alpine
+  WORKDIR /app
+  COPY --from=builder /app/node_modules ./node_modules
+  COPY --from=builder /app/.next ./.next
+  COPY --from=builder /app/public ./public
+  COPY --from=builder /app/next.config.js ./next.config.js
+  COPY --from=builder /app/package.json ./package.json
+  
+  ENV NODE_ENV=production
+  EXPOSE 3000
+  CMD ["npm", "start"]
+  EOF
+  
+  # Création du docker-compose.yml
+  cat > .docker/docker-compose.yml << 'EOF'
+version: '3'
 
-          # Déploiement
-          echo "Executing deployment script on server..."
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-    set -ex
-
-    # Variables d'environnement
-    export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-    export APP_DIR="/home/hargile.eu"
-    export DEPLOYMENTS_DIR="$APP_DIR/deployments"
-
-    echo "Creating directory structure..."
-    mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-
-    echo "Extracting package..."
-    tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-
-    echo "Creating symlink..."
-    if [ -L $DEPLOYMENTS_DIR/current ]; then
-    PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
-    echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
-    fi
-    rm -f $DEPLOYMENTS_DIR/current
-    ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
-
-    echo "Deploying with Docker..."
-    cd $DEPLOYMENTS_DIR/current/.docker
-
-    # Modifier le Dockerfile pour inclure le build
-    cat > nextjs.Dockerfile << 'DOCKERFILE'
-    FROM node:20-alpine AS builder
-    WORKDIR /app
-    COPY . .
-    RUN npm ci
-    RUN npm run build
-
-    FROM node:20-alpine
-    WORKDIR /app
-    COPY --from=builder /app/node_modules ./node_modules
-    COPY --from=builder /app/.next ./.next
-    COPY --from=builder /app/public ./public
-    COPY --from=builder /app/next.config.js ./next.config.js
-    COPY --from=builder /app/package.json ./package.json
-
-    ENV NODE_ENV=production
-    EXPOSE 3000
-    CMD ["npm", "start"]
-    DOCKERFILE
-
-    # Mise à jour de docker-compose.yml pour inclure les variables d'environnement
-    cat > docker-compose.yml << 'COMPOSE'
-    version: '3'
-
-    services:
-      openlitespeed:
-        image: litespeedtech/openlitespeed:latest
-        container_name: ols-server
-        ports:
-          - "80:80"
-          - "443:443"
-          - "7080:7080"
-        volumes:
-          - ./custom-conf:/usr/src/lsws-config
-          - ./static:/usr/local/lsws/Example/html/static
-        environment:
-          - TZ=Europe/Brussels
-          - DOMAIN=hargile.eu
-          - EMAIL=gogolus2000@gmail.com
-        restart: always
-        entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
-        command: [ "/entrypoint.sh" ]
-        networks:
-          - app-network
-
-      nextjs:
-        build:
-          context: ..
-          dockerfile: .docker/nextjs.Dockerfile
-        container_name: nextjs-app
-        environment:
-          - NODE_ENV=production
-          - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
-        restart: always
-        networks:
-          - app-network
-
+services:
+  openlitespeed:
+    image: litespeedtech/openlitespeed:latest
+    container_name: ols-server
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7080:7080"
+    volumes:
+      - ./custom-conf:/usr/src/lsws-config
+      - ./static:/usr/local/lsws/Example/html/static
+    environment:
+      - TZ=Europe/Brussels
+      - DOMAIN=hargile.eu
+      - EMAIL=gogolus2000@gmail.com
+    restart: always
+    entrypoint: [ "/usr/src/lsws-config/entrypoint.sh" ]
+    command: [ "/entrypoint.sh" ]
     networks:
-      app-network:
-        driver: bridge
-    COMPOSE
+      - app-network
 
-    # Déployer avec Docker
-    docker compose down
-    DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
+  nextjs:
+    build:
+      context: ..
+      dockerfile: .docker/nextjs.Dockerfile
+    container_name: nextjs-app
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
+    restart: always
+    networks:
+      - app-network
 
-    echo "Finalizing deployment..."
-    echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
-    echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+networks:
+  app-network:
+    driver: bridge
+  EOF
 
-    echo "Cleanup..."
-    rm /tmp/deploy-src.tar.gz
+  - name: Transfer package and deploy
+    id: deploy
+    run: |
+      echo "=== Transferring and deploying ==="
+      scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+      scp -o "StrictHostKeyChecking=no" deploy.sh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+      scp -o "StrictHostKeyChecking=no" -r .docker ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+      
+      ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "bash /tmp/deploy.sh ${{ env.DEPLOY_ID }}"
 
-    # Keep only the 5 most recent deployments
-    cd $DEPLOYMENTS_DIR/versions
-    ls -t | tail -n +6 | xargs rm -rf
-
-    echo "Deployment $DEPLOY_ID successful"
-    EOF
-
-      - name: Check deployment health
-        id: health-check
-        continue-on-error: true
-        run: |
-          echo "=== Checking deployment health ==="
-          # Wait for services to start
-          sleep 30
-          
-          # Perform health check
-          HEALTH_CHECK_URL="https://hargile.eu/api/health"
-          MAX_RETRIES=5
-          RETRY_DELAY=10
-          
-          for i in $(seq 1 $MAX_RETRIES); do
-            echo "Health check attempt $i of $MAX_RETRIES..."
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL || echo "000")
-          
-            if [ "$HTTP_STATUS" = "200" ]; then
-              echo "Health check passed! Site is up and running."
-              exit 0
-            else
-              echo "Health check failed with status $HTTP_STATUS. Retrying in $RETRY_DELAY seconds..."
-              sleep $RETRY_DELAY
-            fi
-          done
-          
-          echo "Health check failed after $MAX_RETRIES attempts"
-          exit 1
-
-
-      - name: Rollback if deployment failed
-        if: steps.health-check.outcome == 'failure'
-        run: |
-          echo "=== Deployment health check failed. Initiating rollback ==="
-          
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            set -ex
-          
-            # Variables d'environnement
-            export APP_DIR="/home/hargile.eu"
-            export DEPLOYMENTS_DIR="$APP_DIR/deployments"
-          
-            # Check if we have a previous version
-            if [ -f "$DEPLOYMENTS_DIR/previous_version" ]; then
-              PREVIOUS_VERSION=$(cat $DEPLOYMENTS_DIR/previous_version)
-              CURRENT_VERSION=$(cat $DEPLOYMENTS_DIR/current_version)
-          
-              echo "Rolling back from $CURRENT_VERSION to $PREVIOUS_VERSION"
-          
-              # Update the current symlink to point to the previous version
-              rm -f $DEPLOYMENTS_DIR/current
-              ln -s $DEPLOYMENTS_DIR/versions/$PREVIOUS_VERSION $DEPLOYMENTS_DIR/current
-          
-              # Redeploy the previous version
-              cd $DEPLOYMENTS_DIR/current/.docker
-              export DEPLOY_ID=$PREVIOUS_VERSION
-              docker compose down
-              docker compose up -d
-          
-              # Record the rollback
-              echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/current_version
-              echo "ROLLBACK: from $CURRENT_VERSION to $PREVIOUS_VERSION at $(date)" >> $DEPLOYMENTS_DIR/rollback_history
-          
-              echo "Rollback to version $PREVIOUS_VERSION completed."
-            else
-              echo "No previous version found for rollback!"
-            fi
-          EOF
-
-      - name: Notify deployment status
-        if: always()
-        run: |
-          if [ "${{ steps.health-check.outcome }}" = "success" ]; then
-            echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
-          else
-            echo "❌ Deployment failed and rollback initiated!"
-          fi
+  - name: Notify deployment status
+    if: always()
+    run: |
+      if [ "${{ job.status }}" = "success" ]; then
+        echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
+      else
+        echo "❌ Deployment failed!"
+      fi
