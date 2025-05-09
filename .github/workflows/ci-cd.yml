@@ -30,17 +30,37 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
+      - name: SSH Diagnostics
+        run: |
+          echo "=== SSH Connectivity Test ==="
+          # Test basic SSH connection with verbose output
+          ssh -o "StrictHostKeyChecking=no" -v ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo Connection successful"
+
+      - name: Create deployment package
+        run: |
+          echo "=== Creating deployment package ==="
+          tar --warning=no-file-changed --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
+          ls -la deploy-src.tar.gz
+
+      - name: Test SCP connection
+        run: |
+          echo "=== Testing SCP connection ==="
+          # Create a small test file and try to copy it
+          echo "test" > test-file.txt
+          scp -o "StrictHostKeyChecking=no" -v test-file.txt ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+
+      - name: Transfer deployment package
+        run: |
+          echo "=== Transferring deployment package ==="
+          scp -o "StrictHostKeyChecking=no" -v deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+
       - name: Deploy to server
         id: deploy
         run: |
-          # Create source package (exclude node_modules, .next, etc.)
-          tar --warning=no-file-changed --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
+          echo "=== Running deployment on server ==="
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            set -e  # Exit immediately if any command fails
 
-          # Transfer package to the server
-          scp deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-
-          # Execute deployment commands
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
             # Source deployment vars
             export DEPLOY_ID="${{ env.DEPLOY_ID }}"
             export NODE_ENV="production"
@@ -49,46 +69,49 @@ jobs:
             export APP_DIR="/home/hargile.eu"
             export DEPLOYMENTS_DIR="$APP_DIR/deployments"
 
-            # Create deployments directory structure
+            echo "Creating deployments directory structure..."
             mkdir -p $DEPLOYMENTS_DIR/versions
 
-            # Record the current version before deploying
             if [ -L $DEPLOYMENTS_DIR/current ]; then
               PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
               echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
+              echo "Previous version: $PREVIOUS_VERSION"
+            else
+              echo "No previous version found."
             fi
 
-            # Extract source to new version directory
+            echo "Extracting source to new version directory..."
             mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
             tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
 
-            # Create symlink to new version
+            echo "Creating symlink to new version..."
             rm -f $DEPLOYMENTS_DIR/current
             ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
 
-            # Build and deploy the application
+            echo "Building application..."
             cd $DEPLOYMENTS_DIR/current
             npm ci
             npm run build
 
-            # Deploy with Docker
+            echo "Deploying with Docker..."
             cd $DEPLOYMENTS_DIR/current/.docker
             docker compose down
             docker compose up -d
 
-            # Record deployment
+            echo "Recording deployment details..."
             echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
             echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
 
-            # Clean up
+            echo "Cleaning up..."
             rm /tmp/deploy-src.tar.gz
 
-            # Keep only the 5 most recent deployments
+            echo "Keeping only 5 most recent deployments..."
             cd $DEPLOYMENTS_DIR/versions
             ls -t | tail -n +6 | xargs rm -rf
 
             echo "Deployment $DEPLOY_ID completed successfully."
           EOF
+
       - name: Check deployment health
         id: health-check
         run: |
