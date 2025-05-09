@@ -1,11 +1,21 @@
 #!/bin/bash
-
 set -e
 
 echo "=== Vérification de l'état du déploiement ==="
 
-DOCKER_DIR=/home/hargile.eu/deployments/current/.docker
-cd $DOCKER_DIR
+# Configuration des chemins
+APP_DIR=/home/hargile.eu
+DEPLOYMENTS_DIR=$APP_DIR/deployments
+
+# Vérifier si un déploiement actuel existe
+if [ ! -L $DEPLOYMENTS_DIR/current ]; then
+  echo "❌ Aucun déploiement actuel trouvé!"
+  exit 1
+fi
+
+# Obtenir la version actuelle
+CURRENT_VERSION=$(cat $DEPLOYMENTS_DIR/current_version 2>/dev/null || echo "unknown")
+echo "Version déployée: $CURRENT_VERSION"
 
 echo "--- VÉRIFICATION DES CONTENEURS ---"
 docker ps
@@ -19,12 +29,9 @@ docker exec ols-server ls -la /ssl/ 2>/dev/null ||
 echo "--- LOGS OPENLITESPEED ---"
 docker logs ols-server --tail 25
 
-echo "--- TEST DE COMMUNICATION INTERNE ---"
-docker exec ols-server curl -s http://nextjs:3000/ 2>/dev/null ||
-  echo "⚠️ Impossible de se connecter à Next.js"
-
-echo "--- LOGS NEXT.JS ---"
-docker logs nextjs-app --tail 25
+echo "--- VÉRIFICATION NODE.JS ---"
+docker exec ols-server node --version
+docker exec ols-server npm --version
 
 echo "--- TEST HTTP ---"
 HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80/ 2>/dev/null || echo "000")
@@ -42,6 +49,7 @@ else
   echo "❌ HTTPS ne fonctionne pas (status: $HTTPS_STATUS)"
 fi
 
+# Vérification finale
 if [ "$HTTP_STATUS" = "000" ] && [ "$HTTPS_STATUS" = "000" ]; then
   echo "❌ Le site n'est pas accessible"
   exit 1

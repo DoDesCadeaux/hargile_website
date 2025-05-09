@@ -1,26 +1,35 @@
-# .github/workflows/ci-cd.yml
 name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-
 jobs:
   deploy:
     name: Deploy
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
     environment: Production
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Generate deployment ID
+        id: deployment-id
+        run: |
+          VERSION=$(date +%Y%m%d%H%M%S)
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          DEPLOY_ID="${VERSION}-${COMMIT_HASH}"
+          echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
+          echo "Deployment ID: $DEPLOY_ID"
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -30,40 +39,35 @@ jobs:
           name: id_ed25519
           if_key_exists: replace
 
-      - name: Generate deployment version
-        id: deployment-version
-        run: |
-          VERSION=$(date +%Y%m%d%H%M%S)
-          COMMIT_HASH=$(git rev-parse --short HEAD)
-          DEPLOY_ID="${VERSION}-${COMMIT_HASH}"
-          echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
-          echo "Deployment ID: $DEPLOY_ID"
-
       - name: Create deployment package
         run: |
-          git archive --format=tar.gz -o deploy-src.tar.gz HEAD
-          ls -la deploy-src.tar.gz
+          tar -czf deploy-package.tar.gz \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            .
 
       - name: Deploy to server
         run: |
           # Transférer le package
-          scp -o "StrictHostKeyChecking=no" deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+          scp -o "StrictHostKeyChecking=no" deploy-package.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
           
           # Exécuter le déploiement
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            cd /home/hargile.eu/deployments/current/.docker/scripts/ci-cd && 
-            ./deploy.sh ${{ env.DEPLOY_ID }}"
-
-      - name: Configure server
-        if: success()
-        run: |
-          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            cd /home/hargile.eu/deployments/current/.docker/scripts/ci-cd && 
-            ./setup-server.sh"
+            cd /home/hargile.eu/ && 
+            bash .docker/scripts/deploy.sh ${{ env.DEPLOY_ID }}"
 
       - name: Verify deployment
         if: success()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
-            cd /home/hargile.eu/deployments/current/.docker/scripts/ci-cd && 
-            ./healthcheck.sh"
+            cd /home/hargile.eu/ && 
+            bash .docker/scripts/healthcheck.sh"
+
+      - name: Rollback if verification fails
+        if: failure()
+        run: |
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
+            cd /home/hargile.eu/ && 
+            bash .docker/scripts/rollback.sh auto 'Déploiement échoué - Rollback automatique'"

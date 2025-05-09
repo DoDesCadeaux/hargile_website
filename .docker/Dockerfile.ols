@@ -1,0 +1,26 @@
+FROM litespeedtech/openlitespeed:latest
+
+# Installation de Node.js et des outils nécessaires
+RUN apt-get update && apt-get install -y \
+    curl \
+    iputils-ping \
+    dnsutils \
+    netcat-openbsd \
+    net-tools \
+    vim \
+    procps \
+    gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
+
+# Vérifier que Node.js est installé correctement
+RUN node --version && npm --version
+
+# Nettoyage
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Créer le répertoire pour l'application Node.js
+RUN mkdir -p /var/www/node-app
+
+ENTRYPOINT ["/entrypoint.sh"]

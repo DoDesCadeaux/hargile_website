@@ -1,39 +1,35 @@
 services:
   openlitespeed:
-    image: litespeedtech/openlitespeed:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.ols
     container_name: ols-server
     ports:
       - "80:80"
       - "443:443"
       - "7080:7080"
     volumes:
-      - ./custom-conf:/usr/src/lsws-config
+      - ./config/ols/custom-conf:/usr/local/lsws/conf
+      - ../:/var/www/html
       - ./static:/usr/local/lsws/Example/html/static
-      - ./letsencrypt:/etc/letsencrypt
+      - ./config/ssl:/ssl
+      - $HOME/letsencrypt:/etc/letsencrypt
+      - ../:/var/www/node-app
     environment:
       - TZ=Europe/Brussels
       - DOMAIN=hargile.eu
+      - ADDITIONAL_DOMAINS=www.hargile.eu
       - EMAIL=gogolus2000@gmail.com
       - SSL=true
       - LETSENCRYPT=true
-    restart: always
-    networks:
-      - app-network
-
-  nextjs:
-    build:
-      context: ..
-      dockerfile: .docker/nextjs.Dockerfile
-    container_name: nextjs-app
-    restart: always
-    environment:
+      - DEPLOY_ID=${DEPLOY_ID:-local}
       - NODE_ENV=production
-      - NEXT_PUBLIC_API_URL=https://hargile.eu/api
-      - NEXT_PUBLIC_SITE_URL=https://hargile.eu
-      - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
-    networks:
-      - app-network
+    restart: always
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 
 networks:
-  app-network:
+  default:
     driver: bridge
