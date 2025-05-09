@@ -35,25 +35,40 @@ fi
 # Créer le répertoire pour la nouvelle version
 mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
 
+
 # Vérifier si l'archive existe
 if [ ! -f "$ARCHIVE_PATH" ]; then
   echo "ERREUR: Archive $ARCHIVE_PATH non trouvée!"
   exit 1
 fi
 
-# Extraire l'archive GitHub
-echo "Extraction de l'archive GitHub..."
-EXTRACT_DIR=$(mktemp -d)
-unzip -q "$ARCHIVE_PATH" -d "$EXTRACT_DIR"
-REPO_DIR=$(find "$EXTRACT_DIR" -type d -maxdepth 1 | tail -n 1)
+# S'assurer que unzip est installé
+if ! command -v unzip &> /dev/null; then
+  echo "Installation de unzip..."
+  apt-get update && apt-get install -y unzip
+fi
 
-# Copier le contenu dans le répertoire de déploiement
-cp -r "$REPO_DIR/"* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/"
-cp -r "$REPO_DIR/".* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
+# Extraire l'archive GitHub directement dans le répertoire de déploiement
+echo "Extraction de l'archive GitHub..."
+unzip -qo "$ARCHIVE_PATH" -d "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp"
+
+# Identifier le répertoire créé par l'extraction
+REPO_DIR=$(find "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp" -maxdepth 1 -type d | grep -v "^$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp$" | head -1)
+
+if [ -z "$REPO_DIR" ]; then
+  echo "ERREUR: Impossible de trouver le répertoire du dépôt dans l'archive!"
+  exit 1
+fi
+
+echo "Répertoire du dépôt trouvé: $REPO_DIR"
+
+# Déplacer le contenu au bon endroit
+mv "$REPO_DIR"/* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/"
+mv "$REPO_DIR"/.[!.]* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
 
 # Nettoyage
-rm -rf "$EXTRACT_DIR"
-rm "$ARCHIVE_PATH"
+rm -rf "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp"
+rm -f "$ARCHIVE_PATH"
 echo "Archive extraite et nettoyée"
 
 # S'assurer que le répertoire .docker existe
