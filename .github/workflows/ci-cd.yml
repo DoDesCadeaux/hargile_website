@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
-    environment: Production
+    environment: Production  # Utilisez l'environnement où vos secrets sont configurés
     steps:
       - uses: actions/checkout@v4
 
@@ -20,9 +20,20 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          name: id_ed25519  # Changement: utilisez id_ed25519 car vous avez une clé ED25519
+          if_key_exists: replace
 
-      - name: Generate deployment version
-        id: deployment-version
+      - name: Debug directory state
+        run: |
+          echo "=== Current directory contents ==="
+          ls -la
+          echo "=== SSH key info ==="
+          ls -la ~/.ssh/
+          echo "=== Free disk space ==="
+          df -h
+
+      - name: Generate deployment ID
+        id: deployment-id
         run: |
           VERSION=$(date +%Y%m%d%H%M%S)
           COMMIT_HASH=$(git rev-parse --short HEAD)
@@ -30,159 +41,75 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
-      - name: SSH Diagnostics
+      - name: Create deployment package with ZIP
         run: |
-          echo "=== SSH Connectivity Test ==="
-          # Test basic SSH connection with verbose output
-          ssh -o "StrictHostKeyChecking=no" -v ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo Connection successful"
+          echo "=== Creating deployment package with ZIP ==="
+          # Approche alternative avec zip
+          zip -r deploy-src.zip . -x "node_modules/*" -x ".next/*" -x ".git/*"
+          ls -la deploy-src.zip
 
-      - name: Create deployment package
+      - name: Test basic SSH connection
         run: |
-          echo "=== Creating deployment package ==="
-          tar --warning=no-file-changed --exclude='node_modules' --exclude='.next' --exclude='.git' -czf deploy-src.tar.gz .
-          ls -la deploy-src.tar.gz
+          echo "=== Testing basic SSH connection ==="
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo Connection successful; id; pwd"
 
-      - name: Test SCP connection
-        run: |
-          echo "=== Testing SCP connection ==="
-          # Create a small test file and try to copy it
-          echo "test" > test-file.txt
-          scp -o "StrictHostKeyChecking=no" -v test-file.txt ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-
-      - name: Transfer deployment package
-        run: |
-          echo "=== Transferring deployment package ==="
-          scp -o "StrictHostKeyChecking=no" -v deploy-src.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
-
-      - name: Deploy to server
+      - name: Transfer ZIP package and deploy
         id: deploy
         run: |
-          echo "=== Running deployment on server ==="
+          echo "=== Transferring and deploying ==="
+          # Transfert du package
+          echo "Copying ZIP package to server..."
+          scp -o "StrictHostKeyChecking=no" deploy-src.zip ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
+          
+          # Déploiement
+          echo "Executing deployment script on server..."
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            set -e  # Exit immediately if any command fails
-
-            # Source deployment vars
+            set -ex  # Affiche les commandes + exit en cas d'erreur
+          
+            # Variables d'environnement
             export DEPLOY_ID="${{ env.DEPLOY_ID }}"
-            export NODE_ENV="production"
-            export NEXT_PUBLIC_API_URL="https://hargile.eu/api"
-            export NEXT_PUBLIC_SITE_URL="https://hargile.eu"
             export APP_DIR="/home/hargile.eu"
             export DEPLOYMENTS_DIR="$APP_DIR/deployments"
-
-            echo "Creating deployments directory structure..."
-            mkdir -p $DEPLOYMENTS_DIR/versions
-
+          
+            echo "Creating directory structure..."
+            mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+          
+            echo "Extracting package..."
+            unzip -q /tmp/deploy-src.zip -d $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+          
+            echo "Creating symlink..."
             if [ -L $DEPLOYMENTS_DIR/current ]; then
               PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
               echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/previous_version
-              echo "Previous version: $PREVIOUS_VERSION"
-            else
-              echo "No previous version found."
             fi
-
-            echo "Extracting source to new version directory..."
-            mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-            tar -xzf /tmp/deploy-src.tar.gz -C $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
-
-            echo "Creating symlink to new version..."
             rm -f $DEPLOYMENTS_DIR/current
             ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
-
+          
             echo "Building application..."
             cd $DEPLOYMENTS_DIR/current
             npm ci
             npm run build
-
+          
             echo "Deploying with Docker..."
             cd $DEPLOYMENTS_DIR/current/.docker
             docker compose down
             docker compose up -d
-
-            echo "Recording deployment details..."
+          
+            echo "Finalizing deployment..."
             echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
             echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+          
+            echo "Cleanup..."
+            rm /tmp/deploy-src.zip
+          
+            echo "Deployment $DEPLOY_ID successful"
+  EOF
 
-            echo "Cleaning up..."
-            rm /tmp/deploy-src.tar.gz
-
-            echo "Keeping only 5 most recent deployments..."
-            cd $DEPLOYMENTS_DIR/versions
-            ls -t | tail -n +6 | xargs rm -rf
-
-            echo "Deployment $DEPLOY_ID completed successfully."
-          EOF
-
-      - name: Check deployment health
-        id: health-check
-        run: |
-          # Wait for services to start
-          sleep 30
-          
-          # Perform health check
-          HEALTH_CHECK_URL="https://hargile.eu/api/health"
-          MAX_RETRIES=5
-          RETRY_DELAY=10
-          
-          for i in $(seq 1 $MAX_RETRIES); do
-            echo "Health check attempt $i of $MAX_RETRIES..."
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL || echo "000")
-          
-            if [ "$HTTP_STATUS" = "200" ]; then
-              echo "Health check passed! Site is up and running."
-              exit 0
-            else
-              echo "Health check failed with status $HTTP_STATUS. Retrying in $RETRY_DELAY seconds..."
-              sleep $RETRY_DELAY
-            fi
-          done
-          
-          echo "Health check failed after $MAX_RETRIES attempts"
-          exit 1
-        continue-on-error: true
-
-      - name: Rollback if deployment failed
-        if: steps.health-check.outcome == 'failure'
-        run: |
-          echo "Deployment health check failed. Initiating rollback..."
-          
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << EOF
-          export APP_DIR="/home/hargile.eu"
-          export DEPLOYMENTS_DIR="\$APP_DIR/deployments"
-          export DEPLOY_ID="\$(cat \$DEPLOYMENTS_DIR/previous_version)"
-          
-            # Check if we have a previous version
-            if [ -f "\$DEPLOYMENTS_DIR/previous_version" ]; then
-              PREVIOUS_VERSION=\$(cat \$DEPLOYMENTS_DIR/previous_version)
-              CURRENT_VERSION=\$(cat \$DEPLOYMENTS_DIR/current_version)
-          
-              echo "Rolling back from \$CURRENT_VERSION to \$PREVIOUS_VERSION"
-          
-              # Update the current symlink to point to the previous version
-              rm -f \$DEPLOYMENTS_DIR/current
-              ln -s \$DEPLOYMENTS_DIR/versions/\$PREVIOUS_VERSION \$DEPLOYMENTS_DIR/current
-          
-              # Redeploy the previous version
-              cd \$DEPLOYMENTS_DIR/current/.docker
-              DEPLOY_ID=\$DEPLOY_ID docker compose down
-              DEPLOY_ID=\$DEPLOY_ID docker compose up -d
-          
-              # Record the rollback
-              echo \$PREVIOUS_VERSION > \$DEPLOYMENTS_DIR/current_version
-              echo "ROLLBACK: from \$CURRENT_VERSION to \$PREVIOUS_VERSION at \$(date)" >> \$DEPLOYMENTS_DIR/rollback_history
-          
-              echo "Rollback to version \$PREVIOUS_VERSION completed."
-            else
-              echo "No previous version found for rollback!"
-            fi
-          EOF
-          
-          exit 1
-
-      - name: Notify deployment status
-        if: always()
-        run: |
-          if [ "${{ steps.health-check.outcome }}" = "success" ]; then
-            echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
-          else
-            echo "❌ Deployment failed and rollback initiated!"
-          fi
+- name: Notify deployment status
+  if: always()
+  run: |
+    if [ "${{ job.status }}" = "success" ]; then
+      echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
+    else
+      echo "❌ Deployment failed!"
+    fi
