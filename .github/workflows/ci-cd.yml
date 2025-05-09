@@ -103,13 +103,13 @@ jobs:
             rm /tmp/deploy-src.zip
           
             echo "Deployment $DEPLOY_ID successful"
-  EOF
+          EOF
 
-- name: Notify deployment status
-  if: always()
-  run: |
-    if [ "${{ job.status }}" = "success" ]; then
-      echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
-    else
-      echo "❌ Deployment failed!"
-    fi
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
+          else
+            echo "❌ Deployment failed!"
+          fi
