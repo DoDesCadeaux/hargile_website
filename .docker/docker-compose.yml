@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   openlitespeed:
     image: litespeedtech/openlitespeed:latest
@@ -7,16 +9,10 @@ services:
       - "443:443"
       - "7080:7080"
     volumes:
-      - ./openlitespeed/conf:/usr/local/lsws/conf
-      - ./openlitespeed/admin-conf:/usr/local/lsws/admin/conf
-      - ./openlitespeed/vhosts:/usr/local/lsws/conf/vhosts
-      - ./ssl/acme:/root/.acme.sh
-      - ./logs:/usr/local/lsws/logs
-      - ./setup-ols.sh:/setup-ols.sh
+      - ./lsws-data:/usr/local/lsws
     environment:
-      - TZ=${TZ}
+      - TZ=Europe/Brussels
     restart: always
-    command: ["/bin/bash", "/setup-ols.sh"]
     networks:
       - app-network
 
