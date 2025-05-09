@@ -11,35 +11,9 @@ jobs:
     name: Deploy
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
+    environment: Production
     steps:
       - uses: actions/checkout@v4
-
-      - name: Test Secrets
-        run: |
-          if [ -z "${{ secrets.SSH_USER }}" ]; then
-            echo "SSH_USER secret is empty or not accessible"
-          else
-            echo "SSH_USER secret is accessible (value not shown for security)"
-          fi
-
-          if [ -z "${{ secrets.SERVER_IP }}" ]; then
-            echo "SERVER_IP secret is empty or not accessible"
-          else
-            echo "SERVER_IP secret is accessible (value not shown for security)"
-          fi
-
-          # Ne pas afficher la valeur réelle des secrets sensibles
-          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
-            echo "SSH_PRIVATE_KEY secret is empty or not accessible"
-          else
-            echo "SSH_PRIVATE_KEY secret is accessible and not empty"
-          fi
-
-          if [ -z "${{ secrets.KNOWN_HOSTS }}" ]; then
-            echo "KNOWN_HOSTS secret is empty or not accessible"
-          else
-            echo "KNOWN_HOSTS secret is accessible and not empty"
-          fi
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
