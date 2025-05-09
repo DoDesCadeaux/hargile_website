@@ -34,12 +34,14 @@ jobs:
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
           echo "Deployment ID: $DEPLOY_ID"
 
+
       - name: Create deployment package with git archive
         run: |
           echo "=== Creating deployment package with git archive ==="
           # Utiliser git archive qui est plus stable dans un environnement CI
           git archive --format=tar.gz -o deploy-src.tar.gz HEAD
           ls -la deploy-src.tar.gz
+
 
       - name: Transfer TAR package and deploy
         id: deploy
@@ -73,35 +75,163 @@ jobs:
             rm -f $DEPLOYMENTS_DIR/current
             ln -s $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
           
-            echo "Building application..."
-            cd $DEPLOYMENTS_DIR/current
-            npm ci
-            npm run build
-          
             echo "Deploying with Docker..."
             cd $DEPLOYMENTS_DIR/current/.docker
-            docker compose down
-            docker compose up -d
           
-            echo "Finalizing deployment..."
-            echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
-            echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+            # Modifier le Dockerfile pour inclure le build
+            cat > nextjs.Dockerfile << 'DOCKERFILE'
+              FROM node:20-alpine AS builder
+              WORKDIR /app
+              COPY . .
+              RUN npm ci
+              RUN npm run build
           
-            echo "Cleanup..."
-            rm /tmp/deploy-src.tar.gz
+              FROM node:20-alpine
+              WORKDIR /app
+              COPY --from=builder /app/node_modules ./node_modules
+              COPY --from=builder /app/.next ./.next
+              COPY --from=builder /app/public ./public
+              COPY --from=builder /app/next.config.js ./next.config.js
+              COPY --from=builder /app/package.json ./package.json
           
-            # Keep only the 5 most recent deployments
-            cd $DEPLOYMENTS_DIR/versions
-            ls -t | tail -n +6 | xargs rm -rf
+              ENV NODE_ENV=production
+              EXPOSE 3000
+              CMD ["npm", "start"]
+            DOCKERFILE
           
-            echo "Deployment $DEPLOY_ID successful"
+            # Mise à jour de docker-compose.yml pour inclure les variables d'environnement
+            cat > docker-compose.yml << 'COMPOSE'
+          
+            services:
+              openlitespeed:
+                image: litespeedtech/openlitespeed:latest
+                container_name: ols-server
+                ports:
+                  - "80:80"
+                  - "443:443"
+                  - "7080:7080"
+                volumes:
+                  - ./custom-conf:/usr/src/lsws-config
+                  - ./static:/usr/local/lsws/Example/html/static
+                environment:
+                  - TZ=Europe/Brussels
+                  - DOMAIN=hargile.eu
+                  - EMAIL=gogolus2000@gmail.com
+                restart: always
+                entrypoint: ["/usr/src/lsws-config/entrypoint.sh"]
+                command: ["/entrypoint.sh"]
+                networks:
+                  - app-network
+          
+              nextjs:
+                build:
+                  context: ..
+                  dockerfile: .docker/nextjs.Dockerfile
+                container_name: nextjs-app
+                environment:
+                  - NODE_ENV=production
+                  - NEXT_PUBLIC_DEPLOY_ID=${DEPLOY_ID:-local}
+                restart: always
+                networks:
+                  - app-network
+          
+            networks:
+              app-network:
+                driver: bridge
+          COMPOSE
+          
+          # Déployer avec Docker
+          docker compose down
+          DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
+          
+          echo "Finalizing deployment..."
+          echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
+          echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
+          
+          echo "Cleanup..."
+          rm /tmp/deploy-src.tar.gz
+          
+          # Keep only the 5 most recent deployments
+          cd $DEPLOYMENTS_DIR/versions
+          ls -t | tail -n +6 | xargs rm -rf
+          
+          echo "Deployment $DEPLOY_ID successful"
+          EOF
+
+      - name: Check deployment health
+        id: health-check
+        continue-on-error: true
+        run: |
+          echo "=== Checking deployment health ==="
+          # Wait for services to start
+          sleep 30
+          
+          # Perform health check
+          HEALTH_CHECK_URL="https://hargile.eu/api/health"
+          MAX_RETRIES=5
+          RETRY_DELAY=10
+          
+          for i in $(seq 1 $MAX_RETRIES); do
+            echo "Health check attempt $i of $MAX_RETRIES..."
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $HEALTH_CHECK_URL || echo "000")
+          
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "Health check passed! Site is up and running."
+              exit 0
+            else
+              echo "Health check failed with status $HTTP_STATUS. Retrying in $RETRY_DELAY seconds..."
+              sleep $RETRY_DELAY
+            fi
+          done
+          
+          echo "Health check failed after $MAX_RETRIES attempts"
+          exit 1
+
+
+      - name: Rollback if deployment failed
+        if: steps.health-check.outcome == 'failure'
+        run: |
+          echo "=== Deployment health check failed. Initiating rollback ==="
+          
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            set -ex
+          
+            # Variables d'environnement
+            export APP_DIR="/home/hargile.eu"
+            export DEPLOYMENTS_DIR="$APP_DIR/deployments"
+          
+            # Check if we have a previous version
+            if [ -f "$DEPLOYMENTS_DIR/previous_version" ]; then
+              PREVIOUS_VERSION=$(cat $DEPLOYMENTS_DIR/previous_version)
+              CURRENT_VERSION=$(cat $DEPLOYMENTS_DIR/current_version)
+          
+              echo "Rolling back from $CURRENT_VERSION to $PREVIOUS_VERSION"
+          
+              # Update the current symlink to point to the previous version
+              rm -f $DEPLOYMENTS_DIR/current
+              ln -s $DEPLOYMENTS_DIR/versions/$PREVIOUS_VERSION $DEPLOYMENTS_DIR/current
+          
+              # Redeploy the previous version
+              cd $DEPLOYMENTS_DIR/current/.docker
+              export DEPLOY_ID=$PREVIOUS_VERSION
+              docker compose down
+              docker compose up -d
+          
+              # Record the rollback
+              echo $PREVIOUS_VERSION > $DEPLOYMENTS_DIR/current_version
+              echo "ROLLBACK: from $CURRENT_VERSION to $PREVIOUS_VERSION at $(date)" >> $DEPLOYMENTS_DIR/rollback_history
+          
+              echo "Rollback to version $PREVIOUS_VERSION completed."
+            else
+              echo "No previous version found for rollback!"
+            fi
           EOF
 
       - name: Notify deployment status
         if: always()
         run: |
-          if [ "${{ job.status }}" = "success" ]; then
+          if [ "${{ steps.health-check.outcome }}" = "success" ]; then
             echo "✅ Deployment successful! ID: ${{ env.DEPLOY_ID }}"
           else
-            echo "❌ Deployment failed!"
+            echo "❌ Deployment failed and rollback initiated!"
           fi
