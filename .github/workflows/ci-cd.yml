@@ -22,14 +22,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate deployment ID
+      - name: Generate deployment ID and prepare deployment
         id: deployment-id
         run: |
+          # Générer un ID de déploiement unique
           VERSION=$(date +%Y%m%d%H%M%S)
           COMMIT_HASH=$(git rev-parse --short HEAD)
           DEPLOY_ID="${VERSION}-${COMMIT_HASH}"
           echo "DEPLOY_ID=$DEPLOY_ID" >> $GITHUB_ENV
-          echo "Deployment ID: $DEPLOY_ID"
+          
+          # Créer une archive du code source
+          zip -q -r deploy-package.zip .
+          
+          # Vérifier l'archive
+          if [ -f "deploy-package.zip" ]; then
+            SIZE=$(stat -c%s "deploy-package.zip")
+            echo "Archive créée avec succès (taille: $SIZE octets)"
+          else
+            echo "ERREUR: Échec de la création de l'archive"
+            exit 1
+          fi
+          
+          echo "Déploiement ID: $DEPLOY_ID"
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -39,32 +53,42 @@ jobs:
           name: id_ed25519
           if_key_exists: replace
 
-      - name: Get GitHub repository archive
-        run: |
-          # Utiliser l'archive GitHub directement
-          curl -L -o repository.zip https://github.com/${{ github.repository }}/archive/${{ github.sha }}.zip
-          echo "Archive téléchargée avec succès"
-
       - name: Deploy to server
         run: |
-          # Transférer l'archive GitHub
-          scp -o "StrictHostKeyChecking=no" repository.zip ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/repository.zip
+          # Transférer l'archive ZIP de déploiement
+          echo "Transfert de l'archive vers le serveur..."
+          scp -o "StrictHostKeyChecking=no" deploy-package.zip ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/tmp/
           
-          # Exécuter le déploiement avec l'archive GitHub
+          # Vérifier que l'archive existe sur le serveur
+          ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
+            if [ -f '/tmp/deploy-package.zip' ]; then
+              echo 'Archive correctement transférée sur le serveur'
+              ls -la /tmp/deploy-package.zip
+            else
+              echo 'ERREUR: Archive non trouvée sur le serveur'
+              exit 1
+            fi
+          "
+          
+          # Exécuter le déploiement
+          echo "Exécution du déploiement..."
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             cd /home/hargile.eu/ && 
-            bash .docker/scripts/deploy.sh ${{ env.DEPLOY_ID }} /tmp/repository.zip"
+            bash .docker/scripts/deploy.sh ${{ env.DEPLOY_ID }} /tmp/deploy-package.zip
+          "
 
       - name: Verify deployment
         if: success()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             cd /home/hargile.eu/ && 
-            bash .docker/scripts/healthcheck.sh"
+            bash .docker/scripts/healthcheck.sh
+          "
 
       - name: Rollback if verification fails
         if: failure()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             cd /home/hargile.eu/ && 
-            bash .docker/scripts/rollback.sh auto 'Déploiement échoué - Rollback automatique'"
+            bash .docker/scripts/rollback.sh auto 'Déploiement échoué - Rollback automatique'
+          "

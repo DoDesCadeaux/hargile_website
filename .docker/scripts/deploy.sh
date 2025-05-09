@@ -3,16 +3,19 @@ set -e
 
 # Récupérer l'ID de déploiement depuis les arguments
 DEPLOY_ID=$1
-ARCHIVE_PATH=${2:-"/tmp/repository.zip"}
+ARCHIVE_PATH=$2
 
-[ -z "$DEPLOY_ID" ] && DEPLOY_ID=$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")
+if [ -z "$DEPLOY_ID" ]; then
+  DEPLOY_ID=$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")
+fi
+
+echo "=== Déploiement $DEPLOY_ID ==="
+echo "Archive source: $ARCHIVE_PATH"
 
 # Configuration des chemins
 APP_DIR=/home/hargile.eu
 DEPLOYMENTS_DIR=$APP_DIR/deployments
 CONFIG_DIR=$APP_DIR/.docker/config
-
-echo "=== Déploiement $DEPLOY_ID ==="
 
 # Créer les répertoires nécessaires
 mkdir -p $DEPLOYMENTS_DIR/versions
@@ -20,13 +23,27 @@ mkdir -p $DEPLOYMENTS_DIR/backups
 mkdir -p $CONFIG_DIR/ssl
 mkdir -p $HOME/letsencrypt
 
+# Vérifier l'archive
+if [ -z "$ARCHIVE_PATH" ]; then
+  echo "ERREUR: Chemin d'archive non spécifié!"
+  exit 1
+fi
+
+if [ ! -f "$ARCHIVE_PATH" ]; then
+  echo "ERREUR: Archive $ARCHIVE_PATH non trouvée!"
+  ls -la /tmp/
+  exit 1
+fi
+
+echo "Archive trouvée: $(ls -la $ARCHIVE_PATH)"
+
 # Sauvegarder la version actuelle comme version précédente
 if [ -L $DEPLOYMENTS_DIR/current ]; then
   PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
   echo "$PREVIOUS_VERSION" > $DEPLOYMENTS_DIR/previous_version
   echo "Version précédente: $PREVIOUS_VERSION"
 
-  # Créer une sauvegarde de sécurité avant le déploiement
+  # Créer une sauvegarde
   BACKUP_NAME="backup-$(date +%Y%m%d%H%M%S)"
   cp -r $(readlink -f $DEPLOYMENTS_DIR/current) $DEPLOYMENTS_DIR/backups/$BACKUP_NAME
   echo "Sauvegarde créée: $BACKUP_NAME"
@@ -35,45 +52,48 @@ fi
 # Créer le répertoire pour la nouvelle version
 mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
 
-
-# Vérifier si l'archive existe
-if [ ! -f "$ARCHIVE_PATH" ]; then
-  echo "ERREUR: Archive $ARCHIVE_PATH non trouvée!"
-  exit 1
-fi
-
-# S'assurer que unzip est installé
+# Installer unzip si nécessaire
 if ! command -v unzip &> /dev/null; then
   echo "Installation de unzip..."
   apt-get update && apt-get install -y unzip
 fi
 
-# Extraire l'archive GitHub directement dans le répertoire de déploiement
-echo "Extraction de l'archive GitHub..."
-unzip -qo "$ARCHIVE_PATH" -d "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp"
+# Extraire l'archive
+echo "Extraction de l'archive..."
+TEMP_DIR=$(mktemp -d)
+unzip -q "$ARCHIVE_PATH" -d "$TEMP_DIR"
+echo "Contenu du répertoire temporaire:"
+ls -la "$TEMP_DIR"
 
-# Identifier le répertoire créé par l'extraction
-REPO_DIR=$(find "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp" -maxdepth 1 -type d | grep -v "^$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp$" | head -1)
-
+# Trouver le répertoire extrait (généralement le repo avec le SHA)
+REPO_DIR=$(find "$TEMP_DIR" -mindepth 1 -maxdepth 1 -type d | head -1)
 if [ -z "$REPO_DIR" ]; then
   echo "ERREUR: Impossible de trouver le répertoire du dépôt dans l'archive!"
   exit 1
 fi
 
 echo "Répertoire du dépôt trouvé: $REPO_DIR"
+echo "Contenu du répertoire extrait:"
+ls -la "$REPO_DIR"
 
-# Déplacer le contenu au bon endroit
-mv "$REPO_DIR"/* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/"
-mv "$REPO_DIR"/.[!.]* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
+# Copier tout le contenu dans le répertoire de déploiement
+echo "Copie des fichiers..."
+cp -r "$REPO_DIR/"* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
+# Copier les fichiers cachés (commençant par .)
+cp -r "$REPO_DIR/".* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
 
 # Nettoyage
-rm -rf "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID-temp"
+rm -rf "$TEMP_DIR"
 rm -f "$ARCHIVE_PATH"
 echo "Archive extraite et nettoyée"
 
-# S'assurer que le répertoire .docker existe
+# Vérifier la structure du répertoire
+echo "Contenu du répertoire de déploiement:"
+ls -la "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
+
+# Vérifier le répertoire .docker
 if [ ! -d "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker" ]; then
-  echo "ERREUR: Structure de répertoire incorrecte dans l'archive!"
+  echo "ERREUR: Répertoire .docker non trouvé dans le déploiement!"
   exit 1
 fi
 
@@ -82,21 +102,20 @@ rm -f $DEPLOYMENTS_DIR/current
 ln -sf $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
 echo "Lien symbolique mis à jour: current -> $DEPLOY_ID"
 
-# Gérer les certificats Let's Encrypt
+# Gérer les certificats SSL
 LETS_ENCRYPT_DIR="$HOME/letsencrypt/live/hargile.eu"
+mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl
+
 if [ -f "$LETS_ENCRYPT_DIR/privkey.pem" ] && [ -f "$LETS_ENCRYPT_DIR/fullchain.pem" ]; then
   echo "Certificats Let's Encrypt trouvés, utilisation des certificats existants..."
-  mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl
   cp $LETS_ENCRYPT_DIR/privkey.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
   cp $LETS_ENCRYPT_DIR/fullchain.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
 elif [ -f "$CONFIG_DIR/ssl/privkey.pem" ] && [ -f "$CONFIG_DIR/ssl/fullchain.pem" ]; then
   echo "Certificats précédents trouvés, utilisation de ces certificats..."
-  mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl
   cp $CONFIG_DIR/ssl/privkey.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
   cp $CONFIG_DIR/ssl/fullchain.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
 else
   echo "Aucun certificat trouvé, Let's Encrypt sera configuré après le déploiement..."
-  mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl
   touch $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/privkey.pem
   touch $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/fullchain.pem
 fi
@@ -104,7 +123,7 @@ fi
 # Naviguer vers le répertoire de l'application
 cd $DEPLOYMENTS_DIR/current
 
-# Installation des dépendances et build de l'application
+# Installation des dépendances et build
 echo "Installation des dépendances Node.js..."
 npm ci
 
@@ -141,11 +160,11 @@ if [ ! -f "$LETS_ENCRYPT_DIR/privkey.pem" ] || [ ! -f "$LETS_ENCRYPT_DIR/fullcha
   # Vérifier si les certificats ont été générés
   if [ -f "$LETS_ENCRYPT_DIR/privkey.pem" ] && [ -f "$LETS_ENCRYPT_DIR/fullchain.pem" ]; then
     echo "Certificats Let's Encrypt générés avec succès!"
-    # Copier les certificats dans le répertoire de configuration
+    mkdir -p $CONFIG_DIR/ssl
     cp $LETS_ENCRYPT_DIR/privkey.pem $CONFIG_DIR/ssl/
     cp $LETS_ENCRYPT_DIR/fullchain.pem $CONFIG_DIR/ssl/
 
-    # Redémarrer OpenLiteSpeed pour appliquer les nouveaux certificats
+    # Redémarrer OpenLiteSpeed
     docker exec ols-server /usr/local/lsws/bin/lswsctrl restart
   else
     echo "ATTENTION: La génération des certificats Let's Encrypt a échoué."
