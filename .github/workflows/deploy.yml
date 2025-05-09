@@ -1,0 +1,55 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Create deployment archive
+        run: zip -r /tmp/app.zip . -x ".git/*" ".github/*"
+
+      - name: Copy archive to server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ssh_key
+          chmod 600 ssh_key
+          scp -i ssh_key /tmp/app.zip $SERVER_USER@$SERVER_IP:/tmp/app.zip
+          rm ssh_key
+
+      - name: Deploy on server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          DEPLOY_ID: ${{ github.run_id }}-${{ github.sha }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ssh_key
+          chmod 600 ssh_key
+          ssh -i ssh_key -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
+            docker cp /tmp/app.zip ols-server:/tmp/app.zip &&
+            docker exec ols-server bash -c 'chmod +x /var/www/html/.docker/scripts/deploy.sh && /var/www/html/.docker/scripts/deploy.sh $DEPLOY_ID /tmp/app.zip'
+          "
+          rm ssh_key

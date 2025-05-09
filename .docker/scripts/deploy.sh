@@ -1,16 +1,17 @@
 #!/bin/bash
 set -e
+set -x  # Enable debug output
+
+# Initialize logging
+LOG_FILE="/home/hargile.eu/deployments/deploy.log"
+echo "=== Déploiement $(date) ===" >> "$LOG_FILE"
 
 # Récupérer l'ID de déploiement depuis les arguments
-DEPLOY_ID=$1
+DEPLOY_ID=${1:-$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")}
 ARCHIVE_PATH=$2
 
-if [ -z "$DEPLOY_ID" ]; then
-  DEPLOY_ID=$(date +%Y%m%d%H%M%S)-$(git rev-parse --short HEAD 2>/dev/null || echo "manual")
-fi
-
-echo "=== Déploiement $DEPLOY_ID ==="
-echo "Archive source: $ARCHIVE_PATH"
+echo "Déploiement $DEPLOY_ID" | tee -a "$LOG_FILE"
+echo "Archive source: $ARCHIVE_PATH" | tee -a "$LOG_FILE"
 
 # Configuration des chemins
 APP_DIR=/home/hargile.eu
@@ -18,164 +19,119 @@ DEPLOYMENTS_DIR=$APP_DIR/deployments
 CONFIG_DIR=$APP_DIR/.docker/config
 
 # Créer les répertoires nécessaires
-mkdir -p $DEPLOYMENTS_DIR/versions
-mkdir -p $DEPLOYMENTS_DIR/backups
-mkdir -p $CONFIG_DIR/ssl
-mkdir -p $HOME/letsencrypt
+mkdir -p "$DEPLOYMENTS_DIR/versions" "$DEPLOYMENTS_DIR/backups" "$CONFIG_DIR/ssl" "$HOME/letsencrypt"
 
 # Vérifier l'archive
-if [ -z "$ARCHIVE_PATH" ]; then
-  echo "ERREUR: Chemin d'archive non spécifié!"
+if [ -z "$ARCHIVE_PATH" ] || [ ! -f "$ARCHIVE_PATH" ]; then
+  echo "ERREUR: Archive non spécifiée ou introuvable!" | tee -a "$LOG_FILE"
   exit 1
 fi
 
-if [ ! -f "$ARCHIVE_PATH" ]; then
-  echo "ERREUR: Archive $ARCHIVE_PATH non trouvée!"
-  ls -la /tmp/
-  exit 1
-fi
+# Sauvegarder la version actuelle
+if [ -L "$DEPLOYMENTS_DIR/current" ]; then
+  PREVIOUS_VERSION=$(readlink "$DEPLOYMENTS_DIR/current" | xargs basename)
+  echo "$PREVIOUS_VERSION" > "$DEPLOYMENTS_DIR/previous_version"
+  echo "Version précédente: $PREVIOUS_VERSION" | tee -a "$LOG_FILE"
 
-echo "Archive trouvée: $(ls -la $ARCHIVE_PATH)"
-
-# Sauvegarder la version actuelle comme version précédente
-if [ -L $DEPLOYMENTS_DIR/current ]; then
-  PREVIOUS_VERSION=$(readlink $DEPLOYMENTS_DIR/current | xargs basename)
-  echo "$PREVIOUS_VERSION" > $DEPLOYMENTS_DIR/previous_version
-  echo "Version précédente: $PREVIOUS_VERSION"
-
-  # Créer une sauvegarde
   BACKUP_NAME="backup-$(date +%Y%m%d%H%M%S)"
-  cp -r $(readlink -f $DEPLOYMENTS_DIR/current) $DEPLOYMENTS_DIR/backups/$BACKUP_NAME
-  echo "Sauvegarde créée: $BACKUP_NAME"
+  cp -r "$(readlink -f "$DEPLOYMENTS_DIR/current")" "$DEPLOYMENTS_DIR/backups/$BACKUP_NAME"
+  echo "Sauvegarde créée: $BACKUP_NAME" | tee -a "$LOG_FILE"
 fi
 
 # Créer le répertoire pour la nouvelle version
-mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID
+DEPLOY_DIR="$DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
+mkdir -p "$DEPLOY_DIR"
 
 # Installer unzip si nécessaire
-if ! command -v unzip &> /dev/null; then
-  echo "Installation de unzip..."
+command -v unzip &>/dev/null || {
+  echo "Installation de unzip..." | tee -a "$LOG_FILE"
   apt-get update && apt-get install -y unzip
-fi
+}
 
 # Extraire l'archive
-echo "Extraction de l'archive..."
-TEMP_DIR=$(mktemp -d)
-unzip -q "$ARCHIVE_PATH" -d "$TEMP_DIR"
-echo "Contenu du répertoire temporaire:"
-ls -la "$TEMP_DIR"
-
-# Trouver le répertoire extrait (généralement le repo avec le SHA)
-REPO_DIR=$(find "$TEMP_DIR" -mindepth 1 -maxdepth 1 -type d | head -1)
-if [ -z "$REPO_DIR" ]; then
-  echo "ERREUR: Impossible de trouver le répertoire du dépôt dans l'archive!"
+echo "Extraction de l'archive..." | tee -a "$LOG_FILE"
+unzip -q "$ARCHIVE_PATH" -d "$DEPLOY_DIR" || {
+  echo "ERREUR: Échec de l'extraction de l'archive!" | tee -a "$LOG_FILE"
   exit 1
-fi
-
-echo "Répertoire du dépôt trouvé: $REPO_DIR"
-echo "Contenu du répertoire extrait:"
-ls -la "$REPO_DIR"
-
-# Copier tout le contenu dans le répertoire de déploiement
-echo "Copie des fichiers..."
-cp -r "$REPO_DIR/"* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
-# Copier les fichiers cachés (commençant par .)
-cp -r "$REPO_DIR/".* "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/" 2>/dev/null || true
-
-# Nettoyage
-rm -rf "$TEMP_DIR"
-rm -f "$ARCHIVE_PATH"
-echo "Archive extraite et nettoyée"
+}
 
 # Vérifier la structure du répertoire
-echo "Contenu du répertoire de déploiement:"
-ls -la "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID"
-
-# Vérifier le répertoire .docker
-if [ ! -d "$DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker" ]; then
-  echo "ERREUR: Répertoire .docker non trouvé dans le déploiement!"
+if [ ! -d "$DEPLOY_DIR/.docker" ]; then
+  echo "ERREUR: Répertoire .docker non trouvé dans le déploiement!" | tee -a "$LOG_FILE"
   exit 1
-fi
+}
 
 # Mettre à jour le lien symbolique
-rm -f $DEPLOYMENTS_DIR/current
-ln -sf $DEPLOYMENTS_DIR/versions/$DEPLOY_ID $DEPLOYMENTS_DIR/current
-echo "Lien symbolique mis à jour: current -> $DEPLOY_ID"
+rm -f "$DEPLOYMENTS_DIR/current"
+ln -sf "$DEPLOY_DIR" "$DEPLOYMENTS_DIR/current"
+echo "Lien symbolique mis à jour: current -> $DEPLOY_ID" | tee -a "$LOG_FILE"
 
 # Gérer les certificats SSL
 LETS_ENCRYPT_DIR="$HOME/letsencrypt/live/hargile.eu"
-mkdir -p $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl
+mkdir -p "$DEPLOY_DIR/.docker/config/ssl"
 
 if [ -f "$LETS_ENCRYPT_DIR/privkey.pem" ] && [ -f "$LETS_ENCRYPT_DIR/fullchain.pem" ]; then
-  echo "Certificats Let's Encrypt trouvés, utilisation des certificats existants..."
-  cp $LETS_ENCRYPT_DIR/privkey.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
-  cp $LETS_ENCRYPT_DIR/fullchain.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
-elif [ -f "$CONFIG_DIR/ssl/privkey.pem" ] && [ -f "$CONFIG_DIR/ssl/fullchain.pem" ]; then
-  echo "Certificats précédents trouvés, utilisation de ces certificats..."
-  cp $CONFIG_DIR/ssl/privkey.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
-  cp $CONFIG_DIR/ssl/fullchain.pem $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/
+  echo "Certificats Let's Encrypt trouvés, utilisation des certificats existants..." | tee -a "$LOG_FILE"
+  cp "$LETS_ENCRYPT_DIR/privkey.pem" "$LETS_ENCRYPT_DIR/fullchain.pem" "$DEPLOY_DIR/.docker/config/ssl/"
 else
-  echo "Aucun certificat trouvé, Let's Encrypt sera configuré après le déploiement..."
-  touch $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/privkey.pem
-  touch $DEPLOYMENTS_DIR/versions/$DEPLOY_ID/.docker/config/ssl/fullchain.pem
+  echo "Aucun certificat trouvé, Let's Encrypt sera configuré après le déploiement..." | tee -a "$LOG_FILE"
+  touch "$DEPLOY_DIR/.docker/config/ssl/privkey.pem" "$DEPLOY_DIR/.docker/config/ssl/fullchain.pem"
 fi
 
 # Naviguer vers le répertoire de l'application
-cd $DEPLOYMENTS_DIR/current
+cd "$DEPLOYMENTS_DIR/current"
+
+# Vérifier Node.js et npm
+command -v node &>/dev/null || {
+  echo "ERREUR: Node.js n'est pas installé!" | tee -a "$LOG_FILE"
+  exit 1
+}
+command -v npm &>/dev/null || {
+  echo "ERREUR: npm n'est pas installé!" | tee -a "$LOG_FILE"
+  exit 1
+}
 
 # Installation des dépendances et build
-echo "Installation des dépendances Node.js..."
-npm ci
+echo "Installation des dépendances Node.js..." | tee -a "$LOG_FILE"
+npm ci || {
+  echo "ERREUR: Échec de l'installation des dépendances!" | tee -a "$LOG_FILE"
+  exit 1
+}
 
-echo "Construction de l'application Next.js..."
-npm run build
-echo "Build terminé avec succès!"
+echo "Construction de l'application Next.js..." | tee -a "$LOG_FILE"
+npm run build || {
+  echo "ERREUR: Échec du build Next.js!" | tee -a "$LOG_FILE"
+  exit 1
+}
 
 # Naviguer vers le répertoire .docker
-cd $DEPLOYMENTS_DIR/current/.docker
+cd "$DEPLOYMENTS_DIR/current/.docker"
 
-# S'assurer que les scripts sont exécutables
-find scripts -type f -name "*.sh" -exec chmod +x {} \;
+# Construire et démarrer les conteneurs
+echo "Démarrage des conteneurs..." | tee -a "$LOG_FILE"
+DEPLOY_ID=$DEPLOY_ID docker compose up -d --build || {
+  echo "ERREUR: Échec du démarrage des conteneurs!" | tee -a "$LOG_FILE"
+  exit 1
+}
 
-# Arrêter les conteneurs existants
-docker compose down || true
-echo "Conteneurs arrêtés"
-
-# Construire et démarrer les nouveaux conteneurs
-DEPLOY_ID=$DEPLOY_ID docker compose up -d --build
-echo "Conteneurs démarrés avec DEPLOY_ID=$DEPLOY_ID"
-
-# Enregistrer le déploiement
-echo $DEPLOY_ID > $DEPLOYMENTS_DIR/current_version
-echo "$DEPLOY_ID deployed at $(date)" >> $DEPLOYMENTS_DIR/deploy_history
-echo "Déploiement enregistré"
+# Vérifier la santé du déploiement
+echo "Vérification de la santé..." | tee -a "$LOG_FILE"
+bash ./scripts/healthcheck.sh || {
+  echo "ERREUR: Échec de la vérification de santé, lancement du rollback..." | tee -a "$LOG_FILE"
+  bash ./scripts/rollback.sh auto "Échec de la vérification de santé"
+  exit 1
+}
 
 # Configurer Let's Encrypt si nécessaire
 if [ ! -f "$LETS_ENCRYPT_DIR/privkey.pem" ] || [ ! -f "$LETS_ENCRYPT_DIR/fullchain.pem" ]; then
-  echo "Configuration des certificats Let's Encrypt..."
-  docker exec ols-server /usr/local/lsws/bin/lswsctrl restart
-  sleep 5
-  docker exec ols-server bash -c 'cd /usr/local/lsws/addon/letsencrypt && ./letsencrypt.sh' || true
-
-  # Vérifier si les certificats ont été générés
-  if [ -f "$LETS_ENCRYPT_DIR/privkey.pem" ] && [ -f "$LETS_ENCRYPT_DIR/fullchain.pem" ]; then
-    echo "Certificats Let's Encrypt générés avec succès!"
-    mkdir -p $CONFIG_DIR/ssl
-    cp $LETS_ENCRYPT_DIR/privkey.pem $CONFIG_DIR/ssl/
-    cp $LETS_ENCRYPT_DIR/fullchain.pem $CONFIG_DIR/ssl/
-
-    # Redémarrer OpenLiteSpeed
-    docker exec ols-server /usr/local/lsws/bin/lswsctrl restart
-  else
-    echo "ATTENTION: La génération des certificats Let's Encrypt a échoué."
-    echo "Veuillez configurer Let's Encrypt manuellement après le déploiement:"
-    echo "docker exec -it ols-server bash -c 'cd /usr/local/lsws/addon/letsencrypt && ./letsencrypt.sh'"
-  fi
+  echo "Configuration des certificats Let's Encrypt..." | tee -a "$LOG_FILE"
+  docker exec ols-server bash -c 'cd /usr/local/lsws/addon/letsencrypt && ./letsencrypt.sh' || {
+    echo "ATTENTION: La génération des certificats Let's Encrypt a échoué." | tee -a "$LOG_FILE"
+  }
 fi
 
 # Nettoyer les anciens déploiements (garder les 5 plus récents)
-cd $DEPLOYMENTS_DIR/versions
-ls -t | tail -n +6 | xargs rm -rf 2>/dev/null || true
-echo "Anciens déploiements nettoyés"
+ls -t "$DEPLOYMENTS_DIR/versions" | tail -n +6 | xargs -I {} rm -rf "$DEPLOYMENTS_DIR/versions/{}" 2>/dev/null
+echo "Anciens déploiements nettoyés" | tee -a "$LOG_FILE"
 
-echo "=== Déploiement réussi: $DEPLOY_ID ==="
+echo "=== Déploiement réussi: $DEPLOY_ID ===" | tee -a "$LOG_FILE"

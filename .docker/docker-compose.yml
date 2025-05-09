@@ -11,24 +11,22 @@ services:
     volumes:
       - ./config/ols/custom-conf:/usr/local/lsws/conf
       - ../:/var/www/html
-      - ./static:/usr/local/lsws/Example/html/static
       - ./config/ssl:/ssl
       - $HOME/letsencrypt:/etc/letsencrypt
-      - ../:/var/www/node-app
+    env_file:
+      - .env
     environment:
-      - TZ=Europe/Brussels
-      - DOMAIN=hargile.eu
-      - ADDITIONAL_DOMAINS=www.hargile.eu
-      - EMAIL=gogolus2000@gmail.com
-      - SSL=true
-      - LETSENCRYPT=true
       - DEPLOY_ID=${DEPLOY_ID:-local}
-      - NODE_ENV=production
     restart: always
     ulimits:
       nofile:
         soft: 65535
         hard: 65535
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80/" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
 
 networks:
   default:

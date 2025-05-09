@@ -31,6 +31,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
+.docker/.env
 #.env*
 
 # vercel
@@ -41,3 +42,4 @@ yarn-error.log*
 next-env.d.ts
 
 .idea
+

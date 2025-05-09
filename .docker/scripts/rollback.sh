@@ -1,147 +1,71 @@
 #!/bin/bash
 set -e
+set -x
 
-# Mode de rollback (auto ou manuel)
+# Initialize logging
+LOG_FILE="/home/hargile.eu/deployments/rollback.log"
+echo "=== Rollback $(date) ===" >> "$LOG_FILE"
+
+# Mode de rollback (auto ou version spécifique)
 ROLLBACK_MODE=$1
-ROLLBACK_REASON=$2
+ROLLBACK_REASON=${2:-"Rollback manuel"}
 
-echo "=== Gestion de rollback ==="
+echo "Gestion de rollback: Mode=$ROLLBACK_MODE, Raison=$ROLLBACK_REASON" | tee -a "$LOG_FILE"
 
 # Configuration des chemins
 APP_DIR=/home/hargile.eu
 DEPLOYMENTS_DIR=$APP_DIR/deployments
-ROLLBACK_LOG="$DEPLOYMENTS_DIR/rollback_history"
 
 # Vérifier si une version actuelle existe
-if [ -f "$DEPLOYMENTS_DIR/current_version" ]; then
-  CURRENT_VERSION=$(cat $DEPLOYMENTS_DIR/current_version)
-  echo "Version actuelle: $CURRENT_VERSION"
-else
-  echo "❌ Aucune version actuelle trouvée"
+if [ ! -f "$DEPLOYMENTS_DIR/current_version" ]; then
+  echo "❌ Aucune version actuelle trouvée" | tee -a "$LOG_FILE"
   exit 1
 fi
+CURRENT_VERSION=$(cat "$DEPLOYMENTS_DIR/current_version")
+echo "Version actuelle: $CURRENT_VERSION" | tee -a "$LOG_FILE"
 
 perform_rollback() {
   local target_version="$1"
   local reason="$2"
 
-  echo "Rollback de $CURRENT_VERSION vers $target_version"
-  echo "Raison: $reason"
+  if [ ! -d "$DEPLOYMENTS_DIR/versions/$target_version" ]; then
+    echo "❌ Version $target_version introuvable!" | tee -a "$LOG_FILE"
+    exit 1
+  fi
+
+  echo "Rollback de $CURRENT_VERSION vers $target_version" | tee -a "$LOG_FILE"
+  echo "Raison: $reason" | tee -a "$LOG_FILE"
 
   # Mettre à jour le lien symbolique
-  rm -f $DEPLOYMENTS_DIR/current
-  ln -sf $DEPLOYMENTS_DIR/versions/"$target_version" $DEPLOYMENTS_DIR/current
+  rm -f "$DEPLOYMENTS_DIR/current"
+  ln -sf "$DEPLOYMENTS_DIR/versions/$target_version" "$DEPLOYMENTS_DIR/current"
 
   # Redémarrer les conteneurs
-  cd $DEPLOYMENTS_DIR/current/.docker
+  cd "$DEPLOYMENTS_DIR/current/.docker"
   export DEPLOY_ID=$target_version
   docker compose down
   docker compose up -d
 
   # Enregistrer le rollback
-  echo "$target_version" > $DEPLOYMENTS_DIR/current_version
-  echo "ROLLBACK: from $CURRENT_VERSION to $target_version at $(date) - $reason" >> $ROLLBACK_LOG
+  echo "$target_version" > "$DEPLOYMENTS_DIR/current_version"
+  echo "ROLLBACK: from $CURRENT_VERSION to $target_version at $(date) - $reason" >> "$LOG_FILE"
 
-  echo "✅ Rollback terminé avec succès vers $target_version"
-}
-
-# Fonction pour lister les versions disponibles
-list_versions() {
-  echo "Versions disponibles:"
-  VERSIONS=($(ls -t $DEPLOYMENTS_DIR/versions))
-  for i in "${!VERSIONS[@]}"; do
-    DEPLOY_DATE=$(stat -c "%y" $DEPLOYMENTS_DIR/versions/"${VERSIONS[$i]}" | cut -d. -f1)
-    echo "$((i+1))) ${VERSIONS[$i]} - $DEPLOY_DATE"
-  done
+  echo "✅ Rollback terminé avec succès vers $target_version" | tee -a "$LOG_FILE"
 }
 
 # Rollback automatique
 if [ "$ROLLBACK_MODE" = "auto" ]; then
-  # Vérifier si une version précédente existe
   if [ -f "$DEPLOYMENTS_DIR/previous_version" ]; then
-    PREVIOUS_VERSION=$(cat $DEPLOYMENTS_DIR/previous_version)
-    echo "Version précédente trouvée: $PREVIOUS_VERSION"
-
-    # Effectuer le rollback
-    perform_rollback "$PREVIOUS_VERSION" "${ROLLBACK_REASON:-Rollback automatique}"
+    PREVIOUS_VERSION=$(cat "$DEPLOYMENTS_DIR/previous_version")
+    perform_rollback "$PREVIOUS_VERSION" "$ROLLBACK_REASON"
   else
-    echo "❌ Aucune version précédente trouvée pour le rollback automatique!"
+    echo "❌ Aucune version précédente trouvée!" | tee -a "$LOG_FILE"
     exit 1
   fi
 # Rollback manuel avec version spécifiée
-elif [ -n "$ROLLBACK_MODE" ] && [ "$ROLLBACK_MODE" != "list" ]; then
-  TARGET_VERSION="$ROLLBACK_MODE"
-
-  # Vérifier si la version cible existe
-  if [ ! -d "$DEPLOYMENTS_DIR/versions/$TARGET_VERSION" ]; then
-    echo "❌ Erreur: Version $TARGET_VERSION introuvable!"
-    list_versions
-    exit 1
-  fi
-
-  # Effectuer le rollback
-  perform_rollback "$TARGET_VERSION" "${ROLLBACK_REASON:-Rollback manuel}"
-# Mode interactif
+elif [ -n "$ROLLBACK_MODE" ]; then
+  perform_rollback "$ROLLBACK_MODE" "$ROLLBACK_REASON"
 else
-  # Vérifier si une version précédente existe
-  if [ -f "$DEPLOYMENTS_DIR/previous_version" ]; then
-    PREVIOUS_VERSION=$(cat $DEPLOYMENTS_DIR/previous_version)
-    echo "Version précédente: $PREVIOUS_VERSION"
-
-    read -p "Effectuer un rollback vers la version précédente? [y/N/list] " CHOICE
-
-    case $CHOICE in
-      [Yy]*)
-        perform_rollback "$PREVIOUS_VERSION" "Rollback manuel interactif"
-        ;;
-      [Ll]*)
-        echo "0) Annuler"
-        list_versions
-
-        read -p "Choisir une version (0 pour annuler): " VERSION_INDEX
-
-        if [ "$VERSION_INDEX" -eq 0 ]; then
-          echo "Rollback annulé"
-          exit 0
-        fi
-
-        VERSIONS=($(ls -t $DEPLOYMENTS_DIR/versions))
-        SELECTED_VERSION="${VERSIONS[$((VERSION_INDEX-1))]}"
-
-        if [ -n "$SELECTED_VERSION" ]; then
-          read -p "Raison du rollback: " REASON
-          perform_rollback "$SELECTED_VERSION" "${REASON:-Sélection manuelle}"
-        else
-          echo "❌ Sélection invalide"
-          exit 1
-        fi
-        ;;
-      *)
-        echo "Rollback annulé"
-        ;;
-    esac
-  else
-    echo "❌ Aucune version précédente trouvée!"
-    echo "Versions disponibles pour rollback manuel:"
-
-    list_versions
-
-    read -p "Choisir une version (0 pour annuler): " VERSION_INDEX
-
-    if [ "$VERSION_INDEX" -eq 0 ]; then
-      echo "Rollback annulé"
-      exit 0
-    fi
-
-    VERSIONS=($(ls -t $DEPLOYMENTS_DIR/versions))
-    SELECTED_VERSION="${VERSIONS[$((VERSION_INDEX-1))]}"
-
-    if [ -n "$SELECTED_VERSION" ]; then
-      read -p "Raison du rollback: " REASON
-      perform_rollback "$SELECTED_VERSION" "${REASON:-Sélection manuelle}"
-    else
-      echo "❌ Sélection invalide"
-      exit 1
-    fi
-  fi
+  echo "❌ Mode de rollback non spécifié!" | tee -a "$LOG_FILE"
+  exit 1
 fi
