@@ -77,9 +77,19 @@ jobs:
             # Deploy with Docker - Build inside the container
             cd \$DEPLOYMENTS_DIR/current/.docker
           
-            # Modifier le docker-compose.yml pour améliorer la communication entre conteneurs
-            sed -i '/nextjs:/a\\    depends_on:\\n      - openlitespeed' docker-compose.yml
-            sed -i '/networks:/i\\    links:\\n      - nextjs:nextjs' docker-compose.yml
+            # Sauvegarder une copie du fichier original
+            cp docker-compose.yml docker-compose.yml.bak
+          
+            # Modifier le docker-compose.yml pour améliorer la communication
+            # Vérifier si 'depends_on' existe déjà
+            if ! grep -q 'depends_on:' docker-compose.yml; then
+              # Ajouter depends_on si absent
+              sed -i '/nextjs:/a\\    depends_on:\\n      - openlitespeed' docker-compose.yml
+            fi
+          
+            # Au lieu d'utiliser links, mettons à jour le réseau
+            # S'assurer que les deux services utilisent le même réseau
+            sed -i 's/app-network:/app-network:\\n    name: app-network/' docker-compose.yml
 
             docker compose down
             DEPLOY_ID=\$DEPLOY_ID docker compose up -d --build
@@ -99,6 +109,7 @@ jobs:
           "
 
       - name: Configure OpenLiteSpeed for Next.js
+        if: success()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             # Créer une configuration explicite pour le proxy Next.js
@@ -193,6 +204,7 @@ jobs:
           "
 
       - name: Configure SSL with Certbot Standalone
+        if: success()
         run: |
           # Arrêter les conteneurs
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "cd /home/hargile.eu/deployments/current/.docker && docker compose down"
@@ -216,6 +228,7 @@ jobs:
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "echo '0 3 * * * root certbot renew --quiet --standalone --pre-hook \"docker stop ols-server\" --post-hook \"docker start ols-server\"' > /etc/cron.d/certbot-renewal && chmod 644 /etc/cron.d/certbot-renewal"
 
       - name: Verify container communication
+        if: success()
         run: |
           ssh -o "StrictHostKeyChecking=no" ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} "
             # Attendre que les conteneurs soient bien démarrés
@@ -250,6 +263,7 @@ jobs:
 
       - name: Check deployment health
         id: health-check
+        if: success()
         continue-on-error: true
         run: |
           # Wait for services to start
@@ -284,7 +298,7 @@ jobs:
           exit 1
 
       - name: Rollback if deployment failed
-        if: steps.health-check.outcome == 'failure'
+        if: success() && steps.health-check.outcome == 'failure'
         run: |
           echo "Deployment health check failed. Initiating rollback..."
           
