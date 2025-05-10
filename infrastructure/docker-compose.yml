@@ -1,34 +1,48 @@
 services:
-  # OpenLiteSpeed service serving the Next.js application
   openlitespeed:
-    image: litespeedtech/openlitespeed:1.7.16-lsphp81
+    image: litespeedtech/openlitespeed:latest
     container_name: openlitespeed
     volumes:
-      - ./ols/conf:/usr/local/lsws/conf
-      - ./ols/vhosts:/usr/local/lsws/conf/vhosts
+      - ./ols-config/templates:/etc/litespeed/templates
+      - ./ols-config/vhosts:/etc/litespeed/vhosts
+      - ./ols-config/init.sh:/usr/local/bin/init.sh
       - certbot-etc:/etc/letsencrypt:ro
-      - ./volumes/webroot:/var/www/html
-      - ..:/var/www/vhosts/nextjs  # Relative path to parent Next.js project
+      - ./volumes/webroot:/var/www/vhosts/hargile/html
+      - ..:/var/www/nextjs
     ports:
       - "80:80"
       - "443:443"
     environment:
       - TZ=Europe/Paris
+    command: /usr/local/bin/init.sh
     restart: always
 
-  # Certbot service for Let's Encrypt
   certbot:
     image: certbot/certbot
     container_name: certbot
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - ./volumes/webroot:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
+      - ./volumes/webroot:/var/www/vhosts/hargile/html
+    command: certonly --webroot --webroot-path=/var/www/vhosts/hargile/html --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
     depends_on:
       - openlitespeed
 
-  # Webhook service for CI/CD with rollback
+  # Next.js application
+  nextjs:
+    image: node:18-alpine
+    container_name: nextjs
+    volumes:
+      - ..:/app
+    working_dir: /app
+    command: sh -c "npm install && npm run build && npm start"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    expose:
+      - 3000
+    restart: always
+
   webhook:
     build:
       context: ./webhook
@@ -38,7 +52,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./logs/webhook:/app/logs
       - ./scripts:/app/scripts
-      - ..:/app/nextjs-app  # Relative path to parent Next.js project
+      - ..:/app/nextjs-app
     ports:
       - "9000:9000"
     environment:

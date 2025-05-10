@@ -2,9 +2,10 @@
 
 This infrastructure setup provides a complete environment for deploying and maintaining a Next.js application using:
 
-- **OpenLiteSpeed** as the web server
+- **OpenLiteSpeed** as the high-performance web server
 - **Let's Encrypt** for SSL certificates
 - **Custom webhook** for CI/CD with automated rollback
+- **Containerized Next.js** application
 
 ## Prerequisites
 
@@ -29,6 +30,7 @@ cd /path/to/your-project
 chmod +x infrastructure/scripts/init.sh
 chmod +x infrastructure/scripts/deploy.sh
 chmod +x infrastructure/scripts/rollback.sh
+chmod +x infrastructure/ols-config/init.sh
 ```
 
 ### Step 3: Initialize the structure
@@ -95,8 +97,13 @@ docker compose ps
 
 ### Step 8: First deployment of the Next.js application
 
+The Next.js application should already be building in its container. You can check its status:
+
 ```bash
-# Trigger a manual deployment
+# Check Next.js build status
+docker logs nextjs
+
+# Alternatively, trigger a manual deployment
 curl -X POST http://localhost:9000/deploy -d "token=your_very_complex_secret_token"
 
 # Check deployment logs
@@ -123,7 +130,8 @@ Check that your application is working correctly:
 In your Git platform (GitHub, GitLab, etc.), set up a webhook:
 
 - URL: `http://your-domain.com:9000/webhook`
-- Header: `x-webhook-token: your_very_complex_secret_token`
+- Content type: `application/json`
+- Secret: Same as your WEBHOOK_SECRET in .env
 - Events: Push to main/master branch
 
 ## Infrastructure Components
@@ -132,39 +140,42 @@ In your Git platform (GitHub, GitLab, etc.), set up a webhook:
 
 ```
 infrastructure/
-├── docker compose.yml     # Main Docker Compose configuration
-├── .env                   # Environment variables for Docker
+├── docker-compose.yml       # Main Docker Compose configuration
+├── .env                     # Environment variables for Docker
 │
-├── ols/                   # OpenLiteSpeed configuration
-│   ├── conf/              # Main configuration files
-│   └── vhosts/            # Virtual hosts configuration
-│       └── nextjs.conf
+├── ols-config/              # OpenLiteSpeed configuration
+│   ├── templates/           # Main configuration templates
+│   │   └── httpd_config.conf
+│   ├── vhosts/              # Virtual hosts configuration
+│   │   └── hargile/
+│   │       └── vhconf.conf
+│   └── init.sh              # OpenLiteSpeed initialization script
 │
-├── webhook/               # Webhook service for CI/CD
+├── webhook/                 # Webhook service for CI/CD
 │   ├── Dockerfile
 │   ├── webhook.js
 │   └── package.json
 │
-├── scripts/               # Deployment and maintenance scripts
-│   ├── deploy.sh          # Main deployment script
-│   ├── rollback.sh        # Manual rollback script
-│   └── init.sh            # Initialization script
+├── scripts/                 # Deployment and maintenance scripts
+│   ├── deploy.sh            # Main deployment script
+│   ├── rollback.sh          # Manual rollback script
+│   └── init.sh              # Infrastructure initialization script
 │
-├── logs/                  # All log files
+├── logs/                    # All log files
 │   ├── webhook/
 │   ├── deploy/
 │   └── ols/
 │
-└── volumes/               # Directory for Docker volumes
-    ├── certbot/           # For Let's Encrypt certificates
-    └── webroot/           # For Let's Encrypt validation
+└── volumes/                 # Directory for Docker volumes
+    └── webroot/             # For Let's Encrypt validation
 ```
 
 ### Services
 
-1. **OpenLiteSpeed**: High-performance web server hosting the Next.js application
-2. **Certbot**: Service for obtaining and renewing Let's Encrypt SSL certificates
-3. **Webhook**: Custom CI/CD service that handles deployments with automatic rollback
+1. **OpenLiteSpeed**: High-performance web server proxying requests to the Next.js application
+2. **Next.js**: Containerized Next.js application running in production mode
+3. **Certbot**: Service for obtaining and renewing Let's Encrypt SSL certificates
+4. **Webhook**: Custom CI/CD service that handles deployments with automatic rollback
 
 ## Usage
 
@@ -198,12 +209,35 @@ Access webhook logs:
 docker exec webhook cat /app/logs/webhook.log
 ```
 
+Access Next.js logs:
+
+```bash
+docker logs nextjs
+```
+
+Access OpenLiteSpeed logs:
+
+```bash
+docker exec openlitespeed cat /usr/local/lsws/logs/error.log
+docker exec openlitespeed cat /usr/local/lsws/logs/access.log
+```
+
 ### Web Interface
 
 The webhook provides a simple web interface at:
 
 - `http://your-domain.com:9000/` - Dashboard
 - `http://your-domain.com:9000/logs` - Recent logs
+
+## Performance Benefits of OpenLiteSpeed
+
+OpenLiteSpeed offers significant performance advantages for Next.js applications:
+
+1. **Higher throughput**: Handles up to 5x more concurrent connections than Nginx
+2. **Lower latency**: Reduces response times by 15-30% for dynamic Next.js content
+3. **Efficient resource usage**: Uses less memory for the same workload
+4. **HTTP/3 support**: Native support for the latest HTTP protocol
+5. **Advanced caching**: Better caching capabilities for isomorphic applications
 
 ## Troubleshooting
 
@@ -212,13 +246,17 @@ The webhook provides a simple web interface at:
 1. **SSL certificates not obtained**: Verify that your domain correctly points to your VPS IP and that ports 80/443 are
    open.
 
-2. **Next.js application doesn't start**: Check deployment logs and ensure the application can be built.
+2. **Next.js application doesn't start**: Check container logs with `docker logs nextjs` and ensure the application can
+   be built.
 
 3. **File access issues**: Ensure Docker volumes are correctly mounted.
 
 4. **Webhook doesn't trigger deployment**: Check webhook logs and make sure the secret token is correct.
 
 5. **Health check failing**: Verify that your Next.js application correctly implements the health endpoint.
+
+6. **OpenLiteSpeed not starting**: Check logs with `docker logs openlitespeed`. Make sure the configuration files are
+   correctly mounted.
 
 ### Health Endpoint
 
