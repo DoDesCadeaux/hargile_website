@@ -100,7 +100,7 @@ services:
       - app-network
 
   nextjs:
-    image: node:18-alpine
+    image: node:22-alpine
     container_name: nextjs
     volumes:
       - ..:/app
@@ -238,7 +238,8 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
+    listen 443 ssl;
+    http2 on;
     server_name ${DOMAIN};
 
     ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
