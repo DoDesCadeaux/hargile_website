@@ -2,7 +2,6 @@ import {hasLocale, NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
-import {SpeedInsights} from "@vercel/speed-insights/next";
 import {generateSharedMetadata} from './shared-metadata';
 
 export function generateStaticParams() {
@@ -61,7 +60,6 @@ export default async function LocaleLayout({children, params}) {
         <body style={{overflowX: 'hidden', minHeight: '100vh'}}>
         <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
-            <SpeedInsights/>
         </NextIntlClientProvider>
         </body>
         </html>

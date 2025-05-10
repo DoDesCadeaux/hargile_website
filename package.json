@@ -15,7 +15,6 @@
     "@react-three/drei": "^10.0.4",
     "@react-three/fiber": "^9.1.0",
     "@tailwindcss/oxide": "^4.0.13",
-    "@vercel/speed-insights": "^1.2.0",
     "animejs": "^3.2.2",
     "classnames": "^2.5.1",
     "country-flag-icons": "^1.5.18",
