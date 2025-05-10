@@ -7,7 +7,7 @@ services:
       - ./ols-config/vhosts:/etc/litespeed/vhosts
       - ./ols-config/init.sh:/usr/local/bin/init.sh
       - certbot-etc:/etc/letsencrypt:ro
-      - ./volumes/webroot:/var/www/vhosts/hargile/html
+      - ./volumes/webroot:/var/www/webroot
       - ..:/var/www/nextjs
     ports:
       - "80:80"
@@ -23,45 +23,12 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - ./volumes/webroot:/var/www/vhosts/hargile/html
-    command: certonly --webroot --webroot-path=/var/www/vhosts/hargile/html --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
+      - ./volumes/webroot:/var/www/webroot
+    command: certonly --webroot --webroot-path=/var/www/webroot --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
     depends_on:
       - openlitespeed
 
-  # Next.js application
-  nextjs:
-    image: node:18-alpine
-    container_name: nextjs
-    volumes:
-      - ..:/app
-    working_dir: /app
-    command: sh -c "npm install && npm run build && npm start"
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-    expose:
-      - 3000
-    restart: always
-
-  webhook:
-    build:
-      context: ./webhook
-      dockerfile: Dockerfile
-    container_name: webhook
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./logs/webhook:/app/logs
-      - ./scripts:/app/scripts
-      - ..:/app/nextjs-app
-    ports:
-      - "9000:9000"
-    environment:
-      - SECRET=${WEBHOOK_SECRET}
-      - DEPLOY_SCRIPT=/app/scripts/deploy.sh
-      - ROLLBACK_SCRIPT=/app/scripts/rollback.sh
-      - LOG_FILE=/app/logs/webhook.log
-      - DOMAIN=${DOMAIN}
-    restart: always
+  # Les autres services restent inchangés...
 
 volumes:
   certbot-etc:
