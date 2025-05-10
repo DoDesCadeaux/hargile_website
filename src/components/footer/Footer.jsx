@@ -108,9 +108,9 @@ const Footer = () => {
                 <Copyright>© 2025 Hargile. All Rights Reserved</Copyright>
                 <BottomLinksStyled>
                     <FooterLinkStyled as={TransitionLink} href="/legal/privacy-policy">Privacy Policy</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/legal/terms">Terms of Services</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/legal/cookies">Cookie Policy</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/accessibility">Accessibility</FooterLinkStyled>
+                    {/*<FooterLinkStyled as={TransitionLink} href="/legal/terms">Terms of Services</FooterLinkStyled>*/}
+                    {/*<FooterLinkStyled as={TransitionLink} href="/legal/cookies">Cookie Policy</FooterLinkStyled>*/}
+                    {/*<FooterLinkStyled as={TransitionLink} href="/accessibility">Accessibility</FooterLinkStyled>*/}
                     <FooterLinkStyled as={TransitionLink} href="/sitemap">Site Map</FooterLinkStyled>
                 </BottomLinksStyled>
             </BottomBarStyled>
