@@ -1,0 +1,54 @@
+services:
+  # OpenLiteSpeed service serving the Next.js application
+  openlitespeed:
+    image: litespeedtech/openlitespeed:1.7.16-lsphp81
+    container_name: openlitespeed
+    volumes:
+      - ./ols/conf:/usr/local/lsws/conf
+      - ./ols/vhosts:/usr/local/lsws/conf/vhosts
+      - certbot-etc:/etc/letsencrypt:ro
+      - ./volumes/webroot:/var/www/html
+      - ..:/var/www/vhosts/nextjs  # Relative path to parent Next.js project
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - TZ=Europe/Paris
+    restart: always
+
+  # Certbot service for Let's Encrypt
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - ./volumes/webroot:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email ${EMAIL} --agree-tos --no-eff-email -d ${DOMAIN}
+    depends_on:
+      - openlitespeed
+
+  # Webhook service for CI/CD with rollback
+  webhook:
+    build:
+      context: ./webhook
+      dockerfile: Dockerfile
+    container_name: webhook
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./logs/webhook:/app/logs
+      - ./scripts:/app/scripts
+      - ..:/app/nextjs-app  # Relative path to parent Next.js project
+    ports:
+      - "9000:9000"
+    environment:
+      - SECRET=${WEBHOOK_SECRET}
+      - DEPLOY_SCRIPT=/app/scripts/deploy.sh
+      - ROLLBACK_SCRIPT=/app/scripts/rollback.sh
+      - LOG_FILE=/app/logs/webhook.log
+      - DOMAIN=${DOMAIN}
+    restart: always
+
+volumes:
+  certbot-etc:
+  certbot-var:
