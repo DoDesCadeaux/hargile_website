@@ -88,6 +88,11 @@ server {
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_cache_bypass \$http_upgrade;
+
+        # Augmenter les timeouts
+        proxy_connect_timeout 180s;
+        proxy_send_timeout 180s;
+        proxy_read_timeout 180s;
     }
 }
 EOL
@@ -179,23 +184,30 @@ EOL
 chmod +x renew-cert.sh
 log_success "Script de renouvellement créé avec succès"
 
-# 6. Obtenir les certificats SSL avec la méthode standalone
-log_info "Obtention des certificats SSL en mode standalone..."
-log_info "Arrêt des services en cours d'exécution..."
-$DOCKER_COMPOSE down >/dev/null 2>&1
+# 6. Obtenir les certificats SSL seulement s'ils n'existent pas déjà
+log_info "Vérification des certificats SSL existants..."
 
-log_info "Lancement de Certbot pour obtenir les certificats SSL..."
-docker run --rm -it -p 80:80 -p 443:443 \
-  -v $PWD/certbot-etc:/etc/letsencrypt \
-  -v $PWD/certbot-var:/var/lib/letsencrypt \
-  certbot/certbot certonly --standalone \
-  --email $EMAIL --agree-tos --no-eff-email \
-  -d $DOMAIN
+# Vérifier si les certificats existent déjà
+if [ -d "$PWD/certbot-etc/live/$DOMAIN" ] && [ -e "$PWD/certbot-etc/live/$DOMAIN/fullchain.pem" ]; then
+  log_success "Certificats SSL existants détectés. Utilisation des certificats existants."
+else
+  log_info "Aucun certificat valide trouvé. Obtention des nouveaux certificats SSL..."
+  log_info "Arrêt des services en cours d'exécution..."
+  $DOCKER_COMPOSE down >/dev/null 2>&1
 
-if [ $? -ne 0 ]; then
-  log_error "Échec de l'obtention des certificats SSL. Veuillez vérifier votre connexion internet et les paramètres DNS."
+  log_info "Lancement de Certbot pour obtenir les certificats SSL..."
+  docker run --rm -it -p 80:80 -p 443:443 \
+    -v $PWD/certbot-etc:/etc/letsencrypt \
+    -v $PWD/certbot-var:/var/lib/letsencrypt \
+    certbot/certbot certonly --standalone \
+    --email $EMAIL --agree-tos --no-eff-email \
+    -d $DOMAIN
+
+  if [ $? -ne 0 ]; then
+    log_error "Échec de l'obtention des certificats SSL. Veuillez vérifier votre connexion internet et les paramètres DNS."
+  fi
+  log_success "Certificats SSL obtenus avec succès"
 fi
-log_success "Certificats SSL obtenus avec succès"
 
 # 7. Démarrer les services
 log_info "Démarrage des services..."
