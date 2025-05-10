@@ -1,6 +1,7 @@
 const http = require('http');
 const {exec} = require('child_process');
 const fs = require('fs');
+const crypto = require('crypto');
 
 // Configuration
 const config = {
@@ -19,6 +20,62 @@ function log(message) {
     const logMessage = `[${timestamp}] ${message}\n`;
     console.log(message);
     fs.appendFileSync(config.logFile, logMessage);
+}
+
+// Function to verify GitHub signature
+function verifyGitHubSignature(payload, signature) {
+    if (!signature) {
+        return false;
+    }
+
+    const hmac = crypto.createHmac('sha256', config.secret);
+    const digest = 'sha256=' + hmac.update(payload).digest('hex');
+
+    // Constant time comparison to prevent timing attacks
+    return crypto.timingSafeEqual(Buffer.from(digest), Buffer.from(signature));
+}
+
+// Function to run deployment
+function runDeployment(res) {
+    if (config.deploymentLock) {
+        log('⚠️ Deployment already in progress. This one will be ignored.');
+        if (res) {
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.end('Deployment already in progress');
+        }
+        return false;
+    }
+
+    config.deploymentLock = true;
+    log('🚀 Starting deployment...');
+
+    // Execute deployment script
+    const deployProcess = exec(`bash ${config.deployScript}`, (error, stdout, stderr) => {
+        config.deploymentLock = false;
+
+        if (error) {
+            log(`❌ Deployment failed: ${error.message}`);
+            return;
+        }
+
+        log('✅ Deployment completed successfully');
+    });
+
+    // Real-time log capture
+    deployProcess.stdout.on('data', (data) => {
+        log(`📋 [OUTPUT]: ${data.trim()}`);
+    });
+
+    deployProcess.stderr.on('data', (data) => {
+        log(`⚠️ [ERROR]: ${data.trim()}`);
+    });
+
+    if (res) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('Deployment triggered');
+    }
+
+    return true;
 }
 
 // Create server
@@ -70,52 +127,121 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // Main webhook endpoint
+    // Manual deployment endpoint
+    if (req.method === 'POST' && req.url === '/deploy') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            // Parse form data
+            const params = new URLSearchParams(body);
+            if (params.get('token') === config.secret) {
+                log('📦 Manual deployment triggered');
+                runDeployment(res);
+            } else {
+                res.writeHead(403, {'Content-Type': 'text/plain'});
+                res.end('Invalid token');
+            }
+        });
+        return;
+    }
+
+    // Manual rollback endpoint
+    if (req.method === 'POST' && req.url === '/rollback') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            // Parse form data
+            const params = new URLSearchParams(body);
+            if (params.get('token') === config.secret) {
+                log('⏮️ Manual rollback triggered');
+                // Execute rollback script
+                exec(`bash ${config.rollbackScript}`, (error, stdout, stderr) => {
+                    if (error) {
+                        log(`❌ Rollback failed: ${error.message}`);
+                        res.writeHead(500, {'Content-Type': 'text/plain'});
+                        res.end('Rollback failed');
+                        return;
+                    }
+
+                    log('✅ Rollback completed successfully');
+                    res.writeHead(200, {'Content-Type': 'text/plain'});
+                    res.end('Rollback completed');
+                });
+            } else {
+                res.writeHead(403, {'Content-Type': 'text/plain'});
+                res.end('Invalid token');
+            }
+        });
+        return;
+    }
+
+    // GitHub webhook endpoint
     if (req.method === 'POST' && req.url === '/webhook') {
-        const token = req.headers['x-webhook-token'];
+        const githubSignature = req.headers['x-hub-signature-256'];
+        const githubEvent = req.headers['x-github-event'];
 
-        if (token !== config.secret) {
-            res.writeHead(403, {'Content-Type': 'text/plain'});
-            res.end('Invalid token');
-            return;
-        }
-
-        log('📦 Webhook called');
-
-        if (config.deploymentLock) {
-            log('⚠️ Deployment already in progress. This one will be ignored.');
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('Deployment already in progress');
-            return;
-        }
-
-        config.deploymentLock = true;
-
-        // Execute deployment script
-        const deployProcess = exec(`bash ${config.deployScript}`, (error, stdout, stderr) => {
-            config.deploymentLock = false;
-
-            if (error) {
-                log(`❌ Deployment failed: ${error.message}`);
-                res.writeHead(500, {'Content-Type': 'text/plain'});
-                res.end('Deployment failed');
+        // Collect the request body
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk;
+        });
+        req.on('end', () => {
+            // Legacy token check
+            const token = req.headers['x-webhook-token'];
+            if (token === config.secret) {
+                // Support for original webhook format
+                log('📦 Webhook called with token');
+                runDeployment(res);
                 return;
             }
 
-            log('✅ Deployment completed successfully');
-        });
+            // GitHub webhook handling
+            if (githubEvent === 'push') {
+                // Verify signature for GitHub webhooks
+                if (!verifyGitHubSignature(body, githubSignature)) {
+                    log('❌ Invalid GitHub signature');
+                    res.writeHead(403, {'Content-Type': 'text/plain'});
+                    res.end('Invalid signature');
+                    return;
+                }
 
-        // Real-time log capture
-        deployProcess.stdout.on('data', (data) => {
-            log(`📋 [OUTPUT]: ${data.trim()}`);
-        });
+                try {
+                    // Parse GitHub payload
+                    const payload = JSON.parse(body);
 
-        deployProcess.stderr.on('data', (data) => {
-            log(`⚠️ [ERROR]: ${data.trim()}`);
-        });
+                    // Extract branch name from ref (format: refs/heads/branch-name)
+                    if (payload.ref) {
+                        const branch = payload.ref.replace('refs/heads/', '');
 
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Deployment triggered');
+                        if (config.allowedBranches.includes(branch)) {
+                            log(`📦 GitHub push detected on branch ${branch}`);
+                            runDeployment(res);
+                        } else {
+                            log(`⚠️ Push to non-deployment branch: ${branch}`);
+                            res.writeHead(200, {'Content-Type': 'text/plain'});
+                            res.end(`Push to ${branch} ignored`);
+                        }
+                    } else {
+                        log('⚠️ No branch information in GitHub payload');
+                        res.writeHead(200, {'Content-Type': 'text/plain'});
+                        res.end('No branch information');
+                    }
+                } catch (error) {
+                    log(`❌ Error processing GitHub webhook: ${error.message}`);
+                    res.writeHead(500, {'Content-Type': 'text/plain'});
+                    res.end('Error processing webhook');
+                }
+            } else {
+                // Non-push GitHub events
+                log(`ℹ️ Ignoring GitHub event: ${githubEvent}`);
+                res.writeHead(200, {'Content-Type': 'text/plain'});
+                res.end(`Event ${githubEvent} ignored`);
+            }
+        });
         return;
     }
 
