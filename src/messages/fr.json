@@ -26,7 +26,7 @@
         "advice": "Conseil"
       },
       "submit": "Soumettre",
-      "title": "Contacter-nous"
+      "title": "Contactez-nous"
     },
     "audit-button": {
       "description": "",
@@ -79,7 +79,7 @@
             "renewable": "Alimenté par énergie renouvelable"
           },
           "highlighted": "Révolutionner l'innovation par une technologie responsable",
-          "paragraph1": "Notre conviction est d’agir concrètement par des actions significatives  pour un numérique plus vertueux afin que notre engagement se mesure en résultats tangibles.",
+          "paragraph1": "Notre conviction est d’agir concrètement par des actions significatives pour un numérique plus vertueux afin que notre engagement se mesure en résultats tangibles.",
           "paragraph2": "L’environnement social et environnemental est notre priorité. Notre vision est de transformer leurs contraintes en opportunités d'excellence. Nos solutions ne sont pas seulement performantes – elles sont résolument tournées vers l'avenir.",
           "pillars": {
             "environmental": "Responsabilité Environnementale",
@@ -120,7 +120,7 @@
         "our-story": {
           "getInTouch": "Nous contacter",
           "paragraph1": "Chez Hargile, nous ne construisons pas une entreprise numérique comme les autres. Nous cultivons une équipe aux talents complémentaires, où l’exigence technologique rencontre une vraie intelligence business.\n\nIci, l’innovation ne se fait pas pour briller, mais pour servir concrètement la croissance de nos partenaires.",
-          "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, fondées sur la confiance, la co-construction et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
+          "paragraph2": "Notre ambition va au-delà des produits : \n\n Nous créons des alliances durables, ancrées dans la confiance, la co-construction, et le succès partagé.\n\n Chaque solution que nous développons est pensée pour évoluer avec votre entreprise, répondre à vos enjeux réels, et anticiper les défis de demain.",
           "paragraph3": "Pour nous, accompagner votre croissance, c’est bien plus qu’un service, c’est une responsabilité, et une fierté.",
           "subtitle": "Une vision pour demain",
           "title": "Notre ADN"
@@ -291,7 +291,7 @@
           },
           "subtitle": "Libérez tout le potentiel de votre entreprise grâce à l’univers digital de HARGILE!",
           "title": "Nos services",
-          "discover-link": "Découvrer <br/> nos services"
+          "discover-link": "Découvrez <br/> nos services"
         },
         "trusted-brands": {
           "title": "Ils nous font confiance"
@@ -565,8 +565,8 @@
           "title": "Automatisation des processus métier"
         },
         "banking-connector": {
-          "description": "Solutions banquaire, Wordline payment, SIPS Atos, ...",
-          "title": "Connecteur(s) banquaire(s)"
+          "description": "Solutions bancaire, Wordline payment, SIPS Atos, ...",
+          "title": "Connecteur(s) bancaire(s)"
         },
         "cloud": {
           "description": "Infrastructure cloud, déploiement et optimisation des ressources",
