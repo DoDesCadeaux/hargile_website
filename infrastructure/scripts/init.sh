@@ -243,7 +243,7 @@ services:
     volumes:
       - ..:/app
     working_dir: /app
-    command: sh -c "npm install && npm run build && npm start"
+    command: sh -c "npm install --include=dev && npm run build && npm start"
     environment:
       - NODE_ENV=production
       - PORT=3000
