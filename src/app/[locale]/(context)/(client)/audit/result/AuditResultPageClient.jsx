@@ -288,7 +288,7 @@ export default function AuditResultPageClient() {
                         <div className="flex space-x-4">
                             <button
                                 aria-label={t('audit-results.contact')}
-                                // onClick={() => setShowCalendar(true)}
+                                onClick={() => setShowCalendar(true)}
                                 className="bg-white text-violet-900 hover:bg-gray-100 !px-6 !py-3 !mx-2 rounded-md font-medium transition-colors cursor-pointer"
                             >
                                 {t('audit-results.contact')}
@@ -312,11 +312,18 @@ export default function AuditResultPageClient() {
                                     className="text-gray-400 text-lg cursor-pointer">✕
                             </button>
                         </div>
+                        {/*TODO Hide/Bloquer les inputs SCORES*/}
                         <iframe
-                            src={`https://calendly.com/worldwidenine/digital-audit-meeting?hide_event_type_details=1&hide_gdpr_banner=1&background_color=403749&text_color=ffffff&primary_color=C183EB&name=${encodeURIComponent(`${formData.firstName} ${formData.lastName}`)}&email=${encodeURIComponent(formData.email || '')}&a1=${encodeURIComponent(formData.url)}&a2=${encodeURIComponent(performanceScore)}%25&a3=${encodeURIComponent(accessibilityScore)}%25&a4=${encodeURIComponent(seoScore)}%25&a5=${encodeURIComponent(bestPracticeScore)}%25`}
+                            src={`https://calendly.com/charles-delalaing/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=403749&text_color=ffffff&primary_color=C183EB&name=${encodeURIComponent(`${formData.firstName} ${formData.lastName}`)}&email=${encodeURIComponent(formData.email || '')}&a1=${encodeURIComponent(formData.url)}&a2=${encodeURIComponent(performanceScore)}%25&a3=${encodeURIComponent(accessibilityScore)}%25&a4=${encodeURIComponent(seoScore)}%25&a5=${encodeURIComponent(bestPracticeScore)}%25&autofill=true`}
                             width="100%"
                             height="475"
                         ></iframe>
+
+                        {/*<iframe*/}
+                        {/*    src={`https://calendly.com/worldwidenine/digital-audit-meeting?hide_event_type_details=1&hide_gdpr_banner=1&background_color=403749&text_color=ffffff&primary_color=C183EB&name=${encodeURIComponent(`${formData.firstName} ${formData.lastName}`)}&email=${encodeURIComponent(formData.email || '')}&a1=${encodeURIComponent(formData.url)}&a2=${encodeURIComponent(performanceScore)}%25&a3=${encodeURIComponent(accessibilityScore)}%25&a4=${encodeURIComponent(seoScore)}%25&a5=${encodeURIComponent(bestPracticeScore)}%25`}*/}
+                        {/*    width="100%"*/}
+                        {/*    height="475"*/}
+                        {/*></iframe>*/}
                     </div>
                 </div>
             )}
