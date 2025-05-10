@@ -64,7 +64,7 @@ First, start OpenLiteSpeed to allow Certbot to validate your domain:
 
 ```bash
 # Start only the OpenLiteSpeed container
-docker-compose up -d openlitespeed
+docker compose up -d openlitespeed
 
 # Wait for the service to be ready
 sleep 10
@@ -74,7 +74,7 @@ sleep 10
 
 ```bash
 # Run Certbot to get the certificate
-docker-compose up certbot
+docker compose up certbot
 
 # Verify that certificates were obtained
 docker logs certbot
@@ -84,13 +84,13 @@ docker logs certbot
 
 ```bash
 # Start all services
-docker-compose up -d
+docker compose up -d
 
 # Wait for containers to initialize
 sleep 20
 
 # Check status of all containers
-docker-compose ps
+docker compose ps
 ```
 
 ### Step 8: First deployment of the Next.js application
@@ -115,7 +115,7 @@ Check that your application is working correctly:
 
 ```bash
 # Add a cron job to automatically renew certificates
-(crontab -l 2>/dev/null; echo "0 3 * * * cd /path/to/your-project/infrastructure && docker-compose up -d certbot") | crontab -
+(crontab -l 2>/dev/null; echo "0 3 * * * cd /path/to/your-project/infrastructure && docker compose up -d certbot") | crontab -
 ```
 
 ### Step 11: Configure webhook for continuous deployment
@@ -132,7 +132,7 @@ In your Git platform (GitHub, GitLab, etc.), set up a webhook:
 
 ```
 infrastructure/
-├── docker-compose.yml     # Main Docker Compose configuration
+├── docker compose.yml     # Main Docker Compose configuration
 ├── .env                   # Environment variables for Docker
 │
 ├── ols/                   # OpenLiteSpeed configuration

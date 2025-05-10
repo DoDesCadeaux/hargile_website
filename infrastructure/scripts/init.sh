@@ -11,4 +11,4 @@ touch logs/deploy/deployment.log
 
 echo "Infrastructure structure created successfully!"
 echo "To start your infrastructure, run:"
-echo "cd infrastructure && docker-compose up -d"
+echo "cd infrastructure && docker compose up -d"
