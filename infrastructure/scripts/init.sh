@@ -179,8 +179,8 @@ EOL
 chmod +x renew-cert.sh
 log_success "Script de renouvellement créé avec succès"
 
-# 6. Obtenir les certificats SSL
-log_info "Obtention des certificats SSL..."
+# 6. Obtenir les certificats SSL avec la méthode standalone
+log_info "Obtention des certificats SSL en mode standalone..."
 log_info "Arrêt des services en cours d'exécution..."
 $DOCKER_COMPOSE down >/dev/null 2>&1
 
@@ -188,9 +188,7 @@ log_info "Lancement de Certbot pour obtenir les certificats SSL..."
 docker run --rm -it -p 80:80 -p 443:443 \
   -v $PWD/certbot-etc:/etc/letsencrypt \
   -v $PWD/certbot-var:/var/lib/letsencrypt \
-  -v $PWD/volumes/webroot:/var/www/html \
-  certbot/certbot certonly --webroot \
-  --webroot-path=/var/www/html \
+  certbot/certbot certonly --standalone \
   --email $EMAIL --agree-tos --no-eff-email \
   -d $DOMAIN
 
