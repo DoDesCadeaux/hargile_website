@@ -71,14 +71,15 @@ const Footer = () => {
                 {/* Services */}
                 <ColumnStyled>
                     <HeadingStyled>Services</HeadingStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/web-development">Web
-                        Development</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/digital-marketing">Digital
-                        Marketing</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/mobile-applications">Mobile
-                        applications</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/ai-solutions">AI Solutions</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/cloud">Cloud</FooterLinkStyled>
+                    <FooterLinkStyled as={TransitionLink} href="/services">Services</FooterLinkStyled>
+                    {/*<FooterLinkStyled as={TransitionLink} href="/services/web-development">Web*/}
+                    {/*    Development</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/digital-marketing">Digital*/}
+                {/*        Marketing</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/mobile-applications">Mobile*/}
+                {/*        applications</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/ai-solutions">AI Solutions</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/cloud">Cloud</FooterLinkStyled>*/}
                 </ColumnStyled>
 
                 {/* Company */}
