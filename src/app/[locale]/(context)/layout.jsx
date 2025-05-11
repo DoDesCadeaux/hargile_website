@@ -9,6 +9,8 @@ import dynamic from "next/dynamic";
 import {AuditButton} from "@/components/AuditButton";
 import Navbar from "@/components/navigation/navbar";
 import LenisProvider from "@/components/providers/lenis-provider";
+import '../../styles/global.scss'
+
 
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
     ssr: true

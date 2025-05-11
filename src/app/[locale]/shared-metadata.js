@@ -5,13 +5,13 @@ export function generateSharedMetadata(params, translations) {
     const isDefault = locale === 'fr'; // French is the default
 
     // Base URL with locale
-    const baseUrl = `https://hargile-website.vercel.app/${locale}`;
+    const baseUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}`;
 
     // Default image path (absolute URL required for OG/Twitter)
-    const imageUrl = `https://hargile-website.vercel.app/images/brand/brand_large.png`;
+    const imageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/images/brand/brand_large.png`;
 
     return {
-        metadataBase: new URL('https://hargile-website.vercel.app'),
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
         title: {
             template: isDefault
                 ? '%s | HARGILE - Innovation digitale'
@@ -28,8 +28,8 @@ export function generateSharedMetadata(params, translations) {
         alternates: {
             canonical: baseUrl,
             languages: {
-                'fr': 'https://hargile-website.vercel.app/fr',
-                'en': 'https://hargile-website.vercel.app/en',
+                'fr': process.env.NEXT_PUBLIC_SITE_URL + '/fr',
+                'en': process.env.NEXT_PUBLIC_SITE_URL + '/en',
             },
         },
         // OpenGraph metadata

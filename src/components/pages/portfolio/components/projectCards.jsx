@@ -127,16 +127,17 @@ const CardButton = styled.a.attrs({
  * Project card component with solid background instead of blur
  * Works reliably across all browsers and scroll positions
  */
-export function ProjectCard({
-                                title,
-                                subtitle,
-                                description,
-                                image,
-                                alt = "Project image",
-                                actionText = "Learn More",
-                                actionUrl = "#",
-                                index = 0,
-                            }) {
+export function ProjectCard(
+    {
+        title,
+        subtitle,
+        description,
+        image,
+        alt = "Project image",
+        actionText = "Learn More",
+        actionUrl = "#",
+        index = 0,
+    }) {
     return (
         <CardOuterContainer>
             <CardContainer
@@ -150,7 +151,7 @@ export function ProjectCard({
                         ease: "easeOut",
                     },
                 }}
-                viewport={{once: true, amount: 0.2}}
+                viewport={{once: true, amount: 0.01}}
             >
                 <BackgroundEffect/>
                 <PurpleAccent/>

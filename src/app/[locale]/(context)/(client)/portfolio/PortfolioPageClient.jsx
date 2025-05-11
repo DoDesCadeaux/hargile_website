@@ -171,7 +171,7 @@ export default function PortfolioPage() {
     ];
 
     // Get domain from environment or use default
-    const domain = "hargile-website.vercel.app";
+    const domain = process.env.NEXT_PUBLIC_DOMAIN;
     const schemaOptions = {locale, domain};
 
     // Generate schema for the collection (portfolio page)
@@ -215,7 +215,7 @@ export default function PortfolioPage() {
                             y: 0,
                             transition: {duration: 0.6, ease: "easeOut"},
                         }}
-                        viewport={{once: true, amount: 0.2}}
+                        viewport={{once: true, amount: 0.01}}
                     >
                         {t("featuredProjects")}
                     </SectionTitle>
@@ -243,7 +243,7 @@ export default function PortfolioPage() {
                         y: 0,
                         transition: {duration: 0.8, ease: "easeOut", delay: 0.2},
                     }}
-                    viewport={{once: true, amount: 0.2}}
+                    viewport={{once: true, amount: 0.01}}
                 >
                     <CTATitle>{t("cta.title")}</CTATitle>
                     <CTADescription>{t("cta.description")}</CTADescription>
@@ -251,7 +251,7 @@ export default function PortfolioPage() {
                         href="/contact"
                         whileHover={{
                             scale: 1.05,
-                            transition: {duration: 0.2},
+                            transition: {duration: 0.01},
                         }}
                     >
                         {t("cta.button")}
