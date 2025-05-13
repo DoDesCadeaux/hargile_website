@@ -110,8 +110,8 @@ const Navbar = () => {
                     onClick={triggerHomeTransitionAnimation}
                 >
                     <OptimizedImage
-                        width="1754"
-                        height="815"
+                        width={750}
+                        height={348}
                         src="/images/brand/brand_large.png"
                         alt="Brand Logo"
                         style={{
