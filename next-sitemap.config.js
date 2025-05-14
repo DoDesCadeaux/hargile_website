@@ -1,14 +1,14 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://hargile-website.vercel.app',
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     generateRobotsTxt: true,
     alternateRefs: [
         {
-            href: 'https://hargile-website.vercel.app/en',
+            href: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/en`,
             hreflang: 'en',
         },
         {
-            href: 'https://hargile-website.vercel.app/fr',
+            href: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/fr`,
             hreflang: 'fr',
         },
     ],

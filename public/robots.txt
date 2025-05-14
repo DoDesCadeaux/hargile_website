@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hargile-website.vercel.app
+Host: https://hargile.com
 
 # Sitemaps
-Sitemap: https://hargile-website.vercel.app/sitemap.xml
-Sitemap: https://hargile-website.vercel.app/sitemap
+Sitemap: https://hargile.com/sitemap.xml
+Sitemap: https://hargile.com/sitemap

@@ -27,8 +27,8 @@ export default async function LocaleLayout({children, params}) {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "HARGILE",
-        "url": `https://hargile-website.vercel.app/${locale}`,
-        "logo": "https://hargile-website.vercel.app/images/brand/brand_large.png",
+        "url": `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}`,
+        "logo": `${process.env.NEXT_PUBLIC_SITE_URL}/images/brand/brand_large.png`,
         "description": locale === 'fr'
             ? "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing"
             : "Digital agency specializing in web development, AI solutions, and marketing strategies"
@@ -41,12 +41,16 @@ export default async function LocaleLayout({children, params}) {
             <meta charSet="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <meta name="theme-color" content="#000000"/>
-            <link rel="icon" href="/favicon.ico"/>
+            <link rel="icon" href="/favicon.ico" sizes="any"/>
             <link rel="apple-touch-icon" href="/logo192.png"/>
             <meta name="robots" content="index, follow"/>
-            <link rel="alternate" hrefLang="x-default" href="https://hargile-website.vercel.app/fr"/>
-            <link rel="alternate" hrefLang="fr" href="https://hargile-website.vercel.app/fr"/>
-            <link rel="alternate" hrefLang="en" href="https://hargile-website.vercel.app/en"/>
+            <link rel="alternate" hrefLang="x-default" href={process.env.NEXT_PUBLIC_SITE_URL + '/fr'}/>
+            <link rel="alternate" hrefLang="fr" href={process.env.NEXT_PUBLIC_SITE_URL + '/fr'}/>
+            <link rel="alternate" hrefLang="en" href={process.env.NEXT_PUBLIC_SITE_URL + '/en'}/>
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+            <link rel="manifest" href="/site.webmanifest"/>
 
             {/*<Script*/}
             {/*    id="schema-org-data"*/}

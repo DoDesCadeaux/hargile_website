@@ -5,6 +5,6 @@ export default function robots() {
             allow: '/',
             disallow: ['/api/', '/admin/'],
         },
-        sitemap: 'https://hargile-website.vercel.app/sitemap.xml',
+        sitemap: process.env.NEXT_PUBLIC_SITE_URL + '/sitemap.xml',
     }
 }

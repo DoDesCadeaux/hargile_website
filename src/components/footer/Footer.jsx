@@ -71,14 +71,15 @@ const Footer = () => {
                 {/* Services */}
                 <ColumnStyled>
                     <HeadingStyled>Services</HeadingStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/web-development">Web
-                        Development</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/digital-marketing">Digital
-                        Marketing</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/mobile-applications">Mobile
-                        applications</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/ai-solutions">AI Solutions</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/services/cloud">Cloud</FooterLinkStyled>
+                    <FooterLinkStyled as={TransitionLink} href="/services">Services</FooterLinkStyled>
+                    {/*<FooterLinkStyled as={TransitionLink} href="/services/web-development">Web*/}
+                    {/*    Development</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/digital-marketing">Digital*/}
+                {/*        Marketing</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/mobile-applications">Mobile*/}
+                {/*        applications</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/ai-solutions">AI Solutions</FooterLinkStyled>*/}
+                {/*    <FooterLinkStyled as={TransitionLink} href="/services/cloud">Cloud</FooterLinkStyled>*/}
                 </ColumnStyled>
 
                 {/* Company */}
@@ -108,9 +109,9 @@ const Footer = () => {
                 <Copyright>© 2025 Hargile. All Rights Reserved</Copyright>
                 <BottomLinksStyled>
                     <FooterLinkStyled as={TransitionLink} href="/legal/privacy-policy">Privacy Policy</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/legal/terms">Terms of Services</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/legal/cookies">Cookie Policy</FooterLinkStyled>
-                    <FooterLinkStyled as={TransitionLink} href="/accessibility">Accessibility</FooterLinkStyled>
+                    {/*<FooterLinkStyled as={TransitionLink} href="/legal/terms">Terms of Services</FooterLinkStyled>*/}
+                    {/*<FooterLinkStyled as={TransitionLink} href="/legal/cookies">Cookie Policy</FooterLinkStyled>*/}
+                    {/*<FooterLinkStyled as={TransitionLink} href="/accessibility">Accessibility</FooterLinkStyled>*/}
                     <FooterLinkStyled as={TransitionLink} href="/sitemap">Site Map</FooterLinkStyled>
                 </BottomLinksStyled>
             </BottomBarStyled>

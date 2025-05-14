@@ -80,11 +80,12 @@ export default function Loading() {
                         mixBlendMode: "plus-lighter",
                         position: 'absolute',
                     }}
-                    width={1754}
-                    height={815}
+                    width={750}
+                    height={348}
                     alt={'Brand Logo'}
                     src={'/images/brand/brand_large.png'}
                     priority={true}
+                    fetchpriority={'high'}
                 />
             </div>
         </div>

@@ -9,6 +9,8 @@ import dynamic from "next/dynamic";
 import {AuditButton} from "@/components/AuditButton";
 import Navbar from "@/components/navigation/navbar";
 import LenisProvider from "@/components/providers/lenis-provider";
+import '../../styles/global.scss'
+
 
 const EarthVideoLayer = dynamic(() => import("@/components/EarthVideoLayer"), {
     ssr: true
@@ -60,8 +62,8 @@ export default function ContextLayout({children}) {
                             mixBlendMode: "plus-lighter",
                             position: 'absolute',
                         }}
-                        width={1754}
-                        height={815}
+                        width={750}
+                        height={348}
                         src="/images/brand/brand_large.png"
                         alt="Brand Logo"
                         priority={true}

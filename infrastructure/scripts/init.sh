@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Variables
-DOMAIN=${1:-hargile.eu}
+DOMAIN=${1:-hargile.com}
 EMAIL=${2:-info@hargile.com}
 WEBHOOK_SECRET=$(openssl rand -hex 32)  # Génère un token aléatoire
+WWW_DOMAIN="www.${DOMAIN}"  # Gestion explicite du sous-domaine www
 
 # Couleurs pour les messages
 GREEN='\033[0;32m'
@@ -46,12 +47,42 @@ WEBHOOK_SECRET=$WEBHOOK_SECRET
 EOL
 log_success "Fichier .env créé avec succès"
 
+# 3. Vérification des DNS avant de continuer
+log_info "Vérification des enregistrements DNS..."
+DOMAIN_IP=$(dig +short A ${DOMAIN})
+WWW_IP=$(dig +short A ${WWW_DOMAIN})
+
+if [ -z "$DOMAIN_IP" ]; then
+  log_warning "Aucun enregistrement A trouvé pour $DOMAIN. Vérifiez votre configuration DNS."
+  read -p "Continuer quand même ? (y/n) " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    log_error "Configuration annulée. Veuillez configurer vos DNS correctement."
+    exit 1
+  fi
+fi
+
+# Déterminer si www est configuré
+WWW_CONFIGURED=false
+if [ -n "$WWW_IP" ]; then
+  log_success "Enregistrement DNS pour $WWW_DOMAIN trouvé: $WWW_IP"
+  WWW_CONFIGURED=true
+else
+  log_warning "Aucun enregistrement DNS pour $WWW_DOMAIN trouvé. Seul $DOMAIN sera configuré."
+fi
+
 # 3. Créer la configuration Nginx temporaire (pour HTTP uniquement)
 log_info "Création de la configuration Nginx temporaire (HTTP uniquement)..."
+if [ "$WWW_CONFIGURED" = true ]; then
+  SERVER_NAMES="${DOMAIN} ${WWW_DOMAIN}"
+else
+  SERVER_NAMES="${DOMAIN}"
+fi
+
 cat > nginx/conf.d/default.conf << EOL
 server {
     listen 80;
-    server_name ${DOMAIN};
+    server_name ${SERVER_NAMES};
 
     # Pour le renouvellement Let's Encrypt
     location /.well-known/acme-challenge/ {
@@ -79,7 +110,7 @@ server {
 EOL
 log_success "Configuration Nginx temporaire créée avec succès"
 
-# 4. Créer le fichier docker-compose.yml
+# 4. Créer le fichier docker-compose.yml (inchangé)
 log_info "Création du fichier docker-compose.yml..."
 cat > docker-compose.yml << EOL
 services:
@@ -142,7 +173,7 @@ networks:
 EOL
 log_success "Fichier docker-compose.yml créé avec succès"
 
-# 5. Créer le script de renouvellement de certificat
+# 5. Créer le script de renouvellement de certificat (amélioré)
 log_info "Création du script de renouvellement de certificat..."
 cat > renew-cert.sh << 'EOL'
 #!/bin/bash
@@ -150,17 +181,24 @@ cat > renew-cert.sh << 'EOL'
 # Arrêter Nginx pour libérer le port 80
 docker compose stop nginx || docker-compose stop nginx
 
-# Renouveler le certificat
+# Renouveler le certificat avec IPv4 uniquement pour éviter les problèmes
 docker run --rm -p 80:80 -p 443:443 \
   -v $PWD/certbot-etc:/etc/letsencrypt \
   -v $PWD/certbot-var:/var/lib/letsencrypt \
-  certbot/certbot renew
+  certbot/certbot renew --preferred-ip-version ipv4
 
 # Redémarrer Nginx
 docker compose start nginx || docker-compose start nginx
 
 # Log du renouvellement
 echo "Certificate renewal attempt at $(date)" >> ./logs/certbot.log
+
+# Vérifier si les certificats ont été renouvelés
+if [ -f "$PWD/certbot-etc/renewal/${DOMAIN}.conf" ]; then
+  echo "Certificate renewal appears successful for ${DOMAIN}" >> ./logs/certbot.log
+else
+  echo "WARNING: Certificate renewal may have failed for ${DOMAIN}" >> ./logs/certbot.log
+fi
 EOL
 chmod +x renew-cert.sh
 log_success "Script de renouvellement créé avec succès"
@@ -201,13 +239,23 @@ if [ "$CERTS_VALID" = false ]; then
   log_info "Arrêt des services en cours d'exécution..."
   $DOCKER_COMPOSE down >/dev/null 2>&1
 
+  # Construire la commande certbot avec les domaines à inclure
+  DOMAIN_PARAMS="-d $DOMAIN"
+  if [ "$WWW_CONFIGURED" = true ]; then
+    DOMAIN_PARAMS="$DOMAIN_PARAMS -d $WWW_DOMAIN"
+  fi
+
   log_info "Lancement de Certbot pour obtenir les certificats SSL..."
+  log_info "Domaines inclus: $DOMAIN_PARAMS"
+
+  # Utilisation de l'option preferred-ip-version pour forcer IPv4
   docker run --rm -it -p 80:80 -p 443:443 \
     -v $PWD/certbot-etc:/etc/letsencrypt \
     -v $PWD/certbot-var:/var/lib/letsencrypt \
     certbot/certbot certonly --standalone \
+    --preferred-ip-version ipv4 \
     --email $EMAIL --agree-tos --no-eff-email \
-    -d $DOMAIN
+    $DOMAIN_PARAMS
 
   if [ $? -eq 0 ]; then
     log_success "Certificats SSL obtenus avec succès."
@@ -224,7 +272,7 @@ if [ "$CERTS_VALID" = true ]; then
   cat > nginx/conf.d/default.conf << EOL
 server {
     listen 80;
-    server_name ${DOMAIN};
+    server_name ${SERVER_NAMES};
 
     # Redirection vers HTTPS
     location / {
@@ -240,7 +288,7 @@ server {
 server {
     listen 443 ssl;
     http2 on;
-    server_name ${DOMAIN};
+    server_name ${SERVER_NAMES};
 
     ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
@@ -291,7 +339,29 @@ log_info "Configuration du renouvellement automatique des certificats..."
 (crontab -l 2>/dev/null; echo "0 3 * * 1 cd $(pwd) && ./renew-cert.sh >> ./logs/certbot.log 2>&1") | crontab -
 log_success "Renouvellement automatique configuré avec succès"
 
-# 10. Afficher les informations de configuration
+# 10. Test de la configuration HTTPS
+if [ "$CERTS_VALID" = true ]; then
+  log_info "Test de la configuration HTTPS..."
+  sleep 5 # Attendre que Nginx démarre complètement
+
+  # Test du domaine principal
+  if curl -s -o /dev/null -w "%{http_code}" https://${DOMAIN} --insecure | grep -q "200\|301\|302"; then
+    log_success "HTTPS fonctionne correctement pour ${DOMAIN}"
+  else
+    log_warning "HTTPS semble ne pas fonctionner correctement pour ${DOMAIN}"
+  fi
+
+  # Test du sous-domaine www si configuré
+  if [ "$WWW_CONFIGURED" = true ]; then
+    if curl -s -o /dev/null -w "%{http_code}" https://${WWW_DOMAIN} --insecure | grep -q "200\|301\|302"; then
+      log_success "HTTPS fonctionne correctement pour ${WWW_DOMAIN}"
+    else
+      log_warning "HTTPS semble ne pas fonctionner correctement pour ${WWW_DOMAIN}"
+    fi
+  fi
+fi
+
+# 11. Afficher les informations de configuration
 if [ "$CERTS_VALID" = true ]; then
   SITE_URL="https://$DOMAIN"
 else
@@ -319,12 +389,30 @@ Pour configurer GitHub webhook:
 if [ "$CERTS_VALID" = false ]; then
   log_warning "
 IMPORTANT: Votre site fonctionne actuellement en HTTP uniquement.
-Les certificats SSL n'ont pas pu être obtenus en raison des limites de taux de Let's Encrypt.
-Réessayez après le $(date -d "2025-05-11 20:43:46 UTC" +"%d/%m/%Y %H:%M UTC") en exécutant:
-  ./renew-cert.sh
+Les certificats SSL n'ont pas pu être obtenus.
+Pour résoudre ce problème:
+1. Vérifiez que vos enregistrements DNS sont correctement configurés:
+   - ${DOMAIN} -> 109.176.197.172
+   - www.${DOMAIN} -> 109.176.197.172 (si vous souhaitez le www)
+2. Attendez la propagation DNS (peut prendre jusqu'à 24h)
+3. Exécutez ensuite:
+   ./renew-cert.sh
 "
 else
   echo "Les certificats seront renouvelés automatiquement."
+fi
+
+if [ "$WWW_CONFIGURED" = false ]; then
+  log_warning "
+NOTE: Le sous-domaine www.${DOMAIN} n'est pas configuré.
+Si vous souhaitez utiliser www.${DOMAIN}, ajoutez un enregistrement DNS:
+- Type: A
+- Nom: www
+- Valeur: 109.176.197.172
+- TTL: 300
+
+Puis exécutez ce script à nouveau après la propagation DNS.
+"
 fi
 
 echo "==========================================================="
