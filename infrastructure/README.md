@@ -10,7 +10,7 @@ This infrastructure setup provides a complete environment for deploying and main
 ## Prerequisites
 
 - Docker and Docker Compose installed on your VPS
-- Domain (hargile.eu) pointing to your VPS IP
+- Domain (hargile.com) pointing to your VPS IP
 - Ports 80 and 443 open on your firewall
 
 ## Quick Start: One-Command Setup

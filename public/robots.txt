@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://hargile.eu
+Host: https://hargile.com
 
 # Sitemaps
-Sitemap: https://hargile.eu/sitemap.xml
-Sitemap: https://hargile.eu/sitemap
+Sitemap: https://hargile.com/sitemap.xml
+Sitemap: https://hargile.com/sitemap

@@ -4,7 +4,7 @@
 PROJECT_ROOT="/app/nextjs-app"
 LOG_FILE="/app/logs/deployment.log"
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
-DOMAIN=${DOMAIN:-"hargile.eu"}
+DOMAIN=${DOMAIN:-"hargile.com"}
 HEALTH_CHECK_URL="https://${DOMAIN}/api/health"
 
 # Logging function
@@ -59,7 +59,7 @@ for i in {1..5}; do
     log "✅ Application started successfully!"
     exit 0
   fi
-  
+
   log "Attempt $i/5 failed, retrying in 5 seconds..."
   sleep 5
 done
@@ -72,10 +72,10 @@ if [ -d "$PROJECT_ROOT/.next-backup" ]; then
   log "Restoring previous build"
   rm -rf $PROJECT_ROOT/.next
   cp -r $PROJECT_ROOT/.next-backup $PROJECT_ROOT/.next
-  
+
   # Restart Next.js after rollback
   docker restart nextjs
-  
+
   log "Rollback completed. Previous version restored."
 else
   log "No backup found for rollback!"

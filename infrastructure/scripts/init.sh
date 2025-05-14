@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-DOMAIN=${1:-hargile.eu}
+DOMAIN=${1:-hargile.com}
 EMAIL=${2:-info@hargile.com}
 WEBHOOK_SECRET=$(openssl rand -hex 32)  # Génère un token aléatoire
 
