@@ -38,15 +38,6 @@ mkdir -p nginx/conf.d
 mkdir -p certbot-etc
 mkdir -p certbot-var
 
-# 2. Créer le fichier .env
-log_info "Création du fichier .env..."
-cat > .env << EOL
-DOMAIN=$DOMAIN
-EMAIL=$EMAIL
-WEBHOOK_SECRET=$WEBHOOK_SECRET
-EOL
-log_success "Fichier .env créé avec succès"
-
 # 3. Vérification des DNS avant de continuer
 log_info "Vérification des enregistrements DNS..."
 DOMAIN_IP=$(dig +short A ${DOMAIN})
@@ -84,27 +75,59 @@ server {
     listen 80;
     server_name ${SERVER_NAMES};
 
-    # Pour le renouvellement Let's Encrypt
-    location /.well-known/acme-challenge/ {
-        root /var/www/html;
-    }
+    # Redirection immédiate vers HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name ${SERVER_NAMES};
+
+    # Certificats
+    ssl_certificate /etc/letsencrypt/live/$host/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$host/privkey.pem;
+
+    # Paramètres SSL optimisés
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
 
     # Proxy vers Next.js
     location / {
         proxy_pass http://nextjs:3000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
 
-        # Augmenter les timeouts
-        proxy_connect_timeout 180s;
-        proxy_send_timeout 180s;
-        proxy_read_timeout 180s;
+server {
+    listen 9000;
+    server_name ${SERVER_NAMES};
+
+    # Proxy vers le service webhook
+    location / {
+        proxy_pass http://$host:9000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+
+        # Augmenter le timeout pour les webhooks
+        proxy_connect_timeout 300s;
+        proxy_send_timeout 300s;
+        proxy_read_timeout 300s;
     }
 }
 EOL
@@ -137,10 +160,9 @@ services:
       - ..:/app
     working_dir: /app
     command: sh -c "npm install --include=dev && npm run build && npm start"
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - NEXT_PUBLIC_SITE_URL=https://${DOMAIN}
+    env_file:
+        - path: ./default.env
+          required: true # default
     restart: always
     networks:
       - app-network
@@ -264,64 +286,6 @@ if [ "$CERTS_VALID" = false ]; then
     log_warning "Échec de l'obtention des certificats SSL. Configuration en mode HTTP uniquement."
     # Nous continuons avec la configuration HTTP uniquement
   fi
-fi
-
-# 7. Si les certificats sont valides, mettre à jour la configuration Nginx pour HTTPS
-if [ "$CERTS_VALID" = true ]; then
-  log_info "Mise à jour de la configuration Nginx pour HTTPS..."
-  cat > nginx/conf.d/default.conf << EOL
-server {
-    listen 80;
-    server_name ${SERVER_NAMES};
-
-    # Redirection vers HTTPS
-    location / {
-        return 301 https://\$host\$request_uri;
-    }
-
-    # Pour le renouvellement Let's Encrypt
-    location /.well-known/acme-challenge/ {
-        root /var/www/html;
-    }
-}
-
-server {
-    listen 443 ssl;
-    http2 on;
-    server_name ${SERVER_NAMES};
-
-    ssl_certificate /etc/letsencrypt/live/${DOMAIN}/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/${DOMAIN}/privkey.pem;
-
-    # Paramètres SSL optimisés
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_timeout 10m;
-
-    # Proxy vers Next.js
-    location / {
-        proxy_pass http://nextjs:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host \$host;
-        proxy_set_header X-Real-IP \$remote_addr;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-        proxy_cache_bypass \$http_upgrade;
-
-        # Augmenter les timeouts
-        proxy_connect_timeout 180s;
-        proxy_send_timeout 180s;
-        proxy_read_timeout 180s;
-    }
-}
-EOL
-  log_success "Configuration Nginx mise à jour pour HTTPS."
-else
-  log_warning "Fonctionnement en mode HTTP uniquement. HTTPS sera disponible lors du prochain renouvellement de certificat."
 fi
 
 # 8. Démarrer les services
