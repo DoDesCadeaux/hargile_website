@@ -161,8 +161,8 @@ services:
     working_dir: /app
     command: sh -c "npm install --include=dev && npm run build && npm start"
     env_file:
-        - path: ./default.env
-          required: true # default
+      - path: ../.env
+        required: true
     restart: always
     networks:
       - app-network
@@ -179,12 +179,14 @@ services:
       - ..:/app/nextjs-app
     ports:
       - "9000:9000"
+    env_file:
+        - path: ../.env
+          required: true
     environment:
       - SECRET=\${WEBHOOK_SECRET}
       - DEPLOY_SCRIPT=/app/scripts/deploy.sh
       - ROLLBACK_SCRIPT=/app/scripts/rollback.sh
       - LOG_FILE=/app/logs/webhook.log
-      - DOMAIN=\${DOMAIN}
     restart: always
     networks:
       - app-network
