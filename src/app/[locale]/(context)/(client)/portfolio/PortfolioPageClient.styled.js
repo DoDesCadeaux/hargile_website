@@ -70,17 +70,75 @@ export const CTADescription = styled.p`
 `;
 
 export const CTAButton = styled(motion.a)`
-    display: inline-block;
-    background-color: #3b82f6;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
+  display: inline-flex; /* Use inline-flex for better alignment if you add an icon */
+  align-items: center;
+  justify-content: center;
 
-    &:hover {
-        background-color: #2563eb;
-    }
+  /* Define accent color and its RGB components (fallback if CSS vars not set) */
+  /* You can use a different accent for CTAs if desired, or reuse --color-accent-mihai */
+  --cta-accent-color: var(
+    --color-accent-cta,
+    #6366f1
+  ); /* Example: Indigo-500 */
+  --cta-accent-color-rgb: var(--color-accent-cta-rgb, 99, 102, 241);
+
+  /* Gradient background */
+  background: linear-gradient(
+    135deg,
+    var(--cta-accent-color) 0%,
+    color-mix(in srgb, var(--cta-accent-color) 75%, black 10%) 100%
+  );
+  color: white;
+  font-size: 1rem; /* Your existing font-size */
+  font-weight: 600; /* Your existing font-weight */
+  padding: 0.85rem 2.25rem; /* Slightly more padding for a premium feel */
+  border-radius: 9999px; /* Your existing pill shape */
+  text-decoration: none; /* Remove default anchor underline */
+  border: none; /* Remove default border if any */
+  cursor: pointer;
+  text-align: center; /* Ensure text is centered if not using flex for an icon */
+
+  /* Smooth transitions for hover and active states */
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Subtle shadow for depth */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(var(--cta-accent-color-rgb), 0.25); /* Shadow with accent color tint */
+
+  &:hover,
+  &:focus-visible {
+    /* Combine hover and focus-visible for similar effect */
+    transform: translateY(-3px) scale(1.03); /* More pronounced lift and scale */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(var(--cta-accent-color-rgb), 0.35);
+    /* Optional: Slightly change gradient or add brightness on hover */
+    /* filter: brightness(1.1); */
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.98); /* Press down effect */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12),
+      0 1px 6px rgba(var(--cta-accent-color-rgb), 0.2);
+    /* filter: brightness(0.95); */
+  }
+
+  /* If used for something that can be "disabled" visually (though anchors don't have a disabled attribute) */
+  /* You might add a class like .disabled manually */
+  &.disabled {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Modern focus state for accessibility (if not combined with hover) */
+  /* If you separate focus-visible:
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--cta-accent-color-rgb), 0.5), // Outer ring
+                0 4px 15px rgba(0, 0, 0, 0.1), 
+                0 2px 8px rgba(var(--cta-accent-color-rgb), 0.25);
+  }
+  */
 `;

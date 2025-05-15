@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@hookform/resolvers": "^5.0.1",
     "@next/env": "^15.3.2",
     "@plaiceholder/next": "^3.0.0",
     "@react-three/drei": "^10.0.4",
     "@react-three/fiber": "^9.1.0",
+    "@sendgrid/mail": "^8.1.5",
     "@tailwindcss/oxide": "^4.0.13",
     "animejs": "^3.2.2",
     "classnames": "^2.5.1",
@@ -31,11 +33,12 @@
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.54.2",
+    "react-hook-form": "^7.56.3",
     "recharts": "^2.15.2",
     "styled-components": "^6.1.15",
     "three": "^0.174.0",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.13",

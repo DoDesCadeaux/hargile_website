@@ -9,6 +9,7 @@
         "object": "Object",
         "projectDescription": "Your message",
         "timeline": {
+
           "1To3months": "1 - 3 months",
           "3To6months": "3 - 6 months",
           "label": "Desired Timeline",
@@ -34,7 +35,19 @@
         "advice": "Advice"
       },
       "submit": "Submit",
-      "title": "Contact us"
+      "title": "Contact us",
+      "submitting": "Submitting...", 
+      "submitSuccess": "Thank you! Your message has been sent successfully.",
+      "submitError": "Sorry, there was an error sending your message. Please try again.",
+      "submitNetworkError": "A network error occurred. Please check your connection and try again.",
+      "validation": {
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "objectRequired": "Please enter the subject of your inquiry.",
+        "messageRequired": "Please enter your message (minimum {min} characters).", 
+        "serviceRequired": "Please select at least one service."
+      }
     },
     "audit-button": {
       "description": "",

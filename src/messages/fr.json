@@ -2,12 +2,20 @@
   "components": {
     "contact-form": {
       "contact": {
-        "email": "Email",
+        "email": "E-mail",
         "message": "Votre message",
-        "name": "Nom et prénom",
+        "name": "Prénom et Nom",
         "phone": "Téléphone",
         "object": "Objet",
         "projectDescription": "Votre message",
+        "timeline": {
+          "1To3months": "1 - 3 mois",
+          "3To6months": "3 - 6 mois",
+          "label": "Échéancier souhaité",
+          "less1month": "Moins d'un mois",
+          "more6months": "Plus de 6 mois",
+          "select": "Sélectionner"
+        },
         "title": "Informations de contact"
       },
       "description": "Notre équipe d'experts analysera vos besoins et vous contactera dans les 48 heures.",
@@ -23,10 +31,22 @@
         "mobileApps": "Applications Mobiles",
         "title": "Type de service",
         "webDevelopment": "Développement Web",
-        "advice": "Conseil"
+        "advice": "Conseil" 
       },
-      "submit": "Soumettre",
-      "title": "Contactez-nous"
+      "submit": "Envoyer",
+      "title": "Contactez-nous",
+      "submitting": "Envoi en cours...",
+      "submitSuccess": "Merci ! Votre message a été envoyé avec succès.",
+      "submitError": "Désolé, une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
+      "submitNetworkError": "Une erreur de réseau s'est produite. Veuillez vérifier votre connexion et réessayer.",
+      "validation": {
+        "nameRequired": "Veuillez entrer votre nom.",
+        "emailRequired": "Veuillez entrer votre adresse e-mail.",
+        "emailInvalid": "Veuillez entrer une adresse e-mail valide.",
+        "objectRequired": "Veuillez entrer l'objet de votre demande.",
+        "messageRequired": "Veuillez entrer votre message (minimum {min} caractères).",
+        "serviceRequired": "Veuillez sélectionner au moins un service."
+      }
     },
     "audit-button": {
       "description": "",
