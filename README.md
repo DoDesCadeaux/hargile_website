@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Variables .env
 ```env
-NODE_ENV=production=
+NODE_ENV=production
 NEXT_PUBLIC_API_URL=
 NEXT_PUBLIC_SITE_UR=
 SENDGRID_API_KEY=
