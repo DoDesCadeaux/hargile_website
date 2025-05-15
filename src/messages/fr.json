@@ -31,7 +31,7 @@
         "mobileApps": "Applications Mobiles",
         "title": "Type de service",
         "webDevelopment": "Développement Web",
-        "advice": "Conseil" 
+        "advice": "Conseil"
       },
       "submit": "Envoyer",
       "title": "Contactez-nous",
@@ -39,6 +39,7 @@
       "submitSuccess": "Merci ! Votre message a été envoyé avec succès.",
       "submitError": "Désolé, une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
       "submitNetworkError": "Une erreur de réseau s'est produite. Veuillez vérifier votre connexion et réessayer.",
+      "submitErrorProvider": "Une erreur lors de l'envoi s'est produite. Veuillez vérifier votre connexion et réessayer.",
       "validation": {
         "nameRequired": "Veuillez entrer votre nom.",
         "emailRequired": "Veuillez entrer votre adresse e-mail.",
