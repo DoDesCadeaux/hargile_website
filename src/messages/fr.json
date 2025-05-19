@@ -394,6 +394,14 @@
       "description": "Explorez notre collection de solutions numériques innovantes adaptées à diverses industries. Chaque projet reflète notre engagement envers l'excellence, les pratiques durables et les philosophies de conception centrées sur l'utilisateur.",
       "featuredProjects": "Projets en Vedette",
       "projects": {
+        "delphine": {
+          "description": "Œuvres abstraites et poétiques en acrylique sur toile, accompagnées de descriptifs audio, par l'artiste Delphine Simonis.",
+          "subtitle": "Peinture Contemporaine"
+        },
+        "trussogne": {
+          "description": "Gîte de charme tout confort en Ardennes belges, idéal pour les séjours en famille ou entre amis, avec services bien-être et traiteur.",
+          "subtitle": "Séjour Nature et Confort en Ardennes"
+        },
         "eren": {
           "description": "Solutions de batteries industrielles pour l'optimisation énergétique et la réduction des coûts des entreprises.",
           "subtitle": "Solutions Rentables de Batteries Industrielles"

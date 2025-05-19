@@ -121,7 +121,6 @@ function ServiceCheckbox({
 }) {
   return (
     <CheckboxContainer
-      // aria-label={label} // Labelled by CheckboxLabel now
       style={{
         "--bg-color": bgColor,
         "--bg-hover-color": hoverColor,

@@ -395,6 +395,14 @@
       "description": "Explore our collection of innovative digital solutions tailored for diverse industries. Each project reflects our commitment to excellence, sustainable practices, and user-centered design philosophies.",
       "featuredProjects": "Featured Projects",
       "projects": {
+        "trussogne": {
+          "description": "Charming and fully-equipped holiday home in the Belgian Ardennes, perfect for family or group stays, with wellness and catering services.",
+          "subtitle": "Nature & Comfort Stay in the Ardennes"
+        },
+        "delphine": {
+          "description": "Abstract and poetic acrylic paintings on canvas, accompanied by audio descriptions, by artist Delphine Simonis.",
+          "subtitle": "Contemporary Painting"
+        },
         "eren": {
           "description": "Industrial battery solutions for business energy optimization and cost savings.",
           "subtitle": "Profitable Industrial Battery Solutions"
