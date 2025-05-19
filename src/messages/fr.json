@@ -1,5 +1,35 @@
 {
   "components": {
+    "gdpr": {
+      "title": "Paramètres de confidentialité",
+      "description": "Nous utilisons des cookies pour améliorer votre expérience sur notre site, analyser notre trafic et personnaliser notre contenu. Vous pouvez choisir les cookies que vous acceptez et modifier vos préférences à tout moment.",
+      "acceptAll": "Tout accepter",
+      "rejectAll": "Tout refuser",
+      "customize": "Personnaliser",
+      "save": "Enregistrer mes choix",
+      "cookieSettings": "Paramètres des cookies",
+      "privacyPolicy": {
+        "link": "Politique de confidentialité",
+        "description": "En savoir plus sur la façon dont nous utilisons vos données personnelles et vos droits en matière de confidentialité."
+      },
+      "necessaryCookies": {
+        "title": "Cookies nécessaires",
+        "alwaysActive": "Toujours actifs",
+        "description": "Ces cookies sont indispensables au bon fonctionnement de notre site. Ils permettent l'utilisation des fonctionnalités principales et sécurisent votre visite. Ces cookies ne peuvent pas être désactivés."
+      },
+      "analyticsCookies": {
+        "title": "Cookies d'analyse",
+        "description": "Ces cookies nous permettent de collecter des données statistiques anonymes sur l'utilisation de notre site afin d'améliorer l'expérience utilisateur et d'optimiser nos services."
+      },
+      "marketingCookies": {
+        "title": "Cookies marketing",
+        "description": "Ces cookies sont utilisés pour suivre les visiteurs sur les sites web. Ils sont conçus pour afficher des publicités pertinentes et engageantes pour l'utilisateur, en fonction de ses centres d'intérêt."
+      },
+      "preferencesCookies": {
+        "title": "Cookies de préférences",
+        "description": "Ces cookies permettent à notre site de mémoriser vos préférences, comme votre langue ou votre région, pour vous offrir une expérience personnalisée lors de vos prochaines visites."
+      }
+    },
     "contact-form": {
       "contact": {
         "email": "E-mail",
@@ -31,7 +61,7 @@
         "mobileApps": "Applications Mobiles",
         "title": "Type de service",
         "webDevelopment": "Développement Web",
-        "advice": "Conseil" 
+        "advice": "Conseil"
       },
       "submit": "Envoyer",
       "title": "Contactez-nous",
@@ -39,6 +69,7 @@
       "submitSuccess": "Merci ! Votre message a été envoyé avec succès.",
       "submitError": "Désolé, une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.",
       "submitNetworkError": "Une erreur de réseau s'est produite. Veuillez vérifier votre connexion et réessayer.",
+      "submitErrorProvider": "Une erreur lors de l'envoi s'est produite. Veuillez vérifier votre connexion et réessayer.",
       "validation": {
         "nameRequired": "Veuillez entrer votre nom.",
         "emailRequired": "Veuillez entrer votre adresse e-mail.",

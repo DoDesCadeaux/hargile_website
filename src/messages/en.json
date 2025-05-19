@@ -1,5 +1,35 @@
 {
   "components": {
+    "gdpr": {
+      "title": "Privacy Settings",
+      "description": "We use cookies to enhance your experience on our site, analyze our traffic, and personalize our content. You can choose which cookies you accept and change your preferences at any time.",
+      "acceptAll": "Accept All",
+      "rejectAll": "Reject All",
+      "customize": "Customize",
+      "save": "Save my preferences",
+      "cookieSettings": "Cookie settings",
+      "privacyPolicy": {
+        "link": "Privacy Policy",
+        "description": "Learn more about how we use your data and your rights regarding your personal information."
+      },
+      "necessaryCookies": {
+        "title": "Necessary Cookies",
+        "alwaysActive": "Always Active",
+        "description": "These cookies are essential for the proper functioning of our website. They enable the use of core features and secure your visit. These cookies cannot be disabled."
+      },
+      "analyticsCookies": {
+        "title": "Analytics Cookies",
+        "description": "These cookies allow us to collect anonymous statistical data about the use of our website to improve user experience and optimize our services."
+      },
+      "marketingCookies": {
+        "title": "Marketing Cookies",
+        "description": "These cookies are used to track visitors across websites. They are designed to display relevant and engaging advertisements based on your interests."
+      },
+      "preferencesCookies": {
+        "title": "Preference Cookies",
+        "description": "These cookies allow our website to remember your preferences, such as language or region, to provide a personalized experience during your future visits."
+      }
+    },
     "contact-form": {
       "contact": {
         "email": "Email",
@@ -36,16 +66,17 @@
       },
       "submit": "Submit",
       "title": "Contact us",
-      "submitting": "Submitting...", 
+      "submitting": "Submitting...",
       "submitSuccess": "Thank you! Your message has been sent successfully.",
       "submitError": "Sorry, there was an error sending your message. Please try again.",
       "submitNetworkError": "A network error occurred. Please check your connection and try again.",
+      "submitErrorProvider": "A error provider occurred. Please check your connection and try again.",
       "validation": {
         "nameRequired": "Please enter your name.",
         "emailRequired": "Please enter your email address.",
         "emailInvalid": "Please enter a valid email address.",
         "objectRequired": "Please enter the subject of your inquiry.",
-        "messageRequired": "Please enter your message (minimum {min} characters).", 
+        "messageRequired": "Please enter your message (minimum {min} characters).",
         "serviceRequired": "Please select at least one service."
       }
     },

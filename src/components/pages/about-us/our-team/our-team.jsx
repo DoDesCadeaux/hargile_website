@@ -75,7 +75,7 @@ const OurTeam = () => {
         },
         {
             id: "dorian",
-            name: "Dorian Durakou",
+            name: "Dorian Duraku",
             role: t("members.alexis.role"),
             imageSrc: "/images/pages/our-story/our-team/charles.png",
             width: 800,
