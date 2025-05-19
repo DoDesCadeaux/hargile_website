@@ -3,7 +3,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {generateSharedMetadata} from './shared-metadata';
-import {GoogleAnalytics} from "@next/third-parties/google";
+import ClientGDPRWrapper from "@/components/GDPR/ClientGDPRWrapper";
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -45,9 +45,9 @@ export default async function LocaleLayout({children, params}) {
         <body style={{overflowX: 'hidden', minHeight: '100vh'}}>
         <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
+            <ClientGDPRWrapper/>
         </NextIntlClientProvider>
         </body>
-        <GoogleAnalytics gaId="G-X6GHW8D74X"/>
         </html>
     );
 }
