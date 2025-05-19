@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {generateSharedMetadata} from './shared-metadata';
+import {GoogleAnalytics} from "@next/third-parties/google";
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({locale}));
@@ -23,17 +24,6 @@ export default async function LocaleLayout({children, params}) {
 
     const messages = await getMessages();
 
-    const jsonLdData = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "HARGILE",
-        "url": `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}`,
-        "logo": `${process.env.NEXT_PUBLIC_SITE_URL}/images/brand/brand_large.png`,
-        "description": locale === 'fr'
-            ? "Agence digitale spécialisée dans le développement web, les solutions IA et les stratégies marketing"
-            : "Digital agency specializing in web development, AI solutions, and marketing strategies"
-    };
-
     return (
 
         <html lang={locale || null}>
@@ -51,21 +41,13 @@ export default async function LocaleLayout({children, params}) {
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
             <link rel="manifest" href="/site.webmanifest"/>
-
-            {/*<Script*/}
-            {/*    id="schema-org-data"*/}
-            {/*    type="application/ld+json"*/}
-            {/*    dangerouslySetInnerHTML={{*/}
-            {/*        __html: JSON.stringify(jsonLdData)*/}
-            {/*    }}*/}
-            {/*    strategy="beforeInteractive"*/}
-            {/*/>*/}
         </head>
         <body style={{overflowX: 'hidden', minHeight: '100vh'}}>
         <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
         </NextIntlClientProvider>
         </body>
+        <GoogleAnalytics gaId="G-X6GHW8D74X"/>
         </html>
     );
 }
